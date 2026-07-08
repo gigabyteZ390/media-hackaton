@@ -11,7 +11,10 @@ export const dynamic = "force-dynamic";
 // (Authoritative-stats plugins — INSEE / KOSIS — can be wired in as tools later.)
 export async function POST(req: Request) {
   try {
-    const { lines } = (await req.json()) as { lines: SpokenLine[] };
+    const { lines, lang } = (await req.json()) as {
+      lines: SpokenLine[];
+      lang?: "ko" | "en";
+    };
     if (!Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
         { error: "Body must be { lines: SpokenLine[] }" },
@@ -24,7 +27,7 @@ export async function POST(req: Request) {
     const res = await client.responses.create({
       model: MODEL,
       tools: [{ type: "web_search" }],
-      input: buildFactPrompt(lines),
+      input: buildFactPrompt(lines, lang ?? "en"),
     } as any);
 
     // The model returns JSON as text after searching; parse defensively.

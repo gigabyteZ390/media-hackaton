@@ -11,9 +11,10 @@ export const dynamic = "force-dynamic";
 // Axis 1 — self-consistency: does each line contradict the person's OWN past words?
 export async function POST(req: Request) {
   try {
-    const { politician, lines } = (await req.json()) as {
+    const { politician, lines, lang } = (await req.json()) as {
       politician: string;
       lines: SpokenLine[];
+      lang?: "ko" | "en";
     };
     if (!politician || !Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
@@ -31,7 +32,10 @@ export async function POST(req: Request) {
       model: MODEL,
       response_format: { type: "json_object" },
       messages: [
-        { role: "user", content: buildConsistencyPrompt(politician, past, lines) },
+        {
+          role: "user",
+          content: buildConsistencyPrompt(politician, past, lines, lang ?? "en"),
+        },
       ],
     });
 

@@ -4,9 +4,15 @@
 
 :root {
   --bg: #f5f7fb;
+  --fg: #16203a;
+}
+
+.dark {
+  --bg: #0b1220;
+  --fg: #e5e9f0;
 }
 
 body {
   background: var(--bg);
-  color: #16203a;
+  color: var(--fg);
 }
