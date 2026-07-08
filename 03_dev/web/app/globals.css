@@ -2,17 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font imports (must precede other rules that aren't @charset/@import). */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 :root {
-  --bg: #f5f7fb;
-  --fg: #16203a;
+  --surface-rgb: 255 255 255; /* card / page surface */
+  --ink-rgb: 15 23 42; /* primary text */
+  --slate-rgb: 248 250 252; /* muted panel */
+  --gray-rgb: 100 116 139; /* secondary text */
+  --line-rgb: 15 23 42; /* strong brutalist borders */
+  --shadow-rgb: 15 23 42; /* hard drop shadow */
+  --grid-rgb: 15 23 42; /* blueprint grid lines */
+  --accent-rgb: 15 23 42; /* dark accent blocks */
+  --accent-fg-rgb: 255 255 255; /* text on accent */
 }
 
+/* Neutral (non-blue) dark theme — closer to GitHub / Vercel / Linear. */
 .dark {
-  --bg: #0b1220;
-  --fg: #e5e9f0;
+  --surface-rgb: 24 24 27; /* zinc-900 card */
+  --ink-rgb: 237 237 237; /* near-white text */
+  --slate-rgb: 10 10 10; /* near-black canvas */
+  --gray-rgb: 140 140 140; /* neutral secondary text */
+  --line-rgb: 63 63 70; /* zinc-700 borders */
+  --shadow-rgb: 82 82 91; /* neutral hard shadow */
+  --grid-rgb: 120 120 128; /* neutral grid lines */
+  --accent-rgb: 237 237 237; /* inverted: light accent blocks */
+  --accent-fg-rgb: 10 10 10; /* dark text on light accent */
 }
 
-body {
-  background: var(--bg);
-  color: var(--fg);
+@layer base {
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+  }
+}
+
+@layer components {
+  .blueprint-grid {
+    background-image: linear-gradient(
+        to right,
+        rgb(var(--grid-rgb) / 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgb(var(--grid-rgb) / 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-accentfg px-8 py-4 font-bold uppercase tracking-widest transition-all shadow-sharp-sm hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-line text-ink px-8 py-4 font-bold uppercase tracking-widest bg-transparent transition-all shadow-sharp-sm hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] hover:bg-slate disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
+
+/* --- Korean-optimized typography (keeps the same layout, avoids breakage) --- */
+.lang-ko {
+  word-break: keep-all; /* never split a Korean word mid-character */
+  line-break: strict;
+}
+.lang-ko .tracking-tighter,
+.lang-ko .tracking-tight {
+  letter-spacing: -0.01em;
+}
+.lang-ko .tracking-widest,
+.lang-ko .tracking-\[0\.2em\] {
+  letter-spacing: 0.03em; /* wide English tracking looks off in Korean */
+}
+/* The oversized display hero is Latin-shaped; ease it down a notch for Korean. */
+.lang-ko .hero-title {
+  font-size: clamp(2.75rem, 8vw, 5rem);
+  line-height: 1;
 }

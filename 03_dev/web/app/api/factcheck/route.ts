@@ -10,9 +10,10 @@ export const dynamic = "force-dynamic";
 // INSEE/KOSIS data (code), and fall back to web search for everything else.
 export async function POST(req: Request) {
   try {
-    const { lines, lang } = (await req.json()) as {
+    const { lines, lang, asOf } = (await req.json()) as {
       lines: SpokenLine[];
       lang?: "ko" | "en";
+      asOf?: string; // date the statement was made (YYYY-MM-DD); the truth basis
     };
     if (!Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
