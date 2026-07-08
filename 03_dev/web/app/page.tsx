@@ -25,7 +25,7 @@ const SAMPLE_TRANSCRIPT =
 
 const STR = {
   en: {
-    brandTitle: "Political Statement",
+    brandTitle: "Politrace",
     navTwoAxis: "Two-Axis Verification:",
     navConsistency: "Self-Consistency",
     navFactuality: "Factuality",
@@ -109,7 +109,7 @@ const STR = {
     } as Record<FactualityStatus, string>,
   },
   ko: {
-    brandTitle: "정치 발언",
+    brandTitle: "Politrace",
     navTwoAxis: "이중 축 검증:",
     navConsistency: "자기 일관성",
     navFactuality: "사실성",
@@ -254,6 +254,7 @@ async function runAnalysis(
         isContra && v?.pastStatement
           ? {
               text: v.pastStatement,
+              textTranslation: v.pastStatementTranslation || undefined,
               date: v.pastDate ?? "",
               sourceTitle: "Historical statement DB",
               sourceUrl: v.pastSourceUrl || "#",
@@ -285,6 +286,7 @@ async function runAnalysis(
       timestamp: `CLAIM_${String(i + 1).padStart(2, "0")}`,
       speaker: politician,
       line: l.text,
+      lineTranslation: v?.lineTranslation || undefined,
       consistency,
       factuality,
     };
@@ -407,9 +409,17 @@ const StatementCard = ({
               </div>
             </div>
           </div>
-          <h4 className="mb-6 max-w-4xl text-xl md:text-2xl font-black leading-tight text-ink">
-            &ldquo;{statement.line}&rdquo;
-          </h4>
+          <div className="mb-6">
+            <h4 className="max-w-4xl text-xl md:text-2xl font-black leading-tight text-ink">
+              &ldquo;{statement.lineTranslation || statement.line}&rdquo;
+            </h4>
+            {statement.lineTranslation &&
+              statement.lineTranslation.trim() !== statement.line.trim() && (
+                <p className="mt-2 max-w-4xl font-mono text-xs leading-relaxed text-gray">
+                  {statement.line}
+                </p>
+              )}
+          </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2 font-mono text-xs text-gray">
@@ -453,7 +463,17 @@ const StatementCard = ({
                     </p>
                     <div className="relative border border-line bg-surface p-6 text-sm italic leading-relaxed">
                       <i className="ti ti-quote text-4xl text-ink/5 absolute top-2 left-2" />
-                      &ldquo;{consistency.pastStatement.text}&rdquo;
+                      &ldquo;
+                      {consistency.pastStatement.textTranslation ||
+                        consistency.pastStatement.text}
+                      &rdquo;
+                      {consistency.pastStatement.textTranslation &&
+                        consistency.pastStatement.textTranslation.trim() !==
+                          consistency.pastStatement.text.trim() && (
+                          <span className="mt-2 block font-mono text-[11px] not-italic text-gray">
+                            {consistency.pastStatement.text}
+                          </span>
+                        )}
                     </div>
                   </div>
                   <div className="flex justify-between border-b border-line/10 pb-2 font-mono text-[10px]">
@@ -1324,7 +1344,7 @@ export default function Home() {
             </div>
             <div>
               <span className="text-sm font-black uppercase tracking-tighter block leading-none">
-                Evidence Desk
+                Politrace
               </span>
               <span className="font-mono text-[9px] font-bold text-gray uppercase mt-1 tracking-widest">
                 {t.footerSub}
@@ -1332,7 +1352,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-10 font-mono text-[10px] font-bold uppercase text-gray tracking-widest">
-            <span className="text-ink">&copy; 2026 Evidence Desk</span>
+            <span className="text-ink">&copy; 2026 Politrace</span>
             <span>{t.navConsistency}</span>
             <span>{t.navFactuality}</span>
           </div>
