@@ -265,9 +265,14 @@ async function runAnalysis(
     const verdict: FactualityStatus = isClaim
       ? (f!.verdict as FactualityStatus)
       : "NOT_FACTUAL";
-    const srcType = (f?.sources ?? []).some((s) => /kosis/i.test(s.url))
-      ? "KOSIS"
-      : "WEB";
+    // Label the source by the verification path: official-stats -> INSEE/KOSIS
+    // (the deterministic government-data lookup), everything else -> WEB.
+    const srcType =
+      f?.method === "official-stats"
+        ? (f.sources ?? []).some((s) => /kosis/i.test(s.url))
+          ? "KOSIS"
+          : "INSEE"
+        : "WEB";
     const factuality = {
       isFactualClaim: isClaim,
       verdict,
@@ -275,7 +280,7 @@ async function runAnalysis(
       reason: f?.reason ?? "",
       referencePeriod: f?.referencePeriod || undefined,
       currentNote: f?.currentNote || undefined,
-      sourceType: isClaim ? (srcType as "KOSIS" | "WEB") : undefined,
+      sourceType: isClaim ? (srcType as "KOSIS" | "INSEE" | "WEB") : undefined,
       confidence: f?.confidence ?? 0,
       sources: f?.sources ?? [],
     };

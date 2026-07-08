@@ -122,7 +122,7 @@ export interface UIFactuality {
   reason: string;
   referencePeriod?: string;
   currentNote?: string;
-  sourceType?: "KOSIS" | "WEB";
+  sourceType?: "KOSIS" | "INSEE" | "WEB";
   confidence: number;
   sources: StatementSource[];
 }
