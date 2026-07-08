@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 
     const client = getAnthropic();
     const res = await client.messages.create({
-      model: "claude-opus-4-8",
+      model: "claude-sonnet-5",
       max_tokens: 8000,
       thinking: { type: "adaptive" },
       // Structured output: constrain the response to our JSON schema.

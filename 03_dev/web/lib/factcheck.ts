@@ -33,7 +33,7 @@ import type {
 
 type Lang = "ko" | "en";
 
-const MODEL = "claude-opus-4-8";
+const MODEL = "claude-sonnet-5";
 const VERDICT_TTL = 60 * 60 * 24; // 24h — verdicts are stable within a demo
 const STAT_TTL = 60 * 60 * 24; // 24h — official figures update at most monthly
 
