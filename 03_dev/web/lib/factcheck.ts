@@ -4,13 +4,16 @@
 // CODE does the numeric verification (fetch the real official figure and compare).
 // Comparing two numbers is deterministic work — no need to spend an LLM call on it.
 //
-//   lines ──▶ [LLM extraction] ──▶ StatClaim[]
-//                 │
-//                 ├─ statistical + registry match ─▶ INSEE/KOSIS fetch ─▶ compare() ─▶ TRUE/FALSE
-//                 └─ everything else ──────────────▶ web-search fallback (LLM) ─▶ verdict + sources
+//   lines ──▶ [verdict cache] ──▶ [LLM extraction] ──▶ StatClaim[]
+//                 │                     │
+//                 │                     ├─ statistical + registry ─▶ INSEE/KOSIS ─▶ compare() ─▶ TRUE/FALSE
+//                 │                     └─ everything else ────────▶ web-search fallback ─▶ verdict + sources
+//                 └─ (hit) ─▶ reuse the stored verdict, skip all LLM/API calls
 //
+// Two MongoDB caches (best-effort, no-op if Mongo is down) spare the LLM/web/KOSIS
+// quotas: `statCache` (official figures) and `factCache` (per-line verdicts).
 // Anything we can't resolve deterministically degrades to web search, so the app
-// still works (and the demo never breaks) even without stats API keys.
+// still works even without stats API keys or a database.
 //
 // `asOf` (the date the statement was spoken) is threaded through for time-anchoring:
 // the verdict reflects the truth AT THAT TIME, not merely today's latest figure.
@@ -20,6 +23,7 @@ import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
 import { STAT_REGISTRY, findEntry, type RegistryEntry } from "./statRegistry";
 import { inseeGetSeries } from "./insee";
 import { kosisGetSeries } from "./kosis";
+import { cacheGet, cacheSet } from "./mongo";
 import type {
   SpokenLine,
   StatClaim,
@@ -29,6 +33,15 @@ import type {
 } from "./types";
 
 type Lang = "ko" | "en";
+
+const VERDICT_TTL = 60 * 60 * 24; // 24h — verdicts are stable within a demo
+const STAT_TTL = 60 * 60 * 24; // 24h — official figures update at most monthly
+
+const norm = (s: string) =>
+  s.toLowerCase().replace(/["'”“’·.,!?;:]/g, "").replace(/\s+/g, " ").trim();
+
+const verdictKey = (line: string, lang: Lang, asOf?: string) =>
+  `v1:${lang}:${asOf ?? "now"}:${norm(line)}`;
 
 /** Step 1 — LLM extracts a structured claim per line (JSON mode, no web search). */
 async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim[]> {
@@ -45,21 +58,25 @@ async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim
   return parsed.claims ?? [];
 }
 
-/** Fetch the official figure for a registry entry (dispatches to INSEE or KOSIS). */
+/** Fetch the official figure for a registry entry (cached; dispatches to INSEE/KOSIS). */
 async function resolveOfficial(
   entry: RegistryEntry,
   period?: string
 ): Promise<StatValue | null> {
+  const key = `${entry.key}:${period ?? "latest"}`;
+  const cached = await cacheGet<StatValue>("statCache", key);
+  if (cached) return cached;
+
+  let value: StatValue | null = null;
   if (entry.provider === "INSEE" && entry.insee) {
-    return inseeGetSeries(entry.insee.idbank, {
+    value = await inseeGetSeries(entry.insee.idbank, {
       period,
       unit: entry.unit,
       label: entry.label,
       sourceUrl: entry.sourceUrl,
     });
-  }
-  if (entry.provider === "KOSIS" && entry.kosis) {
-    return kosisGetSeries({
+  } else if (entry.provider === "KOSIS" && entry.kosis) {
+    value = await kosisGetSeries({
       ...entry.kosis,
       period,
       unit: entry.unit,
@@ -67,7 +84,9 @@ async function resolveOfficial(
       sourceUrl: entry.sourceUrl,
     });
   }
-  return null;
+
+  if (value) await cacheSet("statCache", key, value, STAT_TTL);
+  return value;
 }
 
 /** Step 3 — deterministic numeric comparison (replaces an LLM "are they equal?" call). */
@@ -155,12 +174,12 @@ async function webSearchFallback(
   });
 }
 
-/** Public entry point used by /api/factcheck. */
-export async function factCheck(
+/** The full extract -> verify -> fallback pipeline for lines not served from cache. */
+async function runPipeline(
   lines: SpokenLine[],
   lang: Lang,
   asOf?: string
-): Promise<FactCheckResult> {
+): Promise<FactVerdict[]> {
   const claims = await extractClaims(lines, lang);
 
   const facts: FactVerdict[] = [];
@@ -230,6 +249,39 @@ export async function factCheck(
   if (fallback.length > 0) {
     facts.push(...(await webSearchFallback(fallback, lang, asOf)));
   }
+
+  return facts;
+}
+
+/** Public entry point used by /api/factcheck. Serves per-line verdicts from the
+ *  cache when possible, runs the pipeline only for the misses, then caches them. */
+export async function factCheck(
+  lines: SpokenLine[],
+  lang: Lang,
+  asOf?: string
+): Promise<FactCheckResult> {
+  // 1. Look up each line's verdict in the cache.
+  const cached = await Promise.all(
+    lines.map((l) => cacheGet<FactVerdict>("factCache", verdictKey(l.text, lang, asOf)))
+  );
+  const misses = lines.filter((_, i) => !cached[i]);
+
+  // 2. Run the pipeline only for cache misses, then store the fresh verdicts.
+  let fresh: FactVerdict[] = [];
+  if (misses.length > 0) {
+    fresh = await runPipeline(misses, lang, asOf);
+    await Promise.all(
+      fresh.map((f) =>
+        cacheSet("factCache", verdictKey(f.line, lang, asOf), f, VERDICT_TTL)
+      )
+    );
+  }
+  const freshByLine = new Map(fresh.map((f) => [norm(f.line), f] as const));
+
+  // 3. Reassemble verdicts in the original line order (cache hits + fresh).
+  const facts: FactVerdict[] = lines
+    .map((l, i) => cached[i] ?? freshByLine.get(norm(l.text)))
+    .filter((f): f is FactVerdict => Boolean(f));
 
   // Accuracy = TRUE / checkable factual claims (computed in code, not by the model).
   const checked = facts.filter((f) => f.isFactualClaim);
