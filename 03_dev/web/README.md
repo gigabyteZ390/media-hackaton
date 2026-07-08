@@ -4,22 +4,18 @@ Next.js (App Router) skeleton for the two-axis analysis:
 
 - **`/api/analyze`** — Axis 1, self-consistency. Compares each spoken line against
   the politician's own past statements (`data/statements.sample.json`) using
-  OpenAI (Chat Completions + JSON mode). Returns `{ verdicts, consistencyScore }`.
+  Claude Opus 4.8 + structured outputs. Returns `{ verdicts, consistencyScore }`.
 - **`/api/factcheck`** — Axis 2, factuality. Fact-checks checkable claims using
-  OpenAI (Responses API + the built-in web-search tool). Returns
-  `{ facts, accuracyScore }`. For Korean statistical claims it also looks up
-  official **KOSIS** (Statistics Korea) tables via `lib/kosis.ts` and passes them
-  as authoritative evidence (set `KOSIS_KEY`; no-op without it).
+  Claude Opus 4.8 + the web-search server tool. Returns `{ facts, accuracyScore }`.
+  (INSEE / KOSIS official-stats plugins can be wired in as tools later.)
 - **`app/page.tsx`** — UI: paste a transcript, click Analyze, see two score gauges
   and per-line badges (consistency + factuality) with sources.
-
-Model is set in `lib/openai.ts` (`MODEL`, default `gpt-4o`) — swap it there.
 
 ## Setup
 ```bash
 cd 03_dev/web
 npm install
-cp .env.local.example .env.local     # then set OPENAI_API_KEY
+cp .env.local.example .env.local     # then set ANTHROPIC_API_KEY
 npm run dev                          # http://localhost:3000
 ```
 
@@ -40,5 +36,5 @@ transcript lines ──┬─▶ POST /api/analyze   → contradictions + consis
 - Add `/api/transcribe` (Whisper) if you want to upload video directly instead of
   pasting a transcript.
 - Wire INSEE / KOSIS as tools in `/api/factcheck` for official-stat cross-checks.
-- Keep `openai` up to date (`npm i openai@latest`); the web-search tool lives on the
-  Responses API.
+- `output_config` / `web_search_20260209` are recent API features — keep
+  `@anthropic-ai/sdk` up to date (`npm i @anthropic-ai/sdk@latest`).

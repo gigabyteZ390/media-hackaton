@@ -2,17 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg: #f5f7fb;
-  --fg: #16203a;
+@layer base {
+  body {
+    @apply bg-white text-navy font-sans antialiased;
+  }
 }
 
-.dark {
-  --bg: #0b1220;
-  --fg: #e5e9f0;
+@layer components {
+  .blueprint-grid {
+    background-image: 
+      linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .btn-primary {
+    @apply bg-navy text-white px-8 py-4 font-bold uppercase tracking-widest transition-all shadow-sharp-sm hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-navy text-navy px-8 py-4 font-bold uppercase tracking-widest bg-transparent transition-all shadow-sharp-sm hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] hover:bg-slate disabled:opacity-50 disabled:cursor-not-allowed;
+  }
 }
 
-body {
-  background: var(--bg);
-  color: var(--fg);
-}
+/* Custom font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');

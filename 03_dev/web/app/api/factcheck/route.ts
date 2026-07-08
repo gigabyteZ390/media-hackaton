@@ -1,21 +1,17 @@
 import { NextResponse } from "next/server";
-import { getOpenAI, MODEL, extractJson } from "@/lib/openai";
+import { getAnthropic, joinText, extractJson } from "@/lib/anthropic";
 import { buildFactPrompt } from "@/lib/prompts";
-import { kosisContextFor } from "@/lib/kosis";
 import type { SpokenLine, FactCheckResult } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
-// Axis 2 — factuality: verify checkable factual claims via OpenAI + web search.
+// Axis 2 — factuality: verify checkable factual claims via Claude + web search.
 // (Authoritative-stats plugins — INSEE / KOSIS — can be wired in as tools later.)
 export async function POST(req: Request) {
   try {
-    const { lines, lang } = (await req.json()) as {
-      lines: SpokenLine[];
-      lang?: "ko" | "en";
-    };
+    const { lines } = (await req.json()) as { lines: SpokenLine[] };
     if (!Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
         { error: "Body must be { lines: SpokenLine[] }" },
@@ -23,32 +19,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // For Korean statistical claims, look up official KOSIS tables to ground the
-    // fact-check in government data (no-op if KOSIS_KEY is unset or search fails).
-    const statsContext =
-      (lang ?? "en") === "ko"
-        ? await kosisContextFor(lines.map((l) => l.text))
-        : "";
-
-    const client = getOpenAI();
-    // Responses API + built-in web search tool: live search with citations.
-    const res = await client.responses.create({
-      model: MODEL,
-      tools: [{ type: "web_search" }],
-      input: buildFactPrompt(lines, lang ?? "en", statsContext || undefined),
+    const client = getAnthropic();
+    const res = await client.messages.create({
+      model: "claude-opus-4-8",
+      max_tokens: 8000,
+      thinking: { type: "adaptive" },
+      // Server-side web search tool: live search + cited sources.
+      tools: [{ type: "web_search_20260209", name: "web_search" }],
+      messages: [{ role: "user", content: buildFactPrompt(lines) }],
+      // Cast: recent tool type not in every SDK type def.
     } as any);
 
     // The model returns JSON as text after searching; parse defensively.
-    const text = (res as any).output_text ?? "";
-    const result = extractJson<FactCheckResult>(text);
-
-    // Compute accuracy deterministically: TRUE / (checkable factual claims).
-    const checked = (result.facts ?? []).filter((f) => f.isFactualClaim);
-    const trueCount = checked.filter((f) => f.verdict === "TRUE").length;
-    result.accuracyScore = checked.length
-      ? Math.round((trueCount / checked.length) * 100)
-      : 0;
-
+    const result = extractJson<FactCheckResult>(joinText(res));
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/factcheck]", err);
