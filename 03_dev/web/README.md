@@ -7,8 +7,9 @@ Next.js (App Router) skeleton for the two-axis analysis:
   OpenAI (Chat Completions + JSON mode). Returns `{ verdicts, consistencyScore }`.
 - **`/api/factcheck`** — Axis 2, factuality. Fact-checks checkable claims using
   OpenAI (Responses API + the built-in web-search tool). Returns
-  `{ facts, accuracyScore }`. (INSEE / KOSIS official-stats plugins can be wired in
-  as tools later.)
+  `{ facts, accuracyScore }`. For Korean statistical claims it also looks up
+  official **KOSIS** (Statistics Korea) tables via `lib/kosis.ts` and passes them
+  as authoritative evidence (set `KOSIS_KEY`; no-op without it).
 - **`app/page.tsx`** — UI: paste a transcript, click Analyze, see two score gauges
   and per-line badges (consistency + factuality) with sources.
 

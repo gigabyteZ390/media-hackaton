@@ -32,7 +32,11 @@ export function buildConsistencyPrompt(
 }
 
 /** Axis 2 — factuality (checkable factual claims only; uses web search for sources). */
-export function buildFactPrompt(lines: SpokenLine[], lang: Lang = "en"): string {
+export function buildFactPrompt(
+  lines: SpokenLine[],
+  lang: Lang = "en",
+  statsContext?: string
+): string {
   return [
     "You are a careful fact-checker. Rules:",
     "1) Check ONLY verifiable factual claims (numbers, statistics, historical facts).",
@@ -42,6 +46,9 @@ export function buildFactPrompt(lines: SpokenLine[], lang: Lang = "en"): string 
     "4) Attach a reason and sources (title + url) to every verdict, and a confidence (0..1).",
     "5) accuracyScore = (number of TRUE verdicts / number of checked factual claims) * 100, rounded.",
     `6) Write the "reason" field in ${langName(lang)} (keep the verdict values as TRUE/FALSE/UNVERIFIABLE).`,
+    statsContext
+      ? `7) The following official KOSIS (Statistics Korea) tables were found for these claims. For Korean statistical claims, treat them as authoritative primary evidence and include their URLs in "sources":\n${statsContext}`
+      : "",
     "",
     "Respond with ONLY a JSON object of this exact shape (no prose, no code fences):",
     '{ "facts": [ { "line": string, "isFactualClaim": boolean, "verdict": "TRUE"|"FALSE"|"UNVERIFIABLE", "reason": string, "sources": [{"title": string, "url": string}], "confidence": number } ], "accuracyScore": number }',

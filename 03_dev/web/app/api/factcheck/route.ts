@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getOpenAI, MODEL, extractJson } from "@/lib/openai";
 import { buildFactPrompt } from "@/lib/prompts";
+import { kosisContextFor } from "@/lib/kosis";
 import type { SpokenLine, FactCheckResult } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -22,12 +23,19 @@ export async function POST(req: Request) {
       );
     }
 
+    // For Korean statistical claims, look up official KOSIS tables to ground the
+    // fact-check in government data (no-op if KOSIS_KEY is unset or search fails).
+    const statsContext =
+      (lang ?? "en") === "ko"
+        ? await kosisContextFor(lines.map((l) => l.text))
+        : "";
+
     const client = getOpenAI();
     // Responses API + built-in web search tool: live search with citations.
     const res = await client.responses.create({
       model: MODEL,
       tools: [{ type: "web_search" }],
-      input: buildFactPrompt(lines, lang ?? "en"),
+      input: buildFactPrompt(lines, lang ?? "en", statsContext || undefined),
     } as any);
 
     // The model returns JSON as text after searching; parse defensively.
