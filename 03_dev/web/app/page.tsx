@@ -236,7 +236,13 @@ interface Analysis {
     unverifiable: number;
     verified: number;
   };
+  notice?: string;
 }
+
+// A single analysis pass covers at most this many lines. Long transcripts (e.g. a
+// full speech) would overflow the model's output and produce truncated JSON, so we
+// cap here and tell the user to trim to the part they care about.
+const MAX_ANALYZE_LINES = 10;
 
 async function runAnalysis(
   politician: string,
@@ -244,11 +250,17 @@ async function runAnalysis(
   lang: Lang,
   asOf: string
 ): Promise<Analysis> {
-  const lines = transcript
+  const allLines = transcript
     .split("\n")
     .map((t) => t.trim())
-    .filter(Boolean)
-    .map((text) => ({ text }));
+    .filter(Boolean);
+  const lines = allLines.slice(0, MAX_ANALYZE_LINES).map((text) => ({ text }));
+  const notice =
+    allLines.length > MAX_ANALYZE_LINES
+      ? lang === "ko"
+        ? `대본이 길어 앞 ${MAX_ANALYZE_LINES}줄만 분석했습니다 (전체 ${allLines.length}줄). 관심 있는 부분만 남기고 다시 실행하세요.`
+        : `Transcript is long — analyzed the first ${MAX_ANALYZE_LINES} of ${allLines.length} lines. Trim to the part you care about and re-run.`
+      : undefined;
 
   const [aRes, fRes] = await Promise.all([
     fetch("/api/analyze", {
@@ -338,6 +350,7 @@ async function runAnalysis(
       ).length,
       verified: results.filter((r) => r.factuality.verdict === "TRUE").length,
     },
+    notice,
   };
 }
 
@@ -1420,6 +1433,13 @@ export default function Home() {
                 </button>
               </div>
             </div>
+
+            {analysis.notice && (
+              <div className="mb-8 flex items-start gap-3 border-2 border-orange bg-orange/5 p-4 font-mono text-xs text-orange">
+                <i className="ti ti-alert-triangle mt-[1px]" />
+                <span className="leading-relaxed">{analysis.notice}</span>
+              </div>
+            )}
 
             <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="flex flex-col justify-between border-2 border-line bg-surface p-8 shadow-sharp-sm">
