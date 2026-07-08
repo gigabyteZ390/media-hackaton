@@ -34,6 +34,39 @@ export interface FactVerdict {
   reason: string;
   sources: { title: string; url: string }[];
   confidence: number; // 0..1
+  /** How this verdict was reached. */
+  method?: "official-stats" | "web-search" | "none";
+  /** The number the speaker asserted (statistical claims). */
+  claimedValue?: number;
+  /** The official figure we compared against (INSEE / KOSIS). */
+  officialValue?: number;
+  unit?: string;
+  /** Reference period of the official figure, e.g. "2025-09". */
+  period?: string;
+}
+
+/** A checkable claim extracted from one spoken line by the LLM (extraction pass). */
+export interface StatClaim {
+  line: string;
+  isFactualClaim: boolean; // any verifiable fact at all?
+  isStatistical: boolean; // a concrete number official stats could confirm?
+  subject?: string; // short EN description ("France unemployment rate")
+  claimedValue?: number; // the number asserted (e.g. 5 for "5%")
+  unit?: string; // "%", "persons", "EUR", ...
+  geo?: string; // "FR", "KR", a region, ...
+  period?: string; // "2025", "2025-Q1", "2025-09", ...
+  citedSource?: string; // a source the speaker explicitly named, if any
+  metricKey?: string; // a STAT_REGISTRY key when the metric clearly matches
+}
+
+/** One official figure fetched from a government statistics API. */
+export interface StatValue {
+  provider: "INSEE" | "KOSIS";
+  value: number;
+  period: string;
+  unit?: string;
+  sourceUrl: string;
+  label?: string;
 }
 
 export interface ConsistencyResult {
