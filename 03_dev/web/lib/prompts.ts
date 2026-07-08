@@ -15,6 +15,9 @@ export function buildConsistencyPrompt(
     "4) Assign a confidence (0..1) to each verdict. Lower it when uncertain.",
     "5) consistencyScore = (number of non-contradicting lines / total lines) * 100, rounded.",
     "",
+    "Respond with ONLY a JSON object of this exact shape (no prose, no code fences):",
+    '{ "verdicts": [ { "line": string, "isContradiction": boolean, "pastStatement": string, "reason": string, "confidence": number } ], "consistencyScore": number }',
+    "",
     "[Past statements]",
     JSON.stringify(past, null, 2),
     "",
@@ -29,7 +32,7 @@ export function buildFactPrompt(lines: SpokenLine[]): string {
     "You are a careful fact-checker. Rules:",
     "1) Check ONLY verifiable factual claims (numbers, statistics, historical facts).",
     '   Opinions / predictions / value judgments ("a tax hike is right") -> isFactualClaim=false, skip.',
-    "2) Use web_search to find trustworthy, authoritative sources (prefer official statistics offices).",
+    "2) Use web search to find trustworthy, authoritative sources (prefer official statistics offices).",
     "3) verdict is one of TRUE / FALSE / UNVERIFIABLE. Do not force true/false.",
     "4) Attach a reason and sources (title + url) to every verdict, and a confidence (0..1).",
     "5) accuracyScore = (number of TRUE verdicts / number of checked factual claims) * 100, rounded.",
@@ -41,28 +44,3 @@ export function buildFactPrompt(lines: SpokenLine[]): string {
     JSON.stringify(lines.map((l) => l.text)),
   ].join("\n");
 }
-
-/** JSON schema for the structured-output consistency response. */
-export const CONSISTENCY_SCHEMA = {
-  type: "object",
-  properties: {
-    verdicts: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          line: { type: "string" },
-          isContradiction: { type: "boolean" },
-          pastStatement: { type: "string" },
-          reason: { type: "string" },
-          confidence: { type: "number" },
-        },
-        required: ["line", "isContradiction", "reason", "confidence"],
-        additionalProperties: false,
-      },
-    },
-    consistencyScore: { type: "number" },
-  },
-  required: ["verdicts", "consistencyScore"],
-  additionalProperties: false,
-} as const;
