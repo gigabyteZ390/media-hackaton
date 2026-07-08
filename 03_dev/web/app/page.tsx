@@ -1,331 +1,1305 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { DICT, LANG_LABEL, type Lang } from "@/lib/i18n";
+import { useState, useEffect, useRef } from "react";
 import type {
+  StatementResult,
   ConsistencyResult,
   FactCheckResult,
-  ConsistencyVerdict,
-  FactVerdict,
+  FactualityStatus,
+  ConsistencyStatus,
 } from "@/lib/types";
 
-type ThemeMode = "light" | "dark" | "system";
+type Lang = "ko" | "en";
+type Theme = "light" | "dark";
 
-const SAMPLE_POLITICIAN = "이재명";
-// Illustrative test lines (NOT real quotes) — to demo the mechanism.
-const SAMPLE_TRANSCRIPT = [
-  "기본소득은 현실성이 없어 도입할 수 없습니다.",
-  "부동산 보유세는 오히려 낮춰야 합니다.",
-  "청년 정책은 앞으로도 계속 확대하겠습니다.",
-  "대한민국 인구의 절반이 서울에 살고 있습니다.",
-].join("\n");
+// Names must match the `politician` field in data/statements.json exactly for
+// Axis 1 (self-consistency) to find that person's past statements.
+const POLITICIAN_OPTIONS = ["이재명", "Emmanuel Macron", "Donald Trump"];
 
-type Row = {
-  line: string;
-  consistency?: ConsistencyVerdict;
-  fact?: FactVerdict;
+// Verified working demo lines (used when the transcript box is left empty):
+// line 1 -> a real 사드 contradiction, line 2 -> a false statistical claim.
+const SAMPLE_TRANSCRIPT =
+  "굳건한 한미동맹을 토대로 한미일 안보협력을 강화하겠다. 사드 철회는 추진하지 않는다.\n한국의 청년 실업률은 30퍼센트가 넘는다.";
+
+// --- i18n dictionary (prose only; UPPER_SNAKE code tokens stay as-is) ---
+
+const STR = {
+  en: {
+    brandTitle: "Political Statement",
+    navTwoAxis: "Two-Axis Verification:",
+    navConsistency: "Self-Consistency",
+    navFactuality: "Factuality",
+    engine: "Engine:",
+    heroTitle: ["Verification", "Through", "Precision"],
+    heroPre:
+      "We verify political statements instead of attacking them. The system extracts claims from broadcast footage, then separates ",
+    heroTerm1: "self-consistency",
+    heroMid: " from ",
+    heroTerm2: "factual accuracy",
+    heroPost:
+      " using the speaker's past statements and authoritative sources.",
+    heroStart: "Start Verification",
+    sampleClaim: "A spoken line from a broadcast transcript.",
+    consistencyAxis: "Consistency Axis",
+    consistencyAxisDesc: "Cross-checks against historical statement data",
+    factualityAxis: "Factuality Axis",
+    factualityAxisDesc: "Verifies facts against official and external sources",
+    intakeTitle: "Evidence Intake",
+    manualEntry: "Manual_Entry",
+    sourceLink: "Source_Link",
+    textareaPlaceholder:
+      "Enter the transcript to verify... (one statement per line). Leave empty to load a verified demo.",
+    targetPolitician: "Target_Politician",
+    searchPlaceholder: "Search politician...",
+    noPresetMatch:
+      "No preset match. This name is used as a custom target (Axis 01 needs it in the statement DB).",
+    execute: "Execute_Process",
+    log1: "Parsing transcript into discrete spoken lines...",
+    log2: (n: number) =>
+      `Matching ${n} claim(s) against the historical statement database...`,
+    log3: "Running live web search + official statistics lookup (Axis 02)...",
+    log4: "Generating final analysis report with AI reasoning...",
+    pipeline: "Verification Pipeline",
+    subject: "SUBJECT:",
+    dashboard: "Analytical Dashboard",
+    exportJson: "Export JSON",
+    newAnalysis: "New Analysis",
+    consistencyScore: "Consistency Score",
+    consistencyScoreDesc:
+      "Percentage of lines that do not contradict the speaker's own past statements.",
+    factualityScore: "Factuality Score",
+    factualityScoreDesc:
+      "Percentage of checkable factual claims verified TRUE against authoritative sources.",
+    breakdown: "Statement Breakdown",
+    totalLines: "Total Lines",
+    contradictions: "Contradictions",
+    falseClaims: "False Claims",
+    unverifiable: "Unverifiable",
+    verifiedCorrect: "Verified Correct",
+    methodologyTitle: "Final Methodology Disclaimer",
+    methodologyBody:
+      "AI-based analytical models provide initial verification. Human verification by certified journalists is required for legal or editorial publication. All sources are publicly available.",
+    expand: "Expand_Evidence",
+    hide: "Hide_Evidence",
+    axis01: "Axis 01: Consistency Analysis",
+    axis02: "Axis 02: Factuality Analysis",
+    detectedConflict: "Detected_Conflicting_Statement:",
+    recorded: "RECORDED:",
+    viewSource: "VIEW_SOURCE",
+    verdict: "Verdict:",
+    noPrior:
+      "No directly comparable prior statement was found in the historical statement database.",
+    statModel: "Statistical_Validation_Model:",
+    noOfficialData: "No reliable official data was available for verification.",
+    caution:
+      "Caution: AI-driven preliminary analysis. Final journalistic verification is mandatory.",
+    footerSub: "Media Hackathon 2026 // Two-Axis Verifier",
+    cLabel: {
+      CONSISTENT: "Consistent",
+      CONTRADICTION: "Potential Contradiction",
+      INSUFFICIENT_CONTEXT: "Needs Context",
+    } as Record<ConsistencyStatus, string>,
+    fLabel: {
+      TRUE: "Verified",
+      FALSE: "False",
+      UNVERIFIABLE: "Unverifiable",
+      NOT_FACTUAL: "Opinion",
+    } as Record<FactualityStatus, string>,
+  },
+  ko: {
+    brandTitle: "정치 발언",
+    navTwoAxis: "이중 축 검증:",
+    navConsistency: "자기 일관성",
+    navFactuality: "사실성",
+    engine: "엔진:",
+    heroTitle: ["정치 발언을", "정밀하게", "검증합니다"],
+    heroPre:
+      "우리는 정치 발언을 공격하는 대신 검증합니다. 방송 영상에서 발언을 추출한 뒤, 발화자의 과거 발언과 공신력 있는 자료를 근거로 ",
+    heroTerm1: "자기 일관성",
+    heroMid: "과 ",
+    heroTerm2: "사실 정확성",
+    heroPost: "을 분리해 판정합니다.",
+    heroStart: "검증 시작",
+    sampleClaim: "방송 대본에서 추출한 한 문장의 발언.",
+    consistencyAxis: "일관성 축",
+    consistencyAxisDesc: "과거 발언 데이터와 교차 대조",
+    factualityAxis: "사실성 축",
+    factualityAxisDesc: "공식·외부 출처로 사실 검증",
+    intakeTitle: "증거 입력",
+    manualEntry: "Manual_Entry",
+    sourceLink: "Source_Link",
+    textareaPlaceholder:
+      "검증할 대본을 입력하세요... (한 줄에 한 발언). 비워두면 검증된 데모가 로드됩니다.",
+    targetPolitician: "Target_Politician",
+    searchPlaceholder: "정치인 검색...",
+    noPresetMatch:
+      "사전 목록에 없음. 이 이름은 커스텀 대상으로 사용됩니다 (Axis 01은 발언 DB에 있어야 작동).",
+    execute: "Execute_Process",
+    log1: "대본을 개별 발언 단위로 분해 중...",
+    log2: (n: number) => `발언 ${n}개를 과거 발언 DB와 대조 중...`,
+    log3: "실시간 웹 검색 + 공식 통계 조회 중 (Axis 02)...",
+    log4: "AI 추론으로 최종 분석 리포트 생성 중...",
+    pipeline: "검증 파이프라인",
+    subject: "대상:",
+    dashboard: "분석 대시보드",
+    exportJson: "JSON 내보내기",
+    newAnalysis: "새 분석",
+    consistencyScore: "일관성 점수",
+    consistencyScoreDesc:
+      "발화자 자신의 과거 발언과 모순되지 않는 발언의 비율.",
+    factualityScore: "사실성 점수",
+    factualityScoreDesc:
+      "검증 가능한 사실 주장 중 공신력 있는 출처로 사실로 확인된 비율.",
+    breakdown: "발언 분석 내역",
+    totalLines: "전체 발언",
+    contradictions: "모순",
+    falseClaims: "거짓 주장",
+    unverifiable: "검증 불가",
+    verifiedCorrect: "사실 확인",
+    methodologyTitle: "최종 방법론 고지",
+    methodologyBody:
+      "AI 분석 모델은 1차 검증을 제공합니다. 법적·편집상 공표를 위해서는 공인 기자의 인간 검증이 필요합니다. 모든 출처는 공개 자료입니다.",
+    expand: "증거 펼치기",
+    hide: "증거 접기",
+    axis01: "Axis 01: 자기 일관성 분석",
+    axis02: "Axis 02: 사실성 분석",
+    detectedConflict: "감지된 상충 발언:",
+    recorded: "기록일:",
+    viewSource: "출처 보기",
+    verdict: "판정:",
+    noPrior: "직접 비교할 만한 과거 발언을 DB에서 찾지 못했습니다.",
+    statModel: "통계 검증 모델:",
+    noOfficialData: "검증에 사용할 신뢰할 수 있는 공식 자료가 없습니다.",
+    caution:
+      "주의: AI 기반 예비 분석입니다. 최종 저널리즘 검증이 반드시 필요합니다.",
+    footerSub: "Media Hackathon 2026 // Two-Axis Verifier",
+    cLabel: {
+      CONSISTENT: "일관됨",
+      CONTRADICTION: "모순 가능성",
+      INSUFFICIENT_CONTEXT: "맥락 부족",
+    } as Record<ConsistencyStatus, string>,
+    fLabel: {
+      TRUE: "사실",
+      FALSE: "거짓",
+      UNVERIFIABLE: "검증 불가",
+      NOT_FACTUAL: "의견",
+    } as Record<FactualityStatus, string>,
+  },
 };
 
-function applyTheme(mode: ThemeMode) {
-  const dark =
-    mode === "dark" ||
-    (mode === "system" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
-  document.documentElement.classList.toggle("dark", dark);
+type Dict = typeof STR.en;
+
+// --- API wiring ---
+
+interface Analysis {
+  results: StatementResult[];
+  consistencyScore: number;
+  factualityScore: number;
+  breakdown: {
+    total: number;
+    contradictions: number;
+    falseClaims: number;
+    unverifiable: number;
+    verified: number;
+  };
 }
 
-export default function Home() {
-  const [lang, setLang] = useState<Lang>("ko");
-  const [theme, setTheme] = useState<ThemeMode>("system");
-  const [politician, setPolitician] = useState(SAMPLE_POLITICIAN);
-  const [transcript, setTranscript] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [consistency, setConsistency] = useState<ConsistencyResult | null>(null);
-  const [facts, setFacts] = useState<FactCheckResult | null>(null);
+async function runAnalysis(
+  politician: string,
+  transcript: string,
+  lang: Lang
+): Promise<Analysis> {
+  const lines = transcript
+    .split("\n")
+    .map((t) => t.trim())
+    .filter(Boolean)
+    .map((text) => ({ text }));
 
-  const t = DICT[lang];
+  const [aRes, fRes] = await Promise.all([
+    fetch("/api/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ politician, lines, lang }),
+    }).then((r) => r.json() as Promise<ConsistencyResult & { error?: string }>),
+    fetch("/api/factcheck", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lines, lang }),
+    }).then((r) => r.json() as Promise<FactCheckResult & { error?: string }>),
+  ]);
 
-  // Load saved preferences.
-  useEffect(() => {
-    const savedLang = localStorage.getItem("lang") as Lang | null;
-    const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
-    if (savedLang) setLang(savedLang);
-    if (savedTheme) setTheme(savedTheme);
-    const mode = savedTheme ?? "system";
-    applyTheme(mode);
-    // Follow system changes while in "system" mode.
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      if ((localStorage.getItem("theme") ?? "system") === "system")
-        applyTheme("system");
+  if ((aRes as any).error) throw new Error((aRes as any).error);
+  if ((fRes as any).error) throw new Error((fRes as any).error);
+
+  const verdicts = aRes.verdicts ?? [];
+  const facts = fRes.facts ?? [];
+
+  const results: StatementResult[] = lines.map((l, i) => {
+    const v = verdicts[i];
+    const f = facts[i];
+
+    const isContra = !!v?.isContradiction;
+    const consistency = {
+      status: (isContra ? "CONTRADICTION" : "CONSISTENT") as ConsistencyStatus,
+      label: isContra ? "Potential Contradiction" : "Consistent",
+      reason: v?.reason ?? "",
+      confidence: v?.confidence ?? 0,
+      pastStatement:
+        isContra && v?.pastStatement
+          ? {
+              text: v.pastStatement,
+              date: v.pastDate ?? "",
+              sourceTitle: "Historical statement DB",
+              sourceUrl: v.pastSourceUrl || "#",
+            }
+          : undefined,
     };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
 
-  function changeTheme(mode: ThemeMode) {
-    setTheme(mode);
-    localStorage.setItem("theme", mode);
-    applyTheme(mode);
-  }
+    const isClaim = !!f?.isFactualClaim;
+    const verdict: FactualityStatus = isClaim
+      ? (f!.verdict as FactualityStatus)
+      : "NOT_FACTUAL";
+    const srcType = (f?.sources ?? []).some((s) => /kosis/i.test(s.url))
+      ? "KOSIS"
+      : "WEB";
+    const factuality = {
+      isFactualClaim: isClaim,
+      verdict,
+      label: verdict,
+      reason: f?.reason ?? "",
+      sourceType: isClaim ? (srcType as "KOSIS" | "WEB") : undefined,
+      confidence: f?.confidence ?? 0,
+      sources: f?.sources ?? [],
+    };
 
-  function toggleLang() {
-    const next: Lang = lang === "ko" ? "en" : "ko";
-    setLang(next);
-    localStorage.setItem("lang", next);
-  }
+    return {
+      id: String(i + 1),
+      timestamp: `CLAIM_${String(i + 1).padStart(2, "0")}`,
+      speaker: politician,
+      line: l.text,
+      consistency,
+      factuality,
+    };
+  });
 
-  async function analyze() {
-    setError(null);
-    setConsistency(null);
-    setFacts(null);
-    const lines = transcript
-      .split("\n")
-      .map((x) => x.trim())
-      .filter(Boolean)
-      .map((text) => ({ text }));
-    if (lines.length === 0) {
-      setError(t.errEmpty);
-      return;
-    }
-    setLoading(true);
-    try {
-      const [cRes, fRes] = await Promise.all([
-        fetch("/api/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ politician, lines, lang }),
-        }),
-        fetch("/api/factcheck", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ lines, lang }),
-        }),
-      ]);
-      const cJson = await cRes.json();
-      const fJson = await fRes.json();
-      if (!cRes.ok) throw new Error(cJson.error || "analyze failed");
-      if (!fRes.ok) throw new Error(fJson.error || "factcheck failed");
-      setConsistency(cJson);
-      setFacts(fJson);
-    } catch (e: any) {
-      setError(e?.message ?? "Request failed");
-    } finally {
-      setLoading(false);
-    }
-  }
+  return {
+    results,
+    consistencyScore: aRes.consistencyScore ?? 0,
+    factualityScore: fRes.accuracyScore ?? 0,
+    breakdown: {
+      total: results.length,
+      contradictions: results.filter(
+        (r) => r.consistency.status === "CONTRADICTION"
+      ).length,
+      falseClaims: results.filter((r) => r.factuality.verdict === "FALSE")
+        .length,
+      unverifiable: results.filter(
+        (r) => r.factuality.verdict === "UNVERIFIABLE"
+      ).length,
+      verified: results.filter((r) => r.factuality.verdict === "TRUE").length,
+    },
+  };
+}
 
-  const rows: Row[] = (() => {
-    const map = new Map<string, Row>();
-    for (const v of consistency?.verdicts ?? [])
-      map.set(v.line, { line: v.line, consistency: v });
-    for (const f of facts?.facts ?? []) {
-      const row = map.get(f.line) ?? { line: f.line };
-      row.fact = f;
-      map.set(f.line, row);
-    }
-    return [...map.values()];
-  })();
+// --- Sub-components ---
 
-  const verdictLabel = (v: FactVerdict["verdict"]) =>
-    v === "TRUE" ? t.verdictTRUE : v === "FALSE" ? t.verdictFALSE : t.verdictUNVERIFIABLE;
+const Badge = ({
+  status,
+  label,
+  axis,
+}: {
+  status: string;
+  label: string;
+  axis: "consistency" | "factuality";
+}) => {
+  const getColors = () => {
+    if (status === "CONTRADICTION" || status === "FALSE")
+      return "bg-red text-white";
+    if (status === "CONSISTENT" || status === "TRUE")
+      return axis === "consistency" ? "bg-blue text-white" : "bg-green text-white";
+    if (status === "INSUFFICIENT_CONTEXT" || status === "UNVERIFIABLE")
+      return "bg-orange text-white";
+    return "bg-surface text-ink border border-line";
+  };
+  return (
+    <div
+      className={`${getColors()} border border-line px-3 py-1 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap`}
+    >
+      {label}
+    </div>
+  );
+};
+
+const SegmentedBar = ({
+  percentage,
+  colorClass,
+}: {
+  percentage: number;
+  colorClass: string;
+}) => (
+  <div className="mb-6 flex h-8 gap-1">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={i}
+        className={`h-full flex-1 border-r border-surface last:border-none ${
+          i < percentage / 10 ? colorClass : "bg-slate/50"
+        } transition-colors duration-500`}
+        style={{ transitionDelay: `${i * 50}ms` }}
+      />
+    ))}
+  </div>
+);
+
+const StatementCard = ({
+  statement,
+  t,
+}: {
+  statement: StatementResult;
+  t: Dict;
+}) => {
+  const [expanded, setExpanded] = useState(false);
+  const { consistency, factuality } = statement;
+  const cLabel = t.cLabel[consistency.status];
+  const fLabel = t.fLabel[factuality.verdict];
+
+  const getStatusColor = () => {
+    if (consistency.status === "CONTRADICTION" || factuality.verdict === "FALSE")
+      return "bg-red";
+    if (
+      consistency.status === "INSUFFICIENT_CONTEXT" ||
+      factuality.verdict === "UNVERIFIABLE"
+    )
+      return "bg-orange";
+    return "bg-blue";
+  };
 
   return (
-    <main className="mx-auto max-w-3xl px-5 py-8">
-      <div className="mb-4 flex items-center justify-end gap-2">
-        <select
-          aria-label={t.theme}
-          value={theme}
-          onChange={(e) => changeTheme(e.target.value as ThemeMode)}
-          className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
-        >
-          <option value="light">{t.light}</option>
-          <option value="dark">{t.dark}</option>
-          <option value="system">{t.system}</option>
-        </select>
-        <button
-          onClick={toggleLang}
-          className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
-        >
-          {LANG_LABEL[lang]}
-        </button>
+    <article className="border border-line bg-surface transition-all hover:bg-slate/[0.3] group">
+      <div className="flex">
+        <div className={`w-3 ${getStatusColor()} shrink-0`} />
+        <div className="flex-grow p-6 md:p-8">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex gap-4">
+              <span className="bg-accent px-3 py-1 font-mono text-xs uppercase text-accentfg">
+                {statement.timestamp}
+              </span>
+              <span className="border border-line px-3 py-1 font-mono text-xs uppercase text-ink/60">
+                {statement.speaker}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Badge
+                status={consistency.status}
+                label={cLabel}
+                axis="consistency"
+              />
+              <Badge status={factuality.verdict} label={fLabel} axis="factuality" />
+              <div className="border border-line bg-surface px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-ink">
+                CONF: {statement.factuality.confidence.toFixed(2)}
+              </div>
+            </div>
+          </div>
+          <h4 className="mb-6 max-w-4xl text-xl md:text-2xl font-black leading-tight text-ink">
+            &ldquo;{statement.line}&rdquo;
+          </h4>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 font-mono text-xs text-gray">
+                <i className="ti ti-link text-blue" />
+                <span>[{factuality.sources.length}_SOURCES]</span>
+              </div>
+              <div className="flex items-center gap-2 font-mono text-xs text-gray">
+                <i className="ti ti-history text-blue" />
+                <span>[{consistency.pastStatement ? "1" : "0"}_PAST_STMT]</span>
+              </div>
+            </div>
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-blue transition-colors focus:outline-none"
+              aria-expanded={expanded}
+            >
+              <span>{expanded ? t.hide : t.expand}</span>
+              <i
+                className={`ti ti-chevron-${
+                  expanded ? "up" : "down"
+                } text-lg transition-transform duration-300`}
+              />
+            </button>
+          </div>
+        </div>
       </div>
 
-      <header className="mb-6">
-        <h1 className="text-2xl font-extrabold tracking-tight">
-          <span className="text-brand">{t.titleA}</span> {t.titleB}
-        </h1>
-        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          {t.subtitle}
+      {expanded && (
+        <div className="border-t border-line bg-slate p-8 md:p-12">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            {/* Consistency Panel */}
+            <div className="space-y-6">
+              <h5 className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue">
+                <i className="ti ti-git-branch" /> {t.axis01}
+              </h5>
+              {consistency.pastStatement ? (
+                <>
+                  <div>
+                    <p className="mb-3 font-mono text-[10px] uppercase text-gray">
+                      {t.detectedConflict}
+                    </p>
+                    <div className="relative border border-line bg-surface p-6 text-sm italic leading-relaxed">
+                      <i className="ti ti-quote text-4xl text-ink/5 absolute top-2 left-2" />
+                      &ldquo;{consistency.pastStatement.text}&rdquo;
+                    </div>
+                  </div>
+                  <div className="flex justify-between border-b border-line/10 pb-2 font-mono text-[10px]">
+                    <span>
+                      {t.recorded} {consistency.pastStatement.date || "ON_RECORD"}
+                    </span>
+                    {consistency.pastStatement.sourceUrl &&
+                    consistency.pastStatement.sourceUrl !== "#" ? (
+                      <a
+                        href={consistency.pastStatement.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue underline hover:text-ink"
+                      >
+                        {t.viewSource}
+                      </a>
+                    ) : (
+                      <span className="text-gray">ARCHIVE_ID: KB-HST-{statement.id}</span>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div className="border border-line/10 bg-surface/50 p-6 text-center italic text-gray text-sm">
+                  {t.noPrior}
+                </div>
+              )}
+              <div
+                className={`border-l-4 p-4 ${
+                  consistency.status === "CONTRADICTION"
+                    ? "bg-red/5 border-red"
+                    : "bg-blue/5 border-blue"
+                }`}
+              >
+                <p className="text-xs leading-relaxed">
+                  <span
+                    className={`mr-2 font-bold uppercase ${
+                      consistency.status === "CONTRADICTION"
+                        ? "text-red"
+                        : "text-blue"
+                    }`}
+                  >
+                    {t.verdict}
+                  </span>
+                  {consistency.reason}
+                </p>
+              </div>
+            </div>
+
+            {/* Factuality Panel */}
+            <div className="space-y-6">
+              <h5 className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-green">
+                <i className="ti ti-database-check" /> {t.axis02}
+              </h5>
+              <div>
+                <p className="mb-3 font-mono text-[10px] uppercase text-gray">
+                  {t.statModel}
+                </p>
+                <div className="border border-line bg-surface p-6">
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-tighter">
+                      {factuality.sourceType || "GENERAL"} DATASET
+                    </span>
+                    <span
+                      className={`font-mono text-[10px] ${
+                        factuality.verdict === "FALSE"
+                          ? "text-red"
+                          : "text-green"
+                      }`}
+                    >
+                      CONF: {factuality.confidence.toFixed(2)}
+                    </span>
+                  </div>
+                  <div className="flex h-3 w-full border border-line/20 bg-slate p-[1px]">
+                    <div
+                      className={`h-full ${
+                        factuality.verdict === "FALSE"
+                          ? "w-[8%] bg-red"
+                          : factuality.verdict === "TRUE"
+                          ? "w-full bg-green"
+                          : "w-1/2 bg-orange"
+                      }`}
+                    />
+                  </div>
+                  <div className="mt-4 flex justify-between font-mono text-[9px] text-gray uppercase">
+                    <span>Verdict: {factuality.verdict}</span>
+                    <span>Confidence</span>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-2">
+                {factuality.sources.length > 0 ? (
+                  factuality.sources.map((src, i) => (
+                    <div
+                      key={i}
+                      className="group flex items-center gap-3 font-mono text-[10px]"
+                    >
+                      <span className="bg-accent px-2 py-[2px] text-accentfg">
+                        REF_{String(i + 1).padStart(2, "0")}
+                      </span>
+                      <a
+                        href={src.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="truncate text-gray underline decoration-gray/30 group-hover:text-green transition-colors"
+                      >
+                        {src.title}
+                      </a>
+                    </div>
+                  ))
+                ) : (
+                  <div className="border border-line/10 bg-surface/50 p-6 text-center italic text-gray text-sm">
+                    {t.noOfficialData}
+                  </div>
+                )}
+              </div>
+              <div
+                className={`border-l-4 p-4 ${
+                  factuality.verdict === "FALSE"
+                    ? "bg-red/5 border-red"
+                    : factuality.verdict === "TRUE"
+                    ? "bg-green/5 border-green"
+                    : "bg-orange/5 border-orange"
+                }`}
+              >
+                <p className="text-xs leading-relaxed">
+                  <span
+                    className={`mr-2 font-bold uppercase ${
+                      factuality.verdict === "FALSE"
+                        ? "text-red"
+                        : factuality.verdict === "TRUE"
+                        ? "text-green"
+                        : "text-orange"
+                    }`}
+                  >
+                    {t.verdict}
+                  </span>
+                  {factuality.reason}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 flex items-center gap-3 border-t border-line/10 pt-6">
+            <i className="ti ti-alert-circle text-lg text-orange" />
+            <p className="font-mono text-[9px] text-gray uppercase tracking-wider leading-relaxed">
+              {t.caution}
+            </p>
+          </div>
+        </div>
+      )}
+    </article>
+  );
+};
+
+// --- Main Page Sections ---
+
+const Header = ({
+  t,
+  lang,
+  theme,
+  onToggleLang,
+  onToggleTheme,
+}: {
+  t: Dict;
+  lang: Lang;
+  theme: Theme;
+  onToggleLang: () => void;
+  onToggleTheme: () => void;
+}) => (
+  <header className="sticky top-0 z-50 border-b border-line bg-surface/95 backdrop-blur-sm">
+    <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-8">
+      <div className="flex items-center gap-4 cursor-pointer">
+        <div className="flex h-10 w-10 items-center justify-center bg-accent text-accentfg shadow-sharp-sm">
+          <i className="ti ti-git-merge text-2xl" />
+        </div>
+        <div>
+          <h1 className="text-lg font-black uppercase tracking-tighter leading-none">
+            {t.brandTitle}
+          </h1>
+          <p className="mt-1 font-mono text-[10px] uppercase text-gray font-bold tracking-widest">
+            Contradiction_Detector_v1.0
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 border-r border-line/20 pr-6 font-mono text-[9px] font-bold uppercase">
+          <span className="text-gray">{t.navTwoAxis}</span>
+          <span className="text-blue">{t.navConsistency}</span>
+          <span className="text-green">{t.navFactuality}</span>
+        </div>
+        <button
+          onClick={onToggleLang}
+          className="flex items-center gap-2 border border-line px-3 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-slate transition-colors"
+          title="Toggle language"
+        >
+          <i className="ti ti-language text-sm" />
+          {lang === "ko" ? "한국어" : "EN"}
+        </button>
+        <button
+          onClick={onToggleTheme}
+          className="flex h-9 w-9 items-center justify-center border border-line hover:bg-slate transition-colors"
+          title="Toggle theme"
+          aria-label="Toggle theme"
+        >
+          <i className={`ti ti-${theme === "dark" ? "sun" : "moon"} text-base`} />
+        </button>
+      </div>
+    </div>
+  </header>
+);
+
+const Hero = ({ t, onScrollToPanel }: { t: Dict; onScrollToPanel: () => void }) => (
+  <section className="grid grid-cols-1 border-b border-line lg:grid-cols-2">
+    <div className="flex flex-col justify-center border-r border-line bg-surface p-12 lg:p-24 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-blue/5 rounded-full blur-3xl -mr-32 -mt-32" />
+      <div className="relative z-10">
+        <div className="mb-8 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold tracking-widest uppercase">
+          [ SYSTEM_LEVEL: PUBLIC_VERIFICATION_DESK ]
+        </div>
+        <h2 className="hero-title mb-8 text-7xl md:text-8xl font-black leading-[0.85] tracking-tighter uppercase">
+          {t.heroTitle[0]}
+          <br />
+          <span className="text-blue">{t.heroTitle[1]}</span>
+          <br />
+          {t.heroTitle[2]}
+        </h2>
+        <p className="mb-12 max-w-lg text-lg md:text-xl leading-relaxed text-gray font-medium">
+          {t.heroPre}
+          <span className="text-ink font-bold underline decoration-blue decoration-2 underline-offset-4">
+            {t.heroTerm1}
+          </span>
+          {t.heroMid}
+          <span className="text-ink font-bold underline decoration-green decoration-2 underline-offset-4">
+            {t.heroTerm2}
+          </span>
+          {t.heroPost}
         </p>
-      </header>
-
-      <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <label className="block text-sm font-semibold">{t.politician}</label>
-        <input
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-brand dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-          value={politician}
-          onChange={(e) => setPolitician(e.target.value)}
-        />
-
-        <label className="mt-4 block text-sm font-semibold">
-          {t.transcript}{" "}
-          <span className="font-normal text-slate-400">{t.perLine}</span>
-        </label>
-        <textarea
-          className="mt-1 h-40 w-full resize-y rounded-lg border border-slate-300 bg-white p-3 text-sm text-slate-900 outline-none focus:border-brand dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-          placeholder={t.placeholder}
-          value={transcript}
-          onChange={(e) => setTranscript(e.target.value)}
-        />
-
-        <div className="mt-3 flex flex-wrap gap-2">
-          <button
-            onClick={analyze}
-            disabled={loading}
-            className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
-          >
-            {loading ? t.analyzing : t.analyze}
-          </button>
-          <button
-            onClick={() => {
-              setPolitician(SAMPLE_POLITICIAN);
-              setTranscript(SAMPLE_TRANSCRIPT);
-            }}
-            className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200"
-          >
-            {t.loadSample}
+        <div className="flex flex-wrap gap-4">
+          <button onClick={onScrollToPanel} className="btn-primary">
+            {t.heroStart}
           </button>
         </div>
+      </div>
+    </div>
 
-        {error && (
-          <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">
-            {error}
-          </p>
-        )}
-      </section>
+    <div className="relative flex items-center justify-center bg-slate p-12 overflow-hidden">
+      <div className="blueprint-grid absolute inset-0" />
+      <div className="relative z-10 w-full max-w-xl">
+        <div className="relative border-2 border-line bg-surface p-12 shadow-sharp transition-transform hover:-translate-x-1 hover:-translate-y-1">
+          <div className="absolute -left-4 -top-4 bg-accent px-3 py-1 font-mono text-[10px] font-bold uppercase text-accentfg tracking-widest">
+            TOPOLOGY_V2
+          </div>
+          <div className="absolute -right-4 -bottom-4 bg-blue px-3 py-1 font-mono text-[10px] font-bold uppercase text-white tracking-widest">
+            AXIS_01 // AXIS_02
+          </div>
 
-      {(consistency || facts) && (
-        <>
-          <section className="mt-6 grid grid-cols-2 gap-4">
-            <ScoreCard
-              label={t.consistency}
-              value={consistency?.consistencyScore}
-              hint={t.consistencyHint}
-            />
-            <ScoreCard
-              label={t.accuracy}
-              value={facts?.accuracyScore}
-              hint={t.accuracyHint}
-            />
-          </section>
+          <div className="relative mb-20 text-center">
+            <div className="relative inline-block border-2 border-line bg-surface p-8 shadow-sharp">
+              <p className="mb-4 font-mono text-[10px] font-bold uppercase tracking-widest text-gray">
+                Target_Input_Claim
+              </p>
+              <p className="text-lg md:text-xl font-black leading-tight tracking-tight">
+                &ldquo;{t.sampleClaim}&rdquo;
+              </p>
+            </div>
+            <div className="absolute left-1/2 top-full h-16 w-[2px] -translate-x-1/2 bg-ink/20" />
+          </div>
 
-          <section className="mt-6 space-y-3">
-            {rows.map((row, i) => (
-              <article
+          <div className="relative grid grid-cols-2 gap-12 pt-8">
+            <div className="absolute left-1/2 top-0 h-[1px] w-full -translate-x-1/2 bg-ink/20" />
+            <div className="relative flex flex-col items-end space-y-4 text-right">
+              <div className="absolute -right-[6.5px] -top-1.5 h-3 w-3 bg-blue border border-surface" />
+              <i className="ti ti-history text-4xl text-blue" />
+              <div>
+                <h3 className="text-xs font-black uppercase tracking-widest text-blue">
+                  {t.consistencyAxis}
+                </h3>
+                <p className="font-mono text-[9px] font-bold uppercase text-gray mt-1 leading-relaxed">
+                  {t.consistencyAxisDesc}
+                </p>
+              </div>
+            </div>
+            <div className="relative flex flex-col items-start space-y-4 text-left">
+              <div className="absolute -left-[6.5px] -top-1.5 h-3 w-3 bg-green border border-surface" />
+              <i className="ti ti-database-check text-4xl text-green" />
+              <div>
+                <h3 className="text-xs font-black uppercase tracking-widest text-green">
+                  {t.factualityAxis}
+                </h3>
+                <p className="font-mono text-[9px] font-bold uppercase text-gray mt-1 leading-relaxed">
+                  {t.factualityAxisDesc}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const AnalysisStepper = ({
+  t,
+  progress,
+  lineCount,
+}: {
+  t: Dict;
+  progress: number;
+  lineCount: number;
+}) => {
+  const [logs, setLogs] = useState<
+    { msg: string; status: string; active?: boolean }[]
+  >([]);
+
+  useEffect(() => {
+    const fullLogs = [
+      { msg: t.log1, status: "DONE" },
+      { msg: t.log2(lineCount), status: "PROCESSING", active: true },
+      { msg: t.log3, status: "WAITING" },
+      { msg: t.log4, status: "WAITING" },
+    ];
+
+    const interval = setInterval(() => {
+      setLogs((prev) => {
+        if (prev.length < fullLogs.length) {
+          const nextIndex = prev.length;
+          return fullLogs.slice(0, nextIndex + 1).map((log, i) => ({
+            ...log,
+            status:
+              i < nextIndex ? "DONE" : i === nextIndex ? "PROCESSING" : "WAITING",
+            active: i === nextIndex,
+          }));
+        }
+        return prev;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lineCount]);
+
+  return (
+    <section className="bg-slate border-b border-line p-12 lg:p-24 min-h-[700px] flex items-center">
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="relative overflow-hidden border-2 border-line bg-surface shadow-sharp">
+          <div className="flex items-center justify-between bg-accent p-4 text-accentfg">
+            <div className="flex items-center gap-3">
+              <i className="ti ti-terminal text-xl" />
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                System_Analyzer_Core
+              </span>
+            </div>
+            <div className="flex gap-2">
+              <div className="h-3 w-3 border border-accentfg" />
+              <div className="h-3 w-3 bg-accentfg" />
+            </div>
+          </div>
+
+          <div className="h-[320px] space-y-4 overflow-y-auto p-8 font-mono text-sm bg-ink/[0.02]">
+            {logs.map((log, i) => (
+              <div
                 key={i}
-                className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"
+                className={`flex items-start gap-4 transition-all duration-300 ${
+                  log.active
+                    ? "border-l-4 border-orange bg-orange/5 pl-4 py-2"
+                    : "text-gray/80"
+                }`}
               >
-                <p className="text-sm font-medium">{row.line}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {row.consistency && (
-                    <Badge
-                      tone={row.consistency.isContradiction ? "red" : "blue"}
-                      label={
-                        row.consistency.isContradiction
-                          ? t.contradiction
-                          : t.consistent
-                      }
-                    />
-                  )}
-                  {row.fact && row.fact.isFactualClaim && (
-                    <Badge
-                      tone={
-                        row.fact.verdict === "TRUE"
-                          ? "green"
-                          : row.fact.verdict === "FALSE"
-                          ? "red"
-                          : "gray"
-                      }
-                      label={`${t.factPrefix}: ${verdictLabel(row.fact.verdict)}`}
-                    />
-                  )}
-                </div>
-                {row.consistency?.isContradiction && (
-                  <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-                    {row.consistency.reason}
-                    {row.consistency.pastStatement
-                      ? ` — "${row.consistency.pastStatement}"`
-                      : ""}
-                  </p>
-                )}
-                {row.fact?.isFactualClaim && (
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    {row.fact.reason}
-                    {row.fact.sources?.length > 0 &&
-                      row.fact.sources.map((s, j) => (
-                        <a
-                          key={j}
-                          href={s.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="ml-1 text-brand underline"
-                        >
-                          [{j + 1}]
-                        </a>
-                      ))}
-                  </p>
-                )}
-              </article>
+                <span
+                  className={`flex-grow ${
+                    log.active ? "text-ink font-bold" : "text-ink/60"
+                  }`}
+                >
+                  {log.msg}
+                </span>
+                <span
+                  className={`font-bold text-[10px] ${
+                    log.status === "DONE"
+                      ? "text-green"
+                      : log.status === "PROCESSING"
+                      ? "text-orange animate-pulse"
+                      : "text-gray/20"
+                  }`}
+                >
+                  {log.status}
+                </span>
+              </div>
             ))}
+          </div>
+
+          <div className="border-t-2 border-line bg-slate p-8">
+            <div className="mb-6 flex items-end justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-widest text-ink">
+                  {t.pipeline}
+                </p>
+                <p className="mt-1 font-mono text-[9px] font-bold text-gray uppercase tracking-widest">
+                  AXIS_01_HST // AXIS_02_FACT
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="font-mono text-2xl font-black text-ink">
+                  {progress}%
+                </p>
+              </div>
+            </div>
+            <div className="flex h-12 w-full gap-1 border-2 border-line bg-surface p-1">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-full flex-grow ${
+                    i < progress / 5 ? "bg-accent" : "bg-accent/10"
+                  } transition-all duration-300`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- Main Component ---
+
+export default function Home() {
+  const [step, setStep] = useState<"landing" | "analysis" | "results">(
+    "landing"
+  );
+  const [progress, setProgress] = useState(0);
+  const [transcript, setTranscript] = useState("");
+  const [targetPolitician, setTargetPolitician] = useState(POLITICIAN_OPTIONS[0]);
+  const [politicianQuery, setPoliticianQuery] = useState(POLITICIAN_OPTIONS[0]);
+  const [isPoliticianSearchOpen, setIsPoliticianSearchOpen] = useState(false);
+  const [analysis, setAnalysis] = useState<Analysis | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const [lang, setLang] = useState<Lang>("ko");
+  const [theme, setTheme] = useState<Theme>("light");
+  const t = STR[lang];
+
+  // Sync persisted preferences on mount + whenever they change.
+  useEffect(() => {
+    const l = (localStorage.getItem("lang") as Lang) || "ko";
+    const th = (localStorage.getItem("theme") as Theme) || "light";
+    setLang(l);
+    setTheme(th);
+  }, []);
+  useEffect(() => {
+    document.documentElement.classList.toggle("lang-ko", lang === "ko");
+    localStorage.setItem("lang", lang);
+  }, [lang]);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const runRef = useRef<{ politician: string; transcript: string; lang: Lang }>({
+    politician: "",
+    transcript: "",
+    lang: "ko",
+  });
+
+  const filteredPoliticians = POLITICIAN_OPTIONS.filter((name) =>
+    name.toLowerCase().includes(politicianQuery.trim().toLowerCase())
+  );
+
+  const activeLineCount = runRef.current.transcript
+    .split("\n")
+    .map((x) => x.trim())
+    .filter(Boolean).length;
+
+  const handleStartAnalysis = () => {
+    const effectiveTranscript = transcript.trim() || SAMPLE_TRANSCRIPT;
+    if (!transcript.trim()) setTranscript(SAMPLE_TRANSCRIPT);
+    runRef.current = {
+      politician: targetPolitician,
+      transcript: effectiveTranscript,
+      lang,
+    };
+    setError(null);
+    setAnalysis(null);
+    setProgress(0);
+    setStep("analysis");
+  };
+
+  useEffect(() => {
+    if (step !== "analysis") return;
+    let cancelled = false;
+
+    const interval = setInterval(() => {
+      setProgress((p) => (p < 90 ? p + 3 : p));
+    }, 200);
+
+    runAnalysis(
+      runRef.current.politician,
+      runRef.current.transcript,
+      runRef.current.lang
+    )
+      .then((data) => {
+        if (cancelled) return;
+        clearInterval(interval);
+        setAnalysis(data);
+        setProgress(100);
+        setTimeout(() => {
+          if (cancelled) return;
+          setStep("results");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 600);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        clearInterval(interval);
+        setError(err?.message ?? "Analysis failed");
+        setStep("landing");
+      });
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
+  const exportJson = () => {
+    if (!analysis) return;
+    const blob = new Blob([JSON.stringify(analysis, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "verification_report.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <main className="min-h-screen blueprint-grid">
+      <Header
+        t={t}
+        lang={lang}
+        theme={theme}
+        onToggleLang={() => setLang((l) => (l === "ko" ? "en" : "ko"))}
+        onToggleTheme={() => setTheme((th) => (th === "dark" ? "light" : "dark"))}
+      />
+
+      {step === "landing" && (
+        <>
+          <Hero
+            t={t}
+            onScrollToPanel={() =>
+              document
+                .getElementById("intake-panel")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          />
+
+          <section
+            id="intake-panel"
+            className="border-b border-line bg-surface p-12 lg:p-24 scroll-mt-20"
+          >
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <h2 className="text-4xl font-black uppercase tracking-tighter">
+                    {t.intakeTitle}
+                  </h2>
+                  <p className="mt-2 font-mono text-[10px] font-bold text-gray uppercase tracking-widest">
+                    TRANSCRIPT_MODULE // TWO_AXIS_ANALYZER
+                  </p>
+                </div>
+                <div className="font-mono text-[10px] font-bold text-gray uppercase tracking-widest">
+                  ONE_LINE = ONE_CLAIM
+                </div>
+              </div>
+
+              {error && (
+                <div className="mb-8 border-2 border-red bg-red/5 p-4 font-mono text-xs text-red">
+                  ERROR: {error}
+                </div>
+              )}
+
+              <div className="flex flex-col gap-8">
+                <div className="flex flex-col">
+                  <div className="mb-4 flex gap-2">
+                    <button className="bg-accent px-6 py-3 text-[10px] font-black uppercase tracking-widest text-accentfg shadow-sharp-sm">
+                      {t.manualEntry}
+                    </button>
+                    <button
+                      className="border border-line bg-surface px-6 py-3 text-[10px] font-black uppercase tracking-widest text-ink opacity-40 hover:opacity-100 transition-opacity"
+                      title="Coming soon"
+                    >
+                      {t.sourceLink}
+                    </button>
+                  </div>
+                  <div className="border-2 border-line p-1 bg-slate/30 shadow-sharp-sm">
+                    <textarea
+                      className="h-64 w-full border border-line bg-surface p-6 font-mono text-sm outline-none resize-none focus:bg-slate/10 transition-colors text-ink"
+                      placeholder={t.textareaPlaceholder}
+                      value={transcript}
+                      onChange={(e) => setTranscript(e.target.value)}
+                    />
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-4">
+                    <div className="relative flex min-w-[280px] flex-grow items-center gap-4 border-2 border-line bg-surface px-6 py-4">
+                      <label
+                        htmlFor="target-politician"
+                        className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest text-gray"
+                      >
+                        {t.targetPolitician}
+                      </label>
+                      <div className="relative min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <i className="ti ti-search text-base text-blue" />
+                          <input
+                            id="target-politician"
+                            type="search"
+                            value={politicianQuery}
+                            onChange={(e) => {
+                              const nextValue = e.target.value;
+                              setPoliticianQuery(nextValue);
+                              setTargetPolitician(nextValue.trim());
+                              setIsPoliticianSearchOpen(true);
+                            }}
+                            onFocus={() => setIsPoliticianSearchOpen(true)}
+                            onBlur={() => {
+                              window.setTimeout(
+                                () => setIsPoliticianSearchOpen(false),
+                                120
+                              );
+                            }}
+                            placeholder={t.searchPlaceholder}
+                            className="w-full bg-transparent text-xs font-black uppercase outline-none placeholder:text-gray/40 text-ink"
+                            autoComplete="off"
+                          />
+                        </div>
+                        {isPoliticianSearchOpen && (
+                          <div className="absolute left-0 right-0 top-full z-20 mt-4 max-h-56 overflow-y-auto border-2 border-line bg-surface shadow-sharp-sm">
+                            {filteredPoliticians.length > 0 ? (
+                              filteredPoliticians.map((name) => (
+                                <button
+                                  key={name}
+                                  type="button"
+                                  onMouseDown={(e) => e.preventDefault()}
+                                  onClick={() => {
+                                    setTargetPolitician(name);
+                                    setPoliticianQuery(name);
+                                    setIsPoliticianSearchOpen(false);
+                                  }}
+                                  className={`flex w-full items-center justify-between border-b border-line/10 px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-widest transition-colors last:border-b-0 hover:bg-slate ${
+                                    targetPolitician === name
+                                      ? "text-blue"
+                                      : "text-ink"
+                                  }`}
+                                >
+                                  <span>{name}</span>
+                                  {targetPolitician === name && (
+                                    <i className="ti ti-check text-sm" />
+                                  )}
+                                </button>
+                              ))
+                            ) : (
+                              <div className="px-4 py-4 font-mono text-[10px] font-bold uppercase leading-relaxed tracking-widest text-gray">
+                                {t.noPresetMatch}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleStartAnalysis}
+                      className="bg-accent px-12 py-4 font-black uppercase tracking-widest text-accentfg shadow-sharp hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+                    >
+                      {t.execute}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </>
       )}
+
+      {step === "analysis" && (
+        <AnalysisStepper t={t} progress={progress} lineCount={activeLineCount} />
+      )}
+
+      {step === "results" && analysis && (
+        <section className="bg-surface border-b border-line p-12 lg:p-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+              <div>
+                <div className="mb-4 inline-block bg-accent px-3 py-1 font-mono text-[10px] font-bold uppercase text-accentfg tracking-widest">
+                  {t.subject} {runRef.current.politician}
+                </div>
+                <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-tight">
+                  {t.dashboard}
+                </h2>
+                <p className="mt-2 font-mono text-xs font-bold text-gray uppercase tracking-[0.2em]">
+                  VERDICT_SUMMARY // TWO_AXIS_REPORT
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <button
+                  onClick={exportJson}
+                  className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"
+                >
+                  <i className="ti ti-download mr-2" />
+                  {t.exportJson}
+                </button>
+                <button
+                  onClick={() => {
+                    setStep("landing");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"
+                >
+                  <i className="ti ti-arrow-left mr-2" />
+                  {t.newAnalysis}
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+              <div className="flex flex-col justify-between border-2 border-line bg-surface p-8 shadow-sharp-sm">
+                <div>
+                  <div className="mb-6 flex items-start justify-between">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-blue">
+                      {t.consistencyScore}
+                    </h3>
+                    <span className="font-mono text-5xl font-black text-ink leading-none">
+                      {analysis.consistencyScore}%
+                    </span>
+                  </div>
+                  <SegmentedBar
+                    percentage={analysis.consistencyScore}
+                    colorClass="bg-blue"
+                  />
+                </div>
+                <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
+                  {t.consistencyScoreDesc}
+                </p>
+              </div>
+              <div className="flex flex-col justify-between border-2 border-line bg-surface p-8 shadow-sharp-sm">
+                <div>
+                  <div className="mb-6 flex items-start justify-between">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-green">
+                      {t.factualityScore}
+                    </h3>
+                    <span className="font-mono text-5xl font-black text-ink leading-none">
+                      {analysis.factualityScore}%
+                    </span>
+                  </div>
+                  <SegmentedBar
+                    percentage={analysis.factualityScore}
+                    colorClass="bg-green"
+                  />
+                </div>
+                <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
+                  {t.factualityScoreDesc}
+                </p>
+              </div>
+              <div className="border-2 border-line bg-surface p-8 shadow-sharp-sm">
+                <h3 className="mb-8 text-xs font-black uppercase tracking-widest text-ink">
+                  {t.breakdown}
+                </h3>
+                <div className="space-y-4 font-mono text-[11px] font-bold">
+                  <div className="flex justify-between border-b border-line/10 pb-2">
+                    <span className="uppercase text-gray/60">{t.totalLines}</span>
+                    <span className="text-ink">
+                      {String(analysis.breakdown.total).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex justify-between border-b border-line/10 pb-2">
+                    <span className="uppercase text-red">{t.contradictions}</span>
+                    <span>
+                      {String(analysis.breakdown.contradictions).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex justify-between border-b border-line/10 pb-2">
+                    <span className="uppercase text-red">{t.falseClaims}</span>
+                    <span>
+                      {String(analysis.breakdown.falseClaims).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex justify-between border-b border-line/10 pb-2">
+                    <span className="uppercase text-orange">{t.unverifiable}</span>
+                    <span>
+                      {String(analysis.breakdown.unverifiable).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex justify-between pb-2">
+                    <span className="uppercase text-green">
+                      {t.verifiedCorrect}
+                    </span>
+                    <span>
+                      {String(analysis.breakdown.verified).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-10 flex items-center gap-4">
+              <div className="h-[1px] flex-grow bg-line/10" />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray">
+                End_of_Summary // Beginning_of_Claim_Ledger
+              </span>
+              <div className="h-[1px] flex-grow bg-line/10" />
+            </div>
+
+            <div className="space-y-10">
+              {analysis.results.map((s) => (
+                <StatementCard key={s.id} statement={s} t={t} />
+              ))}
+            </div>
+
+            <div className="mt-24 flex flex-col items-center justify-between gap-8 bg-accent p-12 text-accentfg md:flex-row shadow-sharp">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-black uppercase tracking-widest">
+                  {t.methodologyTitle}
+                </h3>
+                <p className="max-w-2xl font-mono text-xs font-bold leading-relaxed text-accentfg/50 tracking-widest">
+                  {t.methodologyBody}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <footer className="border-t border-line bg-surface px-8 py-16">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-12 md:flex-row">
+          <div className="flex items-center gap-4">
+            <div className="flex h-10 w-10 items-center justify-center bg-accent shadow-sharp-sm">
+              <i className="ti ti-git-fork text-xl text-accentfg" />
+            </div>
+            <div>
+              <span className="text-sm font-black uppercase tracking-tighter block leading-none">
+                Evidence Desk
+              </span>
+              <span className="font-mono text-[9px] font-bold text-gray uppercase mt-1 tracking-widest">
+                {t.footerSub}
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-10 font-mono text-[10px] font-bold uppercase text-gray tracking-widest">
+            <span className="text-ink">&copy; 2026 Evidence Desk</span>
+            <span>{t.navConsistency}</span>
+            <span>{t.navFactuality}</span>
+          </div>
+        </div>
+      </footer>
     </main>
-  );
-}
-
-function ScoreCard({
-  label,
-  value,
-  hint,
-}: {
-  label: string;
-  value?: number;
-  hint: string;
-}) {
-  return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
-      <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-        {label}
-      </div>
-      <div className="mt-1 text-3xl font-extrabold text-brand">
-        {value == null ? "—" : `${Math.round(value)}%`}
-      </div>
-      <div className="mt-1 text-xs text-slate-400">{hint}</div>
-    </div>
-  );
-}
-
-function Badge({
-  tone,
-  label,
-}: {
-  tone: "blue" | "green" | "red" | "gray";
-  label: string;
-}) {
-  const tones: Record<string, string> = {
-    blue: "bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
-    green: "bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-300",
-    red: "bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-300",
-    gray: "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300",
-  };
-  return (
-    <span
-      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${tones[tone]}`}
-    >
-      {label}
-    </span>
   );
 }
