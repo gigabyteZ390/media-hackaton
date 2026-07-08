@@ -30,5 +30,29 @@
     "date": "2022-11-20",
     "sourceUrl": "https://example.com/press/4",
     "topic": "defense"
+  },
+  {
+    "id": "lee-001",
+    "politician": "이재명",
+    "text": "기본소득은 반드시 도입해야 할 시대적 과제입니다.",
+    "date": "2021-02-01",
+    "sourceUrl": "https://example.com/lee/1",
+    "topic": "복지"
+  },
+  {
+    "id": "lee-002",
+    "politician": "이재명",
+    "text": "부동산 불로소득을 막기 위해 보유세를 강화하겠습니다.",
+    "date": "2021-07-01",
+    "sourceUrl": "https://example.com/lee/2",
+    "topic": "부동산"
+  },
+  {
+    "id": "lee-003",
+    "politician": "이재명",
+    "text": "청년의 삶을 위해 청년 정책을 대폭 확대하겠습니다.",
+    "date": "2021-09-01",
+    "sourceUrl": "https://example.com/lee/3",
+    "topic": "청년"
   }
 ]
