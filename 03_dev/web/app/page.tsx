@@ -87,6 +87,8 @@ const STR = {
     recorded: "RECORDED:",
     viewSource: "VIEW_SOURCE",
     verdict: "Verdict:",
+    asOfLabel: "Judged as of",
+    currentLabel: "Latest data",
     noPrior:
       "No directly comparable prior statement was found in the historical statement database.",
     statModel: "Statistical_Validation_Model:",
@@ -167,6 +169,8 @@ const STR = {
     recorded: "기록일:",
     viewSource: "출처 보기",
     verdict: "판정:",
+    asOfLabel: "판정 기준 시점",
+    currentLabel: "현재 최신 데이터",
     noPrior: "직접 비교할 만한 과거 발언을 DB에서 찾지 못했습니다.",
     statModel: "통계 검증 모델:",
     noOfficialData: "검증에 사용할 신뢰할 수 있는 공식 자료가 없습니다.",
@@ -207,7 +211,8 @@ interface Analysis {
 async function runAnalysis(
   politician: string,
   transcript: string,
-  lang: Lang
+  lang: Lang,
+  asOf: string
 ): Promise<Analysis> {
   const lines = transcript
     .split("\n")
@@ -224,7 +229,8 @@ async function runAnalysis(
     fetch("/api/factcheck", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lines, lang }),
+      // asOf = the date the statement was made; fact-check is judged as of then.
+      body: JSON.stringify({ lines, lang, asOf }),
     }).then((r) => r.json() as Promise<FactCheckResult & { error?: string }>),
   ]);
 
@@ -267,6 +273,8 @@ async function runAnalysis(
       verdict,
       label: verdict,
       reason: f?.reason ?? "",
+      referencePeriod: f?.referencePeriod || undefined,
+      currentNote: f?.currentNote || undefined,
       sourceType: isClaim ? (srcType as "KOSIS" | "WEB") : undefined,
       confidence: f?.confidence ?? 0,
       sources: f?.sources ?? [],
@@ -585,6 +593,27 @@ const StatementCard = ({
                   {factuality.reason}
                 </p>
               </div>
+              {factuality.isFactualClaim &&
+                (factuality.referencePeriod || factuality.currentNote) && (
+                  <div className="space-y-2 border-t border-line/10 pt-4 font-mono text-[10px]">
+                    {factuality.referencePeriod && (
+                      <div className="flex items-center gap-2 uppercase tracking-wider text-gray">
+                        <i className="ti ti-clock text-blue" />
+                        <span>
+                          {t.asOfLabel}: {factuality.referencePeriod}
+                        </span>
+                      </div>
+                    )}
+                    {factuality.currentNote && (
+                      <div className="flex items-start gap-2 border-l-2 border-orange bg-orange/5 p-2 leading-relaxed text-orange">
+                        <i className="ti ti-alert-triangle mt-[1px]" />
+                        <span>
+                          {t.currentLabel}: {factuality.currentNote}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
             </div>
           </div>
           <div className="mt-8 flex items-center gap-3 border-t border-line/10 pt-6">
@@ -902,10 +931,16 @@ export default function Home() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const runRef = useRef<{ politician: string; transcript: string; lang: Lang }>({
+  const runRef = useRef<{
+    politician: string;
+    transcript: string;
+    lang: Lang;
+    asOf: string;
+  }>({
     politician: "",
     transcript: "",
     lang: "ko",
+    asOf: "",
   });
 
   const filteredPoliticians = POLITICIAN_OPTIONS.filter((name) =>
@@ -924,6 +959,8 @@ export default function Home() {
       politician: targetPolitician,
       transcript: effectiveTranscript,
       lang,
+      // Manual entry: judged as of today. A scraper would supply the video date.
+      asOf: new Date().toISOString().slice(0, 10),
     };
     setError(null);
     setAnalysis(null);
@@ -942,7 +979,8 @@ export default function Home() {
     runAnalysis(
       runRef.current.politician,
       runRef.current.transcript,
-      runRef.current.lang
+      runRef.current.lang,
+      runRef.current.asOf
     )
       .then((data) => {
         if (cancelled) return;

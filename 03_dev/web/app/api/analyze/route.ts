@@ -63,6 +63,10 @@ export async function POST(req: Request) {
     const client = getOpenAI();
     const res = await client.chat.completions.create({
       model: MODEL,
+      // Low-ish temperature: mostly stable, with a little room for nuance.
+      // seed keeps runs fairly reproducible despite temperature > 0.
+      temperature: 0.4,
+      seed: 7,
       response_format: { type: "json_object" },
       messages: [
         {

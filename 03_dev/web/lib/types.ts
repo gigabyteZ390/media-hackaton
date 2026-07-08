@@ -34,6 +34,10 @@ export interface FactVerdict {
   line: string;
   isFactualClaim: boolean;
   verdict: "TRUE" | "FALSE" | "UNVERIFIABLE";
+  /** The time basis the verdict was judged against (e.g. "2023"). */
+  referencePeriod?: string;
+  /** How the latest data differs from the verdict, if it does ("" if unchanged). */
+  currentNote?: string;
   reason: string;
   sources: { title: string; url: string }[];
   confidence: number; // 0..1
@@ -83,6 +87,8 @@ export interface UIFactuality {
   verdict: FactualityStatus;
   label: string;
   reason: string;
+  referencePeriod?: string;
+  currentNote?: string;
   sourceType?: "KOSIS" | "WEB";
   confidence: number;
   sources: StatementSource[];

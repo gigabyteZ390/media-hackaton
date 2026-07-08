@@ -12,9 +12,10 @@ export const dynamic = "force-dynamic";
 // (Authoritative-stats plugins — INSEE / KOSIS — can be wired in as tools later.)
 export async function POST(req: Request) {
   try {
-    const { lines, lang } = (await req.json()) as {
+    const { lines, lang, asOf } = (await req.json()) as {
       lines: SpokenLine[];
       lang?: "ko" | "en";
+      asOf?: string; // date the statement was made (YYYY-MM-DD); the truth basis
     };
     if (!Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
@@ -34,8 +35,16 @@ export async function POST(req: Request) {
     // Responses API + built-in web search tool: live search with citations.
     const res = await client.responses.create({
       model: MODEL,
+      // Low-ish temperature for a bit of nuance. Note: live web search still
+      // introduces some run-to-run variation that can't be fully removed.
+      temperature: 0.4,
       tools: [{ type: "web_search" }],
-      input: buildFactPrompt(lines, lang ?? "en", statsContext || undefined),
+      input: buildFactPrompt(
+        lines,
+        lang ?? "en",
+        statsContext || undefined,
+        asOf || undefined
+      ),
     } as any);
 
     // The model returns JSON as text after searching; parse defensively.
