@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAnthropic, joinText, extractJson } from "@/lib/anthropic";
 import { buildConsistencyPrompt, CONSISTENCY_SCHEMA } from "@/lib/prompts";
-import statementsData from "@/data/statements.sample.json";
+import statementsData from "@/data/statements.json";
 import type { Statement, SpokenLine, ConsistencyResult } from "@/lib/types";
 
 export const runtime = "nodejs";
