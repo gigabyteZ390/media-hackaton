@@ -11,7 +11,15 @@ export const dynamic = "force-dynamic";
 // (Authoritative-stats plugins — INSEE / KOSIS — can be wired in as tools later.)
 export async function POST(req: Request) {
   try {
+<<<<<<< HEAD
     const { lines } = (await req.json()) as { lines: SpokenLine[] };
+=======
+    const { lines, lang, asOf } = (await req.json()) as {
+      lines: SpokenLine[];
+      lang?: "ko" | "en";
+      asOf?: string; // date the statement was made (YYYY-MM-DD); the truth basis
+    };
+>>>>>>> main
     if (!Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
         { error: "Body must be { lines: SpokenLine[] }" },
@@ -19,6 +27,7 @@ export async function POST(req: Request) {
       );
     }
 
+<<<<<<< HEAD
     const client = getAnthropic();
     const res = await client.messages.create({
       model: "claude-opus-4-8",
@@ -28,6 +37,29 @@ export async function POST(req: Request) {
       tools: [{ type: "web_search_20260209", name: "web_search" }],
       messages: [{ role: "user", content: buildFactPrompt(lines) }],
       // Cast: recent tool type not in every SDK type def.
+=======
+    // For Korean statistical claims, look up official KOSIS tables to ground the
+    // fact-check in government data (no-op if KOSIS_KEY is unset or search fails).
+    const statsContext =
+      (lang ?? "en") === "ko"
+        ? await kosisContextFor(lines.map((l) => l.text))
+        : "";
+
+    const client = getOpenAI();
+    // Responses API + built-in web search tool: live search with citations.
+    const res = await client.responses.create({
+      model: MODEL,
+      // Low-ish temperature for a bit of nuance. Note: live web search still
+      // introduces some run-to-run variation that can't be fully removed.
+      temperature: 0.4,
+      tools: [{ type: "web_search" }],
+      input: buildFactPrompt(
+        lines,
+        lang ?? "en",
+        statsContext || undefined,
+        asOf || undefined
+      ),
+>>>>>>> main
     } as any);
 
     // The model returns JSON as text after searching; parse defensively.

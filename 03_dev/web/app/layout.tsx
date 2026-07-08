@@ -7,6 +7,17 @@ export const metadata: Metadata = {
     "Checks a politician's statements for self-consistency and factuality.",
 };
 
+<<<<<<< HEAD
+=======
+// Apply theme (.dark) and language (.lang-ko) before paint to avoid a flash.
+const initScript = `(function(){try{
+  var t=localStorage.getItem('theme')||'light';
+  if(t==='dark')document.documentElement.classList.add('dark');
+  var l=localStorage.getItem('lang')||'ko';
+  if(l==='ko')document.documentElement.classList.add('lang-ko');
+}catch(e){}})();`;
+
+>>>>>>> main
 export default function RootLayout({
   children,
 }: {
@@ -15,7 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+<<<<<<< HEAD
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css" />
+=======
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css"
+        />
+        <script dangerouslySetInnerHTML={{ __html: initScript }} />
+>>>>>>> main
       </head>
       <body className="min-h-screen antialiased font-sans">{children}</body>
     </html>
