@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getOpenAI, MODEL, extractJson } from "@/lib/openai";
 import { buildConsistencyPrompt } from "@/lib/prompts";
-import statementsData from "@/data/statements.sample.json";
+import statementsData from "@/data/statements.json";
 import type { Statement, SpokenLine, ConsistencyResult } from "@/lib/types";
 
 export const runtime = "nodejs";
