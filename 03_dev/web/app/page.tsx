@@ -254,13 +254,41 @@ async function runAnalysis(
     .split("\n")
     .map((t) => t.trim())
     .filter(Boolean);
-  const lines = allLines.slice(0, MAX_ANALYZE_LINES).map((text) => ({ text }));
-  const notice =
-    allLines.length > MAX_ANALYZE_LINES
-      ? lang === "ko"
-        ? `대본이 길어 앞 ${MAX_ANALYZE_LINES}줄만 분석했습니다 (전체 ${allLines.length}줄). 관심 있는 부분만 남기고 다시 실행하세요.`
-        : `Transcript is long — analyzed the first ${MAX_ANALYZE_LINES} of ${allLines.length} lines. Trim to the part you care about and re-run.`
-      : undefined;
+
+  let lines: { text: string }[];
+  let notice: string | undefined;
+
+  if (allLines.length > MAX_ANALYZE_LINES) {
+    // Long transcript: don't blindly take the first N (those are usually
+    // greetings/intro). Let the LLM pick the substantive statements this
+    // politician actually made (also filters out other speakers in debates).
+    try {
+      const ex = await fetch("/api/extract", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          transcript,
+          politician,
+          lang,
+          max: MAX_ANALYZE_LINES,
+        }),
+      }).then((r) => r.json());
+      const picked: string[] = (ex.statements ?? []).slice(0, MAX_ANALYZE_LINES);
+      if (picked.length) {
+        lines = picked.map((text) => ({ text }));
+        notice =
+          lang === "ko"
+            ? `긴 대본에서 ${politician}의 핵심 발언 ${lines.length}개를 자동으로 추려 분석했습니다.`
+            : `Auto-selected ${lines.length} key statements by ${politician} from the long transcript.`;
+      } else {
+        lines = allLines.slice(0, MAX_ANALYZE_LINES).map((text) => ({ text }));
+      }
+    } catch {
+      lines = allLines.slice(0, MAX_ANALYZE_LINES).map((text) => ({ text }));
+    }
+  } else {
+    lines = allLines.map((text) => ({ text }));
+  }
 
   const [aRes, fRes] = await Promise.all([
     fetch("/api/analyze", {
