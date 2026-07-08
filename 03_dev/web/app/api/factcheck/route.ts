@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const result = await factCheck(lines, lang ?? "en");
+    const result = await factCheck(lines, lang ?? "en", asOf);
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/factcheck]", err);

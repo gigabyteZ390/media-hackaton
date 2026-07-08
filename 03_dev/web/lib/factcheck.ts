@@ -11,6 +11,9 @@
 //
 // Anything we can't resolve deterministically degrades to web search, so the app
 // still works (and the demo never breaks) even without stats API keys.
+//
+// `asOf` (the date the statement was spoken) is threaded through for time-anchoring:
+// the verdict reflects the truth AT THAT TIME, not merely today's latest figure.
 
 import { getOpenAI, MODEL, extractJson } from "./openai";
 import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
@@ -32,6 +35,8 @@ async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim
   const client = getOpenAI();
   const res = await client.chat.completions.create({
     model: MODEL,
+    temperature: 0.4,
+    seed: 7,
     response_format: { type: "json_object" },
     messages: [{ role: "user", content: buildExtractionPrompt(lines, lang) }],
   });
@@ -43,11 +48,11 @@ async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim
 /** Fetch the official figure for a registry entry (dispatches to INSEE or KOSIS). */
 async function resolveOfficial(
   entry: RegistryEntry,
-  claim: StatClaim
+  period?: string
 ): Promise<StatValue | null> {
   if (entry.provider === "INSEE" && entry.insee) {
     return inseeGetSeries(entry.insee.idbank, {
-      period: claim.period ?? undefined,
+      period,
       unit: entry.unit,
       label: entry.label,
       sourceUrl: entry.sourceUrl,
@@ -56,7 +61,7 @@ async function resolveOfficial(
   if (entry.provider === "KOSIS" && entry.kosis) {
     return kosisGetSeries({
       ...entry.kosis,
-      period: claim.period ?? undefined,
+      period,
       unit: entry.unit,
       label: entry.label,
       sourceUrl: entry.sourceUrl,
@@ -118,13 +123,15 @@ function extractCitations(res: any): { title: string; url: string }[] {
 /** Fallback — non-statistical or unresolved claims go to the LLM + web search. */
 async function webSearchFallback(
   lines: SpokenLine[],
-  lang: Lang
+  lang: Lang,
+  asOf?: string
 ): Promise<FactVerdict[]> {
   const client = getOpenAI();
   const res = await client.responses.create({
     model: MODEL,
+    temperature: 0.4,
     tools: [{ type: "web_search" }],
-    input: buildFactPrompt(lines, lang),
+    input: buildFactPrompt(lines, lang, undefined, asOf),
   } as any);
   const text = (res as any).output_text ?? "";
   const citations = extractCitations(res);
@@ -151,7 +158,8 @@ async function webSearchFallback(
 /** Public entry point used by /api/factcheck. */
 export async function factCheck(
   lines: SpokenLine[],
-  lang: Lang
+  lang: Lang,
+  asOf?: string
 ): Promise<FactCheckResult> {
   const claims = await extractClaims(lines, lang);
 
@@ -183,7 +191,10 @@ export async function factCheck(
         (c.subject ? findEntry(c.subject, c.geo ?? undefined) : undefined);
 
       if (c.isStatistical && c.claimedValue != null && entry) {
-        const official = await resolveOfficial(entry, c);
+        // Time-anchoring: judge as of the claim's own period, else the year the
+        // statement was spoken (asOf), else the latest official figure.
+        const effectivePeriod = c.period ?? (asOf ? asOf.slice(0, 4) : undefined);
+        const official = await resolveOfficial(entry, effectivePeriod);
         if (official) {
           const { verdict, confidence } = compare(
             c.claimedValue,
@@ -194,6 +205,8 @@ export async function factCheck(
             line: c.line,
             isFactualClaim: true,
             verdict,
+            referencePeriod: official.period,
+            currentNote: "",
             reason: statReason(lang, c.claimedValue, official, entry),
             sources: [
               { title: `${entry.label} (${official.period})`, url: official.sourceUrl },
@@ -215,7 +228,7 @@ export async function factCheck(
   );
 
   if (fallback.length > 0) {
-    facts.push(...(await webSearchFallback(fallback, lang)));
+    facts.push(...(await webSearchFallback(fallback, lang, asOf)));
   }
 
   // Accuracy = TRUE / checkable factual claims (computed in code, not by the model).
