@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { getOpenAI, MODEL, extractJson } from "@/lib/openai";
-import { buildConsistencyPrompt } from "@/lib/prompts";
-import statementsData from "@/data/statements.json";
+import { getAnthropic, joinText, extractJson } from "@/lib/anthropic";
+import { buildConsistencyPrompt, CONSISTENCY_SCHEMA } from "@/lib/prompts";
+import statementsData from "@/data/statements.sample.json";
 import type { Statement, SpokenLine, ConsistencyResult } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -44,10 +44,9 @@ function bestMatch(quote: string, past: Statement[]): Statement | undefined {
 // Axis 1 — self-consistency: does each line contradict the person's OWN past words?
 export async function POST(req: Request) {
   try {
-    const { politician, lines, lang } = (await req.json()) as {
+    const { politician, lines } = (await req.json()) as {
       politician: string;
       lines: SpokenLine[];
-      lang?: "ko" | "en";
     };
     if (!politician || !Array.isArray(lines) || lines.length === 0) {
       return NextResponse.json(
@@ -60,43 +59,20 @@ export async function POST(req: Request) {
       (s) => s.politician === politician
     );
 
-    const client = getOpenAI();
-    const res = await client.chat.completions.create({
-      model: MODEL,
-      // Low-ish temperature: mostly stable, with a little room for nuance.
-      // seed keeps runs fairly reproducible despite temperature > 0.
-      temperature: 0.4,
-      seed: 7,
-      response_format: { type: "json_object" },
+    const client = getAnthropic();
+    const res = await client.messages.create({
+      model: "claude-opus-4-8",
+      max_tokens: 8000,
+      thinking: { type: "adaptive" },
+      // Structured output: constrain the response to our JSON schema.
+      output_config: { format: { type: "json_schema", schema: CONSISTENCY_SCHEMA } },
       messages: [
-        {
-          role: "user",
-          content: buildConsistencyPrompt(politician, past, lines, lang ?? "en"),
-        },
+        { role: "user", content: buildConsistencyPrompt(politician, past, lines) },
       ],
-    });
+      // Cast: output_config is newer than some SDK type defs.
+    } as any);
 
-    const text = res.choices[0]?.message?.content ?? "";
-    const result = extractJson<ConsistencyResult>(text);
-
-    // Compute the score deterministically in code (don't trust the model's number).
-    const verdicts = result.verdicts ?? [];
-    const consistent = verdicts.filter((v) => !v.isContradiction).length;
-    result.consistencyScore = verdicts.length
-      ? Math.round((consistent / verdicts.length) * 100)
-      : 0;
-
-    // Enrich each contradiction: match the model's quoted past statement back to
-    // the DB record so the UI can show the real date + a working source link.
-    for (const v of verdicts) {
-      if (!v.isContradiction || !v.pastStatement) continue;
-      const match = bestMatch(v.pastStatement, past);
-      if (match) {
-        v.pastDate = match.date;
-        v.pastSourceUrl = match.sourceUrl;
-      }
-    }
-
+    const result = extractJson<ConsistencyResult>(joinText(res));
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/analyze]", err);

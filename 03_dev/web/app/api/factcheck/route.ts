@@ -6,8 +6,8 @@ export const runtime = "nodejs";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
-// Axis 2 — factuality. Extract claims (LLM), verify statistics against official
-// INSEE/KOSIS data (code), and fall back to web search for everything else.
+// Axis 2 — factuality. Extract claims (Claude), verify statistics against official
+// INSEE/KOSIS data (code), and fall back to Claude + web search for everything else.
 export async function POST(req: Request) {
   try {
     const { lines, lang, asOf } = (await req.json()) as {

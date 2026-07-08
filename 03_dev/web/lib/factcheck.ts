@@ -1,4 +1,4 @@
-// Axis 2 orchestration — factuality / fact-check.
+// Axis 2 orchestration — factuality / fact-check (Claude / Anthropic).
 //
 // Design: the LLM does language understanding (extract structured claims); the
 // CODE does the numeric verification (fetch the real official figure and compare).
@@ -12,13 +12,12 @@
 //
 // Two MongoDB caches (best-effort, no-op if Mongo is down) spare the LLM/web/KOSIS
 // quotas: `statCache` (official figures) and `factCache` (per-line verdicts).
-// Anything we can't resolve deterministically degrades to web search, so the app
-// still works even without stats API keys or a database.
+// `asOf` (the date the statement was spoken) is threaded through for time-anchoring.
 //
-// `asOf` (the date the statement was spoken) is threaded through for time-anchoring:
-// the verdict reflects the truth AT THAT TIME, not merely today's latest figure.
+// Note (Claude Opus 4.8): sampling params (temperature/top_p) are rejected — do not
+// send them. We use adaptive thinking + the web_search server tool.
 
-import { getOpenAI, MODEL, extractJson } from "./openai";
+import { getAnthropic, joinText, extractJson } from "./anthropic";
 import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
 import { STAT_REGISTRY, findEntry, type RegistryEntry } from "./statRegistry";
 import { inseeGetSeries } from "./insee";
@@ -34,6 +33,7 @@ import type {
 
 type Lang = "ko" | "en";
 
+const MODEL = "claude-opus-4-8";
 const VERDICT_TTL = 60 * 60 * 24; // 24h — verdicts are stable within a demo
 const STAT_TTL = 60 * 60 * 24; // 24h — official figures update at most monthly
 
@@ -43,18 +43,16 @@ const norm = (s: string) =>
 const verdictKey = (line: string, lang: Lang, asOf?: string) =>
   `v1:${lang}:${asOf ?? "now"}:${norm(line)}`;
 
-/** Step 1 — LLM extracts a structured claim per line (JSON mode, no web search). */
+/** Step 1 — LLM extracts a structured claim per line (no web search). */
 async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim[]> {
-  const client = getOpenAI();
-  const res = await client.chat.completions.create({
+  const client = getAnthropic();
+  const res = await client.messages.create({
     model: MODEL,
-    temperature: 0.4,
-    seed: 7,
-    response_format: { type: "json_object" },
+    max_tokens: 8000,
+    thinking: { type: "adaptive" },
     messages: [{ role: "user", content: buildExtractionPrompt(lines, lang) }],
-  });
-  const text = res.choices[0]?.message?.content ?? "";
-  const parsed = extractJson<{ claims: StatClaim[] }>(text);
+  } as any);
+  const parsed = extractJson<{ claims: StatClaim[] }>(joinText(res));
   return parsed.claims ?? [];
 }
 
@@ -121,19 +119,19 @@ function statReason(
     : `Claimed ${claimed}${entry.unit} vs official ${official.value}${entry.unit} — ${src}.`;
 }
 
-/** Pull the REAL source links from the web-search response's url_citation
- *  annotations (the model itself is unreliable at copying URLs into the JSON). */
+/** Pull the REAL source links from Claude's web_search_tool_result blocks. */
 function extractCitations(res: any): { title: string; url: string }[] {
   const out: { title: string; url: string }[] = [];
   const seen = new Set<string>();
-  for (const item of res?.output ?? []) {
-    for (const c of item?.content ?? []) {
-      for (const a of c?.annotations ?? []) {
-        const url: string | undefined = a?.url;
-        if (!url || seen.has(url)) continue;
-        seen.add(url);
-        out.push({ title: a?.title || url, url });
-      }
+  for (const block of res?.content ?? []) {
+    if (block?.type !== "web_search_tool_result") continue;
+    const results = block?.content;
+    if (!Array.isArray(results)) continue;
+    for (const r of results) {
+      const url: string | undefined = r?.url;
+      if (!url || seen.has(url)) continue;
+      seen.add(url);
+      out.push({ title: r?.title || url, url });
     }
   }
   return out;
@@ -145,18 +143,22 @@ async function webSearchFallback(
   lang: Lang,
   asOf?: string
 ): Promise<FactVerdict[]> {
-  const client = getOpenAI();
-  const res = await client.responses.create({
+  const client = getAnthropic();
+  const res = await client.messages.create({
     model: MODEL,
-    temperature: 0.4,
-    tools: [{ type: "web_search" }],
-    input: buildFactPrompt(lines, lang, undefined, asOf),
+    max_tokens: 8000,
+    thinking: { type: "adaptive" },
+    // Server-side web search tool: live search + cited sources.
+    tools: [{ type: "web_search_20260209", name: "web_search" }],
+    messages: [
+      { role: "user", content: buildFactPrompt(lines, lang, undefined, asOf) },
+    ],
   } as any);
-  const text = (res as any).output_text ?? "";
+
   const citations = extractCitations(res);
   let parsed: { facts?: FactVerdict[] } = {};
   try {
-    parsed = extractJson<{ facts?: FactVerdict[] }>(text);
+    parsed = extractJson<{ facts?: FactVerdict[] }>(joinText(res));
   } catch {
     parsed = {};
   }

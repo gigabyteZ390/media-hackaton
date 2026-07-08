@@ -8,8 +8,7 @@ const langName = (l: Lang) => (l === "ko" ? "Korean" : "English");
 export function buildConsistencyPrompt(
   politician: string,
   past: Statement[],
-  lines: SpokenLine[],
-  lang: Lang = "en"
+  lines: SpokenLine[]
 ): string {
   return [
     `You are a neutral analyzer that checks ONLY the self-consistency of political statements by ${politician}.`,
@@ -19,7 +18,6 @@ export function buildConsistencyPrompt(
     "3) For a contradiction, give a reason and quote the specific past statement it conflicts with.",
     "4) Assign a confidence (0..1) to each verdict. Lower it when uncertain.",
     "5) consistencyScore = (number of non-contradicting lines / total lines) * 100, rounded.",
-    `6) Write the "reason" field in ${langName(lang)}.`,
     "",
     "Respond with ONLY a JSON object of this exact shape (no prose, no code fences):",
     '{ "verdicts": [ { "line": string, "isContradiction": boolean, "pastStatement": string, "reason": string, "confidence": number } ], "consistencyScore": number }',
@@ -31,6 +29,31 @@ export function buildConsistencyPrompt(
     JSON.stringify(lines.map((l) => l.text)),
   ].join("\n");
 }
+
+/** JSON schema for the structured-output consistency response (used by /api/analyze). */
+export const CONSISTENCY_SCHEMA = {
+  type: "object",
+  properties: {
+    verdicts: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          line: { type: "string" },
+          isContradiction: { type: "boolean" },
+          pastStatement: { type: "string" },
+          reason: { type: "string" },
+          confidence: { type: "number" },
+        },
+        required: ["line", "isContradiction", "reason", "confidence"],
+        additionalProperties: false,
+      },
+    },
+    consistencyScore: { type: "number" },
+  },
+  required: ["verdicts", "consistencyScore"],
+  additionalProperties: false,
+} as const;
 
 /** Axis 2 — factuality (checkable factual claims only; uses web search for sources). */
 export function buildFactPrompt(
