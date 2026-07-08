@@ -8,3 +8,7 @@ next-env.d.ts.timestamp
 .env*.local
 .DS_Store
 *.tsbuildinfo
+
+# editor backups
+*~
+*.bak
