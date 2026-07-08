@@ -21,6 +21,10 @@ const POLITICIAN_OPTIONS = ["이재명", "Emmanuel Macron", "Donald Trump"];
 const SAMPLE_TRANSCRIPT =
   "굳건한 한미동맹을 토대로 한미일 안보협력을 강화하겠다. 사드 철회는 추진하지 않는다.\n한국의 청년 실업률은 30퍼센트가 넘는다.";
 
+// Header "real-time activity" ticker (stylized code tokens — same in both languages).
+const TICKER =
+  "[ANALYZING] LEE_J.M. HOUSING_POLICY // [VERIFIED] MACRON EU_SPEECH // [ALERT] CONTRADICTION_DETECTED // [LIVE] TWO-AXIS VERIFICATION";
+
 // --- i18n dictionary (prose only; UPPER_SNAKE code tokens stay as-is) ---
 
 const STR = {
@@ -30,6 +34,15 @@ const STR = {
     navConsistency: "Self-Consistency",
     navFactuality: "Factuality",
     engine: "Engine:",
+    login: "Login",
+    methodology: "Methodology",
+    publicApi: "Public API",
+    statusLabel: "Status",
+    uploadTitle: "Video / Audio Dossier",
+    uploadDesc:
+      "Drop a broadcast clip or a transcript file (.txt / .srt). Text files load straight into the box; video/audio STT is coming soon.",
+    uploadBtn: "Select File",
+    pdfReport: "PDF Report",
     heroTitle: ["Verification", "Through", "Precision"],
     heroPre:
       "We verify political statements instead of attacking them. The system extracts claims from broadcast footage, then separates ",
@@ -114,6 +127,15 @@ const STR = {
     navConsistency: "자기 일관성",
     navFactuality: "사실성",
     engine: "엔진:",
+    login: "로그인",
+    methodology: "방법론",
+    publicApi: "공개 API",
+    statusLabel: "상태",
+    uploadTitle: "영상 / 음성 자료",
+    uploadDesc:
+      "방송 클립이나 대본 파일(.txt / .srt)을 올리세요. 텍스트 파일은 바로 입력창에 로드되고, 영상/음성 STT는 곧 지원됩니다.",
+    uploadBtn: "파일 선택",
+    pdfReport: "PDF 리포트",
     heroTitle: ["정치 발언을", "정밀하게", "검증합니다"],
     heroPre:
       "우리는 정치 발언을 공격하는 대신 검증합니다. 방송 영상에서 발언을 추출한 뒤, 발화자의 과거 발언과 공신력 있는 자료를 근거로 ",
@@ -678,11 +700,34 @@ const Header = ({
           </p>
         </div>
       </div>
+
+      {/* Center: real-time activity ticker + nav (adopted from teammate frontend) */}
+      <nav className="hidden lg:flex flex-1 items-center justify-center gap-6 px-6">
+        <div className="relative h-4 w-64 overflow-hidden bg-slate/50 px-2">
+          <div className="absolute whitespace-nowrap animate-marquee font-mono text-[9px] font-bold uppercase text-ink/70">
+            {TICKER}
+          </div>
+        </div>
+        <a
+          href="#"
+          className="text-[10px] font-black uppercase tracking-widest hover:text-blue transition-colors"
+        >
+          {t.methodology}
+        </a>
+        <a
+          href="#"
+          className="text-[10px] font-black uppercase tracking-widest hover:text-blue transition-colors"
+        >
+          {t.publicApi}
+        </a>
+      </nav>
+
       <div className="flex items-center gap-4">
-        <div className="hidden lg:flex items-center gap-3 border-r border-line/20 pr-6 font-mono text-[9px] font-bold uppercase">
-          <span className="text-gray">{t.navTwoAxis}</span>
-          <span className="text-blue">{t.navConsistency}</span>
-          <span className="text-green">{t.navFactuality}</span>
+        <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase text-gray">
+          <span>
+            {t.statusLabel}: <span className="text-green font-bold">STABLE</span>
+          </span>
+          <div className="h-2 w-2 bg-green shadow-[0_0_8px_rgba(22,163,74,0.5)]" />
         </div>
         <button
           onClick={onToggleLang}
@@ -699,6 +744,9 @@ const Header = ({
           aria-label="Toggle theme"
         >
           <i className={`ti ti-${theme === "dark" ? "sun" : "moon"} text-base`} />
+        </button>
+        <button className="hidden sm:block bg-accent px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-accentfg hover:bg-blue hover:text-white transition-colors">
+          {t.login}
         </button>
       </div>
     </div>
@@ -1040,6 +1088,39 @@ export default function Home() {
     URL.revokeObjectURL(url);
   };
 
+  // File upload: text/subtitle files load straight into the transcript box.
+  // Video/audio would need STT (not wired) — so we guide the user instead.
+  const onFilePick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const isText =
+      /\.(txt|srt|vtt|md)$/i.test(file.name) || file.type.startsWith("text");
+    if (!isText) {
+      setError(
+        lang === "ko"
+          ? "영상/음성 STT는 아직 연결 전이에요 — .txt/.srt 대본을 올리거나 텍스트를 붙여넣어 주세요."
+          : "Video/audio STT is not wired yet — upload a .txt/.srt transcript or paste text."
+      );
+      e.target.value = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const cleaned = String(reader.result || "")
+        .replace(/^WEBVTT.*$/gm, "")
+        .replace(/^\d+\s*$/gm, "") // SRT cue numbers
+        .replace(/^\d{2}:\d{2}:\d{2}[.,]\d{3}\s*-->.*$/gm, "") // timestamps
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean)
+        .join("\n");
+      setTranscript(cleaned);
+      setError(null);
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
   return (
     <main className="min-h-screen blueprint-grid">
       <Header
@@ -1086,7 +1167,30 @@ export default function Home() {
                 </div>
               )}
 
-              <div className="flex flex-col gap-8">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                {/* File upload column (adopted from teammate frontend) */}
+                <label className="group flex min-h-[420px] cursor-pointer flex-col items-center justify-center border-2 border-dashed border-line bg-slate/30 p-12 text-center shadow-sharp-sm transition-colors hover:bg-slate/60">
+                  <input
+                    type="file"
+                    accept=".txt,.srt,.vtt,.md,video/*,audio/*"
+                    className="hidden"
+                    onChange={onFilePick}
+                  />
+                  <div className="mb-8 flex h-24 w-24 items-center justify-center border-2 border-line transition-transform group-hover:scale-110">
+                    <i className="ti ti-file-upload text-4xl text-ink" />
+                  </div>
+                  <h3 className="mb-3 text-lg font-black uppercase tracking-widest text-ink">
+                    {t.uploadTitle}
+                  </h3>
+                  <p className="max-w-xs font-mono text-[11px] leading-relaxed text-gray">
+                    {t.uploadDesc}
+                  </p>
+                  <span className="btn-primary mt-8 py-3 text-[10px] tracking-[0.2em]">
+                    {t.uploadBtn}
+                  </span>
+                </label>
+
+                {/* Manual text-entry column */}
                 <div className="flex flex-col">
                   <div className="mb-4 flex gap-2">
                     <button className="bg-accent px-6 py-3 text-[10px] font-black uppercase tracking-widest text-accentfg shadow-sharp-sm">
@@ -1214,6 +1318,13 @@ export default function Home() {
                 >
                   <i className="ti ti-download mr-2" />
                   {t.exportJson}
+                </button>
+                <button
+                  onClick={() => window.print()}
+                  className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"
+                >
+                  <i className="ti ti-printer mr-2" />
+                  {t.pdfReport}
                 </button>
                 <button
                   onClick={() => {
