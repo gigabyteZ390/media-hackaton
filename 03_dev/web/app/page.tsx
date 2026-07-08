@@ -11,6 +11,7 @@ import type {
   FactCheckResult,
   FactVerdict,
 } from "@/lib/types";
+import { getPoliticianPhoto } from "@/lib/wikipedia";
 
 const POLITICIAN_OPTIONS = [
   "Lee Jae-myung",
@@ -148,6 +149,61 @@ function breakdown(statements: StatementResult[]) {
 }
 
 // --- Sub-components ---
+
+const AVATAR_SIZES = {
+  sm: "h-10 w-10 text-xs",
+  lg: "h-16 w-16 text-xl",
+} as const;
+
+/** Politician photo (via Wikipedia, keyless) with an initials fallback while it
+ *  loads or if no photo is found — never blocks or breaks on a lookup miss. */
+const PoliticianAvatar = ({
+  name,
+  size = "sm",
+}: {
+  name: string;
+  size?: keyof typeof AVATAR_SIZES;
+}) => {
+  const [photo, setPhoto] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setPhoto(null);
+    if (!name.trim() || name === "Unspecified Subject") return;
+    getPoliticianPhoto(name).then((url) => {
+      if (!cancelled) setPhoto(url);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [name]);
+
+  const initials = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase())
+    .join("");
+
+  const dim = AVATAR_SIZES[size];
+
+  if (photo) {
+    return (
+      <img
+        src={photo}
+        alt={name}
+        className={`${dim} shrink-0 border-2 border-navy object-cover shadow-sharp-sm`}
+      />
+    );
+  }
+  return (
+    <div
+      className={`${dim} shrink-0 flex items-center justify-center border-2 border-navy bg-navy font-black text-white shadow-sharp-sm`}
+    >
+      {initials || "?"}
+    </div>
+  );
+};
 
 const Badge = ({ status, label, axis }: { status: string; label: string; axis: 'consistency' | 'factuality' }) => {
   const getColors = () => {
@@ -542,7 +598,10 @@ const Dashboard = ({
                 </span>
                 <i className="ti ti-arrow-up-right text-lg text-blue" />
               </div>
-              <h3 className="mb-4 text-lg font-black uppercase tracking-tight">{r.politician}</h3>
+              <div className="mb-4 flex items-center gap-3">
+                <PoliticianAvatar name={r.politician} size="sm" />
+                <h3 className="text-lg font-black uppercase tracking-tight">{r.politician}</h3>
+              </div>
               <div className="mb-4 grid grid-cols-2 gap-3">
                 <div>
                   <p className="font-mono text-[9px] font-bold uppercase text-gray">Consistency</p>
@@ -582,11 +641,14 @@ const ReportModal = ({ report, onClose }: { report: Report; onClose: () => void 
     <div className="fixed inset-0 z-[60] overflow-y-auto bg-navy/60 backdrop-blur-sm p-4 md:p-12">
       <div className="mx-auto max-w-7xl border-2 border-navy bg-white shadow-sharp">
         <div className="sticky top-0 z-10 flex items-center justify-between border-b-2 border-navy bg-navy p-6 text-white">
-          <div>
-            <div className="mb-2 inline-block bg-white px-3 py-1 font-mono text-[10px] font-bold uppercase text-navy tracking-widest">
-              Report // {report.politician}
+          <div className="flex items-center gap-4">
+            <PoliticianAvatar name={report.politician} size="lg" />
+            <div>
+              <div className="mb-2 inline-block bg-white px-3 py-1 font-mono text-[10px] font-bold uppercase text-navy tracking-widest">
+                Report // {report.politician}
+              </div>
+              <h2 className="text-2xl font-black uppercase tracking-tighter">Result Report</h2>
             </div>
-            <h2 className="text-2xl font-black uppercase tracking-tighter">Result Report</h2>
           </div>
           <button
             onClick={onClose}
@@ -833,11 +895,14 @@ export default function Home() {
                                     setPoliticianQuery(name);
                                     setIsPoliticianSearchOpen(false);
                                   }}
-                                  className={`flex w-full items-center justify-between border-b border-navy/10 px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-widest transition-colors last:border-b-0 hover:bg-slate ${
+                                  className={`flex w-full items-center justify-between gap-3 border-b border-navy/10 px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-widest transition-colors last:border-b-0 hover:bg-slate ${
                                     targetPolitician === name ? "text-blue" : "text-navy"
                                   }`}
                                 >
-                                  <span>{name}</span>
+                                  <span className="flex items-center gap-3">
+                                    {name !== "Unspecified Subject" && <PoliticianAvatar name={name} size="sm" />}
+                                    {name}
+                                  </span>
                                   {targetPolitician === name && <i className="ti ti-check text-sm" />}
                                 </button>
                               ))
