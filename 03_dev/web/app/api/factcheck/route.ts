@@ -30,6 +30,14 @@ export async function POST(req: Request) {
     // The model returns JSON as text after searching; parse defensively.
     const text = (res as any).output_text ?? "";
     const result = extractJson<FactCheckResult>(text);
+
+    // Compute accuracy deterministically: TRUE / (checkable factual claims).
+    const checked = (result.facts ?? []).filter((f) => f.isFactualClaim);
+    const trueCount = checked.filter((f) => f.verdict === "TRUE").length;
+    result.accuracyScore = checked.length
+      ? Math.round((trueCount / checked.length) * 100)
+      : 0;
+
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/factcheck]", err);

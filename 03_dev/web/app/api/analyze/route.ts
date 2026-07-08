@@ -37,6 +37,14 @@ export async function POST(req: Request) {
 
     const text = res.choices[0]?.message?.content ?? "";
     const result = extractJson<ConsistencyResult>(text);
+
+    // Compute the score deterministically in code (don't trust the model's number).
+    const verdicts = result.verdicts ?? [];
+    const consistent = verdicts.filter((v) => !v.isContradiction).length;
+    result.consistencyScore = verdicts.length
+      ? Math.round((consistent / verdicts.length) * 100)
+      : 0;
+
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/analyze]", err);
