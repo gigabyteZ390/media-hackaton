@@ -1,0 +1,22 @@
+# Python
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Scraper temp / output
+**/.subtmp/
+**/output/
+**/_test_output/
+*.mp3
+*.json3
+*_audio.*
+
+# Node / Next.js (for later)
+**/node_modules/
+**/.next/
+**/.env
+**/.env.local
+**/.env*.local
+
+# OS
+.DS_Store
