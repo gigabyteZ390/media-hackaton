@@ -1,3 +1,4 @@
 yt-dlp>=2024.1.1
 youtube-transcript-api==0.6.2
 openai>=1.0.0        # --whisper 옵션에서만 필요 (자막만 쓰면 불필요)
+anthropic>=0.40.0   # build_db.py 발언 추출용
