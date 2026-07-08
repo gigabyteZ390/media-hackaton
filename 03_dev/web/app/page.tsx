@@ -60,6 +60,10 @@ const STR = {
     intakeTitle: "Evidence Intake",
     manualEntry: "Manual_Entry",
     sourceLink: "Source_Link",
+    urlPlaceholder: "Paste a YouTube URL (speech, debate, press conference)...",
+    fetchBtn: "Fetch Transcript",
+    fetching: "Fetching transcript...",
+    urlHint: "Captions are pulled automatically — no manual transcript needed.",
     textareaPlaceholder:
       "Enter the transcript to verify... (one statement per line). Leave empty to load a verified demo.",
     targetPolitician: "Target_Politician",
@@ -152,6 +156,10 @@ const STR = {
     intakeTitle: "증거 입력",
     manualEntry: "Manual_Entry",
     sourceLink: "Source_Link",
+    urlPlaceholder: "유튜브 URL 붙여넣기 (연설·토론·기자회견)...",
+    fetchBtn: "대본 가져오기",
+    fetching: "대본 가져오는 중...",
+    urlHint: "자막을 자동으로 가져옵니다 — 대본을 직접 붙여넣을 필요 없어요.",
     textareaPlaceholder:
       "검증할 대본을 입력하세요... (한 줄에 한 발언). 비워두면 검증된 데모가 로드됩니다.",
     targetPolitician: "Target_Politician",
@@ -973,6 +981,9 @@ export default function Home() {
   );
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState("");
+  const [inputMode, setInputMode] = useState<"manual" | "url">("manual");
+  const [sourceUrl, setSourceUrl] = useState("");
+  const [fetching, setFetching] = useState(false);
   const [targetPolitician, setTargetPolitician] = useState(POLITICIAN_OPTIONS[0]);
   const [politicianQuery, setPoliticianQuery] = useState(POLITICIAN_OPTIONS[0]);
   const [isPoliticianSearchOpen, setIsPoliticianSearchOpen] = useState(false);
@@ -1121,6 +1132,28 @@ export default function Home() {
     e.target.value = "";
   };
 
+  // Paste a YouTube URL -> scraper pulls the captions -> fill the transcript box.
+  const fetchFromUrl = async () => {
+    if (!sourceUrl.trim() || fetching) return;
+    setFetching(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/scrape", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: sourceUrl.trim(), lang }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || "Scrape failed");
+      setTranscript(data.transcript || "");
+      setInputMode("manual"); // show the fetched transcript so it can be reviewed
+    } catch (err: any) {
+      setError(err?.message ?? "Scrape failed");
+    } finally {
+      setFetching(false);
+    }
+  };
+
   return (
     <main className="min-h-screen blueprint-grid">
       <Header
@@ -1193,24 +1226,73 @@ export default function Home() {
                 {/* Manual text-entry column */}
                 <div className="flex flex-col">
                   <div className="mb-4 flex gap-2">
-                    <button className="bg-accent px-6 py-3 text-[10px] font-black uppercase tracking-widest text-accentfg shadow-sharp-sm">
+                    <button
+                      onClick={() => setInputMode("manual")}
+                      className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
+                        inputMode === "manual"
+                          ? "bg-accent text-accentfg shadow-sharp-sm"
+                          : "border border-line bg-surface text-ink opacity-40 hover:opacity-100"
+                      }`}
+                    >
                       {t.manualEntry}
                     </button>
                     <button
-                      className="border border-line bg-surface px-6 py-3 text-[10px] font-black uppercase tracking-widest text-ink opacity-40 hover:opacity-100 transition-opacity"
-                      title="Coming soon"
+                      onClick={() => setInputMode("url")}
+                      className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
+                        inputMode === "url"
+                          ? "bg-accent text-accentfg shadow-sharp-sm"
+                          : "border border-line bg-surface text-ink opacity-40 hover:opacity-100"
+                      }`}
                     >
                       {t.sourceLink}
                     </button>
                   </div>
-                  <div className="border-2 border-line p-1 bg-slate/30 shadow-sharp-sm">
-                    <textarea
-                      className="h-64 w-full border border-line bg-surface p-6 font-mono text-sm outline-none resize-none focus:bg-slate/10 transition-colors text-ink"
-                      placeholder={t.textareaPlaceholder}
-                      value={transcript}
-                      onChange={(e) => setTranscript(e.target.value)}
-                    />
-                  </div>
+
+                  {inputMode === "url" ? (
+                    <div className="flex h-[268px] flex-col justify-center border-2 border-line bg-slate/30 p-8 shadow-sharp-sm">
+                      <div className="flex items-center gap-3 border-2 border-line bg-surface px-4 py-3">
+                        <i className="ti ti-brand-youtube text-xl text-red" />
+                        <input
+                          type="url"
+                          value={sourceUrl}
+                          onChange={(e) => setSourceUrl(e.target.value)}
+                          onKeyDown={(e) => e.key === "Enter" && fetchFromUrl()}
+                          placeholder={t.urlPlaceholder}
+                          className="w-full bg-transparent font-mono text-sm text-ink outline-none placeholder:text-gray/50"
+                          autoComplete="off"
+                        />
+                      </div>
+                      <button
+                        onClick={fetchFromUrl}
+                        disabled={fetching || !sourceUrl.trim()}
+                        className="btn-primary mt-4 flex items-center justify-center gap-2 py-3 text-[11px] tracking-[0.2em] disabled:opacity-50"
+                      >
+                        {fetching ? (
+                          <>
+                            <i className="ti ti-loader-2 animate-spin" />
+                            {t.fetching}
+                          </>
+                        ) : (
+                          <>
+                            <i className="ti ti-download" />
+                            {t.fetchBtn}
+                          </>
+                        )}
+                      </button>
+                      <p className="mt-4 font-mono text-[10px] leading-relaxed text-gray">
+                        {t.urlHint}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="border-2 border-line p-1 bg-slate/30 shadow-sharp-sm">
+                      <textarea
+                        className="h-64 w-full border border-line bg-surface p-6 font-mono text-sm outline-none resize-none focus:bg-slate/10 transition-colors text-ink"
+                        placeholder={t.textareaPlaceholder}
+                        value={transcript}
+                        onChange={(e) => setTranscript(e.target.value)}
+                      />
+                    </div>
+                  )}
                   <div className="mt-6 flex flex-wrap gap-4">
                     <div className="relative flex min-w-[280px] flex-grow items-center gap-4 border-2 border-line bg-surface px-6 py-4">
                       <label
