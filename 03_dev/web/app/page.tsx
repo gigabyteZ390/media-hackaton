@@ -1,9 +1,16 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import type { StatementResult } from "@/lib/types";
-
-// --- Mock Data ---
+import type {
+  StatementResult,
+  UIConsistency,
+  UIFactuality,
+  SpokenLine,
+  ConsistencyResult,
+  ConsistencyVerdict,
+  FactCheckResult,
+  FactVerdict,
+} from "@/lib/types";
 
 const POLITICIAN_OPTIONS = [
   "Lee Jae-myung",
@@ -17,127 +24,128 @@ const POLITICIAN_OPTIONS = [
   "Unspecified Subject",
 ];
 
-const SAMPLE_STATEMENTS: StatementResult[] = [
-  {
-    id: "1",
-    timestamp: "00:01:24",
-    speaker: "Politician A",
-    line: "Youth unemployment has fallen to less than half of the previous administration's level.",
-    consistency: {
-      status: "CONTRADICTION",
-      label: "Potential Contradiction",
-      reason: "Four months ago, during a National Assembly inquiry, the same politician described the situation as 'the worst employment crisis since the 1997 IMF crisis.'",
-      confidence: 0.82,
-      pastStatement: {
-        text: "Current youth economic indicators are the worst since the 1997 IMF crisis. A full-scale overhaul is needed.",
-        date: "2024-03-12",
-        sourceTitle: "National Assembly Inquiry",
-        sourceUrl: "#"
-      }
-    },
-    factuality: {
-      isFactualClaim: true,
-      verdict: "FALSE",
-      label: "False",
-      reason: "According to KOSIS data, the unemployment rate changed by only 0.2 percentage points compared with the previous administration, so the 'less than half' claim is not statistically supported.",
-      sourceType: "KOSIS",
-      confidence: 0.98,
-      sources: [
-        { title: "KOSIS 2024 Q2 Employment Trends", url: "#" },
-        { title: "OECD Korea Employment Indicators Report", url: "#" }
-      ]
-    }
-  },
-  {
-    id: "2",
-    timestamp: "00:04:15",
-    speaker: "Politician A",
-    line: "Semiconductor exports to Southeast Asia grew 14% year over year.",
-    consistency: {
-      status: "CONSISTENT",
-      label: "Consistent",
-      reason: "The figure matches the politician's previous regular briefing and budget explanation.",
-      confidence: 0.95
-    },
-    factuality: {
-      isFactualClaim: true,
-      verdict: "TRUE",
-      label: "Verified",
-      reason: "The claim aligns with the latest semiconductor export statistics from the Ministry of Trade, Industry and Energy and the Korea Customs Service, which reported 14.2% growth.",
-      sourceType: "WEB",
-      confidence: 0.96,
-      sources: [
-        { title: "Ministry of Trade, Industry and Energy 2024 First-Half Export Trends", url: "#" }
-      ]
-    }
-  },
-  {
-    id: "3",
-    timestamp: "00:07:30",
-    speaker: "Politician A",
-    line: "Our government's regional infrastructure investment is higher than that of any neighboring country.",
-    consistency: {
-      status: "INSUFFICIENT_CONTEXT",
-      label: "Needs Context",
-      reason: "The scope of 'neighboring country' and the comparison standard differ from previous statements, making a direct comparison unreliable.",
-      confidence: 0.54
-    },
-    factuality: {
-      isFactualClaim: true,
-      verdict: "UNVERIFIABLE",
-      label: "Unverifiable",
-      reason: "Infrastructure budget definitions and fiscal years vary by country, so a statistical comparison across all neighboring countries cannot be verified cleanly.",
-      confidence: 0.45,
-      sources: []
-    }
-  },
-  {
-    id: "4",
-    timestamp: "00:10:05",
-    speaker: "Politician A",
-    line: "Restoring political trust is the most urgent task of our time.",
-    consistency: {
-      status: "CONSISTENT",
-      label: "Consistent",
-      reason: "This has been a core value the politician has emphasized consistently since entering politics.",
-      confidence: 0.92
-    },
-    factuality: {
-      isFactualClaim: false,
-      verdict: "NOT_FACTUAL",
-      label: "Opinion",
-      reason: "Value judgments are excluded from factual verification.",
-      confidence: 1.0,
-      sources: []
-    }
-  },
-  {
-    id: "5",
-    timestamp: "00:12:40",
-    speaker: "Politician A",
-    line: "The effective corporate tax rate has risen every year for the last three years.",
-    consistency: {
-      status: "CONTRADICTION",
-      label: "Potential Contradiction",
-      reason: "During last year's budget review, the politician warned that the effective rate was falling because of corporate tax relief.",
-      confidence: 0.78,
-      pastStatement: {
-        text: "The current tax reform proposal will lower the effective corporate tax rate for large companies.",
-        date: "2023-11-15",
-        sourceTitle: "Special Committee on Budget and Accounts",
-        sourceUrl: "#"
-      }
-    },
-    factuality: {
-      isFactualClaim: true,
-      verdict: "UNVERIFIABLE",
-      label: "Unverifiable",
-      reason: "Because finalized tax data is published with a delay, the recent upward trend cannot be confirmed with available official data.",
-      confidence: 0.62,
-      sources: []
-    }
-  }
-];
+/** One completed analysis run, listed on the dashboard and opened as a report. */
+interface Report {
+  id: string;
+  createdAt: string; // ISO
+  politician: string;
+  consistencyScore: number;
+  accuracyScore: number;
+  statements: StatementResult[];
+}
+
+function toUIConsistency(v: ConsistencyVerdict): UIConsistency {
+  return {
+    status: v.isContradiction ? "CONTRADICTION" : "CONSISTENT",
+    label: v.isContradiction ? "Potential Contradiction" : "Consistent",
+    reason: v.reason,
+    confidence: v.confidence,
+    pastStatement: v.pastStatement
+      ? {
+          text: v.pastStatement,
+          date: v.pastDate ?? "",
+          sourceTitle: "Statement Database",
+          sourceUrl: v.pastSourceUrl ?? "#",
+        }
+      : undefined,
+  };
+}
+
+function sourceTypeFor(f: FactVerdict): "KOSIS" | "INSEE" | "WEB" | undefined {
+  if (f.method !== "official-stats") return f.sources.length ? "WEB" : undefined;
+  const url = f.sources[0]?.url ?? "";
+  if (url.includes("insee.fr")) return "INSEE";
+  if (url.includes("kosis.kr")) return "KOSIS";
+  return "WEB";
+}
+
+function toUIFactuality(f: FactVerdict): UIFactuality {
+  const verdict = !f.isFactualClaim ? "NOT_FACTUAL" : f.verdict;
+  const label =
+    verdict === "FALSE"
+      ? "False"
+      : verdict === "TRUE"
+      ? "Verified"
+      : verdict === "NOT_FACTUAL"
+      ? "Opinion"
+      : "Unverifiable";
+  return {
+    isFactualClaim: f.isFactualClaim,
+    verdict,
+    label,
+    reason: f.reason,
+    referencePeriod: f.referencePeriod,
+    currentNote: f.currentNote,
+    sourceType: sourceTypeFor(f),
+    confidence: f.confidence,
+    sources: f.sources,
+  };
+}
+
+/** Runs both axes in parallel and merges them per line into report-ready statements. */
+async function runAnalysis(politician: string, transcript: string): Promise<Report> {
+  const lines: SpokenLine[] = transcript
+    .split("\n")
+    .map((t) => t.trim())
+    .filter(Boolean)
+    .map((text) => ({ text }));
+
+  const [analyzeRes, factRes] = await Promise.all([
+    fetch("/api/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ politician, lines }),
+    }),
+    fetch("/api/factcheck", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lines, lang: "en" }),
+    }),
+  ]);
+
+  const [analyze, fact]: [ConsistencyResult, FactCheckResult] = await Promise.all([
+    analyzeRes.json(),
+    factRes.json(),
+  ]);
+  if (!analyzeRes.ok) throw new Error((analyze as any)?.error ?? "Self-consistency check failed");
+  if (!factRes.ok) throw new Error((fact as any)?.error ?? "Fact-check failed");
+
+  const statements: StatementResult[] = lines.map((line, i) => {
+    const cv = analyze.verdicts[i];
+    const fv = fact.facts[i];
+    return {
+      id: String(i + 1),
+      timestamp: `LINE_${String(i + 1).padStart(2, "0")}`,
+      speaker: politician,
+      line: line.text,
+      consistency: cv
+        ? toUIConsistency(cv)
+        : { status: "INSUFFICIENT_CONTEXT", label: "Needs Context", reason: "No verdict returned.", confidence: 0 },
+      factuality: fv
+        ? toUIFactuality(fv)
+        : { isFactualClaim: false, verdict: "UNVERIFIABLE", label: "Unverifiable", reason: "No verdict returned.", confidence: 0, sources: [] },
+    };
+  });
+
+  return {
+    id: `${Date.now()}`,
+    createdAt: new Date().toISOString(),
+    politician,
+    consistencyScore: analyze.consistencyScore,
+    accuracyScore: fact.accuracyScore,
+    statements,
+  };
+}
+
+function breakdown(statements: StatementResult[]) {
+  return {
+    total: statements.length,
+    contradictions: statements.filter((s) => s.consistency.status === "CONTRADICTION").length,
+    falseClaims: statements.filter((s) => s.factuality.verdict === "FALSE").length,
+    unverifiable: statements.filter((s) => s.factuality.verdict === "UNVERIFIABLE").length,
+    verifiedCorrect: statements.filter((s) => s.factuality.verdict === "TRUE").length,
+  };
+}
 
 // --- Sub-components ---
 
@@ -421,11 +429,11 @@ const AnalysisStepper = ({ progress }: { progress: number }) => {
 
   useEffect(() => {
     const fullLogs = [
-      { time: '14:02:11', msg: 'Speech-to-text engine instance activated...', status: 'DONE' },
-      { time: '14:02:15', msg: 'Extracting verifiable claims from audio data...', status: 'DONE' },
-      { time: '14:02:22', msg: 'Matching 18 extracted claims against the historical statement database...', status: 'PROCESSING', active: true },
-      { time: '14:02:35', msg: 'Fetching live data from KOSIS / Korea Customs Service / OECD APIs...', status: 'WAITING' },
-      { time: '14:02:48', msg: 'Generating final analysis report with AI reasoning...', status: 'WAITING' }
+      { time: 'T+00.0s', msg: 'Parsing transcript into individually checkable statements...', status: 'DONE' },
+      { time: 'T+00.4s', msg: 'Matching statements against the historical statement database...', status: 'DONE' },
+      { time: 'T+01.2s', msg: 'Extracting statistical claims for official-source verification...', status: 'PROCESSING', active: true },
+      { time: 'T+02.0s', msg: 'Cross-checking against KOSIS / INSEE and live web search...', status: 'WAITING' },
+      { time: 'T+03.0s', msg: 'Merging both axes into the final report...', status: 'WAITING' }
     ];
 
     const interval = setInterval(() => {
@@ -494,42 +502,246 @@ const AnalysisStepper = ({ progress }: { progress: number }) => {
   );
 };
 
+// --- Dashboard + Report ---
+
+const Dashboard = ({
+  reports,
+  onOpenReport,
+  onNewAnalysis,
+}: {
+  reports: Report[];
+  onOpenReport: (id: string) => void;
+  onNewAnalysis: () => void;
+}) => (
+  <section className="bg-white border-b border-navy p-12 lg:p-24 animate-in fade-in duration-700">
+    <div className="mx-auto max-w-6xl">
+      <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h2 className="text-4xl font-black uppercase tracking-tighter">Dashboard</h2>
+          <p className="mt-2 font-mono text-[10px] font-bold text-gray uppercase tracking-widest">
+            SESSION_HISTORY // {reports.length} {reports.length === 1 ? "REPORT" : "REPORTS"}
+          </p>
+        </div>
+        <button onClick={onNewAnalysis} className="btn-primary px-6 py-3 text-[10px] tracking-[0.2em]">
+          <i className="ti ti-plus mr-2" />New Analysis
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {reports.map((r) => {
+          const b = breakdown(r.statements);
+          return (
+            <button
+              key={r.id}
+              onClick={() => onOpenReport(r.id)}
+              className="text-left border-2 border-navy bg-white p-6 shadow-sharp-sm transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-sharp"
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <span className="bg-navy px-2 py-1 font-mono text-[9px] font-bold uppercase text-white">
+                  {new Date(r.createdAt).toLocaleString()}
+                </span>
+                <i className="ti ti-arrow-up-right text-lg text-blue" />
+              </div>
+              <h3 className="mb-4 text-lg font-black uppercase tracking-tight">{r.politician}</h3>
+              <div className="mb-4 grid grid-cols-2 gap-3">
+                <div>
+                  <p className="font-mono text-[9px] font-bold uppercase text-gray">Consistency</p>
+                  <p className="font-mono text-2xl font-black text-blue">{r.consistencyScore}%</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[9px] font-bold uppercase text-gray">Factuality</p>
+                  <p className="font-mono text-2xl font-black text-green">{r.accuracyScore}%</p>
+                </div>
+              </div>
+              <div className="flex justify-between border-t border-navy/10 pt-3 font-mono text-[10px] font-bold uppercase text-gray">
+                <span>{b.total} statements</span>
+                <span className="text-red">{b.contradictions + b.falseClaims} flagged</span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
+
+const ReportModal = ({ report, onClose }: { report: Report; onClose: () => void }) => {
+  const b = breakdown(report.statements);
+
+  const handleExportJson = () => {
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `report-${report.politician.replace(/\s+/g, "_")}-${report.id}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div className="fixed inset-0 z-[60] overflow-y-auto bg-navy/60 backdrop-blur-sm p-4 md:p-12">
+      <div className="mx-auto max-w-7xl border-2 border-navy bg-white shadow-sharp">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b-2 border-navy bg-navy p-6 text-white">
+          <div>
+            <div className="mb-2 inline-block bg-white px-3 py-1 font-mono text-[10px] font-bold uppercase text-navy tracking-widest">
+              Report // {report.politician}
+            </div>
+            <h2 className="text-2xl font-black uppercase tracking-tighter">Result Report</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center border-2 border-white hover:bg-white hover:text-navy transition-colors"
+            aria-label="Close report"
+          >
+            <i className="ti ti-x text-xl" />
+          </button>
+        </div>
+
+        <div className="p-8 lg:p-16">
+          <div className="mb-12 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+            <p className="font-mono text-xs font-bold text-gray uppercase tracking-[0.2em]">
+              GENERATED {new Date(report.createdAt).toLocaleString()} // DATA_CONFIDENCE_INTERVAL_95%
+            </p>
+            <div className="flex gap-4">
+              <button onClick={handleExportJson} className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"><i className="ti ti-download mr-2" />Export JSON</button>
+              <button onClick={() => window.print()} className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"><i className="ti ti-printer mr-2" />Print / PDF</button>
+            </div>
+          </div>
+
+          {/* Score Cards */}
+          <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="flex flex-col justify-between border-2 border-navy bg-white p-8 shadow-sharp-sm">
+              <div>
+                <div className="mb-6 flex items-start justify-between">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-blue">Consistency Score</h3>
+                  <span className="font-mono text-5xl font-black text-navy leading-none">{report.consistencyScore}%</span>
+                </div>
+                <SegmentedBar percentage={report.consistencyScore} colorClass="bg-blue" />
+              </div>
+              <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
+                Share of statements that do not contradict this speaker's own past record (N={b.total}).
+              </p>
+            </div>
+            <div className="flex flex-col justify-between border-2 border-navy bg-white p-8 shadow-sharp-sm">
+              <div>
+                <div className="mb-6 flex items-start justify-between">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-green">Factuality Score</h3>
+                  <span className="font-mono text-5xl font-black text-navy leading-none">{report.accuracyScore}%</span>
+                </div>
+                <SegmentedBar percentage={report.accuracyScore} colorClass="bg-green" />
+              </div>
+              <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
+                Share of checkable factual claims verified as TRUE against official/web sources.
+              </p>
+            </div>
+            <div className="border-2 border-navy bg-white p-8 shadow-sharp-sm">
+              <h3 className="mb-8 text-xs font-black uppercase tracking-widest text-navy">Statement Breakdown</h3>
+              <div className="space-y-4 font-mono text-[11px] font-bold">
+                <div className="flex justify-between border-b border-navy/10 pb-2">
+                  <span className="uppercase text-gray/60">Total Extracted</span>
+                  <span className="text-navy">{String(b.total).padStart(2, "0")}</span>
+                </div>
+                <div className="flex justify-between border-b border-navy/10 pb-2">
+                  <span className="uppercase text-red">Contradictions</span>
+                  <span>{String(b.contradictions).padStart(2, "0")}</span>
+                </div>
+                <div className="flex justify-between border-b border-navy/10 pb-2">
+                  <span className="uppercase text-red">False Claims</span>
+                  <span>{String(b.falseClaims).padStart(2, "0")}</span>
+                </div>
+                <div className="flex justify-between border-b border-navy/10 pb-2">
+                  <span className="uppercase text-orange">Unverifiable</span>
+                  <span>{String(b.unverifiable).padStart(2, "0")}</span>
+                </div>
+                <div className="flex justify-between pb-2">
+                  <span className="uppercase text-green">Verified Correct</span>
+                  <span>{String(b.verifiedCorrect).padStart(2, "0")}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Statement Ledger */}
+          <div className="mb-10 flex items-center gap-4">
+            <div className="h-[1px] flex-grow bg-navy/10" />
+            <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray">End_of_Summary // Beginning_of_Claim_Ledger</span>
+            <div className="h-[1px] flex-grow bg-navy/10" />
+          </div>
+
+          <div className="space-y-10">
+            {report.statements.map((s) => (
+              <StatementCard key={s.id} statement={s} />
+            ))}
+          </div>
+
+          {/* Methodology Footer */}
+          <div className="mt-24 flex flex-col items-center justify-between gap-8 bg-navy p-12 text-white md:flex-row shadow-sharp">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-black uppercase tracking-widest">Final Methodology Disclaimer</h3>
+              <p className="max-w-2xl font-mono text-xs font-bold leading-relaxed text-white/50 uppercase tracking-widest">
+                AI-BASED ANALYTICAL MODELS PROVIDE INITIAL VERIFICATION. HUMAN VERIFICATION BY CERTIFIED JOURNALISTS IS REQUIRED FOR LEGAL OR EDITORIAL PUBLICATION. ALL SOURCES ARE PUBLICLY AVAILABLE.
+              </p>
+            </div>
+            <button onClick={onClose} className="bg-white px-10 py-5 font-black uppercase tracking-[0.2em] text-[11px] text-navy transition-all hover:bg-blue hover:text-white shrink-0">
+              Back to Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main Components ---
 
 export default function Home() {
-  const [step, setStep] = useState<"landing" | "analysis" | "results">("landing");
+  const [step, setStep] = useState<"landing" | "analysis" | "dashboard">("landing");
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState("");
   const [targetPolitician, setTargetPolitician] = useState("Unspecified Subject");
   const [politicianQuery, setPoliticianQuery] = useState("Unspecified Subject");
   const [isPoliticianSearchOpen, setIsPoliticianSearchOpen] = useState(false);
+  const [reports, setReports] = useState<Report[]>([]);
+  const [selectedReportId, setSelectedReportId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const filteredPoliticians = POLITICIAN_OPTIONS.filter((name) =>
     name.toLowerCase().includes(politicianQuery.trim().toLowerCase())
   );
+  const selectedReport = reports.find((r) => r.id === selectedReportId) ?? null;
 
-  const handleStartAnalysis = (text: string) => {
-    if (!text.trim() && step === "landing") {
-      setTranscript("Youth unemployment has fallen to less than half of the previous administration's level.\nSemiconductor exports to Southeast Asia grew 14% year over year.");
+  const handleStartAnalysis = async (text: string) => {
+    let content = text;
+    if (!content.trim()) {
+      content = "Youth unemployment has fallen to less than half of the previous administration's level.\nSemiconductor exports to Southeast Asia grew 14% year over year.";
+      setTranscript(content);
     }
+    setError(null);
+    setProgress(0);
     setStep("analysis");
+    try {
+      const report = await runAnalysis(targetPolitician, content);
+      setReports((prev) => [report, ...prev]);
+      setSelectedReportId(report.id);
+      setProgress(100);
+      setTimeout(() => {
+        setStep("dashboard");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 400);
+    } catch (err: any) {
+      setError(err?.message ?? "Analysis failed. Please try again.");
+      setStep("landing");
+    }
   };
 
+  // Ramps toward (but not to) completion while the real request is in flight;
+  // handleStartAnalysis jumps it to 100 once the response actually comes back.
   useEffect(() => {
-    if (step === "analysis") {
-      const interval = setInterval(() => {
-        setProgress(prev => {
-          if (prev < 100) return prev + 2;
-          clearInterval(interval);
-          setTimeout(() => {
-            setStep("results");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }, 1000);
-          return 100;
-        });
-      }, 100);
-      return () => clearInterval(interval);
-    }
+    if (step !== "analysis") return;
+    const interval = setInterval(() => {
+      setProgress((p) => (p < 92 ? p + 2 : p));
+    }, 150);
+    return () => clearInterval(interval);
   }, [step]);
 
   return (
@@ -638,13 +850,18 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <button 
-                      onClick={() => handleStartAnalysis(transcript)} 
+                    <button
+                      onClick={() => handleStartAnalysis(transcript)}
                       className="bg-navy px-12 py-4 font-black uppercase tracking-widest text-white shadow-sharp hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
                     >
                       Execute_Process
                     </button>
                   </div>
+                  {error && (
+                    <div className="mt-4 border-2 border-red bg-red/5 p-4 font-mono text-xs font-bold text-red">
+                      <i className="ti ti-alert-triangle mr-2" />{error}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -654,102 +871,16 @@ export default function Home() {
 
       {step === "analysis" && <AnalysisStepper progress={progress} />}
 
-      {step === "results" && (
-        <section className="bg-white border-b border-navy p-12 lg:p-24 animate-in fade-in duration-700">
-          <div className="mx-auto max-w-7xl">
-            {/* Summary Header */}
-            <div className="mb-16 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-              <div>
-                <div className="mb-4 inline-block bg-navy px-3 py-1 font-mono text-[10px] font-bold uppercase text-white tracking-widest">Report_ID: AUDIT_2024_0708_V1</div>
-                <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-tight">Analytical Dashboard</h2>
-                <p className="mt-2 font-mono text-xs font-bold text-gray uppercase tracking-[0.2em]">VERDICT_SUMMARY // DATA_CONFIDENCE_INTERVAL_95%</p>
-              </div>
-              <div className="flex gap-4">
-                <button className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"><i className="ti ti-download mr-2" />Export JSON</button>
-                <button className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"><i className="ti ti-printer mr-2" />PDF Report</button>
-              </div>
-            </div>
+      {step === "dashboard" && (
+        <Dashboard
+          reports={reports}
+          onOpenReport={setSelectedReportId}
+          onNewAnalysis={() => setStep("landing")}
+        />
+      )}
 
-            {/* Score Cards */}
-            <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="flex flex-col justify-between border-2 border-navy bg-white p-8 shadow-sharp-sm">
-                <div>
-                  <div className="mb-6 flex items-start justify-between">
-                    <h3 className="text-xs font-black uppercase tracking-widest text-blue">Consistency Score</h3>
-                    <span className="font-mono text-5xl font-black text-navy leading-none">72%</span>
-                  </div>
-                  <SegmentedBar percentage={72} colorClass="bg-blue" />
-                </div>
-                <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
-                  Percentage of statements that do not contradict historical database records (N=452).
-                </p>
-              </div>
-              <div className="flex flex-col justify-between border-2 border-navy bg-white p-8 shadow-sharp-sm">
-                <div>
-                  <div className="mb-6 flex items-start justify-between">
-                    <h3 className="text-xs font-black uppercase tracking-widest text-green">Factuality Score</h3>
-                    <span className="font-mono text-5xl font-black text-navy leading-none">64%</span>
-                  </div>
-                  <SegmentedBar percentage={64} colorClass="bg-green" />
-                </div>
-                <p className="font-mono text-[10px] font-bold uppercase leading-relaxed text-gray/60 tracking-wider">
-                  Percentage of factual claims verified as TRUE against official statistical repositories.
-                </p>
-              </div>
-              <div className="border-2 border-navy bg-white p-8 shadow-sharp-sm">
-                <h3 className="mb-8 text-xs font-black uppercase tracking-widest text-navy">Statement Breakdown</h3>
-                <div className="space-y-4 font-mono text-[11px] font-bold">
-                  <div className="flex justify-between border-b border-navy/10 pb-2">
-                    <span className="uppercase text-gray/60">Total Extracted</span>
-                    <span className="text-navy">18</span>
-                  </div>
-                  <div className="flex justify-between border-b border-navy/10 pb-2">
-                    <span className="uppercase text-red">Contradictions</span>
-                    <span>05</span>
-                  </div>
-                  <div className="flex justify-between border-b border-navy/10 pb-2">
-                    <span className="uppercase text-red">False Claims</span>
-                    <span>03</span>
-                  </div>
-                  <div className="flex justify-between border-b border-navy/10 pb-2">
-                    <span className="uppercase text-orange">Unverifiable</span>
-                    <span>04</span>
-                  </div>
-                  <div className="flex justify-between pb-2">
-                    <span className="uppercase text-green">Verified Correct</span>
-                    <span>06</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Statement Ledger */}
-            <div className="mb-10 flex items-center gap-4">
-              <div className="h-[1px] flex-grow bg-navy/10" />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray">End_of_Summary // Beginning_of_Claim_Ledger</span>
-              <div className="h-[1px] flex-grow bg-navy/10" />
-            </div>
-
-            <div className="space-y-10">
-              {SAMPLE_STATEMENTS.map((s) => (
-                <StatementCard key={s.id} statement={s} />
-              ))}
-            </div>
-
-            {/* Methodology Footer */}
-            <div className="mt-24 flex flex-col items-center justify-between gap-8 bg-navy p-12 text-white md:flex-row shadow-sharp">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-black uppercase tracking-widest">Final Methodology Disclaimer</h3>
-                <p className="max-w-2xl font-mono text-xs font-bold leading-relaxed text-white/50 uppercase tracking-widest">
-                  AI-BASED ANALYTICAL MODELS PROVIDE INITIAL VERIFICATION. HUMAN VERIFICATION BY CERTIFIED JOURNALISTS IS REQUIRED FOR LEGAL OR EDITORIAL PUBLICATION. ALL SOURCES ARE PUBLICLY AVAILABLE.
-                </p>
-              </div>
-              <button className="bg-white px-10 py-5 font-black uppercase tracking-[0.2em] text-[11px] text-navy transition-all hover:bg-blue hover:text-white shrink-0">
-                Submit for Human Review
-              </button>
-            </div>
-          </div>
-        </section>
+      {selectedReport && (
+        <ReportModal report={selectedReport} onClose={() => setSelectedReportId(null)} />
       )}
 
       {/* Main Footer */}
