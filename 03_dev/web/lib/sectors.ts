@@ -14,7 +14,7 @@ export const SECTOR_LABEL: Record<
 };
 
 const MAP: [SectorKey, string[]][] = [
-  ["geopolitics", ["nato", "russia", "ukraine", "syria", "iran", "north korea", "china", "외교", "안보", "foreign", "국방", "defense", "trade"]],
+  ["geopolitics", ["nato", "russia", "ukraine", "우크라", "젤렌스키", "syria", "iran", "north korea", "china", "외교", "안보", "foreign", "국방", "defense", "trade"]],
   ["economy", ["crypto", "fed", "tax", "조세", "debt", "minimum wage", "economy", "경제", "energy", "에너지", "oil", "gas", "price", "inflation", "market", "job", "trade deficit", "ethanol", "ev", "부동산", "노동", "규제", "regulation"]],
   ["social", ["abortion", "gun", "healthcare", "entitlement", "lgbtq", "immigration", "covid", "vaccine", "daca", "복지", "교육", "인구", "border"]],
   ["politics", ["election", "jan6", "swamp", "정치", "통합", "국정"]],
@@ -65,6 +65,7 @@ const TOPIC_LABEL: Record<string, { ko: string; en: string }> = {
   regulation: { ko: "규제", en: "Regulation" },
   rhetoric: { ko: "정치 수사", en: "Rhetoric" },
   "russia/ukraine": { ko: "러시아·우크라이나", en: "Russia / Ukraine" },
+  우크라이나: { ko: "우크라이나", en: "Ukraine" },
   swamp: { ko: "기득권 청산", en: "The swamp" },
   syria: { ko: "시리아", en: "Syria" },
   tariffs: { ko: "관세", en: "Tariffs" },

@@ -1,21 +1,21 @@
 {
   "politician": "Donald Trump",
   "generatedFrom": 173,
-  "totalStatements": 173,
+  "totalStatements": 176,
   "totalReversals": 29,
   "sectors": [
     {
       "key": "geopolitics",
-      "statementCount": 110,
+      "statementCount": 113,
       "reversalCount": 14,
       "topics": [
         {
           "topic": "iran",
-          "count": 77,
+          "count": 80,
           "reversalCount": 6,
           "note": {
-            "ko": "트럼프는 2020년 1월 정권교체를 원치 않는다고 했으나 2025년 6월 22일에는 정권교체를 시사했고, 2025년 6월 16일 협상을 원한다더니 6월 17일 무조건 항복을 요구했으며, 6월 21일 공습 후 6월 23일 휴전을 선언했다가 2026년 3월 다시 대규모 군사작전으로 전환했고, 이후 3월 23일과 4월 7일 재차 협상·정전으로 돌아섰지만 결국 2026년 7월 8일 잠정 합의가 끝났다고 선언하며 다시 적대적 태도로 돌아갔다.",
-            "en": "Trump reversed from denying any intent for regime change in Jan 2020 to hinting at regime change on 2025-06-22, flipped from seeking a deal on 2025-06-16 to demanding unconditional surrender on 2025-06-17, went from launching strikes on 2025-06-21 to declaring a ceasefire on 2025-06-23, then reversed again into massive renewed combat operations by 2026-03-02, paused for negotiations by 2026-03-23 and 2026-04-07, only to declare the interim agreement over and turn hostile again by 2026-07-08."
+            "ko": "트럼프는 2020년 1월 정권교체를 원치 않는다고 했으나 2025년 6월 22일에는 정권교체를 시사했고, 2025년 6월 16일 협상을 원한다더니 6월 17일 무조건 항복을 요구했으며, 6월 21일 공습 후 6월 23일 휴전을 선언했다가 2026년 3월 다시 대규모 군사작전으로 전환했고, 이후 3월 23일과 4월 7일 재차 협상·정전으로 돌아섰지만 결국 2026년 7월 8일 잠정 합의가 끝났다고 선언하며 다시 적대적 태도로 돌아갔다. 2026년 7월 8일에는 '끝났다'고 선언하면서 동시에 이란의 선박 공격에 대한 보복 공습을 재개하고 '훨씬 더 나빠질 것'이라 경고했다.",
+            "en": "Trump reversed from denying any intent for regime change in Jan 2020 to hinting at regime change on 2025-06-22, flipped from seeking a deal on 2025-06-16 to demanding unconditional surrender on 2025-06-17, went from launching strikes on 2025-06-21 to declaring a ceasefire on 2025-06-23, then reversed again into massive renewed combat operations by 2026-03-02, paused for negotiations by 2026-03-23 and 2026-04-07, only to declare the interim agreement over and turn hostile again by 2026-07-08. On 2026-07-08 he both declared it 'over' and launched renewed retaliatory strikes over Iran's attacks on ships, warning it 'will get much worse.'"
           },
           "statements": [
             {
@@ -633,6 +633,30 @@
               "src": "en",
               "date": "2026-07-08",
               "sourceUrl": "https://www.reuters.com/world/trump-says-interim-accord-with-iran-end-war-is-over-2026-07-08/"
+            },
+            {
+              "text": "This is in retribution for yesterday's bombing of ships by Iran. If it happens again, it will get much worse!",
+              "textEn": "This is in retribution for yesterday's bombing of ships by Iran. If it happens again, it will get much worse!",
+              "textKo": "이것은 어제 이란의 선박 폭격에 대한 보복이다. 또다시 일어나면 훨씬 더 나빠질 것이다!",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.newsweek.com/iran-war-ceasefire-end-trump-statement-12170033"
+            },
+            {
+              "text": "We hit them very hard last night. Probably hit them hard again tonight.",
+              "textEn": "We hit them very hard last night. Probably hit them hard again tonight.",
+              "textKo": "어젯밤 우리는 그들을 매우 세게 타격했다. 오늘 밤에도 아마 다시 세게 칠 것이다.",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.kccu.org/world/2026-07-08/at-nato-summit-in-turkey-trump-says-he-believes-ceasefire-with-iran-is-over"
+            },
+            {
+              "text": "I think it's over. I don't want to deal with them anymore. They're scum.",
+              "textEn": "I think it's over. I don't want to deal with them anymore. They're scum.",
+              "textKo": "끝난 것 같다. 더 이상 그들과 엮이고 싶지 않다. 그들은 쓰레기다.",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.npr.org/2026/07/08/nx-s1-5883929/trump-nato-iran-strikes-press-conference"
             }
           ]
         },

@@ -1,8 +1,8 @@
 {
   "politician": "이재명",
   "generatedFrom": 64,
-  "totalStatements": 64,
-  "totalReversals": 7,
+  "totalStatements": 66,
+  "totalReversals": 8,
   "sectors": [
     {
       "key": "politics",
@@ -457,6 +457,126 @@
       ]
     },
     {
+      "key": "geopolitics",
+      "statementCount": 10,
+      "reversalCount": 3,
+      "topics": [
+        {
+          "topic": "외교",
+          "count": 6,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2017년 사드 철회 주장에서 이후 한미동맹 중시로 선회했고, 한미일 협력에 대해서도 2023년 신중론에서 2025년 6월 적극 강화 입장으로 바뀌어 총 2차례 입장이 반전됐다.",
+            "en": "He reversed from demanding THAAD withdrawal in 2017 to emphasizing the US alliance, and shifted from cautious stance on Korea-US-Japan cooperation in 2023 to actively strengthening it by June 2025, marking two reversals."
+          },
+          "statements": [
+            {
+              "text": "사드 배치는 대한민국 국익에 도움이 안 되기 때문에 원점에서 재검토해서 철회해야 한다. (대통령이 되면 철회할 건가) 네, 그렇다.",
+              "textEn": "The deployment of THAAD does not benefit the national interest of South Korea, so it should be reconsidered from scratch and withdrawn. (Will you withdraw it if you become president?) Yes, that's right.",
+              "textKo": "사드 배치는 대한민국 국익에 도움이 안 되기 때문에 원점에서 재검토해서 철회해야 한다. (대통령이 되면 철회할 건가) 네, 그렇다.",
+              "src": "ko",
+              "date": "2017-03-06",
+              "sourceUrl": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002305552"
+            },
+            {
+              "text": "한미동맹은 외교의 근간이지만, 한미일 협력은 신중해야 한다.",
+              "textEn": "While the US-ROK alliance is the foundation of diplomacy, cooperation with the US-Japan needs to be handled carefully.",
+              "textKo": "한미동맹은 외교의 근간이지만, 한미일 협력은 신중해야 한다.",
+              "src": "ko",
+              "date": "2023-04-11",
+              "sourceUrl": "https://www.rfa.org/korean/in_focus/nk_nuclear_talks/ljm-04112023082224.html"
+            },
+            {
+              "text": "미국과는 동맹으로서 특별한 관계가 있기 때문에 잘 활용해야 한다. 일방적으로 끌려다니는 것은 옳지 않다. 미리 저자세로 굴종할 필요 없이 협상해야 한다.",
+              "textEn": "Since there is a special relationship as an ally with the United States, we should make good use of it. It is not right to be dragged around unilaterally. There is no need to submit in a low posture from the beginning; negotiations are necessary.",
+              "textKo": "미국과는 동맹으로서 특별한 관계가 있기 때문에 잘 활용해야 한다. 일방적으로 끌려다니는 것은 옳지 않다. 미리 저자세로 굴종할 필요 없이 협상해야 한다.",
+              "src": "ko",
+              "date": "2025-02-24",
+              "sourceUrl": "https://biz.heraldcorp.com/article/10427554"
+            },
+            {
+              "text": "국익 중심의 실용외교를 통해 글로벌 경제·안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다. 굳건한 한미동맹을 토대로 한미일 협력을 다지겠다.",
+              "textEn": "Through pragmatic diplomacy centered on national interest, I will turn the crisis of global economic and security environment transformation into an opportunity for maximizing national interest. Based on a solid US-ROK alliance, I will strengthen cooperation with the US-Japan and approach relations with neighboring countries from the perspective of national interest and pragmatism.",
+              "textKo": "국익 중심의 실용외교를 통해 글로벌 경제·안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다. 굳건한 한미동맹을 토대로 한미일 협력을 다지겠다.",
+              "src": "ko",
+              "date": "2025-06-04",
+              "sourceUrl": "https://overseas.mofa.go.kr/us-ko/brd/m_4487/view.do?seq=1347789"
+            },
+            {
+              "text": "국익 중심의 실용 외교를 통해 글로벌 경제안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다고 밝혔다.",
+              "textEn": "I have stated that through pragmatic diplomacy centered on national interest, I will turn the crisis of global economic security environment transformation into an opportunity for maximizing national interest.",
+              "textKo": "국익 중심의 실용 외교를 통해 글로벌 경제안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다고 밝혔다.",
+              "src": "ko",
+              "date": "2025-06-04",
+              "sourceUrl": "https://www.youtube.com/watch?v=hgb73t0ZYQA"
+            },
+            {
+              "text": "굳건한 한미 동맹을 토대로 한미일 협력을 다지고 주변국과의 관계도 국익과 실용의 관점에서 접근하겠다고 밝혔다.",
+              "textEn": "Based on a solid US-ROK alliance, I will strengthen cooperation with the US-Japan and approach relations with neighboring countries from the perspective of national interest and pragmatism.",
+              "textKo": "굳건한 한미 동맹을 토대로 한미일 협력을 다지고 주변국과의 관계도 국익과 실용의 관점에서 접근하겠다고 밝혔다.",
+              "src": "ko",
+              "date": "2025-06-04",
+              "sourceUrl": "https://www.youtube.com/watch?v=hgb73t0ZYQA"
+            }
+          ]
+        },
+        {
+          "topic": "우크라이나",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2022년 2월 대선후보 시절 젤렌스키를 '6개월 초보 정치인'이라 부르며 그의 나토 가입 공언이 러시아를 자극해 전쟁을 초래했다는 우크라이나 책임론을 폈으나, 2026년 7월 대통령으로서 젤렌스키와의 첫 정상회담에서 약 1500억 원(1억 달러) 인도적·재건 지원을 발표하며 입장을 뒤집었다.",
+            "en": "In Feb 2022, as a presidential candidate, he blamed Ukraine — calling Zelensky a 'six-month rookie politician' whose NATO push provoked Russia into war — but in July 2026, as president, he reversed course, announcing about 150 billion won ($100M) in humanitarian and reconstruction aid at his first summit with Zelensky."
+          },
+          "statements": [
+            {
+              "text": "우크라이나에서 6개월 초보 정치인이 대통령이 돼서, 나토(NATO)가 가입을 안 해주려고 하는데 가입을 공언하고 러시아를 자극하는 바람에 결국은 충돌했죠.",
+              "textKo": "우크라이나에서 6개월 초보 정치인이 대통령이 돼서, 나토(NATO)가 가입을 안 해주려고 하는데 가입을 공언하고 러시아를 자극하는 바람에 결국은 충돌했죠.",
+              "textEn": "A six-month rookie politician became Ukraine's president and, by publicly vowing to join a NATO that would not have them, provoked Russia — which is how the clash ended up happening.",
+              "src": "ko",
+              "date": "2022-02-25",
+              "sourceUrl": "https://www.imaeil.com/page/view/2022022616544629309"
+            },
+            {
+              "text": "한국 정부는 우크라이나 국민들이 필요로 하는 인도적 지원을 지속하면서 우크라이나 복구와 재건을 위한 국제사회의 노력에도 지속 동참해 나갈 것.",
+              "textKo": "한국 정부는 우크라이나 국민들이 필요로 하는 인도적 지원을 지속하면서 우크라이나 복구와 재건을 위한 국제사회의 노력에도 지속 동참해 나갈 것.",
+              "textEn": "The Korean government will continue the humanitarian assistance Ukrainians need and will keep taking part in the international community's efforts to recover and rebuild Ukraine.",
+              "src": "ko",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.newspim.com/news/view/20260708001278"
+            }
+          ]
+        },
+        {
+          "topic": "국방",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2022년 THAAD 수도권 배치 비판과 2026년 전작권 환수 및 자주국방 강조는 서로 다른 안보 쟁점을 다루고 있어 명확한 입장 반전으로 보기 어렵다.",
+            "en": "The 2022 criticism of THAAD deployment in the capital region and the 2026 call for self-reliant defense and OPCON transfer address different security issues, so no clear reversal is evident."
+          },
+          "statements": [
+            {
+              "text": "사드를 수도권에 배치한다고 하는데 사드가 수도권 방어에 도움이 되겠느냐. 안보 불안 심리를 자극하는 국익을 해치는 행위다.",
+              "textEn": "There are plans to deploy THAAD in the capital region, but will THAAD really be helpful for defending the capital? This is an act that harms national interests by stimulating feelings of insecurity about security.",
+              "textKo": "사드를 수도권에 배치한다고 하는데 사드가 수도권 방어에 도움이 되겠느냐. 안보 불안 심리를 자극하는 국익을 해치는 행위다.",
+              "src": "ko",
+              "date": "2022-02-02",
+              "sourceUrl": "https://www.newsis.com/view/NISX20220202_0001744402"
+            },
+            {
+              "text": "자주국방 의지가 있어야 친구도 우리를 존중하고 동맹도 더 굳건하게 유지될 수 있다. 한미 동맹의 건강한 발전을 견인할 전작권 환수를 차질없이 신속히 진행해달라.",
+              "textEn": "For us to maintain our friendships and strengthen our alliances, we must have a commitment to self-reliant defense. Please proceed without delay to smoothly advance the recovery of wartime operational control (OPCON) in order to drive healthy development of the US-ROK alliance.",
+              "textKo": "자주국방 의지가 있어야 친구도 우리를 존중하고 동맹도 더 굳건하게 유지될 수 있다. 한미 동맹의 건강한 발전을 견인할 전작권 환수를 차질없이 신속히 진행해달라.",
+              "src": "ko",
+              "date": "2026-05-26",
+              "sourceUrl": "https://www.sedaily.com/article/20048117"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "key": "economy",
       "statementCount": 20,
       "reversalCount": 2,
@@ -673,99 +793,6 @@
               "src": "ko",
               "date": "2025-09-11",
               "sourceUrl": "https://www.khan.co.kr/article/202509111628001"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "key": "geopolitics",
-      "statementCount": 8,
-      "reversalCount": 2,
-      "topics": [
-        {
-          "topic": "외교",
-          "count": 6,
-          "reversalCount": 2,
-          "note": {
-            "ko": "2017년 사드 철회 주장에서 이후 한미동맹 중시로 선회했고, 한미일 협력에 대해서도 2023년 신중론에서 2025년 6월 적극 강화 입장으로 바뀌어 총 2차례 입장이 반전됐다.",
-            "en": "He reversed from demanding THAAD withdrawal in 2017 to emphasizing the US alliance, and shifted from cautious stance on Korea-US-Japan cooperation in 2023 to actively strengthening it by June 2025, marking two reversals."
-          },
-          "statements": [
-            {
-              "text": "사드 배치는 대한민국 국익에 도움이 안 되기 때문에 원점에서 재검토해서 철회해야 한다. (대통령이 되면 철회할 건가) 네, 그렇다.",
-              "textEn": "The deployment of THAAD does not benefit the national interest of South Korea, so it should be reconsidered from scratch and withdrawn. (Will you withdraw it if you become president?) Yes, that's right.",
-              "textKo": "사드 배치는 대한민국 국익에 도움이 안 되기 때문에 원점에서 재검토해서 철회해야 한다. (대통령이 되면 철회할 건가) 네, 그렇다.",
-              "src": "ko",
-              "date": "2017-03-06",
-              "sourceUrl": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002305552"
-            },
-            {
-              "text": "한미동맹은 외교의 근간이지만, 한미일 협력은 신중해야 한다.",
-              "textEn": "While the US-ROK alliance is the foundation of diplomacy, cooperation with the US-Japan needs to be handled carefully.",
-              "textKo": "한미동맹은 외교의 근간이지만, 한미일 협력은 신중해야 한다.",
-              "src": "ko",
-              "date": "2023-04-11",
-              "sourceUrl": "https://www.rfa.org/korean/in_focus/nk_nuclear_talks/ljm-04112023082224.html"
-            },
-            {
-              "text": "미국과는 동맹으로서 특별한 관계가 있기 때문에 잘 활용해야 한다. 일방적으로 끌려다니는 것은 옳지 않다. 미리 저자세로 굴종할 필요 없이 협상해야 한다.",
-              "textEn": "Since there is a special relationship as an ally with the United States, we should make good use of it. It is not right to be dragged around unilaterally. There is no need to submit in a low posture from the beginning; negotiations are necessary.",
-              "textKo": "미국과는 동맹으로서 특별한 관계가 있기 때문에 잘 활용해야 한다. 일방적으로 끌려다니는 것은 옳지 않다. 미리 저자세로 굴종할 필요 없이 협상해야 한다.",
-              "src": "ko",
-              "date": "2025-02-24",
-              "sourceUrl": "https://biz.heraldcorp.com/article/10427554"
-            },
-            {
-              "text": "국익 중심의 실용외교를 통해 글로벌 경제·안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다. 굳건한 한미동맹을 토대로 한미일 협력을 다지겠다.",
-              "textEn": "Through pragmatic diplomacy centered on national interest, I will turn the crisis of global economic and security environment transformation into an opportunity for maximizing national interest. Based on a solid US-ROK alliance, I will strengthen cooperation with the US-Japan and approach relations with neighboring countries from the perspective of national interest and pragmatism.",
-              "textKo": "국익 중심의 실용외교를 통해 글로벌 경제·안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다. 굳건한 한미동맹을 토대로 한미일 협력을 다지겠다.",
-              "src": "ko",
-              "date": "2025-06-04",
-              "sourceUrl": "https://overseas.mofa.go.kr/us-ko/brd/m_4487/view.do?seq=1347789"
-            },
-            {
-              "text": "국익 중심의 실용 외교를 통해 글로벌 경제안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다고 밝혔다.",
-              "textEn": "I have stated that through pragmatic diplomacy centered on national interest, I will turn the crisis of global economic security environment transformation into an opportunity for maximizing national interest.",
-              "textKo": "국익 중심의 실용 외교를 통해 글로벌 경제안보 환경 대전환의 위기를 국익 극대화의 기회로 만들겠다고 밝혔다.",
-              "src": "ko",
-              "date": "2025-06-04",
-              "sourceUrl": "https://www.youtube.com/watch?v=hgb73t0ZYQA"
-            },
-            {
-              "text": "굳건한 한미 동맹을 토대로 한미일 협력을 다지고 주변국과의 관계도 국익과 실용의 관점에서 접근하겠다고 밝혔다.",
-              "textEn": "Based on a solid US-ROK alliance, I will strengthen cooperation with the US-Japan and approach relations with neighboring countries from the perspective of national interest and pragmatism.",
-              "textKo": "굳건한 한미 동맹을 토대로 한미일 협력을 다지고 주변국과의 관계도 국익과 실용의 관점에서 접근하겠다고 밝혔다.",
-              "src": "ko",
-              "date": "2025-06-04",
-              "sourceUrl": "https://www.youtube.com/watch?v=hgb73t0ZYQA"
-            }
-          ]
-        },
-        {
-          "topic": "국방",
-          "count": 2,
-          "reversalCount": 0,
-          "note": {
-            "ko": "2022년 THAAD 수도권 배치 비판과 2026년 전작권 환수 및 자주국방 강조는 서로 다른 안보 쟁점을 다루고 있어 명확한 입장 반전으로 보기 어렵다.",
-            "en": "The 2022 criticism of THAAD deployment in the capital region and the 2026 call for self-reliant defense and OPCON transfer address different security issues, so no clear reversal is evident."
-          },
-          "statements": [
-            {
-              "text": "사드를 수도권에 배치한다고 하는데 사드가 수도권 방어에 도움이 되겠느냐. 안보 불안 심리를 자극하는 국익을 해치는 행위다.",
-              "textEn": "There are plans to deploy THAAD in the capital region, but will THAAD really be helpful for defending the capital? This is an act that harms national interests by stimulating feelings of insecurity about security.",
-              "textKo": "사드를 수도권에 배치한다고 하는데 사드가 수도권 방어에 도움이 되겠느냐. 안보 불안 심리를 자극하는 국익을 해치는 행위다.",
-              "src": "ko",
-              "date": "2022-02-02",
-              "sourceUrl": "https://www.newsis.com/view/NISX20220202_0001744402"
-            },
-            {
-              "text": "자주국방 의지가 있어야 친구도 우리를 존중하고 동맹도 더 굳건하게 유지될 수 있다. 한미 동맹의 건강한 발전을 견인할 전작권 환수를 차질없이 신속히 진행해달라.",
-              "textEn": "For us to maintain our friendships and strengthen our alliances, we must have a commitment to self-reliant defense. Please proceed without delay to smoothly advance the recovery of wartime operational control (OPCON) in order to drive healthy development of the US-ROK alliance.",
-              "textKo": "자주국방 의지가 있어야 친구도 우리를 존중하고 동맹도 더 굳건하게 유지될 수 있다. 한미 동맹의 건강한 발전을 견인할 전작권 환수를 차질없이 신속히 진행해달라.",
-              "src": "ko",
-              "date": "2026-05-26",
-              "sourceUrl": "https://www.sedaily.com/article/20048117"
             }
           ]
         }

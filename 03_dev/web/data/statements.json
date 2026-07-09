@@ -2432,5 +2432,50 @@
     "sourceUrl": "https://www.reuters.com/world/trump-says-interim-accord-with-iran-end-war-is-over-2026-07-08/",
     "topic": "Iran",
     "era": "iran-war-dataset"
+  },
+  {
+    "id": "lee-ukr-01",
+    "politician": "이재명",
+    "topic": "우크라이나",
+    "text": "우크라이나에서 6개월 초보 정치인이 대통령이 돼서, 나토(NATO)가 가입을 안 해주려고 하는데 가입을 공언하고 러시아를 자극하는 바람에 결국은 충돌했죠.",
+    "date": "2022-02-25",
+    "sourceUrl": "https://www.imaeil.com/page/view/2022022616544629309",
+    "era": "research"
+  },
+  {
+    "id": "lee-ukr-02",
+    "politician": "이재명",
+    "topic": "우크라이나",
+    "text": "한국 정부는 우크라이나 국민들이 필요로 하는 인도적 지원을 지속하면서 우크라이나 복구와 재건을 위한 국제사회의 노력에도 지속 동참해 나갈 것.",
+    "date": "2026-07-08",
+    "sourceUrl": "https://www.newspim.com/news/view/20260708001278",
+    "era": "research"
+  },
+  {
+    "id": "trump-iran-new-01",
+    "politician": "Donald Trump",
+    "topic": "Iran",
+    "text": "This is in retribution for yesterday's bombing of ships by Iran. If it happens again, it will get much worse!",
+    "date": "2026-07-08",
+    "sourceUrl": "https://www.newsweek.com/iran-war-ceasefire-end-trump-statement-12170033",
+    "era": "iran-2026"
+  },
+  {
+    "id": "trump-iran-new-02",
+    "politician": "Donald Trump",
+    "topic": "Iran",
+    "text": "We hit them very hard last night. Probably hit them hard again tonight.",
+    "date": "2026-07-08",
+    "sourceUrl": "https://www.kccu.org/world/2026-07-08/at-nato-summit-in-turkey-trump-says-he-believes-ceasefire-with-iran-is-over",
+    "era": "iran-2026"
+  },
+  {
+    "id": "trump-iran-new-03",
+    "politician": "Donald Trump",
+    "topic": "Iran",
+    "text": "I think it's over. I don't want to deal with them anymore. They're scum.",
+    "date": "2026-07-08",
+    "sourceUrl": "https://www.npr.org/2026/07/08/nx-s1-5883929/trump-nato-iran-strikes-press-conference",
+    "era": "iran-2026"
   }
 ]
