@@ -76,6 +76,7 @@ interface Profile {
 interface LastAnalysis {
   consistencyScore: number;
   factualityScore: number;
+  factStatChecked?: number;
   breakdown?: { total: number; contradictions: number; verified: number };
 }
 
@@ -112,7 +113,8 @@ const STR = {
     consistency: "Consistency",
     factuality: "Factuality",
     consistencyHint: "Share of lines that do NOT contradict the speaker's own past.",
-    factualityHint: "Share of checkable claims verified TRUE against sources.",
+    factualityHint: "TRUE share of claims checked against official statistics",
+    noStatClaim: "No statistical claim to check against official data.",
     pickSector: "Select a category to see its statements",
     cBadge: (c: boolean): string => (c ? "Contradiction" : "Consistent"),
     fBadge: {
@@ -144,7 +146,8 @@ const STR = {
     consistency: "일관성",
     factuality: "사실성",
     consistencyHint: "발화자 자신의 과거와 모순되지 않는 발언의 비율.",
-    factualityHint: "검증 가능한 주장 중 출처로 사실 확인된 비율.",
+    factualityHint: "공식 통계로 검증한 주장 중 사실 비율",
+    noStatClaim: "공식 통계로 대조할 통계 주장이 없습니다.",
     pickSector: "카테고리를 선택하면 해당 발언이 표시됩니다",
     cBadge: (c: boolean): string => (c ? "모순" : "일관"),
     fBadge: {
@@ -474,12 +477,23 @@ export default function ProfileDashboard({
                         {t.factuality}
                       </h4>
                       <span className="font-mono text-4xl font-black leading-none text-ink">
-                        {lastAnalysis.factualityScore}%
+                        {lastAnalysis.factStatChecked === 0
+                          ? "—"
+                          : `${lastAnalysis.factualityScore}%`}
                       </span>
                     </div>
-                    <SegBar pct={lastAnalysis.factualityScore} color="green" />
+                    <SegBar
+                      pct={
+                        lastAnalysis.factStatChecked === 0
+                          ? 0
+                          : lastAnalysis.factualityScore
+                      }
+                      color="green"
+                    />
                     <p className="mt-3 font-mono text-[9px] uppercase leading-relaxed tracking-wider text-gray/70">
-                      {t.factualityHint}
+                      {lastAnalysis.factStatChecked === 0
+                        ? t.noStatClaim
+                        : `${t.factualityHint} (${lastAnalysis.factStatChecked})`}
                     </p>
                   </div>
                 </div>

@@ -11,7 +11,7 @@
 //   - KOSIS orgId/tblId/itmId/objL1: open the table on https://kosis.kr and read
 //     its OpenAPI sample query. Unknown/removed keys just fall back to web search.
 
-export type StatProvider = "INSEE" | "KOSIS";
+export type StatProvider = "INSEE" | "KOSIS" | "BLS";
 
 export interface RegistryEntry {
   key: string; // stable key the LLM maps to (e.g. "fr.unemployment_rate")
@@ -29,9 +29,26 @@ export interface RegistryEntry {
     objL1?: string;
     prdSe?: string;
   };
+  bls?: { seriesId: string };
 }
 
 export const STAT_REGISTRY: RegistryEntry[] = [
+  {
+    key: "us.unemployment_rate",
+    label: "United States — unemployment rate (BLS)",
+    provider: "BLS",
+    geo: "US",
+    unit: "%",
+    aliases: [
+      "unemployment",
+      "unemployment rate",
+      "jobless rate",
+      "실업률",
+      "us unemployment",
+    ],
+    sourceUrl: "https://data.bls.gov/timeseries/LNS14000000",
+    bls: { seriesId: "LNS14000000" }, // civilian unemployment rate, seasonally adj.
+  },
   {
     key: "fr.unemployment_rate",
     label: "France — taux de chômage (BIT)",

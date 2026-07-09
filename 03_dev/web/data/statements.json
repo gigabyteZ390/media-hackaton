@@ -2477,5 +2477,50 @@
     "date": "2026-07-08",
     "sourceUrl": "https://www.npr.org/2026/07/08/nx-s1-5883929/trump-nato-iran-strikes-press-conference",
     "era": "iran-2026"
+  },
+  {
+    "id": "trump-econ-01",
+    "politician": "Donald Trump",
+    "topic": "economy",
+    "text": "And at 3.5 percent, that's a number that is the lowest in more than 50 years.",
+    "date": "2020-01-21",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-world-economic-forum-davos-switzerland/",
+    "era": "stats"
+  },
+  {
+    "id": "trump-econ-02",
+    "politician": "Donald Trump",
+    "topic": "economy",
+    "text": "I am thrilled to announce that, in the second quarter of this year, the United States economy grew at the amazing rate of 4.1 percent.",
+    "date": "2018-07-27",
+    "sourceUrl": "https://abcnews.go.com/Business/us-economy-surges-41-percent-2nd-quarter-marking/story?id=56863574",
+    "era": "stats"
+  },
+  {
+    "id": "trump-econ-03",
+    "politician": "Donald Trump",
+    "topic": "economy",
+    "text": "Watch those GDP numbers. We started off at a very low number, and right now we hit a 3.2. Nobody thought that was possible.",
+    "date": "2018-06-28",
+    "sourceUrl": "https://www.politifact.com/factchecks/2018/jul/02/donald-trump/donald-trump-base-describing-gdp-growth-his-watch/",
+    "era": "stats"
+  },
+  {
+    "id": "trump-econ-04",
+    "politician": "Donald Trump",
+    "topic": "economy",
+    "text": "If you go back to just before the war, for the last three months, inflation was at 1.7%.",
+    "date": "2026-05-13",
+    "sourceUrl": "https://www.cnn.com/2026/05/13/politics/fact-check-trump-inflation-claim",
+    "era": "stats"
+  },
+  {
+    "id": "trump-econ-05",
+    "politician": "Donald Trump",
+    "topic": "economy",
+    "text": "When I took office, inflation was the worst in 48 years and some would say in the history of our country.",
+    "date": "2025-12-16",
+    "sourceUrl": "https://www.factcheck.org/2025/12/factchecking-trumps-rapid-fire-prime-time-address/",
+    "era": "stats"
   }
 ]

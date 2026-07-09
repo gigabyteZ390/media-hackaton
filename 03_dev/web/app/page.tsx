@@ -162,6 +162,7 @@ interface Analysis {
   results: StatementResult[];
   consistencyScore: number;
   factualityScore: number;
+  factStatChecked: number; // claims verified against official statistics
   breakdown: {
     total: number;
     contradictions: number;
@@ -299,6 +300,7 @@ async function runAnalysis(
     results,
     consistencyScore: aRes.consistencyScore ?? 0,
     factualityScore: fRes.accuracyScore ?? 0,
+    factStatChecked: fRes.statChecked ?? 0,
     breakdown: {
       total: results.length,
       contradictions: results.filter(
@@ -1244,6 +1246,7 @@ export default function Home() {
               ? {
                   consistencyScore: analysis.consistencyScore,
                   factualityScore: analysis.factualityScore,
+                  factStatChecked: analysis.factStatChecked,
                   breakdown: analysis.breakdown,
                 }
               : undefined

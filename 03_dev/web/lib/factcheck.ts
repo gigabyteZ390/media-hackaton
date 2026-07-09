@@ -29,6 +29,7 @@ import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
 import { STAT_REGISTRY, findEntry, type RegistryEntry } from "./statRegistry";
 import { inseeGetSeries } from "./insee";
 import { kosisGetSeries } from "./kosis";
+import { blsGetSeries } from "./bls";
 import { cacheGet, cacheSet } from "./mongo";
 import type {
   SpokenLine,
@@ -77,7 +78,8 @@ async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim
 /** Fetch the official figure for a registry entry (cached; dispatches to INSEE/KOSIS). */
 async function resolveOfficial(
   entry: RegistryEntry,
-  period?: string
+  period?: string,
+  blsPeriod?: string // month-aware period for BLS (present-tense claims use the month)
 ): Promise<StatValue | null> {
   const key = `${entry.key}:${period ?? "latest"}`;
   const cached = await cacheGet<StatValue>("statCache", key);
@@ -95,6 +97,13 @@ async function resolveOfficial(
     value = await kosisGetSeries({
       ...entry.kosis,
       period,
+      unit: entry.unit,
+      label: entry.label,
+      sourceUrl: entry.sourceUrl,
+    });
+  } else if (entry.provider === "BLS" && entry.bls) {
+    value = await blsGetSeries(entry.bls.seriesId, {
+      period: blsPeriod ?? period,
       unit: entry.unit,
       label: entry.label,
       sourceUrl: entry.sourceUrl,
@@ -291,7 +300,10 @@ async function runPipeline(
         // Time-anchoring: judge as of the claim's own period, else the year the
         // statement was spoken (asOf), else the latest official figure.
         const effectivePeriod = c.period ?? (asOf ? asOf.slice(0, 4) : undefined);
-        const official = await resolveOfficial(entry, effectivePeriod);
+        // BLS: if the claim states its own period use that, else the full spoken date
+        // (so a present-tense "unemployment is 3.5%" checks that month, not a
+        // COVID-distorted annual average).
+        const official = await resolveOfficial(entry, effectivePeriod, c.period ?? asOf);
         if (official) {
           const { verdict, confidence } = compare(
             c.claimedValue,
@@ -361,12 +373,16 @@ export async function factCheck(
     .map((l, i) => cached[i] ?? freshByLine.get(norm(l.text)))
     .filter((f): f is FactVerdict => Boolean(f));
 
-  // Accuracy = TRUE / checkable factual claims (computed in code, not by the model).
-  const checked = facts.filter((f) => f.isFactualClaim);
+  // Accuracy is scored ONLY over claims verified against OFFICIAL STATISTICS
+  // (deterministic number comparison vs BLS / INSEE / KOSIS). Web-checked and
+  // opinion lines still get per-line verdicts, but they don't drag the headline %
+  // down just because we couldn't find hard evidence. statChecked lets the UI show
+  // "no statistical claim" instead of a misleading 0%.
+  const checked = facts.filter((f) => f.method === "official-stats");
   const trueCount = checked.filter((f) => f.verdict === "TRUE").length;
   const accuracyScore = checked.length
     ? Math.round((trueCount / checked.length) * 100)
     : 0;
 
-  return { facts, accuracyScore };
+  return { facts, accuracyScore, statChecked: checked.length };
 }

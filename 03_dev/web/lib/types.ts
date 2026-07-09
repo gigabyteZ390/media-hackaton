@@ -72,7 +72,7 @@ export interface StatClaim {
 
 /** One official figure fetched from a government statistics API. */
 export interface StatValue {
-  provider: "INSEE" | "KOSIS";
+  provider: "INSEE" | "KOSIS" | "BLS";
   value: number;
   period: string;
   unit?: string;
@@ -87,7 +87,8 @@ export interface ConsistencyResult {
 
 export interface FactCheckResult {
   facts: FactVerdict[];
-  accuracyScore: number; // 0..100
+  accuracyScore: number; // 0..100 — over official-statistics-verified claims only
+  statChecked?: number; // how many claims were checked against official statistics
 }
 
 // --- UI view-model (Evidence Desk dashboard) ---
