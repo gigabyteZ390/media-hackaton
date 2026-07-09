@@ -1,6 +1,43 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { getPoliticianPhoto } from "@/lib/wikipedia";
+
+// Politician portrait (keyless Wikipedia lookup) with an initials fallback so a
+// lookup miss never breaks the layout.
+function PoliticianAvatar({ name, size = 48 }: { name: string; size?: number }) {
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => {
+    let ok = true;
+    setSrc(null);
+    getPoliticianPhoto(name).then((s) => ok && setSrc(s));
+    return () => {
+      ok = false;
+    };
+  }, [name]);
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  return (
+    <div
+      style={{ width: size, height: size }}
+      className="shrink-0 overflow-hidden border-2 border-line bg-slate"
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt={name} className="h-full w-full object-cover" />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center font-black text-ink">
+          {initials}
+        </div>
+      )}
+    </div>
+  );
+}
 
 type Lang = "ko" | "en";
 type FactVerdict = "TRUE" | "FALSE" | "UNVERIFIABLE" | "NOT_FACTUAL";
@@ -394,13 +431,16 @@ export default function ProfileDashboard({
                   {profile.totalReversals}
                 </p>
               </div>
-              <div className="col-span-2 flex items-center border-2 border-line bg-surface px-6 py-4 shadow-sharp-sm md:col-span-1">
-                <span className="font-mono text-[9px] font-bold uppercase leading-relaxed tracking-widest text-gray">
-                  {t.subject}
-                </span>
-                <span className="ml-auto text-lg font-black uppercase tracking-tight text-ink">
-                  {profile.politician}
-                </span>
+              <div className="col-span-2 flex items-center gap-4 border-2 border-line bg-surface px-6 py-4 shadow-sharp-sm md:col-span-1">
+                <PoliticianAvatar name={profile.politician} size={44} />
+                <div className="min-w-0">
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
+                    {t.subject}
+                  </p>
+                  <p className="text-base font-black uppercase leading-tight tracking-tight text-ink">
+                    {profile.politician}
+                  </p>
+                </div>
               </div>
             </div>
 
