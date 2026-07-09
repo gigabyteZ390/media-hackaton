@@ -39,10 +39,14 @@ const STR = {
     methodology: "Methodology",
     publicApi: "Public API",
     statusLabel: "Status",
-    uploadTitle: "Video / Audio Dossier",
+    uploadTitle: "Video · Audio · Transcript File",
     uploadDesc:
-      "Drop a broadcast clip or a transcript file (.txt / .srt). Text files load straight into the box; video/audio STT is coming soon.",
+      "Drop a video/audio clip or a transcript (.txt / .srt / .docx). Text transcripts load straight in; video/audio STT is coming soon.",
     uploadBtn: "Select File",
+    urlBoxTitle: "YouTube Link",
+    fileBoxTitle: "Upload a File",
+    previewLabel: "Extracted transcript (editable)",
+    verifyKicker: "AXIS_02 // LIVE_VERIFY",
     pdfReport: "PDF Report",
     heroTitle: ["Verification", "Through", "Precision"],
     heroPre:
@@ -153,10 +157,14 @@ const STR = {
     methodology: "방법론",
     publicApi: "공개 API",
     statusLabel: "상태",
-    uploadTitle: "영상 / 음성 자료",
+    uploadTitle: "영상 · 음성 · 대본 파일",
     uploadDesc:
-      "방송 클립이나 대본 파일(.txt / .srt)을 올리세요. 텍스트 파일은 바로 입력창에 로드되고, 영상/음성 STT는 곧 지원됩니다.",
+      "영상/음성 클립이나 대본 파일(.txt / .srt / .docx)을 올리세요. 텍스트 대본은 바로 로드되고, 영상/음성 STT는 곧 지원됩니다.",
     uploadBtn: "파일 선택",
+    urlBoxTitle: "유튜브 링크",
+    fileBoxTitle: "파일 업로드",
+    previewLabel: "추출된 대본 (수정 가능)",
+    verifyKicker: "AXIS_02 // 실시간 검증",
     pdfReport: "PDF 리포트",
     heroTitle: ["정치 발언을", "정밀하게", "검증합니다"],
     heroPre:
@@ -839,7 +847,7 @@ const Header = ({
   </header>
 );
 
-const Hero = ({ t, onScrollToPanel }: { t: Dict; onScrollToPanel: () => void }) => (
+const Hero = ({ t, onStart }: { t: Dict; onStart: () => void }) => (
   <section className="grid grid-cols-1 border-b border-line lg:grid-cols-2">
     <div className="flex flex-col justify-center border-r border-line bg-surface p-12 lg:p-24 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue/5 rounded-full blur-3xl -mr-32 -mt-32" />
@@ -866,7 +874,7 @@ const Hero = ({ t, onScrollToPanel }: { t: Dict; onScrollToPanel: () => void }) 
           {t.heroPost}
         </p>
         <div className="flex flex-wrap gap-4">
-          <button onClick={onScrollToPanel} className="btn-primary">
+          <button onClick={onStart} className="btn-primary">
             {t.heroStart}
           </button>
         </div>
@@ -1051,133 +1059,6 @@ const AnalysisStepper = ({
   );
 };
 
-// Entry choice screen: trace a politician's record, or verify new footage.
-const ChoiceLanding = ({
-  t,
-  lang,
-  onTrack,
-  onVerify,
-}: {
-  t: Dict;
-  lang: Lang;
-  onTrack: (name: string) => void;
-  onVerify: () => void;
-}) => {
-  const [name, setName] = useState("");
-  // [display label, query sent to /api/profile]
-  const presets: [string, string][] =
-    lang === "ko"
-      ? [
-          ["트럼프", "트럼프"],
-          ["이재명", "이재명"],
-          ["마크롱", "마크롱"],
-        ]
-      : [
-          ["Trump", "Donald Trump"],
-          ["Lee Jae-myung", "이재명"],
-          ["Macron", "Macron"],
-        ];
-  const submit = () => name.trim() && onTrack(name.trim());
-
-  return (
-    <section className="border-b border-line bg-surface p-8 md:p-12 lg:p-20">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-4 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest">
-          {t.homeKicker}
-        </div>
-        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
-          {t.homeTitle}
-        </h2>
-        <p className="mt-3 max-w-2xl text-lg text-gray font-medium">
-          {t.homeSubtitle}
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {/* Path A: track a politician */}
-          <div className="flex flex-col border-2 border-line bg-surface p-8 shadow-sharp-sm">
-            <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-blue text-white">
-                <i className="ti ti-history text-3xl" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black uppercase tracking-tight text-ink">
-                  {t.pathTrackTitle}
-                </h3>
-                <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-blue">
-                  AXIS_01 // TRACK_RECORD
-                </p>
-              </div>
-            </div>
-            <p className="mb-6 text-sm leading-relaxed text-gray">
-              {t.pathTrackDesc}
-            </p>
-            <div className="mt-auto">
-              <div className="flex items-center gap-3 border-2 border-line bg-slate/30 px-4 py-3">
-                <i className="ti ti-search text-lg text-blue" />
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && submit()}
-                  placeholder={t.searchPlaceholder}
-                  className="w-full bg-transparent text-sm font-black uppercase tracking-wide text-ink outline-none placeholder:text-gray/40"
-                  autoComplete="off"
-                />
-                <button
-                  onClick={submit}
-                  className="shrink-0 bg-accent px-5 py-2 text-[10px] font-black uppercase tracking-widest text-accentfg hover:bg-blue hover:text-white transition-colors"
-                >
-                  {t.pathTrackCta}
-                </button>
-              </div>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
-                  {t.presetLabel}:
-                </span>
-                {presets.map(([label, query]) => (
-                  <button
-                    key={label}
-                    onClick={() => onTrack(query)}
-                    className="border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-ink hover:bg-slate transition-colors"
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Path B: verify new footage */}
-          <div className="flex flex-col border-2 border-line bg-surface p-8 shadow-sharp-sm">
-            <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-green text-white">
-                <i className="ti ti-file-search text-3xl" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black uppercase tracking-tight text-ink">
-                  {t.pathVerifyTitle}
-                </h3>
-                <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-green">
-                  AXIS_02 // LIVE_VERIFY
-                </p>
-              </div>
-            </div>
-            <p className="mb-6 text-sm leading-relaxed text-gray">
-              {t.pathVerifyDesc}
-            </p>
-            <button
-              onClick={onVerify}
-              className="mt-auto flex items-center justify-center gap-2 border-2 border-line bg-slate/30 py-4 font-black uppercase tracking-widest text-ink shadow-sharp-sm hover:bg-slate transition-colors"
-            >
-              <i className="ti ti-brand-youtube text-lg text-red" />
-              {t.pathVerifyCta}
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 // Staged "analysis" animation played while the (instant) profile loads, purely for
 // the demo's dramatic effect. Auto-advances then calls onDone.
 const ProfileLoader = ({
@@ -1291,16 +1172,16 @@ const ProfileLoader = ({
 
 export default function Home() {
   const [step, setStep] = useState<
-    "home" | "profileLoading" | "profile" | "landing" | "analysis" | "results"
-  >("home");
+    "start" | "home" | "profileLoading" | "profile" | "analysis" | "results"
+  >("start");
   const [profileName, setProfileName] = useState("Donald Trump");
+  const [profileQuery, setProfileQuery] = useState("");
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState("");
-  const [inputMode, setInputMode] = useState<"manual" | "url">("manual");
   const [sourceUrl, setSourceUrl] = useState("");
   const [fetching, setFetching] = useState(false);
-  const [targetPolitician, setTargetPolitician] = useState(POLITICIAN_OPTIONS[0]);
-  const [politicianQuery, setPoliticianQuery] = useState(POLITICIAN_OPTIONS[0]);
+  const [targetPolitician, setTargetPolitician] = useState("Donald Trump");
+  const [politicianQuery, setPoliticianQuery] = useState("Donald Trump");
   const [isPoliticianSearchOpen, setIsPoliticianSearchOpen] = useState(false);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -1391,7 +1272,7 @@ export default function Home() {
         if (cancelled) return;
         clearInterval(interval);
         setError(err?.message ?? "Analysis failed");
-        setStep("landing");
+        setStep("home");
       });
 
     return () => {
@@ -1461,12 +1342,20 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || "Scrape failed");
       setTranscript(data.transcript || "");
-      setInputMode("manual"); // show the fetched transcript so it can be reviewed
     } catch (err: any) {
       setError(err?.message ?? "Scrape failed");
     } finally {
       setFetching(false);
     }
+  };
+
+  // Track-record path: from the home search box / presets to the profile dashboard.
+  const startTrack = (nm: string) => {
+    const q = nm.trim();
+    if (!q) return;
+    setProfileName(q);
+    setStep("profileLoading");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -1478,25 +1367,264 @@ export default function Home() {
         onToggleLang={() => setLang((l) => (l === "ko" ? "en" : "ko"))}
         onToggleTheme={() => setTheme((th) => (th === "dark" ? "light" : "dark"))}
         onHome={() => {
-          setStep("home");
+          setStep("start");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       />
 
-      {step === "home" && (
-        <ChoiceLanding
+      {step === "start" && (
+        <Hero
           t={t}
-          lang={lang}
-          onTrack={(nm) => {
-            setProfileName(nm);
-            setStep("profileLoading");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          onVerify={() => {
-            setStep("landing");
+          onStart={() => {
+            setStep("home");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         />
+      )}
+
+      {step === "home" && (
+        <section className="border-b border-line bg-surface p-8 md:p-12 lg:p-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-4 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest">
+              {t.homeKicker}
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
+              {t.homeTitle}
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-gray font-medium">
+              {t.homeSubtitle}
+            </p>
+
+            {error && (
+              <div className="mt-8 border-2 border-red bg-red/5 p-4 font-mono text-xs text-red">
+                ERROR: {error}
+              </div>
+            )}
+
+            {/* --- Path A: track a politician (full width) --- */}
+            <div className="mt-10 border-2 border-line bg-surface p-6 md:p-8 shadow-sharp-sm">
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-blue text-white">
+                  <i className="ti ti-history text-3xl" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-ink">
+                    {t.pathTrackTitle}
+                  </h3>
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-blue">
+                    AXIS_01 // TRACK_RECORD
+                  </p>
+                </div>
+              </div>
+              <p className="mb-6 max-w-3xl text-sm leading-relaxed text-gray">
+                {t.pathTrackDesc}
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-1 items-center gap-3 border-2 border-line bg-slate/30 px-4 py-3">
+                  <i className="ti ti-search text-lg text-blue" />
+                  <input
+                    value={profileQuery}
+                    onChange={(e) => setProfileQuery(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && startTrack(profileQuery)}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full bg-transparent text-sm font-black uppercase tracking-wide text-ink outline-none placeholder:text-gray/40"
+                    autoComplete="off"
+                  />
+                </div>
+                <button
+                  onClick={() => startTrack(profileQuery)}
+                  className="shrink-0 bg-accent px-8 py-3 text-[11px] font-black uppercase tracking-widest text-accentfg shadow-sharp-sm hover:bg-blue hover:text-white transition-colors"
+                >
+                  {t.pathTrackCta}
+                </button>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
+                  {t.presetLabel}:
+                </span>
+                {(lang === "ko"
+                  ? ([["트럼프", "트럼프"], ["이재명", "이재명"], ["마크롱", "마크롱"]] as [string, string][])
+                  : ([["Trump", "Donald Trump"], ["Lee Jae-myung", "이재명"], ["Macron", "Macron"]] as [string, string][])
+                ).map(([label, query]) => (
+                  <button
+                    key={label}
+                    onClick={() => startTrack(query)}
+                    className="border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-ink hover:bg-slate transition-colors"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* --- Path B: verify new footage (two input boxes) --- */}
+            <div className="mt-10 mb-5 flex items-center gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-green text-white">
+                <i className="ti ti-file-search text-2xl" />
+              </div>
+              <div>
+                <h3 className="text-xl font-black uppercase tracking-tight text-ink">
+                  {t.pathVerifyTitle}
+                </h3>
+                <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-green">
+                  {t.verifyKicker}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Left box: YouTube URL */}
+              <div className="flex flex-col border-2 border-line bg-slate/30 p-6 shadow-sharp-sm">
+                <div className="mb-4 flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-widest text-ink">
+                  <i className="ti ti-brand-youtube text-lg text-red" />
+                  {t.urlBoxTitle}
+                </div>
+                <div className="flex items-center gap-3 border-2 border-line bg-surface px-4 py-3">
+                  <input
+                    type="url"
+                    value={sourceUrl}
+                    onChange={(e) => setSourceUrl(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && fetchFromUrl()}
+                    placeholder={t.urlPlaceholder}
+                    className="w-full bg-transparent font-mono text-sm text-ink outline-none placeholder:text-gray/50"
+                    autoComplete="off"
+                  />
+                </div>
+                <button
+                  onClick={fetchFromUrl}
+                  disabled={fetching || !sourceUrl.trim()}
+                  className="btn-primary mt-4 flex items-center justify-center gap-2 py-3 text-[11px] tracking-[0.2em] disabled:opacity-50"
+                >
+                  {fetching ? (
+                    <>
+                      <i className="ti ti-loader-2 animate-spin" />
+                      {t.fetching}
+                    </>
+                  ) : (
+                    <>
+                      <i className="ti ti-download" />
+                      {t.fetchBtn}
+                    </>
+                  )}
+                </button>
+                <p className="mt-3 font-mono text-[10px] leading-relaxed text-gray">
+                  {t.urlHint}
+                </p>
+              </div>
+
+              {/* Right box: file upload */}
+              <label className="group flex cursor-pointer flex-col items-center justify-center border-2 border-dashed border-line bg-slate/30 p-6 text-center shadow-sharp-sm transition-colors hover:bg-slate/60">
+                <input
+                  type="file"
+                  accept=".txt,.srt,.vtt,.md,.docx,video/*,audio/*"
+                  className="hidden"
+                  onChange={onFilePick}
+                />
+                <div className="mb-4 flex h-16 w-16 items-center justify-center border-2 border-line transition-transform group-hover:scale-110">
+                  <i className="ti ti-file-upload text-3xl text-ink" />
+                </div>
+                <h4 className="mb-2 text-base font-black uppercase tracking-widest text-ink">
+                  {t.uploadTitle}
+                </h4>
+                <p className="max-w-xs font-mono text-[10px] leading-relaxed text-gray">
+                  {t.uploadDesc}
+                </p>
+                <span className="btn-primary mt-5 py-2 text-[10px] tracking-[0.2em]">
+                  {t.uploadBtn}
+                </span>
+              </label>
+            </div>
+
+            {/* transcript preview (fetched / uploaded / manually pasted) */}
+            <div className="mt-6">
+              <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-gray">
+                {t.previewLabel}
+              </p>
+              <div className="border-2 border-line p-1 bg-slate/30 shadow-sharp-sm">
+                <textarea
+                  className="h-40 w-full border border-line bg-surface p-5 font-mono text-sm outline-none resize-none focus:bg-slate/10 transition-colors text-ink"
+                  placeholder={t.textareaPlaceholder}
+                  value={transcript}
+                  onChange={(e) => setTranscript(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* target politician + execute */}
+            <div className="mt-6 flex flex-wrap gap-4">
+              <div className="relative flex min-w-[280px] flex-grow items-center gap-4 border-2 border-line bg-surface px-6 py-4">
+                <label
+                  htmlFor="target-politician"
+                  className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest text-gray"
+                >
+                  {t.targetPolitician}
+                </label>
+                <div className="relative min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <i className="ti ti-search text-base text-blue" />
+                    <input
+                      id="target-politician"
+                      type="search"
+                      value={politicianQuery}
+                      onChange={(e) => {
+                        const nextValue = e.target.value;
+                        setPoliticianQuery(nextValue);
+                        setTargetPolitician(nextValue.trim());
+                        setIsPoliticianSearchOpen(true);
+                      }}
+                      onFocus={() => setIsPoliticianSearchOpen(true)}
+                      onBlur={() => {
+                        window.setTimeout(
+                          () => setIsPoliticianSearchOpen(false),
+                          120
+                        );
+                      }}
+                      placeholder={t.searchPlaceholder}
+                      className="w-full bg-transparent text-xs font-black uppercase outline-none placeholder:text-gray/40 text-ink"
+                      autoComplete="off"
+                    />
+                  </div>
+                  {isPoliticianSearchOpen && (
+                    <div className="absolute left-0 right-0 top-full z-20 mt-4 max-h-56 overflow-y-auto border-2 border-line bg-surface shadow-sharp-sm">
+                      {filteredPoliticians.length > 0 ? (
+                        filteredPoliticians.map((name) => (
+                          <button
+                            key={name}
+                            type="button"
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => {
+                              setTargetPolitician(name);
+                              setPoliticianQuery(name);
+                              setIsPoliticianSearchOpen(false);
+                            }}
+                            className={`flex w-full items-center justify-between border-b border-line/10 px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-widest transition-colors last:border-b-0 hover:bg-slate ${
+                              targetPolitician === name ? "text-blue" : "text-ink"
+                            }`}
+                          >
+                            <span>{name}</span>
+                            {targetPolitician === name && (
+                              <i className="ti ti-check text-sm" />
+                            )}
+                          </button>
+                        ))
+                      ) : (
+                        <div className="px-4 py-4 font-mono text-[10px] font-bold uppercase leading-relaxed tracking-widest text-gray">
+                          {t.noPresetMatch}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <button
+                onClick={handleStartAnalysis}
+                className="bg-accent px-12 py-4 font-black uppercase tracking-widest text-accentfg shadow-sharp hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+              >
+                {t.execute}
+              </button>
+            </div>
+          </div>
+        </section>
       )}
 
       {step === "profileLoading" && (
@@ -1512,221 +1640,12 @@ export default function Home() {
           lang={lang}
           initialName={profileName}
           onAnalyze={() => {
-            setStep("landing");
+            setStep("home");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         />
       )}
 
-      {step === "landing" && (
-        <>
-          <Hero
-            t={t}
-            onScrollToPanel={() =>
-              document
-                .getElementById("intake-panel")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          />
-
-          <section
-            id="intake-panel"
-            className="border-b border-line bg-surface p-12 lg:p-24 scroll-mt-20"
-          >
-            <div className="mx-auto max-w-5xl">
-              <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                  <h2 className="text-4xl font-black uppercase tracking-tighter">
-                    {t.intakeTitle}
-                  </h2>
-                  <p className="mt-2 font-mono text-[10px] font-bold text-gray uppercase tracking-widest">
-                    TRANSCRIPT_MODULE // TWO_AXIS_ANALYZER
-                  </p>
-                </div>
-                <div className="font-mono text-[10px] font-bold text-gray uppercase tracking-widest">
-                  ONE_LINE = ONE_CLAIM
-                </div>
-              </div>
-
-              {error && (
-                <div className="mb-8 border-2 border-red bg-red/5 p-4 font-mono text-xs text-red">
-                  ERROR: {error}
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {/* File upload column (adopted from teammate frontend) */}
-                <label className="group flex min-h-[420px] cursor-pointer flex-col items-center justify-center border-2 border-dashed border-line bg-slate/30 p-12 text-center shadow-sharp-sm transition-colors hover:bg-slate/60">
-                  <input
-                    type="file"
-                    accept=".txt,.srt,.vtt,.md,video/*,audio/*"
-                    className="hidden"
-                    onChange={onFilePick}
-                  />
-                  <div className="mb-8 flex h-24 w-24 items-center justify-center border-2 border-line transition-transform group-hover:scale-110">
-                    <i className="ti ti-file-upload text-4xl text-ink" />
-                  </div>
-                  <h3 className="mb-3 text-lg font-black uppercase tracking-widest text-ink">
-                    {t.uploadTitle}
-                  </h3>
-                  <p className="max-w-xs font-mono text-[11px] leading-relaxed text-gray">
-                    {t.uploadDesc}
-                  </p>
-                  <span className="btn-primary mt-8 py-3 text-[10px] tracking-[0.2em]">
-                    {t.uploadBtn}
-                  </span>
-                </label>
-
-                {/* Manual text-entry column */}
-                <div className="flex flex-col">
-                  <div className="mb-4 flex gap-2">
-                    <button
-                      onClick={() => setInputMode("manual")}
-                      className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
-                        inputMode === "manual"
-                          ? "bg-accent text-accentfg shadow-sharp-sm"
-                          : "border border-line bg-surface text-ink opacity-40 hover:opacity-100"
-                      }`}
-                    >
-                      {t.manualEntry}
-                    </button>
-                    <button
-                      onClick={() => setInputMode("url")}
-                      className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
-                        inputMode === "url"
-                          ? "bg-accent text-accentfg shadow-sharp-sm"
-                          : "border border-line bg-surface text-ink opacity-40 hover:opacity-100"
-                      }`}
-                    >
-                      {t.sourceLink}
-                    </button>
-                  </div>
-
-                  {inputMode === "url" ? (
-                    <div className="flex h-[268px] flex-col justify-center border-2 border-line bg-slate/30 p-8 shadow-sharp-sm">
-                      <div className="flex items-center gap-3 border-2 border-line bg-surface px-4 py-3">
-                        <i className="ti ti-brand-youtube text-xl text-red" />
-                        <input
-                          type="url"
-                          value={sourceUrl}
-                          onChange={(e) => setSourceUrl(e.target.value)}
-                          onKeyDown={(e) => e.key === "Enter" && fetchFromUrl()}
-                          placeholder={t.urlPlaceholder}
-                          className="w-full bg-transparent font-mono text-sm text-ink outline-none placeholder:text-gray/50"
-                          autoComplete="off"
-                        />
-                      </div>
-                      <button
-                        onClick={fetchFromUrl}
-                        disabled={fetching || !sourceUrl.trim()}
-                        className="btn-primary mt-4 flex items-center justify-center gap-2 py-3 text-[11px] tracking-[0.2em] disabled:opacity-50"
-                      >
-                        {fetching ? (
-                          <>
-                            <i className="ti ti-loader-2 animate-spin" />
-                            {t.fetching}
-                          </>
-                        ) : (
-                          <>
-                            <i className="ti ti-download" />
-                            {t.fetchBtn}
-                          </>
-                        )}
-                      </button>
-                      <p className="mt-4 font-mono text-[10px] leading-relaxed text-gray">
-                        {t.urlHint}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="border-2 border-line p-1 bg-slate/30 shadow-sharp-sm">
-                      <textarea
-                        className="h-64 w-full border border-line bg-surface p-6 font-mono text-sm outline-none resize-none focus:bg-slate/10 transition-colors text-ink"
-                        placeholder={t.textareaPlaceholder}
-                        value={transcript}
-                        onChange={(e) => setTranscript(e.target.value)}
-                      />
-                    </div>
-                  )}
-                  <div className="mt-6 flex flex-wrap gap-4">
-                    <div className="relative flex min-w-[280px] flex-grow items-center gap-4 border-2 border-line bg-surface px-6 py-4">
-                      <label
-                        htmlFor="target-politician"
-                        className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest text-gray"
-                      >
-                        {t.targetPolitician}
-                      </label>
-                      <div className="relative min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <i className="ti ti-search text-base text-blue" />
-                          <input
-                            id="target-politician"
-                            type="search"
-                            value={politicianQuery}
-                            onChange={(e) => {
-                              const nextValue = e.target.value;
-                              setPoliticianQuery(nextValue);
-                              setTargetPolitician(nextValue.trim());
-                              setIsPoliticianSearchOpen(true);
-                            }}
-                            onFocus={() => setIsPoliticianSearchOpen(true)}
-                            onBlur={() => {
-                              window.setTimeout(
-                                () => setIsPoliticianSearchOpen(false),
-                                120
-                              );
-                            }}
-                            placeholder={t.searchPlaceholder}
-                            className="w-full bg-transparent text-xs font-black uppercase outline-none placeholder:text-gray/40 text-ink"
-                            autoComplete="off"
-                          />
-                        </div>
-                        {isPoliticianSearchOpen && (
-                          <div className="absolute left-0 right-0 top-full z-20 mt-4 max-h-56 overflow-y-auto border-2 border-line bg-surface shadow-sharp-sm">
-                            {filteredPoliticians.length > 0 ? (
-                              filteredPoliticians.map((name) => (
-                                <button
-                                  key={name}
-                                  type="button"
-                                  onMouseDown={(e) => e.preventDefault()}
-                                  onClick={() => {
-                                    setTargetPolitician(name);
-                                    setPoliticianQuery(name);
-                                    setIsPoliticianSearchOpen(false);
-                                  }}
-                                  className={`flex w-full items-center justify-between border-b border-line/10 px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-widest transition-colors last:border-b-0 hover:bg-slate ${
-                                    targetPolitician === name
-                                      ? "text-blue"
-                                      : "text-ink"
-                                  }`}
-                                >
-                                  <span>{name}</span>
-                                  {targetPolitician === name && (
-                                    <i className="ti ti-check text-sm" />
-                                  )}
-                                </button>
-                              ))
-                            ) : (
-                              <div className="px-4 py-4 font-mono text-[10px] font-bold uppercase leading-relaxed tracking-widest text-gray">
-                                {t.noPresetMatch}
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <button
-                      onClick={handleStartAnalysis}
-                      className="bg-accent px-12 py-4 font-black uppercase tracking-widest text-accentfg shadow-sharp hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
-                    >
-                      {t.execute}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </>
-      )}
 
       {step === "analysis" && (
         <AnalysisStepper t={t} progress={progress} lineCount={activeLineCount} />
