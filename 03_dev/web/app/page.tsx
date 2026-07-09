@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import ProfileDashboard from "./ProfileDashboard";
 import type {
   StatementResult,
   ConsistencyResult,
@@ -727,16 +728,18 @@ const Header = ({
   theme,
   onToggleLang,
   onToggleTheme,
+  onHome,
 }: {
   t: Dict;
   lang: Lang;
   theme: Theme;
   onToggleLang: () => void;
   onToggleTheme: () => void;
+  onHome: () => void;
 }) => (
   <header className="sticky top-0 z-50 border-b border-line bg-surface/95 backdrop-blur-sm">
     <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-8">
-      <div className="flex items-center gap-4 cursor-pointer">
+      <div onClick={onHome} className="flex items-center gap-4 cursor-pointer">
         <div className="flex h-10 w-10 items-center justify-center bg-accent text-accentfg shadow-sharp-sm">
           <i className="ti ti-git-merge text-2xl" />
         </div>
@@ -1017,9 +1020,9 @@ const AnalysisStepper = ({
 // --- Main Component ---
 
 export default function Home() {
-  const [step, setStep] = useState<"landing" | "analysis" | "results">(
-    "landing"
-  );
+  const [step, setStep] = useState<
+    "profile" | "landing" | "analysis" | "results"
+  >("profile");
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState("");
   const [inputMode, setInputMode] = useState<"manual" | "url">("manual");
@@ -1203,7 +1206,22 @@ export default function Home() {
         theme={theme}
         onToggleLang={() => setLang((l) => (l === "ko" ? "en" : "ko"))}
         onToggleTheme={() => setTheme((th) => (th === "dark" ? "light" : "dark"))}
+        onHome={() => {
+          setStep("profile");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
       />
+
+      {step === "profile" && (
+        <ProfileDashboard
+          lang={lang}
+          initialName={lang === "ko" ? "트럼프" : "Donald Trump"}
+          onAnalyze={() => {
+            setStep("landing");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      )}
 
       {step === "landing" && (
         <>

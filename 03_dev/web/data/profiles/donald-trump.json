@@ -1,0 +1,976 @@
+{
+  "politician": "Donald Trump",
+  "generatedFrom": 111,
+  "totalStatements": 111,
+  "totalReversals": 28,
+  "sectors": [
+    {
+      "key": "geopolitics",
+      "statementCount": 48,
+      "reversalCount": 13,
+      "topics": [
+        {
+          "topic": "iran",
+          "count": 15,
+          "reversalCount": 5,
+          "note": {
+            "ko": "2025년 6월 12일 이스라엘의 개입을 원치 않는다던 트럼프는 6월13일 이스라엘의 공격을 찬양하고, 6월17일 무조건 항복을 요구했다가 6월19일 다시 협상 가능성을 열어두고, 6월21일 미군이 직접 이란 핵시설을 타격했으며, 6월23일 휴전을 선언하고 6월24일 중국의 이란산 석유 구매를 허용하는 등 대이란 군사행동과 외교적 타협 사이를 여러 차례 오갔다.",
+            "en": "Trump swung repeatedly on Iran policy: on 2025-06-12 he said he did not want Israel to strike, then on 06-13 praised Israels strikes, on 06-17 demanded unconditional surrender, on 06-19 reopened the door to negotiations, on 06-21 ordered U.S. strikes on Irans nuclear sites, on 06-23 declared a ceasefire, and on 06-24 allowed China to resume buying Iranian oil, marking multiple flips between hawkish military action and diplomatic de-escalation."
+          },
+          "statements": [
+            {
+              "text": "This was a horrible, one-sided deal that should never have been made — the worst deal ever; the U.S. will withdraw from the Iran nuclear deal.",
+              "date": "2018-05-08",
+              "sourceUrl": "https://www.cnn.com/2018/05/08/politics/donald-trump-iran-deal-announcement-decision/"
+            },
+            {
+              "text": "Iran will never be allowed to have a nuclear weapon; this JCPOA is a horrible, one-sided deal and the U.S. is withdrawing.",
+              "date": "2018-05-08",
+              "sourceUrl": "https://www.npr.org/2018/05/08/609383603/trump-u-s-will-withdraw-from-iran-nuclear-deal"
+            },
+            {
+              "text": "I don't want Israel going in, because that would blow it — Iran should make a deal before there is nothing left.",
+              "date": "2025-06-12",
+              "sourceUrl": "https://www.cnn.com/2025/06/12/politics/trump-israel-iran-strike"
+            },
+            {
+              "text": "Israel's strikes were one of the most impressive military strikes in Israeli history; I gave Iran chance after chance to make a deal.",
+              "date": "2025-06-13",
+              "sourceUrl": "https://time.com/7293906/trump-warning-iran-israel-strikes-death-destruction/"
+            },
+            {
+              "text": "I demand Iran's UNCONDITIONAL SURRENDER; I am not looking for a ceasefire.",
+              "date": "2025-06-17",
+              "sourceUrl": "https://time.com/7295400/trump-us-iran-israel-war-khamenei-strike-fordow-unconditional-surrender/"
+            },
+            {
+              "text": "I will decide within the next two weeks whether the U.S. strikes Iran, given a substantial chance of negotiations.",
+              "date": "2025-06-19",
+              "sourceUrl": "https://www.npr.org/2025/06/19/nx-s1-5439075/israel-iran-conflict-hospital"
+            },
+            {
+              "text": "The U.S. struck Fordow, Natanz and Isfahan; Iran's nuclear facilities have been completely and totally obliterated.",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.npr.org/2025/06/21/nx-s1-5441127/iran-us-strike-nuclear-trump"
+            },
+            {
+              "text": "A Complete and Total CEASEFIRE between Israel and Iran is agreed — this is the end of THE 12 DAY WAR.",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.npr.org/2025/06/24/nx-s1-5442730/trump-announces-a-ceasefire-between-israel-and-iran"
+            },
+            {
+              "text": "The ceasefire IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT! — then hours later said both Iran and Israel had already violated it.",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.nbcnews.com/world/middle-east/live-blog/live-updates-iran-israel-trump-ceasefire-rcna214671"
+            },
+            {
+              "text": "We basically have two countries that have been fighting so long they don't know what the f--- they're doing; I'm not happy with Israel.",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.nbcnews.com/politics/white-house/trump-lashes-israel-iran-dont-know-f-re-rcna214712"
+            },
+            {
+              "text": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.timesofisrael.com/liveblog_entry/trump-i-need-israel-to-calm-down-do-not-drop-those-bombs-bring-your-pilots-home-now/"
+            },
+            {
+              "text": "All planes will turn around and do a friendly Plane Wave to Iran; nobody will be hurt, the Ceasefire is in effect!",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.npr.org/2025/06/24/nx-s1-5443201/israel-iran-ceasefire-trump"
+            },
+            {
+              "text": "China can now continue to purchase oil from Iran.",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.bloomberg.com/news/articles/2025-06-24/trump-eases-pressure-on-iran-by-saying-china-can-buy-its-oil"
+            },
+            {
+              "text": "The strikes were a victory for everybody; Iran's nuclear sites were destroyed.",
+              "date": "2025-06-25",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/6/25/trump-insists-iran-nuclear-sites-destroyed-in-us-strikes-blasts-media"
+            },
+            {
+              "text": "If Iran rebuilds its nuclear program we will knock the hell out of it and act immediately.",
+              "date": "2025-12-29",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/12/29/trump-says-us-would-back-strikes-against-irans-missile-programme"
+            }
+          ]
+        },
+        {
+          "topic": "russia/ukraine",
+          "count": 7,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2022년 2월 트럼프는 푸틴의 우크라이나 독립 승인을 천재적이라 칭찬했으나, 2025년 5월 이후에는 푸틴이 미쳤다고 비난하고 제재를 검토하며 태도를 반전시켰고, 또한 2023년 하루 안에 전쟁을 끝내겠다던 확신을 2025년 3월 그것이 반농담(사르카즘)이었다고 후퇴시켰다.",
+            "en": "Trump flipped from praising Putins Ukraine move as genius (Feb 2022) to blasting Putin as having gone crazy and mulling sanctions (May 2025), and separately backpedaled from his confident 2023 24-hour war claim to calling it sarcasm in March 2025."
+          },
+          "statements": [
+            {
+              "text": "This is genius... Putin declaring a big portion of Ukraine independent is savvy.",
+              "date": "2022-02-22",
+              "sourceUrl": "https://www.npr.org/2022/02/22/1082478790/trump-praises-putin-as-savvy-amid-new-escalations-on-russia-ukraine-border"
+            },
+            {
+              "text": "I will have that war settled in one day, 24 hours — I'll get it done before I even take office.",
+              "date": "2023-03-04",
+              "sourceUrl": "https://www.cnn.com/2025/04/25/politics/fact-check-trump-ukraine-war"
+            },
+            {
+              "text": "I'll get the Russia-Ukraine war done within 24 hours. Everyone says you can't. Absolutely I can.",
+              "date": "2023-07",
+              "sourceUrl": "https://www.cnn.com/2025/04/25/politics/fact-check-trump-ukraine-war"
+            },
+            {
+              "text": "Well, I was being a little bit sarcastic when I said I'd end the Ukraine war in 24 hours.",
+              "date": "2025-03-14",
+              "sourceUrl": "https://www.euronews.com/2025/03/15/trump-says-he-was-a-bit-sarcastic-when-he-claimed-he-could-end-the-war-in-ukraine-in-24-ho"
+            },
+            {
+              "text": "I've always had a very good relationship with Vladimir Putin, but something has happened to him. He has gone absolutely CRAZY! He is needlessly killing a lot of people.",
+              "date": "2025-05-25",
+              "sourceUrl": "https://www.cnn.com/2025/05/25/politics/trump-putin-ukraine-airstrikes"
+            },
+            {
+              "text": "Something has happened to Putin — he has gone absolutely crazy; I'm considering new sanctions on Russia.",
+              "date": "2025-05-25",
+              "sourceUrl": "https://www.cnn.com/2025/05/27/politics/russia-sanctions-trump-ukraine-war"
+            },
+            {
+              "text": "We get a lot of bullshit thrown at us by Putin; he's very nice all the time, but it turns out to be meaningless.",
+              "date": "2025-07-08",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/7/8/trump-says-he-is-not-happy-with-russias-putin-considering-sanctions"
+            }
+          ]
+        },
+        {
+          "topic": "nato",
+          "count": 4,
+          "reversalCount": 1,
+          "note": {
+            "ko": "트럼프는 2016-2017년 초까지 나토를 시대에 뒤떨어진 조직이라 비판했으나, 2017년 4월 12일 더 이상 시대에 뒤떨어지지 않았다고 입장을 뒤집었고 이후 2025년 나토 정상회의 합의를 승리로 평가하며 우호적 태도를 유지했다.",
+            "en": "Trump called NATO obsolete from 2016-03-27 through 2017-01-16, then reversed course on 2017-04-12 by declaring it no longer obsolete, maintaining a favorable stance through the 2025-06-25 praise of the NATO summit agreement."
+          },
+          "statements": [
+            {
+              "text": "NATO is obsolete and expensive, and doesn't have the right countries in it for fighting terrorism.",
+              "date": "2016-03-27",
+              "sourceUrl": "https://www.cbsnews.com/news/trump-nato-past-comments/"
+            },
+            {
+              "text": "NATO is obsolete because it wasn't taking care of terror, and NATO members are not paying their fair share.",
+              "date": "2017-01-16",
+              "sourceUrl": "https://medillonthehill.medill.northwestern.edu/2025/02/delinquent-and-obsolete-trumps-rhetoric-threatens-transatlantic-stability-of-nato/"
+            },
+            {
+              "text": "I said it was obsolete; it's no longer obsolete.",
+              "date": "2017-04-12",
+              "sourceUrl": "https://www.politifact.com/factchecks/2017/apr/12/donald-trump/donald-trump-nato-i-said-it-was-obsolete-its-no-lo/"
+            },
+            {
+              "text": "Following the NATO summit at The Hague, allies agreed to commit five percent of GDP by 2035; the White House called it a monumental victory.",
+              "date": "2025-06-25",
+              "sourceUrl": "https://www.piie.com/blogs/realtime-economics/2025/trumps-five-percent-doctrine-and-nato-defense-spending"
+            }
+          ]
+        },
+        {
+          "topic": "tariffs",
+          "count": 3,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2025년 4월 7일 트럼프는 상호관세 일시중단을 검토하지 않는다고 말했으나, 불과 이틀 뒤인 4월 9일에는 90일간 관세를 10%로 낮추는 일시중단을 승인하며 입장을 뒤집었다.",
+            "en": "On April 7, 2025 Trump said he was not considering pausing reciprocal tariffs, but just two days later on April 9 he reversed course and authorized a 90-day pause lowering tariffs to 10%."
+          },
+          "statements": [
+            {
+              "text": "When a country (USA) is losing many billions of dollars on trade... trade wars are good, and easy to win. It's easy!",
+              "date": "2018-03-02",
+              "sourceUrl": "https://www.cnbc.com/2018/03/02/trump-trade-wars-are-good-and-easy-to-win.html"
+            },
+            {
+              "text": "Asked whether he would pause the reciprocal tariffs: Well, we're not looking at that.",
+              "date": "2025-04-07",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/apr/09/donald-trump/flip-flop-trump-pauses-country-tariffs-90-days/"
+            },
+            {
+              "text": "I have authorized a 90 day PAUSE, and a substantially lowered Reciprocal Tariff during this period, of 10%.",
+              "date": "2025-04-09",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/apr/09/donald-trump/flip-flop-trump-pauses-country-tariffs-90-days/"
+            }
+          ]
+        },
+        {
+          "topic": "tiktok",
+          "count": 5,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2020년 8월 트럼프는 틱톡을 국가안보 위협으로 규정하며 금지 행정명령에 서명했으나, 2024년 9월 이후에는 틱톡을 살리겠다고 선언하고 2025년 1월 금지 시행을 유예하는 행정명령에 서명하며 입장을 뒤집었다.",
+            "en": "In August 2020 Trump signed an executive order banning TikTok as a national security threat, but by September 2024 he pledged to save TikTok and in January 2025 signed an order pausing enforcement of the ban, reversing his earlier stance."
+          },
+          "statements": [
+            {
+              "text": "There is credible evidence that ByteDance might take action that threatens the national security of the United States — signing an executive order to ban TikTok within 45 days if not sold.",
+              "date": "2020-08-06",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/presidential-actions/executive-order-addressing-threat-posed-tiktok/"
+            },
+            {
+              "text": "I signed an executive order effectively banning TikTok, citing ByteDance data-collection as a national-security threat.",
+              "date": "2020-08-06",
+              "sourceUrl": "https://www.npr.org/2020/08/06/900019185/trump-signs-executive-order-that-will-effectively-ban-use-of-tiktok-in-the-u-s"
+            },
+            {
+              "text": "I'm now a big star on TikTok, and I will save TikTok — for all those who want to save TikTok in America, vote Trump.",
+              "date": "2024-09-06",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/jan/16/donald-trump/flip-flop-trump-now-opposes-a-tiktok-ban-in-2020-h/"
+            },
+            {
+              "text": "I'm asking companies not to let TikTok stay dark! I will issue an executive order to extend the period of time before the law's prohibitions take effect, so we can make a deal.",
+              "date": "2025-01-19",
+              "sourceUrl": "https://www.npr.org/2025/01/20/nx-s1-5268701/trump-executive-order-tiktok-ban"
+            },
+            {
+              "text": "On my first day back in office I signed an executive order pausing enforcement of the TikTok ban.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.npr.org/2025/01/20/nx-s1-5268701/trump-executive-order-tiktok-ban"
+            }
+          ]
+        },
+        {
+          "topic": "north korea",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2017년 8월 북한에 대해 화염과 분노 같은 군사적 위협을 가하겠다던 트럼프는 2018년 9월에는 김정은과 사랑에 빠졌다며 친서를 자랑하는 등 적대적 태도에서 우호적 태도로 전환했다.",
+            "en": "Trump reversed from threatening North Korea with fire and fury in August 2017 to declaring he fell in love with Kim Jong Un over beautiful letters by September 2018."
+          },
+          "statements": [
+            {
+              "text": "North Korea best not make any more threats — they will be met with fire and fury like the world has never seen.",
+              "date": "2017-08-08",
+              "sourceUrl": "https://www.npr.org/2017/08/08/542299360/trump-says-u-s-will-meet-north-korean-threats-with-fire-and-fury"
+            },
+            {
+              "text": "We fell in love — he wrote me beautiful letters, and they're great letters.",
+              "date": "2018-09-29",
+              "sourceUrl": "https://www.cnbc.com/2018/09/30/trump-on-kim-tough-talk--and-then-we-fell-in-love.html"
+            }
+          ]
+        },
+        {
+          "topic": "trade",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2016년 5월 트럼프는 중국이 미국을 착취한다며 강하게 비난했으나, 2019년 6월에는 중국과의 관계가 회복되었다며 긍정적으로 평가해 입장이 뒤바뀌었다.",
+            "en": "Trump harshly accused China of raping the US in May 2016, but reversed to a positive tone in June 2019 saying relations with China were back on track."
+          },
+          "statements": [
+            {
+              "text": "We can't continue to allow China to rape our country — it's the greatest theft in the history of the world.",
+              "date": "2016-05-01",
+              "sourceUrl": "https://edition.cnn.com/2016/05/01/politics/donald-trump-china-rape"
+            },
+            {
+              "text": "We had a very good meeting with China, better than expected; relations are back on track.",
+              "date": "2019-06-29",
+              "sourceUrl": "https://www.cnbc.com/2019/06/29/us-china-trade-war-trump-and-xi-meet-at-g-20-summit-in-osaka.html"
+            }
+          ]
+        },
+        {
+          "topic": "syria",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2018년 12월 트럼프는 시리아에서 ISIS를 격퇴했다며 모든 미군을 철수시키겠다고 밝혔으나, 2019년 10월에는 석유 확보를 위해 시리아에 군대를 남겨두겠다고 말해 입장이 뒤바뀌었다.",
+            "en": "In December 2018 Trump said ISIS was defeated in Syria and he would bring all U.S. troops home, but by October 2019 he reversed course, saying troops would stay in Syria to keep the oil."
+          },
+          "statements": [
+            {
+              "text": "We have defeated ISIS in Syria, my only reason for being there — I am bringing all U.S. troops home.",
+              "date": "2018-12-19",
+              "sourceUrl": "https://www.pbs.org/newshour/world/trump-pulling-all-u-s-troops-from-syria-declaring-isis-defeated"
+            },
+            {
+              "text": "We're keeping the oil — we left troops behind in Syria only for the oil.",
+              "date": "2019-10-25",
+              "sourceUrl": "https://abcnews.go.com/Politics/keeping-oil-syria-trump-considered-war-crime/story?id=66589757"
+            }
+          ]
+        },
+        {
+          "topic": "china",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "두 발언 모두 중국 관세가 점진적으로 인하될 것이라는 일관된 입장을 보이며, 2025년 4월과 10월 발언 사이에 명확한 입장 반전은 없다.",
+            "en": "Both statements from April and October 2025 consistently indicate a gradual reduction in China tariffs, showing no clear reversal in position."
+          },
+          "statements": [
+            {
+              "text": "The 145% China tariff would come down substantially, but it won't be zero.",
+              "date": "2025-04-22",
+              "sourceUrl": "https://www.forbes.com/sites/alisondurkee/2025/04/23/trump-floats-lowering-chinese-tariffs-latest-big-tariff-flip-flop-since-liberation-day/"
+            },
+            {
+              "text": "US tariffs on Chinese goods would drop (from 57% to 47%) after Xi promised to curtail fentanyl-precursor shipments; Trump rated the meeting a '12' out of 10.",
+              "date": "2025-10-30",
+              "sourceUrl": "https://www.npr.org/2025/10/30/nx-s1-5590754/trump-china-xi-meeting-lowers-tariffs"
+            }
+          ]
+        },
+        {
+          "topic": "foreign-policy",
+          "count": 4,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 1월부터 3월까지의 발언은 모두 미국 우선주의 정책과 일치하며 국제기구 탈퇴 조치들로 일관성을 보여 입장 반전이 없다.",
+            "en": "All statements from January to March 2025 are consistent with the America First policy and show no reversal, as they align with withdrawing from international organizations."
+          },
+          "statements": [
+            {
+              "text": "During every single day of the Trump Administration, the policy will be to put America First.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump withdrew the United States from the Paris Climate Accord.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump withdrew the United States from the World Health Organization.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump withdrew the United States from the UN Human Rights Council.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "defense",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "제시된 두 발언은 모두 2025년 1월 20일 같은 날 발표된 것으로, 카르텔을 테러조직으로 지정하고 외국인적법을 발동해 범죄조직을 단속하겠다는 일관된 입장이며 서로 모순되지 않는다.",
+            "en": "Both statements are from the same date, January 20, 2025, and consistently support designating cartels as terrorist organizations and invoking the Alien Enemies Act to crack down on criminal networks, showing no contradiction."
+          },
+          "statements": [
+            {
+              "text": "The administration will designate cartels as foreign terrorist organizations.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump will invoke the Alien Enemies Act of 1798 to direct federal and state law enforcement to eliminate foreign gangs and criminal networks operating in the United States.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "social",
+      "statementCount": 32,
+      "reversalCount": 8,
+      "topics": [
+        {
+          "topic": "immigration",
+          "count": 12,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2016년 멕시코가 장벽 비용을 100% 지불할 것이라고 했다가 2019년에는 그것이 직접 수표를 쓴다는 뜻은 아니었다고 말을 바꿨고, 2025년 1월 강경한 불법 이민 단속 정책을 발표한 뒤 2025년 6월에는 농장과 호텔 노동자 부족을 우려하며 이민 정책이 너무 공격적이라고 완화된 입장을 보였다.",
+            "en": "Trump reversed his 2016 claim that Mexico would pay 100% for the wall when in 2019 he said he never meant they would literally write a check, and after announcing hardline immigration enforcement in January 2025 he softened his stance in June 2025 by warning that aggressive immigration policy was hurting farmers and hospitality businesses."
+          },
+          "statements": [
+            {
+              "text": "I will have Mexico pay for that wall — 100%, they will pay for it, believe me.",
+              "date": "2016-06-01",
+              "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1397/build-wall-and-make-mexico-pay-it/"
+            },
+            {
+              "text": "Ending DACA was the right decision, and I call on Congress to legislate a fix.",
+              "date": "2017-09-05",
+              "sourceUrl": "https://www.npr.org/2017/09/05/546423550/trump-signals-end-to-daca-calls-on-congress-to-act"
+            },
+            {
+              "text": "I have a great heart for the folks — I have great love for Dreamers, and I hope Congress will help them.",
+              "date": "2017-09-05",
+              "sourceUrl": "https://www.nbcnews.com/politics/white-house/trump-says-he-has-love-dreamers-urges-congress-daca-action-n798881"
+            },
+            {
+              "text": "When I said Mexico is going to pay for it, obviously I never meant they're going to write out a check.",
+              "date": "2019-01-10",
+              "sourceUrl": "https://www.politifact.com/factchecks/2019/jan/10/donald-trump/trump-claims-he-never-meant-mexico-would-write-che/"
+            },
+            {
+              "text": "The Trump Administration will declare a national emergency at the southern border and immediately halt all illegal entry.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will begin the process of returning millions of criminal aliens back to the places from which they came.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will reinstate the Remain in Mexico policy.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will end the practice of Catch and Release.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump will send troops to the southern border to repel what he calls the invasion of the country.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump declared a national emergency on the southern border and deployed the US military and border patrol to stop illegal crossings.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump claimed illegal border crossings last month were the lowest ever recorded.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Our very aggressive policy on immigration is taking very good, long time workers away from our Farmers and Hotel/Leisure businesses... We must protect our Farmers.",
+              "date": "2025-06-12",
+              "sourceUrl": "https://www.axios.com/2025/06/12/trump-immigration-enforcement-farms-hotels"
+            }
+          ]
+        },
+        {
+          "topic": "guns",
+          "count": 3,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2000년에는 공격용 무기 금지와 대기 기간을 지지하는 총기 규제 찬성 입장이었으나, 2016년에는 수정헌법 2조를 강력히 옹호하며 규제 반대로 돌아섰고, 2018년에는 다시 절차 전에 총기를 압수해야 한다는 규제 강화 발언으로 재차 입장을 바꿨다.",
+            "en": "In 2000 Trump supported an assault weapons ban and longer waiting periods (pro-gun control), then reversed in 2016 by championing the Second Amendment and opposing gun control, and reversed again in 2018 by advocating taking guns first before due process."
+          },
+          "statements": [
+            {
+              "text": "I generally oppose gun control, but I support the ban on assault weapons and a slightly longer waiting period to purchase a gun.",
+              "date": "2000-01-01",
+              "sourceUrl": "https://theintercept.com/2016/01/27/donald-trump-in-2000-i-support-the-ban-on-assault-weapons/"
+            },
+            {
+              "text": "The eight-year assault on the Second Amendment will come to a crashing end; I will never let you down.",
+              "date": "2016-05-20",
+              "sourceUrl": "https://www.npr.org/2016/05/20/478864228/i-will-never-let-you-down-trump-tells-national-rifle-association"
+            },
+            {
+              "text": "Take the guns first, go through due process second.",
+              "date": "2018-02-28",
+              "sourceUrl": "https://thehill.com/homenews/administration/376097-trump-take-the-guns-first-go-through-due-process-second/"
+            }
+          ]
+        },
+        {
+          "topic": "entitlements",
+          "count": 3,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2000년에는 사회보장제도를 폰지 사기라 부르며 민영화와 은퇴연령 상향을 주장했으나, 2015년에는 사회보장·메디케어·메디케이드를 삭감하지 않겠다고 입장을 바꿨고, 2024년에는 다시 복지혜택(entitlements) 삭감 가능성을 언급하며 입장을 재차 전환했다.",
+            "en": "In 2000 Trump called Social Security a Ponzi scheme and favored privatization plus raising the retirement age, but in 2015 he pledged not to cut Social Security, Medicare, or Medicaid, then reversed again in 2024 by suggesting entitlements could be cut."
+          },
+          "statements": [
+            {
+              "text": "Social Security is a huge Ponzi scheme, and privatization would be good for all of us; the retirement age should rise to 70.",
+              "date": "2000-01-01",
+              "sourceUrl": "https://www.buzzfeednews.com/article/andrewkaczynski/trump-on-social-security-in-his-2000-book-a-ponzi-scheme-we"
+            },
+            {
+              "text": "I'm not going to cut Social Security like every other Republican, and I'm not going to cut Medicare or Medicaid.",
+              "date": "2015-05-07",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/donald-trump-map-social-security-medicare-rcna143475"
+            },
+            {
+              "text": "There is a lot you can do in terms of entitlements, in terms of cutting.",
+              "date": "2024-03-11",
+              "sourceUrl": "https://www.cnn.com/2024/03/11/politics/donald-trump-cnbc-interview-medicare-social-security-tiktok/index.html"
+            }
+          ]
+        },
+        {
+          "topic": "abortion",
+          "count": 5,
+          "reversalCount": 1,
+          "note": {
+            "ko": "트럼프는 1999년 낙태 찬성(프로초이스) 입장을 밝혔으나 2015년 프로라이프로 전환했고, 이후 2016~2024년까지는 낙태 제한 및 로 대 웨이드 판결 폐기를 지지하는 프로라이프 입장을 일관되게 유지했다.",
+            "en": "Trump held a pro-choice stance in 1999 but reversed to a pro-life position by 2015, then consistently maintained anti-abortion views from 2016 through 2024, including supporting the overturning of Roe v. Wade."
+          },
+          "statements": [
+            {
+              "text": "I am very pro-choice. I hate the concept of abortion... but still, I just believe in choice.",
+              "date": "1999-10-24",
+              "sourceUrl": "https://www.nbcnews.com/meet-the-press/video/trump-in-1999-i-am-very-pro-choice-480297539914"
+            },
+            {
+              "text": "Since then, I've very much evolved — describing himself as pro-life after his 1999 pro-choice stance.",
+              "date": "2015-08-06",
+              "sourceUrl": "https://www.cnn.com/2024/04/09/politics/trump-abortion-stances-timeline/index.html"
+            },
+            {
+              "text": "There has to be some form of punishment for a woman who gets an abortion if it were banned.",
+              "date": "2016-03-30",
+              "sourceUrl": "https://www.npr.org/2016/03/30/472444293/trump-calls-for-punishing-women-who-have-abortions-then-backtracks"
+            },
+            {
+              "text": "After 50 years of failure, with nobody coming even close, I was able to kill Roe v. Wade.",
+              "date": "2023-05-01",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-was-able-kill-roe-v-wade-rcna84897"
+            },
+            {
+              "text": "The states will determine abortion by vote or legislation, and whatever they decide must be the law of the land.",
+              "date": "2024-04-08",
+              "sourceUrl": "https://missouriindependent.com/2024/04/08/trump-says-abortion-policy-should-be-left-to-the-states-backing-away-from-national-ban/"
+            }
+          ]
+        },
+        {
+          "topic": "lgbtq",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2016년 4월 트럼프는 LGBT 유권자를 지지하며 케이틀린 제너가 트럼프타워에서 원하는 화장실을 사용할 수 있다고 말했으나, 2017년 7월에는 transgender 군 복무를 전면 금지하겠다고 발표해 입장이 반전되었다.",
+            "en": "In April 2016 Trump voiced support for LGBT voters and allowed Caitlyn Jenner to use any bathroom at Trump Tower, but by July 2017 he reversed course by announcing a ban on transgender individuals serving in the military."
+          },
+          "statements": [
+            {
+              "text": "I told LGBT voters I will fight for you, and said Caitlyn Jenner could use whichever bathroom she wanted at Trump Tower.",
+              "date": "2016-04-21",
+              "sourceUrl": "https://abcnews.go.com/Politics/donald-trumps-past-statements-lgbt-rights/story?id=48858527"
+            },
+            {
+              "text": "The United States Government will not accept or allow transgender individuals to serve in any capacity in the U.S. Military.",
+              "date": "2017-07-26",
+              "sourceUrl": "https://www.npr.org/sections/thetwo-way/2017/07/26/539470211/trump-says-transgender-people-cant-serve-in-military"
+            }
+          ]
+        },
+        {
+          "topic": "healthcare",
+          "count": 5,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2015~2016년에는 오바마케어를 폐지하고 더 저렴하고 저비용 고품질의 대체안을 만들겠다고 일관되게 주장했고, 2024년에도 여전히 대체안을 마련 중이라는 입장을 유지해 명백한 입장 반전은 없음.",
+            "en": "From 2015 to early 2016 Trump consistently vowed to repeal and replace Obamacare with a cheaper, better plan, and by September 2024 he still claimed to have concepts of a replacement, so there is no clear reversal in his stated position."
+          },
+          "statements": [
+            {
+              "text": "I would repeal Obamacare and replace it with something terrific.",
+              "date": "2015",
+              "sourceUrl": "https://www.axios.com/2024/09/12/trump-health-care-plan-obamacare-replacement"
+            },
+            {
+              "text": "I would repeal and replace Obamacare with a plan that covers everybody, with much lower deductibles — much better healthcare for less money.",
+              "date": "2016",
+              "sourceUrl": "https://www.axios.com/2024/09/12/trump-health-care-plan-obamacare-replacement"
+            },
+            {
+              "text": "We will immediately repeal and replace ObamaCare — and nobody can do that like me.",
+              "date": "2016-02-01",
+              "sourceUrl": "https://abcnews.go.com/Politics/fact-checking-trumps-repeal-replace-obamacare-timeline/story?id=46360908"
+            },
+            {
+              "text": "I have concepts of a plan to replace the Affordable Care Act (offered at the debate with no details).",
+              "date": "2024-09-10",
+              "sourceUrl": "https://thehill.com/policy/healthcare/4873254-trump-debate-obamacare-replacement/"
+            },
+            {
+              "text": "I have concepts of a plan to replace Obamacare, and I'll be releasing it soon.",
+              "date": "2024-09-10",
+              "sourceUrl": "https://www.nbcnews.com/health/health-news/debate-trump-health-care-plan-replace-obamacare-rcna170665"
+            }
+          ]
+        },
+        {
+          "topic": "covid",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "On COVID-19: it's going to disappear. One day, it's like a miracle, it will disappear.",
+              "date": "2020-02-27",
+              "sourceUrl": "https://www.cnn.com/interactive/2020/10/politics/covid-disappearing-trump-comment-tracker/"
+            }
+          ]
+        },
+        {
+          "topic": "vaccines",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "We got a vaccine done, three vaccines done, and we saved tens of millions of lives worldwide.",
+              "date": "2021-12-01",
+              "sourceUrl": "https://www.newsweek.com/donald-trump-stopped-talking-operation-warp-speed-coronavirus-vaccine-1886093"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "economy",
+      "statementCount": 22,
+      "reversalCount": 6,
+      "topics": [
+        {
+          "topic": "fed",
+          "count": 4,
+          "reversalCount": 3,
+          "note": {
+            "ko": "트럼프는 2017년 11월 파월을 강력히 지지했으나, 2025년 4월 17일에는 그를 강하게 비판하며 해임을 시사했고, 4월 22일에는 해임 의사가 없다고 번복했다가, 7월 3일 다시 파월의 즉각 사퇴를 요구하며 입장을 재차 뒤집었다.",
+            "en": "Trump strongly endorsed Powell in Nov 2017, then sharply criticized him and hinted at firing him on Apr 17 2025, reversed course on Apr 22 2025 saying he had no intention to fire him, then flipped again on Jul 3 2025 by demanding Powell resign immediately."
+          },
+          "statements": [
+            {
+              "text": "Jerome Powell is strong, committed, and smart, with the wisdom and leadership to guide our economy.",
+              "date": "2017-11-02",
+              "sourceUrl": "https://www.cnbc.com/2017/11/02/trump-picks-jerome-powell-to-succeed-yellen-as-fed-chair.html"
+            },
+            {
+              "text": "Powell is always TOO LATE AND WRONG, and his termination cannot come fast enough!",
+              "date": "2025-04-17",
+              "sourceUrl": "https://www.cnbc.com/2025/04/17/trump-again-calls-for-fed-to-cut-rates-says-powells-termination-cannot-come-fast-enough.html"
+            },
+            {
+              "text": "I have no intention of firing Fed Chair Jerome Powell.",
+              "date": "2025-04-22",
+              "sourceUrl": "https://www.cnn.com/2025/04/22/business/trump-says-he-has-no-intention-of-firing-jerome-powell/index.html"
+            },
+            {
+              "text": "Powell should resign immediately.",
+              "date": "2025-07-03",
+              "sourceUrl": "https://www.aljazeera.com/economy/2025/7/3/trump-says-powell-should-resign-immediately-in-latest-attack-on-fed-chair"
+            }
+          ]
+        },
+        {
+          "topic": "crypto",
+          "count": 6,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2019년부터 2021년까지 트럼프는 비트코인과 암호화폐를 사기라며 강하게 비판했지만, 2024년 7월부터는 비트코인 전략적 비축을 지지하고 미국을 암호화폐 수도로 만들겠다고 선언하며 입장을 완전히 뒤집었다.",
+            "en": "Trump strongly criticized Bitcoin and cryptocurrencies as a scam from 2019 to mid-2021, then completely reversed his position starting July 2024, advocating for a strategic bitcoin reserve and pledging to make the US the crypto capital of the world, a stance he reaffirmed in March 2025."
+          },
+          "statements": [
+            {
+              "text": "I am not a fan of Bitcoin and other Cryptocurrencies, which are not money, and whose value is highly volatile and based on thin air.",
+              "date": "2019-07-11",
+              "sourceUrl": "https://www.nbcnews.com/politics/2024-election/donald-trump-flips-crypto-scam-building-crypto-army-rcna157171"
+            },
+            {
+              "text": "Bitcoin just seems like a scam, and cryptocurrencies are a disaster waiting to happen.",
+              "date": "2021-06",
+              "sourceUrl": "https://www.nbcnews.com/politics/2024-election/donald-trump-flips-crypto-scam-building-crypto-army-rcna157171"
+            },
+            {
+              "text": "Bitcoin just seems like a scam. I don't like it because it is another currency competing against the dollar.",
+              "date": "2021-07-01",
+              "sourceUrl": "https://cointelegraph.com/news/trump-calls-bitcoin-a-scam-advocates-for-dollar-hegemony"
+            },
+            {
+              "text": "It will be the policy of my administration to keep 100% of all the bitcoin the U.S. government currently holds — creating a strategic bitcoin stockpile.",
+              "date": "2024-07-27",
+              "sourceUrl": "https://www.cbsnews.com/news/trump-cryptocurrency-campaign-nashville/"
+            },
+            {
+              "text": "The United States will be the crypto capital of the planet, and we will keep 100% of the government's bitcoin — never sell your bitcoin.",
+              "date": "2024-07-27",
+              "sourceUrl": "https://www.cnbc.com/2024/07/27/trump-bitcoin-conference-harris.html"
+            },
+            {
+              "text": "I signed an executive order establishing a U.S. Strategic Bitcoin Reserve and Digital Asset Stockpile.",
+              "date": "2025-03-06",
+              "sourceUrl": "https://www.cnbc.com/2025/03/06/trump-signs-executive-order-for-us-strategic-bitcoin-reserve.html"
+            }
+          ]
+        },
+        {
+          "topic": "minimum wage",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "트럼프는 2015년 11월 최저임금을 인상하지 않겠다고 말했지만 2016년 5월에는 임금을 올려야 한다고 말하며 입장을 뒤집었다.",
+            "en": "Trump opposed raising the minimum wage in November 2015 but reversed course in May 2016 by saying wages need to go up."
+          },
+          "statements": [
+            {
+              "text": "Wages are too high, and I would not raise the federal minimum wage.",
+              "date": "2015-11-10",
+              "sourceUrl": "https://www.politifact.com/factchecks/2016/jul/28/donald-trump/donald-trump-gets-full-flop-stance-minimum-wage/"
+            },
+            {
+              "text": "I am looking at the minimum wage, and I think people have to get more.",
+              "date": "2016-05-08",
+              "sourceUrl": "https://www.washingtonpost.com/news/fact-checker/wp/2016/08/03/a-guide-to-all-of-donald-trumps-flip-flops-on-the-minimum-wage/"
+            }
+          ]
+        },
+        {
+          "topic": "evs",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2023년 12월 전기차를 비판했던 트럼프가 2024년 8월 일론 머스크의 지지를 이유로 전기차에 찬성한다고 말해 입장이 뒤바뀌었다.",
+            "en": "Trump criticized electric cars in December 2023 but then said he was for electric cars in August 2024, citing Elon Musk's endorsement, marking a reversal."
+          },
+          "statements": [
+            {
+              "text": "Electric-car owners become schizophrenic; the cars don't go far and you have to recharge every two minutes.",
+              "date": "2023-12-01",
+              "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166"
+            },
+            {
+              "text": "I'm for electric cars. I have to be, because Elon Musk endorsed me very strongly. So I have no choice.",
+              "date": "2024-08-01",
+              "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166"
+            }
+          ]
+        },
+        {
+          "topic": "economy",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump will direct all members of his cabinet to bring down record inflation and rapidly reduce costs and prices.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        },
+        {
+          "topic": "energy",
+          "count": 3,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 1월 20일 발언들은 모두 국가 에너지 비상사태 선언과 국내 석유·가스 시추 확대(‘drill baby drill’), 전략비축유 재충전 및 에너지 수출 확대라는 일관된 입장을 보이며 서로 모순되지 않아 방향 전환은 없음.",
+            "en": "All three statements from January 20, 2025 consistently support declaring a national energy emergency, expanding domestic oil and gas drilling under 'drill baby drill', and refilling strategic reserves while boosting energy exports, showing no contradiction or reversal."
+          },
+          "statements": [
+            {
+              "text": "Trump will declare a national energy emergency.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will pursue a policy of drilling for oil and gas domestically under the slogan 'drill baby drill'.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will refill the country's strategic reserves to the top and export American energy around the world.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        },
+        {
+          "topic": "regulation",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump directed that for every one new federal regulation, ten old regulations must be eliminated.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "taxes",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I propose a one-time 14.25% tax on the net worth of individuals and trusts worth over $10 million to pay off the national debt.",
+              "date": "1999-11-09",
+              "sourceUrl": "https://www.cnn.com/ALLPOLITICS/stories/1999/11/09/trump.rich/index.html"
+            }
+          ]
+        },
+        {
+          "topic": "debt",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "We've got to get rid of the $19 trillion in debt; I could eliminate the national debt over a period of eight years.",
+              "date": "2016-03-31",
+              "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1418/eliminate-federal-debt-8-years/"
+            }
+          ]
+        },
+        {
+          "topic": "ethanol",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "In the campaign I promised to support E15 ethanol all year round, and I will sign it without delay.",
+              "date": "2026-01-01",
+              "sourceUrl": "https://thehill.com/policy/energy-environment/5709497-trump-iowa-high-ethanol-gas/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "politics",
+      "statementCount": 9,
+      "reversalCount": 1,
+      "topics": [
+        {
+          "topic": "jan6",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2021년 1월 7일에는 국회의사당 난입을 흉악한 공격이라 비난하며 가해자들이 처벌받을 것이라 말했지만, 2025년 1월 20일 취임 첫날 약 1600명의 1월 6일 관련자들을 사면·감형하며 이를 사랑의 날이라 칭해 입장이 뒤바뀌었다.",
+            "en": "On Jan 7 2021 he condemned the Capitol riot as a heinous attack warranting punishment, but by Jan 20 2025 he pardoned or commuted nearly 1,600 Jan 6 defendants and called the day a day of love, marking a clear reversal."
+          },
+          "statements": [
+            {
+              "text": "On January 7th I condemned the Capitol attack as a heinous attack, telling rioters they do not represent our country and that lawbreakers will pay.",
+              "date": "2021-01-07",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-called-jan-6-henious-attack-now-calls-day-love-rcna175942"
+            },
+            {
+              "text": "On my first day back in office I pardoned or commuted the sentences of nearly 1,600 January 6 defendants, and I call January 6 a day of love.",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.forbes.com/sites/saradorn/2025/01/20/trump-inauguration-live-updates-trump-pardons-1500-jan-6-defendants/"
+            }
+          ]
+        },
+        {
+          "topic": "rhetoric",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump claimed his administration accomplished more in 43 days than most administrations accomplished in four or eight years.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "election",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump claimed he won all seven swing states, giving him an electoral college victory of 312 votes.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "governance",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "두 발언 모두 2025년 3월 5일 기준으로 트럼프가 취임 후 행정명령 확대와 연방 정부 축소(고용 동결, 규제 동결, 대외 원조 동결)를 일관되게 추진했음을 보여주며 입장 반전은 발견되지 않는다.",
+            "en": "Both statements from March 5, 2025 consistently show Trump expanding executive action while simultaneously freezing federal hiring, regulations, and foreign aid, with no reversal evident."
+          },
+          "statements": [
+            {
+              "text": "Trump signed nearly 100 executive orders and took more than 400 executive actions in his first six weeks in office.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump imposed an immediate freeze on all federal hiring, all new federal regulations, and all foreign aid upon taking office.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "environment",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 3월 5일 두 발언 모두 그린 뉴딜 및 전기차 의무화 등 환경 규제를 폐지하겠다는 동일한 입장을 반복한 것으로 방향 전환은 없음.",
+            "en": "Both statements on 2025-03-05 consistently reflect Trumps position of rolling back Green New Deal programs and EV mandates, showing no reversal."
+          },
+          "statements": [
+            {
+              "text": "Trump terminated the Green New Deal-related programs, calling them a 'green news scam'.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump ended what he called Biden's environmental restrictions and the electric vehicle mandate.",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "swamp",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I promised to drain the swamp and end Washington insider influence.",
+              "date": "2016-10-18",
+              "sourceUrl": "https://en.wikipedia.org/wiki/Drain_the_swamp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
