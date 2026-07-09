@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
 import { resolveSlug } from "@/lib/profileSlug";
-import { SECTOR_LABEL, type SectorKey } from "@/lib/sectors";
+import { SECTOR_LABEL, topicLabel, type SectorKey } from "@/lib/sectors";
 import { readAdded, type AddedStatement } from "@/lib/addedStore";
 
 export const runtime = "nodejs";
@@ -129,7 +129,7 @@ export async function POST(req: Request) {
       statementCount: s.statementCount,
       reversalCount: s.reversalCount,
       topics: s.topics.map((t) => ({
-        topic: t.topic,
+        topic: topicLabel(t.topic, L),
         count: t.count,
         reversalCount: t.reversalCount,
         note: t.note?.[L] ?? t.note?.en ?? "",
