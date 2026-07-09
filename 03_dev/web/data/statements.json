@@ -1758,126 +1758,6 @@
     "confidence": 0.85
   },
   {
-    "id": "trump-iran-01",
-    "politician": "Donald Trump",
-    "text": "I don't want Israel going in, because that would blow it — Iran should make a deal before there is nothing left.",
-    "date": "2025-06-12",
-    "sourceUrl": "https://www.cnn.com/2025/06/12/politics/trump-israel-iran-strike",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-02",
-    "politician": "Donald Trump",
-    "text": "Israel's strikes were one of the most impressive military strikes in Israeli history; I gave Iran chance after chance to make a deal.",
-    "date": "2025-06-13",
-    "sourceUrl": "https://time.com/7293906/trump-warning-iran-israel-strikes-death-destruction/",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-03",
-    "politician": "Donald Trump",
-    "text": "I demand Iran's UNCONDITIONAL SURRENDER; I am not looking for a ceasefire.",
-    "date": "2025-06-17",
-    "sourceUrl": "https://time.com/7295400/trump-us-iran-israel-war-khamenei-strike-fordow-unconditional-surrender/",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-04",
-    "politician": "Donald Trump",
-    "text": "I will decide within the next two weeks whether the U.S. strikes Iran, given a substantial chance of negotiations.",
-    "date": "2025-06-19",
-    "sourceUrl": "https://www.npr.org/2025/06/19/nx-s1-5439075/israel-iran-conflict-hospital",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-05",
-    "politician": "Donald Trump",
-    "text": "The U.S. struck Fordow, Natanz and Isfahan; Iran's nuclear facilities have been completely and totally obliterated.",
-    "date": "2025-06-21",
-    "sourceUrl": "https://www.npr.org/2025/06/21/nx-s1-5441127/iran-us-strike-nuclear-trump",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-06",
-    "politician": "Donald Trump",
-    "text": "A Complete and Total CEASEFIRE between Israel and Iran is agreed — this is the end of THE 12 DAY WAR.",
-    "date": "2025-06-23",
-    "sourceUrl": "https://www.npr.org/2025/06/24/nx-s1-5442730/trump-announces-a-ceasefire-between-israel-and-iran",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-07",
-    "politician": "Donald Trump",
-    "text": "The ceasefire IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT! — then hours later said both Iran and Israel had already violated it.",
-    "date": "2025-06-24",
-    "sourceUrl": "https://www.nbcnews.com/world/middle-east/live-blog/live-updates-iran-israel-trump-ceasefire-rcna214671",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-08",
-    "politician": "Donald Trump",
-    "text": "We basically have two countries that have been fighting so long they don't know what the f--- they're doing; I'm not happy with Israel.",
-    "date": "2025-06-24",
-    "sourceUrl": "https://www.nbcnews.com/politics/white-house/trump-lashes-israel-iran-dont-know-f-re-rcna214712",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-09",
-    "politician": "Donald Trump",
-    "text": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
-    "date": "2025-06-24",
-    "sourceUrl": "https://www.timesofisrael.com/liveblog_entry/trump-i-need-israel-to-calm-down-do-not-drop-those-bombs-bring-your-pilots-home-now/",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-10",
-    "politician": "Donald Trump",
-    "text": "All planes will turn around and do a friendly Plane Wave to Iran; nobody will be hurt, the Ceasefire is in effect!",
-    "date": "2025-06-24",
-    "sourceUrl": "https://www.npr.org/2025/06/24/nx-s1-5443201/israel-iran-ceasefire-trump",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-11",
-    "politician": "Donald Trump",
-    "text": "China can now continue to purchase oil from Iran.",
-    "date": "2025-06-24",
-    "sourceUrl": "https://www.bloomberg.com/news/articles/2025-06-24/trump-eases-pressure-on-iran-by-saying-china-can-buy-its-oil",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
-    "id": "trump-iran-12",
-    "politician": "Donald Trump",
-    "text": "The strikes were a victory for everybody; Iran's nuclear sites were destroyed.",
-    "date": "2025-06-25",
-    "sourceUrl": "https://www.aljazeera.com/news/2025/6/25/trump-insists-iran-nuclear-sites-destroyed-in-us-strikes-blasts-media",
-    "topic": "Iran",
-    "era": "iran-2025-saga",
-    "confidence": 0.85
-  },
-  {
     "id": "trump-iran-13",
     "politician": "Donald Trump",
     "text": "If Iran rebuilds its nuclear program we will knock the hell out of it and act immediately.",
@@ -1886,5 +1766,671 @@
     "topic": "Iran",
     "era": "iran-2025-saga",
     "confidence": 0.85
+  },
+  {
+    "id": "trump-iran-ds-001",
+    "politician": "Donald Trump",
+    "text": "In order to get elected, @BarackObama will start a war with Iran.",
+    "date": "2011-11-29",
+    "sourceUrl": "https://x.com/realDonaldTrump/status/141604554855825408",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-002",
+    "politician": "Donald Trump",
+    "text": "Our president will start a war with Iran because he has absolutely no ability to negotiate. He's weak and he's ineffective.",
+    "date": "2011-11-16",
+    "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-003",
+    "politician": "Donald Trump",
+    "text": "Now that Obama’s poll numbers are in tailspin – watch for him to launch a strike in Libya or Iran. He is desperate.",
+    "date": "2012-10-09",
+    "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-004",
+    "politician": "Donald Trump",
+    "text": "I predict that President Obama will at some point attack Iran in order to save face!",
+    "date": "2013-09-16",
+    "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-005",
+    "politician": "Donald Trump",
+    "text": "Remember what I previously said — Obama will someday attack Iran in order to show how tough he is.",
+    "date": "2013-09-25",
+    "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-006",
+    "politician": "Donald Trump",
+    "text": "If Iran wants to fight, that will be the official end of Iran. Never threaten the United States again!",
+    "date": "2019-05-19",
+    "sourceUrl": "https://x.com/realDonaldTrump/status/1130207891049332737",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-007",
+    "politician": "Donald Trump",
+    "text": "Last night at my direction, the United States military successfully executed a flawless precision strike that killed the number-one terrorist anywhere in the world, Qasem Soleimani.",
+    "date": "2020-01-03",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-008",
+    "politician": "Donald Trump",
+    "text": "We took action last night to stop a war. We did not take action to start a war.",
+    "date": "2020-01-03",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-009",
+    "politician": "Donald Trump",
+    "text": "The United States does not seek regime change. However, the Iranian regime’s aggression in the region, including the use of proxy fighters to destabilize its neighbors, must end, and it must end now.",
+    "date": "2020-01-03",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-010",
+    "politician": "Donald Trump",
+    "text": "As long as I am President of the United States, Iran will never be allowed to have a nuclear weapon.",
+    "date": "2020-01-08",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-011",
+    "politician": "Donald Trump",
+    "text": "Iran appears to be standing down, which is a good thing for all parties concerned and a very good thing for the world.",
+    "date": "2020-01-08",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-012",
+    "politician": "Donald Trump",
+    "text": "The fact that we have this great military and equipment, however, does not mean we have to use it. We do not want to use it.",
+    "date": "2020-01-08",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-013",
+    "politician": "Donald Trump",
+    "text": "Finally, to the people and leaders of Iran: We want you to have a future and a great future — one that you deserve, one of prosperity at home and harmony with the nations of the world. The United States is ready to embrace peace with all who seek it.",
+    "date": "2020-01-08",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-014",
+    "politician": "Donald Trump",
+    "text": "Today, I'm directing the Secretary of State, Mike Pompeo, to notify the U.N. Security Council that the United States intends to restore virtually all of the previously suspended United Nations sanctions on Iran. It's a snapback.",
+    "date": "2020-08-19",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-015",
+    "politician": "Donald Trump",
+    "text": "Iran will never have a nuclear weapon. Mark it down.",
+    "date": "2020-08-19",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-016",
+    "politician": "Donald Trump",
+    "text": "Iran will never have a nuclear weapon, but as soon as the election is over, whether it's now or in a couple of months, Iran is going to make a deal with us.",
+    "date": "2020-08-19",
+    "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-017",
+    "politician": "Donald Trump",
+    "text": "I gave Iran chance after chance to make a deal. I told them, in the strongest of words, to 'just do it,' but no matter how hard they tried, no matter how close they got, they just couldn’t get it done.",
+    "date": "2025-06-13",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-13-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-018",
+    "politician": "Donald Trump",
+    "text": "Two months ago I gave Iran a 60 day ultimatum to 'make a deal.' They should have done it! Today is day 61.",
+    "date": "2025-06-13",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-13-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-019",
+    "politician": "Donald Trump",
+    "text": "Iran and Israel should make a deal, and will make a deal, just like I got India and Pakistan to make...",
+    "date": "2025-06-15",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-15-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-020",
+    "politician": "Donald Trump",
+    "text": "You see where Israel is doing very well, and I think Iran is actually at the negotiating table wanting to make a deal. And as soon as I leave here, we're going to be doing something.",
+    "date": "2025-06-16",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-021",
+    "politician": "Donald Trump",
+    "text": "Iran should have signed the deal.",
+    "date": "2025-06-16",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-022",
+    "politician": "Donald Trump",
+    "text": "I think Iran basically is at the negotiating table and wants to make a deal.",
+    "date": "2025-06-16",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-023",
+    "politician": "Donald Trump",
+    "text": "I have not reached out to Iran for 'Peace Talks' in any way, shape, or form. This is just more HIGHLY FABRICATED, FAKE NEWS!",
+    "date": "2025-06-17",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-024",
+    "politician": "Donald Trump",
+    "text": "We now have complete and total control of the skies over Iran.",
+    "date": "2025-06-17",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-025",
+    "politician": "Donald Trump",
+    "text": "We know exactly where the so-called 'Supreme Leader' is hiding. He is an easy target, but is safe there - We are not going to take him out (kill!), at least not for now.",
+    "date": "2025-06-17",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-026",
+    "politician": "Donald Trump",
+    "text": "UNCONDITIONAL SURRENDER!",
+    "date": "2025-06-17",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-027",
+    "politician": "Donald Trump",
+    "text": "The Wall Street Journal has No Idea what my thoughts are concerning Iran!",
+    "date": "2025-06-19",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-19-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-028",
+    "politician": "Donald Trump",
+    "text": "I won’t get a Nobel Peace Prize no matter what I do, including Russia/Ukraine, and Israel/Iran, whatever those outcomes may be...",
+    "date": "2025-06-20",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-20-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-029",
+    "politician": "Donald Trump",
+    "text": "We have completed our very successful attack on the three Nuclear sites in Iran, including Fordow, Natanz, and Esfahan.",
+    "date": "2025-06-21",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-030",
+    "politician": "Donald Trump",
+    "text": "IRAN MUST NOW AGREE TO END THIS WAR.",
+    "date": "2025-06-21",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-031",
+    "politician": "Donald Trump",
+    "text": "ANY RETALIATION BY IRAN AGAINST THE UNITED STATES OF AMERICA WILL BE MET WITH FORCE FAR GREATER THAN WHAT WAS WITNESSED TONIGHT.",
+    "date": "2025-06-21",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-032",
+    "politician": "Donald Trump",
+    "text": "A short time ago, the U.S. military carried out massive precision strikes on the three key nuclear facilities in the Iranian regime: Fordow, Natanz, and Esfahan.",
+    "date": "2025-06-21",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-airstrikes-iran",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-033",
+    "politician": "Donald Trump",
+    "text": "There will be either peace or there will be tragedy for Iran far greater than we have witnessed over the last 8 days.",
+    "date": "2025-06-21",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-airstrikes-iran",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-034",
+    "politician": "Donald Trump",
+    "text": "I have very good information. First of all, Iran cannot have a nuclear weapon. The whole World agrees on that.",
+    "date": "2025-06-22",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-035",
+    "politician": "Donald Trump",
+    "text": "The damage to the Nuclear sites in Iran is said to be 'monumental.' The hits were hard and accurate.",
+    "date": "2025-06-22",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-036",
+    "politician": "Donald Trump",
+    "text": "It's not politically correct to use the term, 'Regime Change,' but if the current Iranian Regime is unable to MAKE IRAN GREAT AGAIN, why wouldn't there be a Regime change???",
+    "date": "2025-06-22",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-037",
+    "politician": "Donald Trump",
+    "text": "The GREAT B-2 pilots have just landed, safely, in Missouri. Thank you for a job well done!!!",
+    "date": "2025-06-22",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-038",
+    "politician": "Donald Trump",
+    "text": "Monumental Damage was done to all Nuclear sites in Iran, as shown by satellite images. Obliteration is an accurate term!",
+    "date": "2025-06-22",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-039",
+    "politician": "Donald Trump",
+    "text": "EVERYONE, KEEP OIL PRICES DOWN. I'M WATCHING! YOU'RE PLAYING RIGHT INTO THE HANDS OF THE ENEMY. DON'T DO IT!",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-040",
+    "politician": "Donald Trump",
+    "text": "Did I hear Former President Medvedev, from Russia, casually throwing around the 'N word' (Nuclear!), and saying that he and other countries would supply Nuclear Warheads to Iran?",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-041",
+    "politician": "Donald Trump",
+    "text": "The sites that we hit in Iran were totally destroyed, and everyone knows it.",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-042",
+    "politician": "Donald Trump",
+    "text": "Iran has officially responded to our Obliteration of their Nuclear Facilities with a very weak response, which we expected, and have very effectively countered.",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-043",
+    "politician": "Donald Trump",
+    "text": "I want to thank the Highly Respected Emir of Qatar for all that he has done in seeking Peace for the Region. Regarding the attack today at the American Base in Qatar, I am pleased to report that, in addition to no Americans being killed or wounded, very importantly, there have also been no Qataris killed or wounded.",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-044",
+    "politician": "Donald Trump",
+    "text": "CONGRATULATIONS WORLD, IT'S TIME FOR PEACE!",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-045",
+    "politician": "Donald Trump",
+    "text": "It has been fully agreed by and between Israel and Iran that there will be a Complete and Total CEASEFIRE... upon which the War will be considered, ENDED!",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-046",
+    "politician": "Donald Trump",
+    "text": "Israel & Iran came to me, almost simultaneously, and said, 'PEACE!' I knew the time was NOW.",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-047",
+    "politician": "Donald Trump",
+    "text": "We couldn't have made today's 'deal' without the talent and courage of our great B-2 pilots, and all of those associated with that operation.",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-048",
+    "politician": "Donald Trump",
+    "text": "THE CEASEFIRE IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT!",
+    "date": "2025-06-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-049",
+    "politician": "Donald Trump",
+    "text": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-050",
+    "politician": "Donald Trump",
+    "text": "ISRAEL is not going to attack Iran. All planes will turn around and head home, while doing a friendly 'Plane Wave' to Iran. Nobody will be hurt, the Ceasefire is in effect!",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-051",
+    "politician": "Donald Trump",
+    "text": "IRAN WILL NEVER REBUILD THEIR NUCLEAR FACILITIES!",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-052",
+    "politician": "Donald Trump",
+    "text": "Heading to NATO, where Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth, will hopefully speak about the Perfect 'equipment' that was used to make last weekend's Target Obliteration in Iran possible... but most importantly, the atomsphere now created for a much calmer period in the Region.",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-053",
+    "politician": "Donald Trump",
+    "text": "China can now continue to purchase Oil from Iran. Hopefully, they will be purchasing plenty from the U.S., also.",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-054",
+    "politician": "Donald Trump",
+    "text": "Both Israel and Iran wanted to stop the War, equally! It was my great honor to Destroy All Nuclear facilities & capability, and then, STOP THE WAR!",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-055",
+    "politician": "Donald Trump",
+    "text": "FAKE NEWS CNN, TOGETHER WITH THE FAILING NEW YORK TIMES, HAVE TEAMED UP IN AN ATTEMPT TO DEMEAN ONE OF THE MOST SUCCESSFUL MILITARY STRIKES IN HISTORY. THE NUCLEAR SITES IN IRAN ARE COMPLETELY DESTROYED!",
+    "date": "2025-06-24",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-056",
+    "politician": "Donald Trump",
+    "text": "This was an unbelievable hit in Iran by genius pilots. The only thing that can be questioned is why the 'planes' were there for the taking.",
+    "date": "2025-06-25",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-25-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-057",
+    "politician": "Donald Trump",
+    "text": "Rumor is that the Failing New York Times and Fake News CNN will be firing the reporters who made up the FAKE stories on the Iran Nuclear sites because they got it so wrong.",
+    "date": "2025-06-26",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-26-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-058",
+    "politician": "Donald Trump",
+    "text": "The cars and small trucks at the site were those of the concrete workers trying to cover up the top of the shafts. Nothing was taken out of facility. Would take too long, too dangerous, and very heavy and hard to move!",
+    "date": "2025-06-26",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-26-2025",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-059",
+    "politician": "Donald Trump",
+    "text": "United States military continues to carry out large-scale combat operations in Iran. The Iranian navy and air force have been shattered.",
+    "date": "2026-03-02",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-presenting-the-medal-honor-sgt-maj-thomas-p-payne",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-060",
+    "politician": "Donald Trump",
+    "text": "This was our last best chance to strike the Iranian regime. They're finished. They just don't know it yet.",
+    "date": "2026-03-02",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-presenting-the-medal-honor-sgt-maj-thomas-p-payne",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-061",
+    "politician": "Donald Trump",
+    "text": "We have them very much beaten militarily, but they still don't want to give up. So we'll have to force them to give up.",
+    "date": "2026-03-03",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-chancellor-friedrich-merz-germany-and-exchange-with-reporters",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-062",
+    "politician": "Donald Trump",
+    "text": "First we have to finish off the military, and then I'll look to stopping it. Because they want a ceasefire but they have to surrender first.",
+    "date": "2026-03-03",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-chancellor-friedrich-merz-germany-and-exchange-with-reporters",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-063",
+    "politician": "Donald Trump",
+    "text": "United States military and IDF continued Operation Epic Fury in Iran. We've wiped every single force in Iran out.",
+    "date": "2026-03-09",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-miami-florida",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-064",
+    "politician": "Donald Trump",
+    "text": "As of this morning, we've struck over 5,000 targets within Iran, and we've left important targets for later. We could probably level half the country if we wanted to.",
+    "date": "2026-03-09",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-miami-florida",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-065",
+    "politician": "Donald Trump",
+    "text": "Operation Epic Fury is the most decisive American military action since Desert Storm. We've knocked out their navy, their air force.",
+    "date": "2026-03-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-066",
+    "politician": "Donald Trump",
+    "text": "I have ordered a temporarily postpone planned strikes on Isfahan, Qom, Tehran, and Shiraz and instructed the Defense Department to prepare for a pause of escalation if the Iranian regime fully accepts U.S. terms.",
+    "date": "2026-03-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-067",
+    "politician": "Donald Trump",
+    "text": "While negotiations are ongoing, we'll ensure Iran never obtains a nuclear weapon.",
+    "date": "2026-03-23",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-068",
+    "politician": "Donald Trump",
+    "text": "Every President should have done this a long time ago. It should have never happened. It should have never started. And we're taking care of business and it's going to be a great result in the end.",
+    "date": "2026-03-26",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-during-cabinet-meeting-and-exchange-with-reporters-5",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-069",
+    "politician": "Donald Trump",
+    "text": "Tonight, Iran's navy is GONE. Their air force is in ruins. Their leaders, most of them — the terrorist regime they led — are now dead.",
+    "date": "2026-04-01",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/white-house-press-release-president-trump-delivers-powerful-primetime-address-operation",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-070",
+    "politician": "Donald Trump",
+    "text": "A United States F-15 went down deep inside enemy territory in Iran. That is a place where I was told, and I was exactly right, the entire country can be taken out in one night.",
+    "date": "2026-04-06",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-56",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-071",
+    "politician": "Donald Trump",
+    "text": "A whole civilization will die tonight if Iran does not meet our terms. Complete and Total Regime Change is what they have done to themselves. 47 years of extortion, terrorism, and destruction!",
+    "date": "2026-04-07",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-april-7-2026",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-072",
+    "politician": "Donald Trump",
+    "text": "Subject to Iran safe opening of Strait of Hormuz, I agree to suspend bombing of Iran beginning today at noon, for two weeks at which point we will consider full terms of double sided CEASEFIRE.",
+    "date": "2026-04-07",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/statement-united-states-military-operations-iran-0",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-073",
+    "politician": "Donald Trump",
+    "text": "We have already met and exceeded all Military objectives, no reason to kill anymore.",
+    "date": "2026-04-07",
+    "sourceUrl": "https://www.presidency.ucsb.edu/documents/statement-united-states-military-operations-iran-0",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
+  },
+  {
+    "id": "trump-iran-ds-074",
+    "politician": "Donald Trump",
+    "text": "Trump said the interim memorandum of understanding with Iran aimed at ending the conflict was 'over' and used the phrases 'scum' and 'sick people' for Iranian leadership, according to Reuters.",
+    "date": "2026-07-08",
+    "sourceUrl": "https://www.reuters.com/world/trump-says-interim-accord-with-iran-end-war-is-over-2026-07-08/",
+    "topic": "Iran",
+    "era": "iran-war-dataset"
   }
 ]
