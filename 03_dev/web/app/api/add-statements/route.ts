@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       const text = (s.text || "").trim();
       if (!text || seen.has(text.toLowerCase())) return; // dedupe
       seen.add(text.toLowerCase());
-      const topic = s.topic || "영상 검증 발언";
+      const topic = s.topic || "video";
       fresh.push({
         id: `added-${slug}-${Date.now()}-${i}`,
         politician,
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
         date: s.date || now.slice(0, 10),
         sourceUrl: sourceUrl || "",
         topic,
-        sector: classifySector(topic === "영상 검증 발언" ? text : topic),
+        sector: classifySector(topic === "video" ? text : topic),
         isContradiction: !!s.isContradiction,
         factVerdict: s.factVerdict,
         factSources: s.factSources,
