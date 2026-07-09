@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAnthropic, joinText, extractJson } from "@/lib/anthropic";
+import { getAnthropic, joinText, extractJson, salvageObjects } from "@/lib/anthropic";
 import { buildConsistencyPrompt, CONSISTENCY_SCHEMA } from "@/lib/prompts";
 import statementsData from "@/data/statements.json";
 import type { Statement, SpokenLine, ConsistencyResult } from "@/lib/types";
@@ -91,22 +91,40 @@ export async function POST(req: Request) {
     const past = selectRelevant(lines, allPast, 35);
 
     const client = getAnthropic();
-    const res = await client.messages.create({
-      model: "claude-sonnet-5",
-      max_tokens: 8000,
-      thinking: { type: "adaptive" },
-      // Structured output: constrain the response to our JSON schema.
-      output_config: { format: { type: "json_schema", schema: CONSISTENCY_SCHEMA } },
-      messages: [
-        {
-          role: "user",
-          content: buildConsistencyPrompt(politician, past, lines, lang ?? "en"),
-        },
-      ],
-      // Cast: output_config is newer than some SDK type defs.
-    } as any);
+    const prompt = buildConsistencyPrompt(politician, past, lines, lang ?? "en");
 
-    const result = extractJson<ConsistencyResult>(joinText(res));
+    // Try to get clean JSON; on a small model's runaway/truncation, retry (with a
+    // temperature bump) and finally salvage whatever verdicts parsed.
+    let result: ConsistencyResult | null = null;
+    for (let attempt = 0; attempt < 3 && !result; attempt++) {
+      const res = await client.messages.create({
+        model: "claude-sonnet-5",
+        max_tokens: 3000,
+        temperature: attempt * 0.4, // ignored by Anthropic; varies local retries
+        thinking: { type: "adaptive" },
+        output_config: {
+          format: { type: "json_schema", schema: CONSISTENCY_SCHEMA },
+        },
+        messages: [{ role: "user", content: prompt }],
+      } as any);
+      const text = joinText(res);
+      try {
+        result = extractJson<ConsistencyResult>(text);
+      } catch {
+        const verdicts = salvageObjects<ConsistencyResult["verdicts"][number]>(
+          text,
+          "verdicts"
+        );
+        if (verdicts.length) {
+          const nonContra = verdicts.filter((v) => !v.isContradiction).length;
+          result = {
+            verdicts,
+            consistencyScore: Math.round((nonContra / verdicts.length) * 100),
+          };
+        }
+      }
+    }
+    if (!result) throw new Error("Could not parse consistency analysis JSON");
     return NextResponse.json(result);
   } catch (err: any) {
     console.error("[/api/analyze]", err);

@@ -36,7 +36,8 @@ function ollamaClient() {
           stream: false,
           format: schema ?? "json",
           options: {
-            temperature: 0,
+            // Retries can bump temperature to escape a small model's bad-JSON loop.
+            temperature: opts?.temperature ?? 0,
             num_predict: opts?.max_tokens ?? 2048,
           },
         };
@@ -73,6 +74,56 @@ export function joinText(res: any): string {
     .map((b: any) => b.text)
     .join("\n")
     .trim();
+}
+
+/** Salvage as many complete objects as possible from a (possibly runaway/truncated)
+ *  JSON array under `key`. Small local models sometimes loop mid-array; this parses
+ *  the valid prefix so the pipeline degrades to partial results instead of erroring. */
+export function salvageObjects<T = any>(text: string, key: string): T[] {
+  const keyIdx = text.indexOf(`"${key}"`);
+  const arrStart = text.indexOf("[", keyIdx === -1 ? 0 : keyIdx);
+  if (arrStart === -1) return [];
+  const out: T[] = [];
+  let i = arrStart + 1;
+  while (i < text.length) {
+    while (i < text.length && /[\s,]/.test(text[i])) i++;
+    if (i >= text.length || text[i] === "]") break;
+    if (text[i] !== "{") break;
+    let depth = 0,
+      inStr = false,
+      esc = false,
+      j = i;
+    for (; j < text.length; j++) {
+      const c = text[j];
+      if (esc) {
+        esc = false;
+        continue;
+      }
+      if (c === "\\") {
+        esc = true;
+        continue;
+      }
+      if (c === '"') inStr = !inStr;
+      else if (!inStr) {
+        if (c === "{") depth++;
+        else if (c === "}") {
+          depth--;
+          if (depth === 0) {
+            j++;
+            break;
+          }
+        }
+      }
+    }
+    if (depth !== 0) break; // unterminated last object
+    try {
+      out.push(JSON.parse(text.slice(i, j)) as T);
+    } catch {
+      break;
+    }
+    i = j;
+  }
+  return out;
 }
 
 /** Extract the first JSON object from a string (defensive parse for tool responses). */

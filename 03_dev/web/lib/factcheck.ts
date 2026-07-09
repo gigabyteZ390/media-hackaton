@@ -17,7 +17,13 @@
 // Note (Claude Opus 4.8): sampling params (temperature/top_p) are rejected — do not
 // send them. We use adaptive thinking + the web_search server tool.
 
-import { getAnthropic, joinText, extractJson, isLocalLLM } from "./anthropic";
+import {
+  getAnthropic,
+  joinText,
+  extractJson,
+  salvageObjects,
+  isLocalLLM,
+} from "./anthropic";
 import { webSearch } from "./websearch";
 import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
 import { STAT_REGISTRY, findEntry, type RegistryEntry } from "./statRegistry";
@@ -47,14 +53,25 @@ const verdictKey = (line: string, lang: Lang, asOf?: string) =>
 /** Step 1 — LLM extracts a structured claim per line (no web search). */
 async function extractClaims(lines: SpokenLine[], lang: Lang): Promise<StatClaim[]> {
   const client = getAnthropic();
-  const res = await client.messages.create({
-    model: MODEL,
-    max_tokens: 8000,
-    thinking: { type: "adaptive" },
-    messages: [{ role: "user", content: buildExtractionPrompt(lines, lang) }],
-  } as any);
-  const parsed = extractJson<{ claims: StatClaim[] }>(joinText(res));
-  return parsed.claims ?? [];
+  const prompt = buildExtractionPrompt(lines, lang);
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const res = await client.messages.create({
+      model: MODEL,
+      max_tokens: 3000,
+      temperature: attempt * 0.4, // ignored by Anthropic; varies local retries
+      thinking: { type: "adaptive" },
+      messages: [{ role: "user", content: prompt }],
+    } as any);
+    const text = joinText(res);
+    try {
+      return extractJson<{ claims: StatClaim[] }>(text).claims ?? [];
+    } catch {
+      const claims = salvageObjects<StatClaim>(text, "claims");
+      if (claims.length) return claims;
+    }
+  }
+  // Never block Axis 2 on a parse failure — treat as "nothing checkable".
+  return lines.map((l) => ({ line: l.text, isFactualClaim: false, isStatistical: false }));
 }
 
 /** Fetch the official figure for a registry entry (cached; dispatches to INSEE/KOSIS). */
@@ -173,14 +190,15 @@ async function webSearchFallbackLocal(
     messages: [{ role: "user", content: prompt }],
   } as any);
 
-  let parsed: { facts?: FactVerdict[] } = {};
+  const text = joinText(res);
+  let facts: FactVerdict[] = [];
   try {
-    parsed = extractJson<{ facts?: FactVerdict[] }>(joinText(res));
+    facts = extractJson<{ facts?: FactVerdict[] }>(text).facts ?? [];
   } catch {
-    parsed = {};
+    facts = salvageObjects<FactVerdict>(text, "facts");
   }
   const allHits = evidences.flatMap((e) => e.hits);
-  return (parsed.facts ?? []).map((f) => {
+  return facts.map((f) => {
     const modelSources = (f.sources ?? []).filter((s) =>
       /^https?:\/\//.test(s?.url ?? "")
     );
