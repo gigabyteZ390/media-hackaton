@@ -1,0 +1,1829 @@
+{
+  "politician": "Donald Trump",
+  "generatedFrom": 173,
+  "totalStatements": 176,
+  "totalReversals": 29,
+  "sectors": [
+    {
+      "key": "geopolitics",
+      "statementCount": 113,
+      "reversalCount": 14,
+      "topics": [
+        {
+          "topic": "iran",
+          "count": 80,
+          "reversalCount": 6,
+          "note": {
+            "ko": "트럼프는 2020년 1월 정권교체를 원치 않는다고 했으나 2025년 6월 22일에는 정권교체를 시사했고, 2025년 6월 16일 협상을 원한다더니 6월 17일 무조건 항복을 요구했으며, 6월 21일 공습 후 6월 23일 휴전을 선언했다가 2026년 3월 다시 대규모 군사작전으로 전환했고, 이후 3월 23일과 4월 7일 재차 협상·정전으로 돌아섰지만 결국 2026년 7월 8일 잠정 합의가 끝났다고 선언하며 다시 적대적 태도로 돌아갔다. 2026년 7월 8일에는 '끝났다'고 선언하면서 동시에 이란의 선박 공격에 대한 보복 공습을 재개하고 '훨씬 더 나빠질 것'이라 경고했다.",
+            "en": "Trump reversed from denying any intent for regime change in Jan 2020 to hinting at regime change on 2025-06-22, flipped from seeking a deal on 2025-06-16 to demanding unconditional surrender on 2025-06-17, went from launching strikes on 2025-06-21 to declaring a ceasefire on 2025-06-23, then reversed again into massive renewed combat operations by 2026-03-02, paused for negotiations by 2026-03-23 and 2026-04-07, only to declare the interim agreement over and turn hostile again by 2026-07-08. On 2026-07-08 he both declared it 'over' and launched renewed retaliatory strikes over Iran's attacks on ships, warning it 'will get much worse.'"
+          },
+          "statements": [
+            {
+              "text": "Our president will start a war with Iran because he has absolutely no ability to negotiate. He's weak and he's ineffective.",
+              "textEn": "Our president will start a war with Iran because he has absolutely no ability to negotiate. He's weak and he's ineffective.",
+              "textKo": "Our president will start a war with Iran because he has absolutely no ability to negotiate. He's weak and he's ineffective.",
+              "src": "en",
+              "date": "2011-11-16",
+              "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection"
+            },
+            {
+              "text": "In order to get elected, @BarackObama will start a war with Iran.",
+              "textEn": "In order to get elected, @BarackObama will start a war with Iran.",
+              "textKo": "In order to get elected, @BarackObama will start a war with Iran.",
+              "src": "en",
+              "date": "2011-11-29",
+              "sourceUrl": "https://x.com/realDonaldTrump/status/141604554855825408"
+            },
+            {
+              "text": "Now that Obama’s poll numbers are in tailspin – watch for him to launch a strike in Libya or Iran. He is desperate.",
+              "textEn": "Now that Obama’s poll numbers are in tailspin – watch for him to launch a strike in Libya or Iran. He is desperate.",
+              "textKo": "Now that Obama’s poll numbers are in tailspin – watch for him to launch a strike in Libya or Iran. He is desperate.",
+              "src": "en",
+              "date": "2012-10-09",
+              "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection"
+            },
+            {
+              "text": "I predict that President Obama will at some point attack Iran in order to save face!",
+              "textEn": "I predict that President Obama will at some point attack Iran in order to save face!",
+              "textKo": "I predict that President Obama will at some point attack Iran in order to save face!",
+              "src": "en",
+              "date": "2013-09-16",
+              "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection"
+            },
+            {
+              "text": "Remember what I previously said — Obama will someday attack Iran in order to show how tough he is.",
+              "textEn": "Remember what I previously said — Obama will someday attack Iran in order to show how tough he is.",
+              "textKo": "Remember what I previously said — Obama will someday attack Iran in order to show how tough he is.",
+              "src": "en",
+              "date": "2013-09-25",
+              "sourceUrl": "https://www.axios.com/2020/01/03/trump-obama-iran-war-reelection"
+            },
+            {
+              "text": "This was a horrible, one-sided deal that should never have been made — the worst deal ever; the U.S. will withdraw from the Iran nuclear deal.",
+              "textEn": "This was a horrible, one-sided deal that should never have been made — the worst deal ever; the U.S. will withdraw from the Iran nuclear deal.",
+              "textKo": "This was a horrible, one-sided deal that should never have been made — the worst deal ever; the U.S. will withdraw from the Iran nuclear deal.",
+              "src": "en",
+              "date": "2018-05-08",
+              "sourceUrl": "https://www.cnn.com/2018/05/08/politics/donald-trump-iran-deal-announcement-decision/"
+            },
+            {
+              "text": "Iran will never be allowed to have a nuclear weapon; this JCPOA is a horrible, one-sided deal and the U.S. is withdrawing.",
+              "textEn": "Iran will never be allowed to have a nuclear weapon; this JCPOA is a horrible, one-sided deal and the U.S. is withdrawing.",
+              "textKo": "Iran will never be allowed to have a nuclear weapon; this JCPOA is a horrible, one-sided deal and the U.S. is withdrawing.",
+              "src": "en",
+              "date": "2018-05-08",
+              "sourceUrl": "https://www.npr.org/2018/05/08/609383603/trump-u-s-will-withdraw-from-iran-nuclear-deal"
+            },
+            {
+              "text": "If Iran wants to fight, that will be the official end of Iran. Never threaten the United States again!",
+              "textEn": "If Iran wants to fight, that will be the official end of Iran. Never threaten the United States again!",
+              "textKo": "If Iran wants to fight, that will be the official end of Iran. Never threaten the United States again!",
+              "src": "en",
+              "date": "2019-05-19",
+              "sourceUrl": "https://x.com/realDonaldTrump/status/1130207891049332737"
+            },
+            {
+              "text": "Last night at my direction, the United States military successfully executed a flawless precision strike that killed the number-one terrorist anywhere in the world, Qasem Soleimani.",
+              "textEn": "Last night at my direction, the United States military successfully executed a flawless precision strike that killed the number-one terrorist anywhere in the world, Qasem Soleimani.",
+              "textKo": "Last night at my direction, the United States military successfully executed a flawless precision strike that killed the number-one terrorist anywhere in the world, Qasem Soleimani.",
+              "src": "en",
+              "date": "2020-01-03",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/"
+            },
+            {
+              "text": "We took action last night to stop a war. We did not take action to start a war.",
+              "textEn": "We took action last night to stop a war. We did not take action to start a war.",
+              "textKo": "We took action last night to stop a war. We did not take action to start a war.",
+              "src": "en",
+              "date": "2020-01-03",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/"
+            },
+            {
+              "text": "The United States does not seek regime change. However, the Iranian regime’s aggression in the region, including the use of proxy fighters to destabilize its neighbors, must end, and it must end now.",
+              "textEn": "The United States does not seek regime change. However, the Iranian regime’s aggression in the region, including the use of proxy fighters to destabilize its neighbors, must end, and it must end now.",
+              "textKo": "The United States does not seek regime change. However, the Iranian regime’s aggression in the region, including the use of proxy fighters to destabilize its neighbors, must end, and it must end now.",
+              "src": "en",
+              "date": "2020-01-03",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/"
+            },
+            {
+              "text": "As long as I am President of the United States, Iran will never be allowed to have a nuclear weapon.",
+              "textEn": "As long as I am President of the United States, Iran will never be allowed to have a nuclear weapon.",
+              "textKo": "As long as I am President of the United States, Iran will never be allowed to have a nuclear weapon.",
+              "src": "en",
+              "date": "2020-01-08",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/"
+            },
+            {
+              "text": "Iran appears to be standing down, which is a good thing for all parties concerned and a very good thing for the world.",
+              "textEn": "Iran appears to be standing down, which is a good thing for all parties concerned and a very good thing for the world.",
+              "textKo": "Iran appears to be standing down, which is a good thing for all parties concerned and a very good thing for the world.",
+              "src": "en",
+              "date": "2020-01-08",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/"
+            },
+            {
+              "text": "The fact that we have this great military and equipment, however, does not mean we have to use it. We do not want to use it.",
+              "textEn": "The fact that we have this great military and equipment, however, does not mean we have to use it. We do not want to use it.",
+              "textKo": "The fact that we have this great military and equipment, however, does not mean we have to use it. We do not want to use it.",
+              "src": "en",
+              "date": "2020-01-08",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/"
+            },
+            {
+              "text": "Finally, to the people and leaders of Iran: We want you to have a future and a great future — one that you deserve, one of prosperity at home and harmony with the nations of the world. The United States is ready to embrace peace with all who seek it.",
+              "textEn": "Finally, to the people and leaders of Iran: We want you to have a future and a great future — one that you deserve, one of prosperity at home and harmony with the nations of the world. The United States is ready to embrace peace with all who seek it.",
+              "textKo": "Finally, to the people and leaders of Iran: We want you to have a future and a great future — one that you deserve, one of prosperity at home and harmony with the nations of the world. The United States is ready to embrace peace with all who seek it.",
+              "src": "en",
+              "date": "2020-01-08",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-iran/"
+            },
+            {
+              "text": "Today, I'm directing the Secretary of State, Mike Pompeo, to notify the U.N. Security Council that the United States intends to restore virtually all of the previously suspended United Nations sanctions on Iran. It's a snapback.",
+              "textEn": "Today, I'm directing the Secretary of State, Mike Pompeo, to notify the U.N. Security Council that the United States intends to restore virtually all of the previously suspended United Nations sanctions on Iran. It's a snapback.",
+              "textKo": "Today, I'm directing the Secretary of State, Mike Pompeo, to notify the U.N. Security Council that the United States intends to restore virtually all of the previously suspended United Nations sanctions on Iran. It's a snapback.",
+              "src": "en",
+              "date": "2020-08-19",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/"
+            },
+            {
+              "text": "Iran will never have a nuclear weapon. Mark it down.",
+              "textEn": "Iran will never have a nuclear weapon. Mark it down.",
+              "textKo": "Iran will never have a nuclear weapon. Mark it down.",
+              "src": "en",
+              "date": "2020-08-19",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/"
+            },
+            {
+              "text": "Iran will never have a nuclear weapon, but as soon as the election is over, whether it's now or in a couple of months, Iran is going to make a deal with us.",
+              "textEn": "Iran will never have a nuclear weapon, but as soon as the election is over, whether it's now or in a couple of months, Iran is going to make a deal with us.",
+              "textKo": "Iran will never have a nuclear weapon, but as soon as the election is over, whether it's now or in a couple of months, Iran is going to make a deal with us.",
+              "src": "en",
+              "date": "2020-08-19",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-press-briefing-august-19-2020/"
+            },
+            {
+              "text": "I gave Iran chance after chance to make a deal. I told them, in the strongest of words, to 'just do it,' but no matter how hard they tried, no matter how close they got, they just couldn’t get it done.",
+              "textEn": "I gave Iran chance after chance to make a deal. I told them, in the strongest of words, to 'just do it,' but no matter how hard they tried, no matter how close they got, they just couldn’t get it done.",
+              "textKo": "I gave Iran chance after chance to make a deal. I told them, in the strongest of words, to 'just do it,' but no matter how hard they tried, no matter how close they got, they just couldn’t get it done.",
+              "src": "en",
+              "date": "2025-06-13",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-13-2025"
+            },
+            {
+              "text": "Two months ago I gave Iran a 60 day ultimatum to 'make a deal.' They should have done it! Today is day 61.",
+              "textEn": "Two months ago I gave Iran a 60 day ultimatum to 'make a deal.' They should have done it! Today is day 61.",
+              "textKo": "Two months ago I gave Iran a 60 day ultimatum to 'make a deal.' They should have done it! Today is day 61.",
+              "src": "en",
+              "date": "2025-06-13",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-13-2025"
+            },
+            {
+              "text": "Iran and Israel should make a deal, and will make a deal, just like I got India and Pakistan to make...",
+              "textEn": "Iran and Israel should make a deal, and will make a deal, just like I got India and Pakistan to make...",
+              "textKo": "Iran and Israel should make a deal, and will make a deal, just like I got India and Pakistan to make...",
+              "src": "en",
+              "date": "2025-06-15",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-15-2025"
+            },
+            {
+              "text": "You see where Israel is doing very well, and I think Iran is actually at the negotiating table wanting to make a deal. And as soon as I leave here, we're going to be doing something.",
+              "textEn": "You see where Israel is doing very well, and I think Iran is actually at the negotiating table wanting to make a deal. And as soon as I leave here, we're going to be doing something.",
+              "textKo": "You see where Israel is doing very well, and I think Iran is actually at the negotiating table wanting to make a deal. And as soon as I leave here, we're going to be doing something.",
+              "src": "en",
+              "date": "2025-06-16",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united"
+            },
+            {
+              "text": "Iran should have signed the deal.",
+              "textEn": "Iran should have signed the deal.",
+              "textKo": "Iran should have signed the deal.",
+              "src": "en",
+              "date": "2025-06-16",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united"
+            },
+            {
+              "text": "I think Iran basically is at the negotiating table and wants to make a deal.",
+              "textEn": "I think Iran basically is at the negotiating table and wants to make a deal.",
+              "textKo": "I think Iran basically is at the negotiating table and wants to make a deal.",
+              "src": "en",
+              "date": "2025-06-16",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-with-prime-minister-keir-starmer-the-united-kingdom-after-signing-the-united"
+            },
+            {
+              "text": "I have not reached out to Iran for 'Peace Talks' in any way, shape, or form. This is just more HIGHLY FABRICATED, FAKE NEWS!",
+              "textEn": "I have not reached out to Iran for 'Peace Talks' in any way, shape, or form. This is just more HIGHLY FABRICATED, FAKE NEWS!",
+              "textKo": "I have not reached out to Iran for 'Peace Talks' in any way, shape, or form. This is just more HIGHLY FABRICATED, FAKE NEWS!",
+              "src": "en",
+              "date": "2025-06-17",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025"
+            },
+            {
+              "text": "We now have complete and total control of the skies over Iran.",
+              "textEn": "We now have complete and total control of the skies over Iran.",
+              "textKo": "We now have complete and total control of the skies over Iran.",
+              "src": "en",
+              "date": "2025-06-17",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025"
+            },
+            {
+              "text": "We know exactly where the so-called 'Supreme Leader' is hiding. He is an easy target, but is safe there - We are not going to take him out (kill!), at least not for now.",
+              "textEn": "We know exactly where the so-called 'Supreme Leader' is hiding. He is an easy target, but is safe there - We are not going to take him out (kill!), at least not for now.",
+              "textKo": "We know exactly where the so-called 'Supreme Leader' is hiding. He is an easy target, but is safe there - We are not going to take him out (kill!), at least not for now.",
+              "src": "en",
+              "date": "2025-06-17",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025"
+            },
+            {
+              "text": "UNCONDITIONAL SURRENDER!",
+              "textEn": "UNCONDITIONAL SURRENDER!",
+              "textKo": "UNCONDITIONAL SURRENDER!",
+              "src": "en",
+              "date": "2025-06-17",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-17-2025"
+            },
+            {
+              "text": "The Wall Street Journal has No Idea what my thoughts are concerning Iran!",
+              "textEn": "The Wall Street Journal has No Idea what my thoughts are concerning Iran!",
+              "textKo": "The Wall Street Journal has No Idea what my thoughts are concerning Iran!",
+              "src": "en",
+              "date": "2025-06-19",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-19-2025"
+            },
+            {
+              "text": "I won’t get a Nobel Peace Prize no matter what I do, including Russia/Ukraine, and Israel/Iran, whatever those outcomes may be...",
+              "textEn": "I won’t get a Nobel Peace Prize no matter what I do, including Russia/Ukraine, and Israel/Iran, whatever those outcomes may be...",
+              "textKo": "I won’t get a Nobel Peace Prize no matter what I do, including Russia/Ukraine, and Israel/Iran, whatever those outcomes may be...",
+              "src": "en",
+              "date": "2025-06-20",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-20-2025"
+            },
+            {
+              "text": "We have completed our very successful attack on the three Nuclear sites in Iran, including Fordow, Natanz, and Esfahan.",
+              "textEn": "We have completed our very successful attack on the three Nuclear sites in Iran, including Fordow, Natanz, and Esfahan.",
+              "textKo": "We have completed our very successful attack on the three Nuclear sites in Iran, including Fordow, Natanz, and Esfahan.",
+              "src": "en",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025"
+            },
+            {
+              "text": "IRAN MUST NOW AGREE TO END THIS WAR.",
+              "textEn": "IRAN MUST NOW AGREE TO END THIS WAR.",
+              "textKo": "IRAN MUST NOW AGREE TO END THIS WAR.",
+              "src": "en",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025"
+            },
+            {
+              "text": "ANY RETALIATION BY IRAN AGAINST THE UNITED STATES OF AMERICA WILL BE MET WITH FORCE FAR GREATER THAN WHAT WAS WITNESSED TONIGHT.",
+              "textEn": "ANY RETALIATION BY IRAN AGAINST THE UNITED STATES OF AMERICA WILL BE MET WITH FORCE FAR GREATER THAN WHAT WAS WITNESSED TONIGHT.",
+              "textKo": "ANY RETALIATION BY IRAN AGAINST THE UNITED STATES OF AMERICA WILL BE MET WITH FORCE FAR GREATER THAN WHAT WAS WITNESSED TONIGHT.",
+              "src": "en",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-21-2025"
+            },
+            {
+              "text": "A short time ago, the U.S. military carried out massive precision strikes on the three key nuclear facilities in the Iranian regime: Fordow, Natanz, and Esfahan.",
+              "textEn": "A short time ago, the U.S. military carried out massive precision strikes on the three key nuclear facilities in the Iranian regime: Fordow, Natanz, and Esfahan.",
+              "textKo": "A short time ago, the U.S. military carried out massive precision strikes on the three key nuclear facilities in the Iranian regime: Fordow, Natanz, and Esfahan.",
+              "src": "en",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-airstrikes-iran"
+            },
+            {
+              "text": "There will be either peace or there will be tragedy for Iran far greater than we have witnessed over the last 8 days.",
+              "textEn": "There will be either peace or there will be tragedy for Iran far greater than we have witnessed over the last 8 days.",
+              "textKo": "There will be either peace or there will be tragedy for Iran far greater than we have witnessed over the last 8 days.",
+              "src": "en",
+              "date": "2025-06-21",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-airstrikes-iran"
+            },
+            {
+              "text": "I have very good information. First of all, Iran cannot have a nuclear weapon. The whole World agrees on that.",
+              "textEn": "I have very good information. First of all, Iran cannot have a nuclear weapon. The whole World agrees on that.",
+              "textKo": "I have very good information. First of all, Iran cannot have a nuclear weapon. The whole World agrees on that.",
+              "src": "en",
+              "date": "2025-06-22",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025"
+            },
+            {
+              "text": "The damage to the Nuclear sites in Iran is said to be 'monumental.' The hits were hard and accurate.",
+              "textEn": "The damage to the Nuclear sites in Iran is said to be 'monumental.' The hits were hard and accurate.",
+              "textKo": "The damage to the Nuclear sites in Iran is said to be 'monumental.' The hits were hard and accurate.",
+              "src": "en",
+              "date": "2025-06-22",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025"
+            },
+            {
+              "text": "It's not politically correct to use the term, 'Regime Change,' but if the current Iranian Regime is unable to MAKE IRAN GREAT AGAIN, why wouldn't there be a Regime change???",
+              "textEn": "It's not politically correct to use the term, 'Regime Change,' but if the current Iranian Regime is unable to MAKE IRAN GREAT AGAIN, why wouldn't there be a Regime change???",
+              "textKo": "It's not politically correct to use the term, 'Regime Change,' but if the current Iranian Regime is unable to MAKE IRAN GREAT AGAIN, why wouldn't there be a Regime change???",
+              "src": "en",
+              "date": "2025-06-22",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025"
+            },
+            {
+              "text": "The GREAT B-2 pilots have just landed, safely, in Missouri. Thank you for a job well done!!!",
+              "textEn": "The GREAT B-2 pilots have just landed, safely, in Missouri. Thank you for a job well done!!!",
+              "textKo": "The GREAT B-2 pilots have just landed, safely, in Missouri. Thank you for a job well done!!!",
+              "src": "en",
+              "date": "2025-06-22",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025"
+            },
+            {
+              "text": "Monumental Damage was done to all Nuclear sites in Iran, as shown by satellite images. Obliteration is an accurate term!",
+              "textEn": "Monumental Damage was done to all Nuclear sites in Iran, as shown by satellite images. Obliteration is an accurate term!",
+              "textKo": "Monumental Damage was done to all Nuclear sites in Iran, as shown by satellite images. Obliteration is an accurate term!",
+              "src": "en",
+              "date": "2025-06-22",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-22-2025"
+            },
+            {
+              "text": "EVERYONE, KEEP OIL PRICES DOWN. I'M WATCHING! YOU'RE PLAYING RIGHT INTO THE HANDS OF THE ENEMY. DON'T DO IT!",
+              "textEn": "EVERYONE, KEEP OIL PRICES DOWN. I'M WATCHING! YOU'RE PLAYING RIGHT INTO THE HANDS OF THE ENEMY. DON'T DO IT!",
+              "textKo": "EVERYONE, KEEP OIL PRICES DOWN. I'M WATCHING! YOU'RE PLAYING RIGHT INTO THE HANDS OF THE ENEMY. DON'T DO IT!",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "Did I hear Former President Medvedev, from Russia, casually throwing around the 'N word' (Nuclear!), and saying that he and other countries would supply Nuclear Warheads to Iran?",
+              "textEn": "Did I hear Former President Medvedev, from Russia, casually throwing around the 'N word' (Nuclear!), and saying that he and other countries would supply Nuclear Warheads to Iran?",
+              "textKo": "Did I hear Former President Medvedev, from Russia, casually throwing around the 'N word' (Nuclear!), and saying that he and other countries would supply Nuclear Warheads to Iran?",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "The sites that we hit in Iran were totally destroyed, and everyone knows it.",
+              "textEn": "The sites that we hit in Iran were totally destroyed, and everyone knows it.",
+              "textKo": "The sites that we hit in Iran were totally destroyed, and everyone knows it.",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "Iran has officially responded to our Obliteration of their Nuclear Facilities with a very weak response, which we expected, and have very effectively countered.",
+              "textEn": "Iran has officially responded to our Obliteration of their Nuclear Facilities with a very weak response, which we expected, and have very effectively countered.",
+              "textKo": "Iran has officially responded to our Obliteration of their Nuclear Facilities with a very weak response, which we expected, and have very effectively countered.",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "I want to thank the Highly Respected Emir of Qatar for all that he has done in seeking Peace for the Region. Regarding the attack today at the American Base in Qatar, I am pleased to report that, in addition to no Americans being killed or wounded, very importantly, there have also been no Qataris killed or wounded.",
+              "textEn": "I want to thank the Highly Respected Emir of Qatar for all that he has done in seeking Peace for the Region. Regarding the attack today at the American Base in Qatar, I am pleased to report that, in addition to no Americans being killed or wounded, very importantly, there have also been no Qataris killed or wounded.",
+              "textKo": "I want to thank the Highly Respected Emir of Qatar for all that he has done in seeking Peace for the Region. Regarding the attack today at the American Base in Qatar, I am pleased to report that, in addition to no Americans being killed or wounded, very importantly, there have also been no Qataris killed or wounded.",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "CONGRATULATIONS WORLD, IT'S TIME FOR PEACE!",
+              "textEn": "CONGRATULATIONS WORLD, IT'S TIME FOR PEACE!",
+              "textKo": "CONGRATULATIONS WORLD, IT'S TIME FOR PEACE!",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "It has been fully agreed by and between Israel and Iran that there will be a Complete and Total CEASEFIRE... upon which the War will be considered, ENDED!",
+              "textEn": "It has been fully agreed by and between Israel and Iran that there will be a Complete and Total CEASEFIRE... upon which the War will be considered, ENDED!",
+              "textKo": "It has been fully agreed by and between Israel and Iran that there will be a Complete and Total CEASEFIRE... upon which the War will be considered, ENDED!",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "Israel & Iran came to me, almost simultaneously, and said, 'PEACE!' I knew the time was NOW.",
+              "textEn": "Israel & Iran came to me, almost simultaneously, and said, 'PEACE!' I knew the time was NOW.",
+              "textKo": "Israel & Iran came to me, almost simultaneously, and said, 'PEACE!' I knew the time was NOW.",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "We couldn't have made today's 'deal' without the talent and courage of our great B-2 pilots, and all of those associated with that operation.",
+              "textEn": "We couldn't have made today's 'deal' without the talent and courage of our great B-2 pilots, and all of those associated with that operation.",
+              "textKo": "We couldn't have made today's 'deal' without the talent and courage of our great B-2 pilots, and all of those associated with that operation.",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "THE CEASEFIRE IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT!",
+              "textEn": "THE CEASEFIRE IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT!",
+              "textKo": "THE CEASEFIRE IS NOW IN EFFECT. PLEASE DO NOT VIOLATE IT!",
+              "src": "en",
+              "date": "2025-06-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-23-2025"
+            },
+            {
+              "text": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
+              "textEn": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
+              "textKo": "ISRAEL. DO NOT DROP THOSE BOMBS. IF YOU DO IT IS A MAJOR VIOLATION. BRING YOUR PILOTS HOME, NOW!",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "ISRAEL is not going to attack Iran. All planes will turn around and head home, while doing a friendly 'Plane Wave' to Iran. Nobody will be hurt, the Ceasefire is in effect!",
+              "textEn": "ISRAEL is not going to attack Iran. All planes will turn around and head home, while doing a friendly 'Plane Wave' to Iran. Nobody will be hurt, the Ceasefire is in effect!",
+              "textKo": "ISRAEL is not going to attack Iran. All planes will turn around and head home, while doing a friendly 'Plane Wave' to Iran. Nobody will be hurt, the Ceasefire is in effect!",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "IRAN WILL NEVER REBUILD THEIR NUCLEAR FACILITIES!",
+              "textEn": "IRAN WILL NEVER REBUILD THEIR NUCLEAR FACILITIES!",
+              "textKo": "IRAN WILL NEVER REBUILD THEIR NUCLEAR FACILITIES!",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "Heading to NATO, where Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth, will hopefully speak about the Perfect 'equipment' that was used to make last weekend's Target Obliteration in Iran possible... but most importantly, the atomsphere now created for a much calmer period in the Region.",
+              "textEn": "Heading to NATO, where Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth, will hopefully speak about the Perfect 'equipment' that was used to make last weekend's Target Obliteration in Iran possible... but most importantly, the atomsphere now created for a much calmer period in the Region.",
+              "textKo": "Heading to NATO, where Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth, will hopefully speak about the Perfect 'equipment' that was used to make last weekend's Target Obliteration in Iran possible... but most importantly, the atomsphere now created for a much calmer period in the Region.",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "China can now continue to purchase Oil from Iran. Hopefully, they will be purchasing plenty from the U.S., also.",
+              "textEn": "China can now continue to purchase Oil from Iran. Hopefully, they will be purchasing plenty from the U.S., also.",
+              "textKo": "China can now continue to purchase Oil from Iran. Hopefully, they will be purchasing plenty from the U.S., also.",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "Both Israel and Iran wanted to stop the War, equally! It was my great honor to Destroy All Nuclear facilities & capability, and then, STOP THE WAR!",
+              "textEn": "Both Israel and Iran wanted to stop the War, equally! It was my great honor to Destroy All Nuclear facilities & capability, and then, STOP THE WAR!",
+              "textKo": "Both Israel and Iran wanted to stop the War, equally! It was my great honor to Destroy All Nuclear facilities & capability, and then, STOP THE WAR!",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "FAKE NEWS CNN, TOGETHER WITH THE FAILING NEW YORK TIMES, HAVE TEAMED UP IN AN ATTEMPT TO DEMEAN ONE OF THE MOST SUCCESSFUL MILITARY STRIKES IN HISTORY. THE NUCLEAR SITES IN IRAN ARE COMPLETELY DESTROYED!",
+              "textEn": "FAKE NEWS CNN, TOGETHER WITH THE FAILING NEW YORK TIMES, HAVE TEAMED UP IN AN ATTEMPT TO DEMEAN ONE OF THE MOST SUCCESSFUL MILITARY STRIKES IN HISTORY. THE NUCLEAR SITES IN IRAN ARE COMPLETELY DESTROYED!",
+              "textKo": "FAKE NEWS CNN, TOGETHER WITH THE FAILING NEW YORK TIMES, HAVE TEAMED UP IN AN ATTEMPT TO DEMEAN ONE OF THE MOST SUCCESSFUL MILITARY STRIKES IN HISTORY. THE NUCLEAR SITES IN IRAN ARE COMPLETELY DESTROYED!",
+              "src": "en",
+              "date": "2025-06-24",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-24-2025"
+            },
+            {
+              "text": "This was an unbelievable hit in Iran by genius pilots. The only thing that can be questioned is why the 'planes' were there for the taking.",
+              "textEn": "This was an unbelievable hit in Iran by genius pilots. The only thing that can be questioned is why the 'planes' were there for the taking.",
+              "textKo": "This was an unbelievable hit in Iran by genius pilots. The only thing that can be questioned is why the 'planes' were there for the taking.",
+              "src": "en",
+              "date": "2025-06-25",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-25-2025"
+            },
+            {
+              "text": "Rumor is that the Failing New York Times and Fake News CNN will be firing the reporters who made up the FAKE stories on the Iran Nuclear sites because they got it so wrong.",
+              "textEn": "Rumor is that the Failing New York Times and Fake News CNN will be firing the reporters who made up the FAKE stories on the Iran Nuclear sites because they got it so wrong.",
+              "textKo": "Rumor is that the Failing New York Times and Fake News CNN will be firing the reporters who made up the FAKE stories on the Iran Nuclear sites because they got it so wrong.",
+              "src": "en",
+              "date": "2025-06-26",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-26-2025"
+            },
+            {
+              "text": "The cars and small trucks at the site were those of the concrete workers trying to cover up the top of the shafts. Nothing was taken out of facility. Would take too long, too dangerous, and very heavy and hard to move!",
+              "textEn": "The cars and small trucks at the site were those of the concrete workers trying to cover up the top of the shafts. Nothing was taken out of facility. Would take too long, too dangerous, and very heavy and hard to move!",
+              "textKo": "The cars and small trucks at the site were those of the concrete workers trying to cover up the top of the shafts. Nothing was taken out of facility. Would take too long, too dangerous, and very heavy and hard to move!",
+              "src": "en",
+              "date": "2025-06-26",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-june-26-2025"
+            },
+            {
+              "text": "If Iran rebuilds its nuclear program we will knock the hell out of it and act immediately.",
+              "textEn": "If Iran rebuilds its nuclear program we will knock the hell out of it and act immediately.",
+              "textKo": "If Iran rebuilds its nuclear program we will knock the hell out of it and act immediately.",
+              "src": "en",
+              "date": "2025-12-29",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/12/29/trump-says-us-would-back-strikes-against-irans-missile-programme"
+            },
+            {
+              "text": "United States military continues to carry out large-scale combat operations in Iran. The Iranian navy and air force have been shattered.",
+              "textEn": "United States military continues to carry out large-scale combat operations in Iran. The Iranian navy and air force have been shattered.",
+              "textKo": "United States military continues to carry out large-scale combat operations in Iran. The Iranian navy and air force have been shattered.",
+              "src": "en",
+              "date": "2026-03-02",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-presenting-the-medal-honor-sgt-maj-thomas-p-payne"
+            },
+            {
+              "text": "This was our last best chance to strike the Iranian regime. They're finished. They just don't know it yet.",
+              "textEn": "This was our last best chance to strike the Iranian regime. They're finished. They just don't know it yet.",
+              "textKo": "This was our last best chance to strike the Iranian regime. They're finished. They just don't know it yet.",
+              "src": "en",
+              "date": "2026-03-02",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-presenting-the-medal-honor-sgt-maj-thomas-p-payne"
+            },
+            {
+              "text": "We have them very much beaten militarily, but they still don't want to give up. So we'll have to force them to give up.",
+              "textEn": "We have them very much beaten militarily, but they still don't want to give up. So we'll have to force them to give up.",
+              "textKo": "We have them very much beaten militarily, but they still don't want to give up. So we'll have to force them to give up.",
+              "src": "en",
+              "date": "2026-03-03",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-chancellor-friedrich-merz-germany-and-exchange-with-reporters"
+            },
+            {
+              "text": "First we have to finish off the military, and then I'll look to stopping it. Because they want a ceasefire but they have to surrender first.",
+              "textEn": "First we have to finish off the military, and then I'll look to stopping it. Because they want a ceasefire but they have to surrender first.",
+              "textKo": "First we have to finish off the military, and then I'll look to stopping it. Because they want a ceasefire but they have to surrender first.",
+              "src": "en",
+              "date": "2026-03-03",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-chancellor-friedrich-merz-germany-and-exchange-with-reporters"
+            },
+            {
+              "text": "United States military and IDF continued Operation Epic Fury in Iran. We've wiped every single force in Iran out.",
+              "textEn": "United States military and IDF continued Operation Epic Fury in Iran. We've wiped every single force in Iran out.",
+              "textKo": "United States military and IDF continued Operation Epic Fury in Iran. We've wiped every single force in Iran out.",
+              "src": "en",
+              "date": "2026-03-09",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-miami-florida"
+            },
+            {
+              "text": "As of this morning, we've struck over 5,000 targets within Iran, and we've left important targets for later. We could probably level half the country if we wanted to.",
+              "textEn": "As of this morning, we've struck over 5,000 targets within Iran, and we've left important targets for later. We could probably level half the country if we wanted to.",
+              "textKo": "As of this morning, we've struck over 5,000 targets within Iran, and we've left important targets for later. We could probably level half the country if we wanted to.",
+              "src": "en",
+              "date": "2026-03-09",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-miami-florida"
+            },
+            {
+              "text": "Operation Epic Fury is the most decisive American military action since Desert Storm. We've knocked out their navy, their air force.",
+              "textEn": "Operation Epic Fury is the most decisive American military action since Desert Storm. We've knocked out their navy, their air force.",
+              "textKo": "Operation Epic Fury is the most decisive American military action since Desert Storm. We've knocked out their navy, their air force.",
+              "src": "en",
+              "date": "2026-03-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee"
+            },
+            {
+              "text": "I have ordered a temporarily postpone planned strikes on Isfahan, Qom, Tehran, and Shiraz and instructed the Defense Department to prepare for a pause of escalation if the Iranian regime fully accepts U.S. terms.",
+              "textEn": "I have ordered a temporarily postpone planned strikes on Isfahan, Qom, Tehran, and Shiraz and instructed the Defense Department to prepare for a pause of escalation if the Iranian regime fully accepts U.S. terms.",
+              "textKo": "I have ordered a temporarily postpone planned strikes on Isfahan, Qom, Tehran, and Shiraz and instructed the Defense Department to prepare for a pause of escalation if the Iranian regime fully accepts U.S. terms.",
+              "src": "en",
+              "date": "2026-03-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee"
+            },
+            {
+              "text": "While negotiations are ongoing, we'll ensure Iran never obtains a nuclear weapon.",
+              "textEn": "While negotiations are ongoing, we'll ensure Iran never obtains a nuclear weapon.",
+              "textKo": "While negotiations are ongoing, we'll ensure Iran never obtains a nuclear weapon.",
+              "src": "en",
+              "date": "2026-03-23",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-roundtable-discussion-public-safety-memphis-tennessee"
+            },
+            {
+              "text": "Every President should have done this a long time ago. It should have never happened. It should have never started. And we're taking care of business and it's going to be a great result in the end.",
+              "textEn": "Every President should have done this a long time ago. It should have never happened. It should have never started. And we're taking care of business and it's going to be a great result in the end.",
+              "textKo": "Every President should have done this a long time ago. It should have never happened. It should have never started. And we're taking care of business and it's going to be a great result in the end.",
+              "src": "en",
+              "date": "2026-03-26",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/remarks-during-cabinet-meeting-and-exchange-with-reporters-5"
+            },
+            {
+              "text": "Tonight, Iran's navy is GONE. Their air force is in ruins. Their leaders, most of them — the terrorist regime they led — are now dead.",
+              "textEn": "Tonight, Iran's navy is GONE. Their air force is in ruins. Their leaders, most of them — the terrorist regime they led — are now dead.",
+              "textKo": "Tonight, Iran's navy is GONE. Their air force is in ruins. Their leaders, most of them — the terrorist regime they led — are now dead.",
+              "src": "en",
+              "date": "2026-04-01",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/white-house-press-release-president-trump-delivers-powerful-primetime-address-operation"
+            },
+            {
+              "text": "A United States F-15 went down deep inside enemy territory in Iran. That is a place where I was told, and I was exactly right, the entire country can be taken out in one night.",
+              "textEn": "A United States F-15 went down deep inside enemy territory in Iran. That is a place where I was told, and I was exactly right, the entire country can be taken out in one night.",
+              "textKo": "A United States F-15 went down deep inside enemy territory in Iran. That is a place where I was told, and I was exactly right, the entire country can be taken out in one night.",
+              "src": "en",
+              "date": "2026-04-06",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/the-presidents-news-conference-56"
+            },
+            {
+              "text": "A whole civilization will die tonight if Iran does not meet our terms. Complete and Total Regime Change is what they have done to themselves. 47 years of extortion, terrorism, and destruction!",
+              "textEn": "A whole civilization will die tonight if Iran does not meet our terms. Complete and Total Regime Change is what they have done to themselves. 47 years of extortion, terrorism, and destruction!",
+              "textKo": "A whole civilization will die tonight if Iran does not meet our terms. Complete and Total Regime Change is what they have done to themselves. 47 years of extortion, terrorism, and destruction!",
+              "src": "en",
+              "date": "2026-04-07",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/truth-social-posts-april-7-2026"
+            },
+            {
+              "text": "Subject to Iran safe opening of Strait of Hormuz, I agree to suspend bombing of Iran beginning today at noon, for two weeks at which point we will consider full terms of double sided CEASEFIRE.",
+              "textEn": "Subject to Iran safe opening of Strait of Hormuz, I agree to suspend bombing of Iran beginning today at noon, for two weeks at which point we will consider full terms of double sided CEASEFIRE.",
+              "textKo": "Subject to Iran safe opening of Strait of Hormuz, I agree to suspend bombing of Iran beginning today at noon, for two weeks at which point we will consider full terms of double sided CEASEFIRE.",
+              "src": "en",
+              "date": "2026-04-07",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/statement-united-states-military-operations-iran-0"
+            },
+            {
+              "text": "We have already met and exceeded all Military objectives, no reason to kill anymore.",
+              "textEn": "We have already met and exceeded all Military objectives, no reason to kill anymore.",
+              "textKo": "We have already met and exceeded all Military objectives, no reason to kill anymore.",
+              "src": "en",
+              "date": "2026-04-07",
+              "sourceUrl": "https://www.presidency.ucsb.edu/documents/statement-united-states-military-operations-iran-0"
+            },
+            {
+              "text": "Trump said the interim memorandum of understanding with Iran aimed at ending the conflict was 'over' and used the phrases 'scum' and 'sick people' for Iranian leadership, according to Reuters.",
+              "textEn": "Trump said the interim memorandum of understanding with Iran aimed at ending the conflict was 'over' and used the phrases 'scum' and 'sick people' for Iranian leadership, according to Reuters.",
+              "textKo": "Trump said the interim memorandum of understanding with Iran aimed at ending the conflict was 'over' and used the phrases 'scum' and 'sick people' for Iranian leadership, according to Reuters.",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.reuters.com/world/trump-says-interim-accord-with-iran-end-war-is-over-2026-07-08/"
+            },
+            {
+              "text": "This is in retribution for yesterday's bombing of ships by Iran. If it happens again, it will get much worse!",
+              "textEn": "This is in retribution for yesterday's bombing of ships by Iran. If it happens again, it will get much worse!",
+              "textKo": "이것은 어제 이란의 선박 폭격에 대한 보복이다. 또다시 일어나면 훨씬 더 나빠질 것이다!",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.newsweek.com/iran-war-ceasefire-end-trump-statement-12170033"
+            },
+            {
+              "text": "We hit them very hard last night. Probably hit them hard again tonight.",
+              "textEn": "We hit them very hard last night. Probably hit them hard again tonight.",
+              "textKo": "어젯밤 우리는 그들을 매우 세게 타격했다. 오늘 밤에도 아마 다시 세게 칠 것이다.",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.kccu.org/world/2026-07-08/at-nato-summit-in-turkey-trump-says-he-believes-ceasefire-with-iran-is-over"
+            },
+            {
+              "text": "I think it's over. I don't want to deal with them anymore. They're scum.",
+              "textEn": "I think it's over. I don't want to deal with them anymore. They're scum.",
+              "textKo": "끝난 것 같다. 더 이상 그들과 엮이고 싶지 않다. 그들은 쓰레기다.",
+              "src": "en",
+              "date": "2026-07-08",
+              "sourceUrl": "https://www.npr.org/2026/07/08/nx-s1-5883929/trump-nato-iran-strikes-press-conference"
+            }
+          ]
+        },
+        {
+          "topic": "russia/ukraine",
+          "count": 7,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2022년 2월 푸틴의 우크라이나 독립 선언을 천재적이라며 긍정적으로 평가했으나, 2023년에는 전쟁을 24시간 안에 끝내겠다는 자신감 있는 태도로 전환했고, 2025년 3월에는 그 발언이 사실 반농담이었다고 후퇴한 뒤, 2025년 5월에는 푸틴에 대해 우호적 태도에서 미쳤다는 비판적 태도로 다시 전환했다.",
+            "en": "Trump praised Putin's move to declare parts of Ukraine independent as genius in Feb 2022, then in 2023 confidently vowed to end the war in 24 hours, reversed by admitting in March 2025 that claim was sarcastic, and then flipped again in May 2025 from friendly remarks about Putin to calling him crazy and threatening sanctions."
+          },
+          "statements": [
+            {
+              "text": "This is genius... Putin declaring a big portion of Ukraine independent is savvy.",
+              "textEn": "This is genius... Putin declaring a big portion of Ukraine independent is savvy.",
+              "textKo": "이건 천재적인 생각입니다..._putin_은 우크라이나의 큰 부분을 독립시켜 자신의 전략을 잘 구사하고 있습니다.",
+              "src": "en",
+              "date": "2022-02-22",
+              "sourceUrl": "https://www.npr.org/2022/02/22/1082478790/trump-praises-putin-as-savvy-amid-new-escalations-on-russia-ukraine-border"
+            },
+            {
+              "text": "I will have that war settled in one day, 24 hours — I'll get it done before I even take office.",
+              "textEn": "I will have that war settled in one day, 24 hours — I'll get it done before I even take office.",
+              "textKo": "내가 취임하기도 전에 하루 24시간 만에 그 전쟁을 해결할 것입니다.",
+              "src": "en",
+              "date": "2023-03-04",
+              "sourceUrl": "https://www.cnn.com/2025/04/25/politics/fact-check-trump-ukraine-war"
+            },
+            {
+              "text": "I'll get the Russia-Ukraine war done within 24 hours. Everyone says you can't. Absolutely I can.",
+              "textEn": "I'll get the Russia-Ukraine war done within 24 hours. Everyone says you can't. Absolutely I can.",
+              "textKo": "우크라이나와 러시아 간의 전쟁을 24시간 내로 해결하겠습니다. 모든 사람들이 불가능하다고 하지만, 저는 확실히 할 수 있습니다.",
+              "src": "en",
+              "date": "2023-07",
+              "sourceUrl": "https://www.cnn.com/2025/04/25/politics/fact-check-trump-ukraine-war"
+            },
+            {
+              "text": "Well, I was being a little bit sarcastic when I said I'd end the Ukraine war in 24 hours.",
+              "textEn": "Well, I was being a little bit sarcastic when I said I'd end the Ukraine war in 24 hours.",
+              "textKo": "음, 제가 우크라이나 전쟁을 24시간 만에 끝내겠다고 말할 때는 약간 비꼬아서 말한 거였습니다.",
+              "src": "en",
+              "date": "2025-03-14",
+              "sourceUrl": "https://www.euronews.com/2025/03/15/trump-says-he-was-a-bit-sarcastic-when-he-claimed-he-could-end-the-war-in-ukraine-in-24-ho"
+            },
+            {
+              "text": "I've always had a very good relationship with Vladimir Putin, but something has happened to him. He has gone absolutely CRAZY! He is needlessly killing a lot of people.",
+              "textEn": "I've always had a very good relationship with Vladimir Putin, but something has happened to him. He has gone absolutely CRAZY! He is needlessly killing a lot of people.",
+              "textKo": "나폴리먼트_putin_과 항상 좋은 관계를 유지해왔지만 그에게 무슨 일이 일어난 것 같습니다. 그는 정말로 미친 듯이 행동하고 있습니다. 많은 사람들을 불필요하게 죽이고 있습니다.",
+              "src": "en",
+              "date": "2025-05-25",
+              "sourceUrl": "https://www.cnn.com/2025/05/25/politics/trump-putin-ukraine-airstrikes"
+            },
+            {
+              "text": "Something has happened to Putin — he has gone absolutely crazy; I'm considering new sanctions on Russia.",
+              "textEn": "Something has happened to Putin — he has gone absolutely crazy; I'm considering new sanctions on Russia.",
+              "textKo": "putin에게 무슨 일이 일어났는지 모르겠네요 - 그는 정말로 미쳐버렸습니다; 러시아에 대한 새로운 제재를 고려하고 있습니다.",
+              "src": "en",
+              "date": "2025-05-25",
+              "sourceUrl": "https://www.cnn.com/2025/05/27/politics/russia-sanctions-trump-ukraine-war"
+            },
+            {
+              "text": "We get a lot of bullshit thrown at us by Putin; he's very nice all the time, but it turns out to be meaningless.",
+              "textEn": "We get a lot of bullshit thrown at us by Putin; he's very nice all the time, but it turns out to be meaningless.",
+              "textKo": "우리는 _putin_으로부터 많은 거짓말을 듣습니다; 그는 항상 친절하지만 결국에는 아무런 의미가 없습니다.",
+              "src": "en",
+              "date": "2025-07-08",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/7/8/trump-says-he-is-not-happy-with-russias-putin-considering-sanctions"
+            }
+          ]
+        },
+        {
+          "topic": "nato",
+          "count": 4,
+          "reversalCount": 1,
+          "note": {
+            "ko": "트럼프는 2016~2017년 초 나토를 시대에 뒤떨어졌다고 비판했으나, 2017년 4월 12일 더 이상 시대에 뒤떨어지지 않았다고 입장을 바꾸었고 이후 2025년에는 나토 정상회의 성과를 대승리라고 칭찬했다.",
+            "en": "Trump repeatedly called NATO obsolete from March 2016 through January 2017, then reversed on April 12, 2017 by declaring it no longer obsolete, a stance he maintained through praising the 2025 NATO summit outcome."
+          },
+          "statements": [
+            {
+              "text": "NATO is obsolete and expensive, and doesn't have the right countries in it for fighting terrorism.",
+              "textEn": "NATO is obsolete and expensive, and doesn't have the right countries in it for fighting terrorism.",
+              "textKo": "나토는 지키지 못하는 테러와 싸우기 위한 적절한 국가들이 없고 비효율적이며 비용도 많이 든다.",
+              "src": "en",
+              "date": "2016-03-27",
+              "sourceUrl": "https://www.cbsnews.com/news/trump-nato-past-comments/"
+            },
+            {
+              "text": "NATO is obsolete because it wasn't taking care of terror, and NATO members are not paying their fair share.",
+              "textEn": "NATO is obsolete because it wasn't taking care of terror, and NATO members are not paying their fair share.",
+              "textKo": "나토는 테러를 해결하지 못했으며, 나토 회원국들은 공정한 분담금을 내지 않고 있다.",
+              "src": "en",
+              "date": "2017-01-16",
+              "sourceUrl": "https://medillonthehill.medill.northwestern.edu/2025/02/delinquent-and-obsolete-trumps-rhetoric-threatens-transatlantic-stability-of-nato/"
+            },
+            {
+              "text": "I said it was obsolete; it's no longer obsolete.",
+              "textEn": "I said it was obsolete; it's no longer obsolete.",
+              "textKo": "나토가 무용지물이라고 말헀지만 이제 그것은 더 이상 무용지물이 아니다.",
+              "src": "en",
+              "date": "2017-04-12",
+              "sourceUrl": "https://www.politifact.com/factchecks/2017/apr/12/donald-trump/donald-trump-nato-i-said-it-was-obsolete-its-no-lo/"
+            },
+            {
+              "text": "Following the NATO summit at The Hague, allies agreed to commit five percent of GDP by 2035; the White House called it a monumental victory.",
+              "textEn": "Following the NATO summit at The Hague, allies agreed to commit five percent of GDP by 2035; the White House called it a monumental victory.",
+              "textKo": "하이델베르크에서 열린 나토 정상회의 후 동맹국들은 2035년까지 국내총생산(GDP)의 5%를 분담하기로 합의했으며, 백악관은 이를 기념비적인 승리라고 칭찬했다.",
+              "src": "en",
+              "date": "2025-06-25",
+              "sourceUrl": "https://www.piie.com/blogs/realtime-economics/2025/trumps-five-percent-doctrine-and-nato-defense-spending"
+            }
+          ]
+        },
+        {
+          "topic": "tariffs",
+          "count": 3,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2025년 4월 7일에는 관세 일시중단을 검토하지 않겠다고 했으나, 불과 이틀 뒤인 4월 9일에 90일간 관세를 유예하고 10%로 낮추겠다고 발표하며 입장을 뒤집었다.",
+            "en": "On April 7, 2025, Trump said he was not considering pausing tariffs, but just two days later on April 9, 2025 he reversed course and announced a 90-day pause with a reduced 10% rate."
+          },
+          "statements": [
+            {
+              "text": "When a country (USA) is losing many billions of dollars on trade... trade wars are good, and easy to win. It's easy!",
+              "textEn": "When a country (USA) is losing many billions of dollars on trade... trade wars are good, and easy to win. It's easy!",
+              "textKo": "무역에서 많은 백억 달러를 잃는 국가(미국)가 있다면... 무역 전쟁은 좋고, 쉽게 이길 수 있습니다. 쉽죠!",
+              "src": "en",
+              "date": "2018-03-02",
+              "sourceUrl": "https://www.cnbc.com/2018/03/02/trump-trade-wars-are-good-and-easy-to-win.html"
+            },
+            {
+              "text": "Asked whether he would pause the reciprocal tariffs: Well, we're not looking at that.",
+              "textEn": "Asked whether he would pause the reciprocal tariffs: Well, we're not looking at that.",
+              "textKo": "상호 관세를 일시 중단할지 묻혔을 때: 우리로서는 그런 것을 고려하고 있지 않습니다.",
+              "src": "en",
+              "date": "2025-04-07",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/apr/09/donald-trump/flip-flop-trump-pauses-country-tariffs-90-days/"
+            },
+            {
+              "text": "I have authorized a 90 day PAUSE, and a substantially lowered Reciprocal Tariff during this period, of 10%.",
+              "textEn": "I have authorized a 90 day PAUSE, and a substantially lowered Reciprocal Tariff during this period, of 10%.",
+              "textKo": "90일 동안 일시 중단을 승인했으며, 이 기간 동안 상호 관세가 10%로 크게 낮아집니다.",
+              "src": "en",
+              "date": "2025-04-09",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/apr/09/donald-trump/flip-flop-trump-pauses-country-tariffs-90-days/"
+            }
+          ]
+        },
+        {
+          "topic": "tiktok",
+          "count": 5,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2020년 8월 트럼프는 안보 우려로 TikTok 금지 행정명령에 서명했으나, 2024년 9월부터는 입장을 바꿔 TikTok을 구하겠다고 선언하고 2025년 1월 취임 후 금지 시행을 유예하는 행정명령에 서명함.",
+            "en": "Trump signed an executive order to ban TikTok over security concerns in August 2020, then reversed his stance starting September 2024 by vowing to save TikTok and, upon taking office in January 2025, signing an order to pause enforcement of the ban."
+          },
+          "statements": [
+            {
+              "text": "There is credible evidence that ByteDance might take action that threatens the national security of the United States — signing an executive order to ban TikTok within 45 days if not sold.",
+              "textEn": "There is credible evidence that ByteDance might take action that threatens the national security of the United States — signing an executive order to ban TikTok within 45 days if not sold.",
+              "textKo": "바이트댄스가 미국의 국가 안보를 위협할 수 있는 행동을 취할 가능성이 있다는 신뢰할 만한 증거가 있습니다 — 45일 이내에 판매되지 않으면 틱톡 사용을 금지하는 행정 명령을 발동합니다.",
+              "src": "en",
+              "date": "2020-08-06",
+              "sourceUrl": "https://trumpwhitehouse.archives.gov/presidential-actions/executive-order-addressing-threat-posed-tiktok/"
+            },
+            {
+              "text": "I signed an executive order effectively banning TikTok, citing ByteDance data-collection as a national-security threat.",
+              "textEn": "I signed an executive order effectively banning TikTok, citing ByteDance data-collection as a national-security threat.",
+              "textKo": "바이트댄스의 데이터 수집이 국가 안보 위협이라는 이유로 틱톡 사용을 사실상 금지하기 위해 행정 명령을 서명했습니다.",
+              "src": "en",
+              "date": "2020-08-06",
+              "sourceUrl": "https://www.npr.org/2020/08/06/900019185/trump-signs-executive-order-that-will-effectively-ban-use-of-tiktok-in-the-u-s"
+            },
+            {
+              "text": "I'm now a big star on TikTok, and I will save TikTok — for all those who want to save TikTok in America, vote Trump.",
+              "textEn": "I'm now a big star on TikTok, and I will save TikTok — for all those who want to save TikTok in America, vote Trump.",
+              "textKo": "나는 지금 틱톡에서 큰 스타가 되었고, 나는 틱톡을 구할 것입니다 — 미국에서 틱톡을 구하고 싶어하는 모든 사람들을 위해 트럼프를 찍으세요.",
+              "src": "en",
+              "date": "2024-09-06",
+              "sourceUrl": "https://www.politifact.com/factchecks/2025/jan/16/donald-trump/flip-flop-trump-now-opposes-a-tiktok-ban-in-2020-h/"
+            },
+            {
+              "text": "I'm asking companies not to let TikTok stay dark! I will issue an executive order to extend the period of time before the law's prohibitions take effect, so we can make a deal.",
+              "textEn": "I'm asking companies not to let TikTok stay dark! I will issue an executive order to extend the period of time before the law's prohibitions take effect, so we can make a deal.",
+              "textKo": "기업들에게 틱톡이 어두운 상태로 남아있지 않도록 하라고 요청합니다! 저는 법의 금지 조항이 발효되기 전까지 시간을 연장하기 위한 행정 명령을 발표하겠습니다. 그래서 우리가 합의를 이룰 수 있습니다.",
+              "src": "en",
+              "date": "2025-01-19",
+              "sourceUrl": "https://www.npr.org/2025/01/20/nx-s1-5268701/trump-executive-order-tiktok-ban"
+            },
+            {
+              "text": "On my first day back in office I signed an executive order pausing enforcement of the TikTok ban.",
+              "textEn": "On my first day back in office I signed an executive order pausing enforcement of the TikTok ban.",
+              "textKo": "내가 다시 집권한 첫날에 틱톡 금지를 일시 중단하는 행정 명령을 서명했습니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.npr.org/2025/01/20/nx-s1-5268701/trump-executive-order-tiktok-ban"
+            }
+          ]
+        },
+        {
+          "topic": "north korea",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2017년 8월 화염과 분노 발언으로 북한을 위협했으나, 2018년 9월에는 김정은과 사랑에 빠졌다고 말하며 우호적 태도로 전환함.",
+            "en": "Trump shifted from threatening North Korea with fire and fury in August 2017 to declaring he fell in love with Kim Jong Un in September 2018."
+          },
+          "statements": [
+            {
+              "text": "North Korea best not make any more threats — they will be met with fire and fury like the world has never seen.",
+              "textEn": "North Korea best not make any more threats — they will be met with fire and fury like the world has never seen.",
+              "textKo": "북한이 더 이상 위협을 가하지 않는 것이 좋다 — 그들의 위협은 불과 분노로 대응될 것이다. 이는 세계가 겪어보지 못한 수준이다.",
+              "src": "en",
+              "date": "2017-08-08",
+              "sourceUrl": "https://www.npr.org/2017/08/08/542299360/trump-says-u-s-will-meet-north-korean-threats-with-fire-and-fury"
+            },
+            {
+              "text": "We fell in love — he wrote me beautiful letters, and they're great letters.",
+              "textEn": "We fell in love — he wrote me beautiful letters, and they're great letters.",
+              "textKo": "우리는 사랑에 빠졌습니다 — 그는 아름다운 편지를 써주었고, 그 편지는 정말 좋은 편지들입니다.",
+              "src": "en",
+              "date": "2018-09-29",
+              "sourceUrl": "https://www.cnbc.com/2018/09/30/trump-on-kim-tough-talk--and-then-we-fell-in-love.html"
+            }
+          ]
+        },
+        {
+          "topic": "trade",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2016년 5월 트럼프는 중국이 미국을 경제적으로 착취한다고 강하게 비난했으나, 2019년 6월에는 중국과의 회담이 매우 좋았고 관계가 정상 궤도에 올랐다고 말해 입장이 반전됨.",
+            "en": "Trump harshly accused China of economically exploiting the US in May 2016, but reversed course by June 2019, calling the meeting with China very good and saying relations were back on track."
+          },
+          "statements": [
+            {
+              "text": "We can't continue to allow China to rape our country — it's the greatest theft in the history of the world.",
+              "textEn": "We can't continue to allow China to rape our country — it's the greatest theft in the history of the world.",
+              "textKo": "중국이 우리 나라를 강탈하는 것을 계속 허용할 수 없습니다 — 이는 세계 역사상 가장 큰 도둑질입니다.",
+              "src": "en",
+              "date": "2016-05-01",
+              "sourceUrl": "https://edition.cnn.com/2016/05/01/politics/donald-trump-china-rape"
+            },
+            {
+              "text": "We had a very good meeting with China, better than expected; relations are back on track.",
+              "textEn": "We had a very good meeting with China, better than expected; relations are back on track.",
+              "textKo": "중국과 매우 좋은 회의를 가졌습니다. 예상보다 더 좋았고; 관계가 다시 정상 궤도에 올랐습니다.",
+              "src": "en",
+              "date": "2019-06-29",
+              "sourceUrl": "https://www.cnbc.com/2019/06/29/us-china-trade-war-trump-and-xi-meet-at-g-20-summit-in-osaka.html"
+            }
+          ]
+        },
+        {
+          "topic": "syria",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2018년 12월 트럼프는 ISIS를 격퇴했다며 시리아에서 모든 미군을 철수시키겠다고 밝혔으나, 2019년 10월에는 석유 확보를 위해 병력을 시리아에 남겨두겠다고 말해 입장을 뒤집었다.",
+            "en": "In December 2018 Trump said ISIS was defeated and he would bring all U.S. troops home from Syria, but by October 2019 he reversed course, saying troops would stay behind to keep the oil."
+          },
+          "statements": [
+            {
+              "text": "We have defeated ISIS in Syria, my only reason for being there — I am bringing all U.S. troops home.",
+              "textEn": "We have defeated ISIS in Syria, my only reason for being there — I am bringing all U.S. troops home.",
+              "textKo": "시리아에서 이스IS를 격퇴시켰습니다. 제가 거기 있었던 유일한 이유였죠 — 모든 미국 군인들을 집으로 돌려보내겠습니다.",
+              "src": "en",
+              "date": "2018-12-19",
+              "sourceUrl": "https://www.pbs.org/newshour/world/trump-pulling-all-u-s-troops-from-syria-declaring-isis-defeated"
+            },
+            {
+              "text": "We're keeping the oil — we left troops behind in Syria only for the oil.",
+              "textEn": "We're keeping the oil — we left troops behind in Syria only for the oil.",
+              "textKo": "석유는 우리가 소유하고 있습니다 — 우리는 시리아에 병력을 남겨둔 이유가 석유 때문입니다.",
+              "src": "en",
+              "date": "2019-10-25",
+              "sourceUrl": "https://abcnews.go.com/Politics/keeping-oil-syria-trump-considered-war-crime/story?id=66589757"
+            }
+          ]
+        },
+        {
+          "topic": "china",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 4월과 10월 발언 모두 중국에 대한 관세를 점진적으로 낮추겠다는 일관된 입장을 보여 뚜렷한 반전은 없음.",
+            "en": "Both the April 2025 and October 2025 statements consistently show a trajectory of gradually lowering China tariffs, with no clear reversal."
+          },
+          "statements": [
+            {
+              "text": "The 145% China tariff would come down substantially, but it won't be zero.",
+              "textEn": "The 145% China tariff would come down substantially, but it won't be zero.",
+              "textKo": "중국에 대한 145% 관세는 크게 줄어들겠지만, 영향이 완전히 없지는 않을 것입니다.",
+              "src": "en",
+              "date": "2025-04-22",
+              "sourceUrl": "https://www.forbes.com/sites/alisondurkee/2025/04/23/trump-floats-lowering-chinese-tariffs-latest-big-tariff-flip-flop-since-liberation-day/"
+            },
+            {
+              "text": "US tariffs on Chinese goods would drop (from 57% to 47%) after Xi promised to curtail fentanyl-precursor shipments; Trump rated the meeting a '12' out of 10.",
+              "textEn": "US tariffs on Chinese goods would drop (from 57% to 47%) after Xi promised to curtail fentanyl-precursor shipments; Trump rated the meeting a '12' out of 10.",
+              "textKo": "트럼프 대통령은 시 주석이 패نت린 전구 물질의 수송을 줄이겠다고 약속한 이후 미국의 중국 제품에 대한 관세(57%에서 47%로)가 낮아질 것이라고 평가했으며, 이 회담을 10점 만점에 12점으로 평가했습니다.",
+              "src": "en",
+              "date": "2025-10-30",
+              "sourceUrl": "https://www.npr.org/2025/10/30/nx-s1-5590754/trump-china-xi-meeting-lowers-tariffs"
+            }
+          ]
+        },
+        {
+          "topic": "foreign-policy",
+          "count": 4,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 1월부터 3월까지의 발언은 모두 미국 우선주의 정책 하에 국제기구 및 협약 탈퇴를 일관되게 추진한 것으로, 입장 반전은 발견되지 않음.",
+            "en": "Statements from January to March 2025 consistently reflect an America First policy of withdrawing from international agreements and organizations, with no detected reversals."
+          },
+          "statements": [
+            {
+              "text": "During every single day of the Trump Administration, the policy will be to put America First.",
+              "textEn": "During every single day of the Trump Administration, the policy will be to put America First.",
+              "textKo": "트럼프 행정부의 모든 날 동안 정책은 미국을 먼저 생각하는 것이 될 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump withdrew the United States from the Paris Climate Accord.",
+              "textEn": "Trump withdrew the United States from the Paris Climate Accord.",
+              "textKo": "트럼프는 미국이 파리 기후협약에서 탈퇴하도록 했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump withdrew the United States from the World Health Organization.",
+              "textEn": "Trump withdrew the United States from the World Health Organization.",
+              "textKo": "트럼프는 미국이 세계보건기구(WHO)에서 탈퇴하도록 했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump withdrew the United States from the UN Human Rights Council.",
+              "textEn": "Trump withdrew the United States from the UN Human Rights Council.",
+              "textKo": "트럼프는 미국이 유엔 인권 조정 회의에서 탈퇴하도록 했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "defense",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "두 발언 모두 2025년 1월 20일에 이루어졌으며, 카르텔을 테러조직으로 지정하고 1798년 외국인적법을 발동해 범죄 조직을 단속하겠다는 일관된 입장으로 반전은 없음.",
+            "en": "Both statements were made on January 20, 2025 and consistently support designating cartels as terrorist organizations and invoking the Alien Enemies Act to crack down on criminal networks, showing no reversal."
+          },
+          "statements": [
+            {
+              "text": "The administration will designate cartels as foreign terrorist organizations.",
+              "textEn": "The administration will designate cartels as foreign terrorist organizations.",
+              "textKo": "행정부는 카르텔을 외국 테러 조직으로 지정할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump will invoke the Alien Enemies Act of 1798 to direct federal and state law enforcement to eliminate foreign gangs and criminal networks operating in the United States.",
+              "textEn": "Trump will invoke the Alien Enemies Act of 1798 to direct federal and state law enforcement to eliminate foreign gangs and criminal networks operating in the United States.",
+              "textKo": "트럼프는 1798년의 적대적 외국인 법을 발동하여 연방 및 주 경찰이 미국에서 활동하는 외국 범죄 단체와 네트워크를 제거하도록 할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "social",
+      "statementCount": 32,
+      "reversalCount": 8,
+      "topics": [
+        {
+          "topic": "immigration",
+          "count": 12,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2016년 6월에는 멕시코가 장벽 비용을 100% 지불할 것이라 했으나 2019년 1월에는 이를 사실상 부인했고, 2025년 1월~3월 강경 이민 단속 정책을 발표한 후 2025년 6월에는 농장 및 호텔업 노동자에 대한 단속이 지나치다며 완화 필요성을 언급해 입장이 바뀌었다.",
+            "en": "Trump reversed his 2016 claim that Mexico would pay 100% of the wall by denying it in Jan 2019, and after pushing aggressive border enforcement from Jan-Mar 2025, he softened his stance in June 2025 by calling for protecting farm and hotel/leisure workers from immigration crackdowns."
+          },
+          "statements": [
+            {
+              "text": "I will have Mexico pay for that wall — 100%, they will pay for it, believe me.",
+              "textEn": "I will have Mexico pay for that wall — 100%, they will pay for it, believe me.",
+              "textKo": "墨西코는 그 벽을 100% 지불해야 합니다 — 그들은 그것을 지불할 것입니다, 믿어주십시오.",
+              "src": "en",
+              "date": "2016-06-01",
+              "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1397/build-wall-and-make-mexico-pay-it/"
+            },
+            {
+              "text": "Ending DACA was the right decision, and I call on Congress to legislate a fix.",
+              "textEn": "Ending DACA was the right decision, and I call on Congress to legislate a fix.",
+              "textKo": "DACA를 종료한 것은 옳은 결정이었고, 저는 의회가 이를 해결하기 위해 입법화하길 촉구합니다.",
+              "src": "en",
+              "date": "2017-09-05",
+              "sourceUrl": "https://www.npr.org/2017/09/05/546423550/trump-signals-end-to-daca-calls-on-congress-to-act"
+            },
+            {
+              "text": "I have a great heart for the folks — I have great love for Dreamers, and I hope Congress will help them.",
+              "textEn": "I have a great heart for the folks — I have great love for Dreamers, and I hope Congress will help them.",
+              "textKo": "나는 사람들에 대한 큰 마음을 가지고 있습니다 — 나는 드림커머들에게 큰 사랑을 가지고 있으며, 그들이 도움을 받기를 바랍니다.",
+              "src": "en",
+              "date": "2017-09-05",
+              "sourceUrl": "https://www.nbcnews.com/politics/white-house/trump-says-he-has-love-dreamers-urges-congress-daca-action-n798881"
+            },
+            {
+              "text": "When I said Mexico is going to pay for it, obviously I never meant they're going to write out a check.",
+              "textEn": "When I said Mexico is going to pay for it, obviously I never meant they're going to write out a check.",
+              "textKo": "墨西코가 지불할 것이라고 말했을 때, 당연히 체크를 쓰게 될 줄은 생각지도 않았습니다.",
+              "src": "en",
+              "date": "2019-01-10",
+              "sourceUrl": "https://www.politifact.com/factchecks/2019/jan/10/donald-trump/trump-claims-he-never-meant-mexico-would-write-che/"
+            },
+            {
+              "text": "The Trump Administration will declare a national emergency at the southern border and immediately halt all illegal entry.",
+              "textEn": "The Trump Administration will declare a national emergency at the southern border and immediately halt all illegal entry.",
+              "textKo": "트럼프 행정부는 남부 국경에서 국가 비상사태를 선포하고 즉시 모든 불법 입국을 중단할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will begin the process of returning millions of criminal aliens back to the places from which they came.",
+              "textEn": "The administration will begin the process of returning millions of criminal aliens back to the places from which they came.",
+              "textKo": "행정부는 수백만 명의 범죄 외국인들을 그들이 온 곳으로 돌려보내기 시작할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will reinstate the Remain in Mexico policy.",
+              "textEn": "The administration will reinstate the Remain in Mexico policy.",
+              "textKo": "행정부는 Remain in Mexico 정책을 재개할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will end the practice of Catch and Release.",
+              "textEn": "The administration will end the practice of Catch and Release.",
+              "textKo": "행정부는 Catch and Release 관행을 종료할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump will send troops to the southern border to repel what he calls the invasion of the country.",
+              "textEn": "Trump will send troops to the southern border to repel what he calls the invasion of the country.",
+              "textKo": "트럼프는 남부 국경에서 침략이라고 부르는 것을 막기 위해 군대를 파견할 것입니다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "Trump declared a national emergency on the southern border and deployed the US military and border patrol to stop illegal crossings.",
+              "textEn": "Trump declared a national emergency on the southern border and deployed the US military and border patrol to stop illegal crossings.",
+              "textKo": "트럼프는 남부 국경에서 국가 비상사태를 선포하고 미국 군대와 국경 순찰을 배치하여 불법 입국을 중단시켰습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump claimed illegal border crossings last month were the lowest ever recorded.",
+              "textEn": "Trump claimed illegal border crossings last month were the lowest ever recorded.",
+              "textKo": "트럼프는 지난 달 불법 국경 침입이 기록된 최저 수준이라고 주장했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Our very aggressive policy on immigration is taking very good, long time workers away from our Farmers and Hotel/Leisure businesses... We must protect our Farmers.",
+              "textEn": "Our very aggressive policy on immigration is taking very good, long time workers away from our Farmers and Hotel/Leisure businesses... We must protect our Farmers.",
+              "textKo": "우리의 매우 공격적인 이민 정책은 농부들과 호텔/레저 사업에서 장기 근로자를 멀어지게 하고 있습니다... 우리는 우리의 농부들을 보호해야 합니다.",
+              "src": "en",
+              "date": "2025-06-12",
+              "sourceUrl": "https://www.axios.com/2025/06/12/trump-immigration-enforcement-farms-hotels"
+            }
+          ]
+        },
+        {
+          "topic": "guns",
+          "count": 3,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2000년에는 공격용 무기 금지와 대기 기간 연장을 지지했으나, 2016년에는 총기 규제(제2조 수정헌법 공격)에 강력히 반대하는 입장으로 바뀌었고, 2018년에는 절차 전에 총기를 먼저 압수해야 한다는 규제 강화 발언으로 다시 뒤집었다.",
+            "en": "In 2000 Trump supported an assault weapons ban and longer waiting periods, then reversed by 2016 to strongly oppose gun control as an assault on the Second Amendment, and flipped again in 2018 by suggesting guns be taken first before due process, showing two clear reversals."
+          },
+          "statements": [
+            {
+              "text": "I generally oppose gun control, but I support the ban on assault weapons and a slightly longer waiting period to purchase a gun.",
+              "textEn": "I generally oppose gun control, but I support the ban on assault weapons and a slightly longer waiting period to purchase a gun.",
+              "textKo": "나는 일반적으로 총 규제에 반대하지만 치고받기 무기의 금지와 총 구매 시 약간 더 긴 대기 기간을 지지한다.",
+              "src": "en",
+              "date": "2000-01-01",
+              "sourceUrl": "https://theintercept.com/2016/01/27/donald-trump-in-2000-i-support-the-ban-on-assault-weapons/"
+            },
+            {
+              "text": "The eight-year assault on the Second Amendment will come to a crashing end; I will never let you down.",
+              "textEn": "The eight-year assault on the Second Amendment will come to a crashing end; I will never let you down.",
+              "textKo": "두 번째 수정권에 대한 8년 동안의 공격은 처참하게 끝나게 될 것이다; 나는 너를 절대 실망시키지 않을 것이다.",
+              "src": "en",
+              "date": "2016-05-20",
+              "sourceUrl": "https://www.npr.org/2016/05/20/478864228/i-will-never-let-you-down-trump-tells-national-rifle-association"
+            },
+            {
+              "text": "Take the guns first, go through due process second.",
+              "textEn": "Take the guns first, go through due process second.",
+              "textKo": "먼저 총기를 몰수하고 그 다음으로 법적 절차를 진행해야 한다.",
+              "src": "en",
+              "date": "2018-02-28",
+              "sourceUrl": "https://thehill.com/homenews/administration/376097-trump-take-the-guns-first-go-through-due-process-second/"
+            }
+          ]
+        },
+        {
+          "topic": "entitlements",
+          "count": 3,
+          "reversalCount": 2,
+          "note": {
+            "ko": "2000년에는 사회보장제도 민영화와 정년 연장(70세)을 주장했으나, 2015년에는 사회보장·의료보험 삭감을 하지 않겠다고 입장을 바꿨고, 2024년에는 다시 복지혜택(entitlements) 삭감 가능성을 언급하며 원래 입장으로 돌아갔다.",
+            "en": "In 2000 Trump called for privatizing Social Security and raising the retirement age to 70, then in 2015 he reversed course by vowing not to cut Social Security or Medicare, before flipping back in 2024 by suggesting entitlements could be cut."
+          },
+          "statements": [
+            {
+              "text": "Social Security is a huge Ponzi scheme, and privatization would be good for all of us; the retirement age should rise to 70.",
+              "textEn": "Social Security is a huge Ponzi scheme, and privatization would be good for all of us; the retirement age should rise to 70.",
+              "textKo": "사회 보장은 거대한 포지 스킴이며, 사유화는 우리 모두에게 좋을 것입니다; 은퇴 연령은 70세로 상향 조정되어야 합니다.",
+              "src": "en",
+              "date": "2000-01-01",
+              "sourceUrl": "https://www.buzzfeednews.com/article/andrewkaczynski/trump-on-social-security-in-his-2000-book-a-ponzi-scheme-we"
+            },
+            {
+              "text": "I'm not going to cut Social Security like every other Republican, and I'm not going to cut Medicare or Medicaid.",
+              "textEn": "I'm not going to cut Social Security like every other Republican, and I'm not going to cut Medicare or Medicaid.",
+              "textKo": "나는 다른 모든 공화당원처럼 사회 보장을 축소하지 않을 것이며, 메디케어나 메디케이드도 축소하지 않을 것입니다.",
+              "src": "en",
+              "date": "2015-05-07",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/donald-trump-map-social-security-medicare-rcna143475"
+            },
+            {
+              "text": "There is a lot you can do in terms of entitlements, in terms of cutting.",
+              "textEn": "There is a lot you can do in terms of entitlements, in terms of cutting.",
+              "textKo": "지급 수혜 프로그램 측면에서 많은 일을 할 수 있으며, 이를 축소하는 데 중점을 두고 있습니다.",
+              "src": "en",
+              "date": "2024-03-11",
+              "sourceUrl": "https://www.cnn.com/2024/03/11/politics/donald-trump-cnbc-interview-medicare-social-security-tiktok/index.html"
+            }
+          ]
+        },
+        {
+          "topic": "abortion",
+          "count": 5,
+          "reversalCount": 1,
+          "note": {
+            "ko": "1999년에는 낙태에 대해 강하게 pro-choice 입장을 밝혔으나 2015년부터는 pro-life로 전환해 이후 로 대 웨이드 판결 폐기(2023)와 주(state) 결정권 지지(2024)로 일관되게 이어졌다.",
+            "en": "Trump was strongly pro-choice in 1999 but reversed to a pro-life stance from 2015 onward, consistently maintaining that position through celebrating the overturn of Roe v. Wade in 2023 and supporting state-level decisions in 2024."
+          },
+          "statements": [
+            {
+              "text": "I am very pro-choice. I hate the concept of abortion... but still, I just believe in choice.",
+              "textEn": "I am very pro-choice. I hate the concept of abortion... but still, I just believe in choice.",
+              "textKo": "나는 매우 선택지에 찬성이다. 난 중절이라는 개념을 싫어하지만... 그래도 나는 선택의 자유를 믿는다.",
+              "src": "en",
+              "date": "1999-10-24",
+              "sourceUrl": "https://www.nbcnews.com/meet-the-press/video/trump-in-1999-i-am-very-pro-choice-480297539914"
+            },
+            {
+              "text": "Since then, I've very much evolved — describing himself as pro-life after his 1999 pro-choice stance.",
+              "textEn": "Since then, I've very much evolved — describing himself as pro-life after his 1999 pro-choice stance.",
+              "textKo": "그 이후로 나는 많이 변화했다 — 그의 1999년 선택지에 찬성했던 입장에서 생명 존중론자로 자신을 묘사한다.",
+              "src": "en",
+              "date": "2015-08-06",
+              "sourceUrl": "https://www.cnn.com/2024/04/09/politics/trump-abortion-stances-timeline/index.html"
+            },
+            {
+              "text": "There has to be some form of punishment for a woman who gets an abortion if it were banned.",
+              "textEn": "There has to be some form of punishment for a woman who gets an abortion if it were banned.",
+              "textKo": "중절이 금지된다면 중절을 한 여성이 처벌받아야 한다.",
+              "src": "en",
+              "date": "2016-03-30",
+              "sourceUrl": "https://www.npr.org/2016/03/30/472444293/trump-calls-for-punishing-women-who-have-abortions-then-backtracks"
+            },
+            {
+              "text": "After 50 years of failure, with nobody coming even close, I was able to kill Roe v. Wade.",
+              "textEn": "After 50 years of failure, with nobody coming even close, I was able to kill Roe v. Wade.",
+              "textKo": "50년 동안 실패만 겪은 후, 아무도 가까워질 수 없었던 상황에서 나는 로诉轮班制度改革，以下是翻译内容，请继续指示：v. Wade를 끝냈다.",
+              "src": "en",
+              "date": "2023-05-01",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-was-able-kill-roe-v-wade-rcna84897"
+            },
+            {
+              "text": "The states will determine abortion by vote or legislation, and whatever they decide must be the law of the land.",
+              "textEn": "The states will determine abortion by vote or legislation, and whatever they decide must be the law of the land.",
+              "textKo": "각 주는 투표나 법률을 통해 중절 문제를 결정하고 그들이 결정한 것이 반드시 법이 되어야 한다.",
+              "src": "en",
+              "date": "2024-04-08",
+              "sourceUrl": "https://missouriindependent.com/2024/04/08/trump-says-abortion-policy-should-be-left-to-the-states-backing-away-from-national-ban/"
+            }
+          ]
+        },
+        {
+          "topic": "lgbtq",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2016년 4월 트럼프는 LGBT 유권자를 지지하며 케이틀린 제너가 트럼프타워에서 원하는 화장실을 사용할 수 있다고 밝혔으나, 2017년 7월에는 트랜스젠더의 군 복무를 전면 금지하겠다고 발표하며 입장을 뒤집었다.",
+            "en": "In April 2016 Trump voiced support for LGBT voters and said Caitlyn Jenner could use whichever bathroom she wanted at Trump Tower, but by July 2017 he reversed course by announcing a ban on transgender individuals serving in the military."
+          },
+          "statements": [
+            {
+              "text": "I told LGBT voters I will fight for you, and said Caitlyn Jenner could use whichever bathroom she wanted at Trump Tower.",
+              "textEn": "I told LGBT voters I will fight for you, and said Caitlyn Jenner could use whichever bathroom she wanted at Trump Tower.",
+              "textKo": "LGBT 유권자들에게 제가 당신을 위해 싸울 것이라고 말했고, 트럼프 타워에서 Caitlyn Jenner가 원하는 대로 어떤 화장실을 사용할 수 있다고 말했습니다.",
+              "src": "en",
+              "date": "2016-04-21",
+              "sourceUrl": "https://abcnews.go.com/Politics/donald-trumps-past-statements-lgbt-rights/story?id=48858527"
+            },
+            {
+              "text": "The United States Government will not accept or allow transgender individuals to serve in any capacity in the U.S. Military.",
+              "textEn": "The United States Government will not accept or allow transgender individuals to serve in any capacity in the U.S. Military.",
+              "textKo": "미국 정부는 미국 군대의 어떠한 역할에서도 트랜스젠더 개인이 복무하지 못하도록 받아들이거나 허용하지 않을 것입니다.",
+              "src": "en",
+              "date": "2017-07-26",
+              "sourceUrl": "https://www.npr.org/sections/thetwo-way/2017/07/26/539470211/trump-says-transgender-people-cant-serve-in-military"
+            }
+          ]
+        },
+        {
+          "topic": "healthcare",
+          "count": 5,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2015년부터 2024년까지 트럼프는 오바마케어를 폐지하고 더 나은 계획으로 대체하겠다는 입장을 일관되게 유지했으며, 구체적 대안의 상세함 정도만 달라졌을 뿐 방향성의 반전은 없었다.",
+            "en": "From 2015 through 2024, Trump consistently maintained the position of repealing Obamacare and replacing it with something better, with only the level of detail changing rather than any reversal of direction."
+          },
+          "statements": [
+            {
+              "text": "I would repeal Obamacare and replace it with something terrific.",
+              "textEn": "I would repeal Obamacare and replace it with something terrific.",
+              "textKo": "오바마케어를 철회하고 뛰어난 무언가로 대체하겠습니다.",
+              "src": "en",
+              "date": "2015",
+              "sourceUrl": "https://www.axios.com/2024/09/12/trump-health-care-plan-obamacare-replacement"
+            },
+            {
+              "text": "I would repeal and replace Obamacare with a plan that covers everybody, with much lower deductibles — much better healthcare for less money.",
+              "textEn": "I would repeal and replace Obamacare with a plan that covers everybody, with much lower deductibles — much better healthcare for less money.",
+              "textKo": "오바마케어를 철회하고 모든 사람을 위한 저렴한 공제금으로 더 나은 의료 서비스를 제공하는 계획으로 대체하겠습니다.",
+              "src": "en",
+              "date": "2016",
+              "sourceUrl": "https://www.axios.com/2024/09/12/trump-health-care-plan-obamacare-replacement"
+            },
+            {
+              "text": "We will immediately repeal and replace ObamaCare — and nobody can do that like me.",
+              "textEn": "We will immediately repeal and replace ObamaCare — and nobody can do that like me.",
+              "textKo": "우리는 즉시 오바마케어를 철회하고 대체할 것입니다 — 그리고 아무도 제가 그렇게 잘 할 수 없습니다.",
+              "src": "en",
+              "date": "2016-02-01",
+              "sourceUrl": "https://abcnews.go.com/Politics/fact-checking-trumps-repeal-replace-obamacare-timeline/story?id=46360908"
+            },
+            {
+              "text": "I have concepts of a plan to replace the Affordable Care Act (offered at the debate with no details).",
+              "textEn": "I have concepts of a plan to replace the Affordable Care Act (offered at the debate with no details).",
+              "textKo": "저는 부당한 케어 법(아ффordable Care Act)을 대체하기 위한 계획의 개념이 있습니다.(토론에서 세부 사항 없이 제시됨)",
+              "src": "en",
+              "date": "2024-09-10",
+              "sourceUrl": "https://thehill.com/policy/healthcare/4873254-trump-debate-obamacare-replacement/"
+            },
+            {
+              "text": "I have concepts of a plan to replace Obamacare, and I'll be releasing it soon.",
+              "textEn": "I have concepts of a plan to replace Obamacare, and I'll be releasing it soon.",
+              "textKo": "저는 오바마케어를 대체하기 위한 계획의 개념이 있으며 곧 발표할 예정입니다.",
+              "src": "en",
+              "date": "2024-09-10",
+              "sourceUrl": "https://www.nbcnews.com/health/health-news/debate-trump-health-care-plan-replace-obamacare-rcna170665"
+            }
+          ]
+        },
+        {
+          "topic": "covid",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "On COVID-19: it's going to disappear. One day, it's like a miracle, it will disappear.",
+              "textEn": "On COVID-19: it's going to disappear. One day, it's like a miracle, it will disappear.",
+              "textKo": "코로나19에 대해 말씀드리자면, 사라질 거예요. 어느 날 갑자기 마치 기적처럼 사라지겠죠.",
+              "src": "en",
+              "date": "2020-02-27",
+              "sourceUrl": "https://www.cnn.com/interactive/2020/10/politics/covid-disappearing-trump-comment-tracker/"
+            }
+          ]
+        },
+        {
+          "topic": "vaccines",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "We got a vaccine done, three vaccines done, and we saved tens of millions of lives worldwide.",
+              "textEn": "We got a vaccine done, three vaccines done, and we saved tens of millions of lives worldwide.",
+              "textKo": "我们在疫苗方面取得了成果，完成了三种疫苗的研发，并在全球范围内拯救了数千万人的生命。",
+              "src": "en",
+              "date": "2021-12-01",
+              "sourceUrl": "https://www.newsweek.com/donald-trump-stopped-talking-operation-warp-speed-coronavirus-vaccine-1886093"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "economy",
+      "statementCount": 22,
+      "reversalCount": 6,
+      "topics": [
+        {
+          "topic": "fed",
+          "count": 4,
+          "reversalCount": 3,
+          "note": {
+            "ko": "2017년 11월 파월을 신뢰할 수 있는 강력한 리더로 칭찬했으나 2025년 4월 17일에는 그를 해임해야 한다고 비난했고, 4월 22일에는 해임 의사가 없다고 다시 입장을 바꿨으며, 7월 3일에는 다시 파월의 즉각 사퇴를 요구하며 태도를 재차 반전시켰다.",
+            "en": "Trump praised Powell as strong and trustworthy in Nov 2017, then attacked him and called for his firing on Apr 17 2025, reversed again on Apr 22 2025 by saying he had no intention to fire him, and flipped once more on Jul 3 2025 by demanding Powell resign immediately."
+          },
+          "statements": [
+            {
+              "text": "Jerome Powell is strong, committed, and smart, with the wisdom and leadership to guide our economy.",
+              "textEn": "Jerome Powell is strong, committed, and smart, with the wisdom and leadership to guide our economy.",
+              "textKo": "조로姆 파월은 강하고 헌신적이며 지혜롭고 똑똑하며 우리 경제를 이끌 수 있는 리더십을 가지고 있습니다.",
+              "src": "en",
+              "date": "2017-11-02",
+              "sourceUrl": "https://www.cnbc.com/2017/11/02/trump-picks-jerome-powell-to-succeed-yellen-as-fed-chair.html"
+            },
+            {
+              "text": "Powell is always TOO LATE AND WRONG, and his termination cannot come fast enough!",
+              "textEn": "Powell is always TOO LATE AND WRONG, and his termination cannot come fast enough!",
+              "textKo": "파월은 항상 너무 늦게 행동하고 잘못된 결정을 내리기 때문에 그의 해임이 빨리 이루어져야 합니다!",
+              "src": "en",
+              "date": "2025-04-17",
+              "sourceUrl": "https://www.cnbc.com/2025/04/17/trump-again-calls-for-fed-to-cut-rates-says-powells-termination-cannot-come-fast-enough.html"
+            },
+            {
+              "text": "I have no intention of firing Fed Chair Jerome Powell.",
+              "textEn": "I have no intention of firing Fed Chair Jerome Powell.",
+              "textKo": "나는 연준 의장 조로姆 파월을 해고할 생각이 없습니다.",
+              "src": "en",
+              "date": "2025-04-22",
+              "sourceUrl": "https://www.cnn.com/2025/04/22/business/trump-says-he-has-no-intention-of-firing-jerome-powell/index.html"
+            },
+            {
+              "text": "Powell should resign immediately.",
+              "textEn": "Powell should resign immediately.",
+              "textKo": "파월은 즉시 사임해야 합니다.",
+              "src": "en",
+              "date": "2025-07-03",
+              "sourceUrl": "https://www.aljazeera.com/economy/2025/7/3/trump-says-powell-should-resign-immediately-in-latest-attack-on-fed-chair"
+            }
+          ]
+        },
+        {
+          "topic": "crypto",
+          "count": 6,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2019-2021년에는 비트코인/암호화폐를 사기라고 비판하며 부정적 입장을 보였으나, 2024년 7월부터는 전략적 비트코인 비축을 지지하며 긍정적으로 태도를 전환했다.",
+            "en": "Trump criticized Bitcoin and cryptocurrencies as scams from 2019-2021, then reversed to a pro-crypto stance starting July 2024, advocating for a U.S. strategic bitcoin reserve, confirmed by his March 2025 executive order."
+          },
+          "statements": [
+            {
+              "text": "I am not a fan of Bitcoin and other Cryptocurrencies, which are not money, and whose value is highly volatile and based on thin air.",
+              "textEn": "I am not a fan of Bitcoin and other Cryptocurrencies, which are not money, and whose value is highly volatile and based on thin air.",
+              "textKo": "비트코인과 다른 암호화폐는 돈이 아니며, 가치가 매우 변동성이 크고 허상에 기반하고 있어 저는 그들에 찬성하지 않습니다.",
+              "src": "en",
+              "date": "2019-07-11",
+              "sourceUrl": "https://www.nbcnews.com/politics/2024-election/donald-trump-flips-crypto-scam-building-crypto-army-rcna157171"
+            },
+            {
+              "text": "Bitcoin just seems like a scam, and cryptocurrencies are a disaster waiting to happen.",
+              "textEn": "Bitcoin just seems like a scam, and cryptocurrencies are a disaster waiting to happen.",
+              "textKo": "비트코인은 그냥 사기처럼 보이고, 암호화폐는 일어날 준비를 하고 있는 재앙 같습니다.",
+              "src": "en",
+              "date": "2021-06",
+              "sourceUrl": "https://www.nbcnews.com/politics/2024-election/donald-trump-flips-crypto-scam-building-crypto-army-rcna157171"
+            },
+            {
+              "text": "Bitcoin just seems like a scam. I don't like it because it is another currency competing against the dollar.",
+              "textEn": "Bitcoin just seems like a scam. I don't like it because it is another currency competing against the dollar.",
+              "textKo": "비트코인은 단지 사기처럼 보입니다. 저는 달러와 경쟁하는 또 다른 통화라는 이유로 그것을 좋아하지 않습니다.",
+              "src": "en",
+              "date": "2021-07-01",
+              "sourceUrl": "https://cointelegraph.com/news/trump-calls-bitcoin-a-scam-advocates-for-dollar-hegemony"
+            },
+            {
+              "text": "It will be the policy of my administration to keep 100% of all the bitcoin the U.S. government currently holds — creating a strategic bitcoin stockpile.",
+              "textEn": "It will be the policy of my administration to keep 100% of all the bitcoin the U.S. government currently holds — creating a strategic bitcoin stockpile.",
+              "textKo": "제 행정부의 정책은 미국 정부가 현재 보유하고 있는 모든 비트코인을 100% 유지할 것입니다 — 전략적 비트코인 재고를 만드는 것이 포함됩니다.",
+              "src": "en",
+              "date": "2024-07-27",
+              "sourceUrl": "https://www.cbsnews.com/news/trump-cryptocurrency-campaign-nashville/"
+            },
+            {
+              "text": "The United States will be the crypto capital of the planet, and we will keep 100% of the government's bitcoin — never sell your bitcoin.",
+              "textEn": "The United States will be the crypto capital of the planet, and we will keep 100% of the government's bitcoin — never sell your bitcoin.",
+              "textKo": "미국은 암호화폐의 중심지가 될 것이며, 우리는 정부의 모든 비트코인을 100% 보유할 것입니다 — 결코 비트코인을 판매하지 않을 것입니다.",
+              "src": "en",
+              "date": "2024-07-27",
+              "sourceUrl": "https://www.cnbc.com/2024/07/27/trump-bitcoin-conference-harris.html"
+            },
+            {
+              "text": "I signed an executive order establishing a U.S. Strategic Bitcoin Reserve and Digital Asset Stockpile.",
+              "textEn": "I signed an executive order establishing a U.S. Strategic Bitcoin Reserve and Digital Asset Stockpile.",
+              "textKo": "제가 행정명령을 서명하여 미국 전략적 비트코인 재고와 디지털 자산 재고를 설정했습니다.",
+              "src": "en",
+              "date": "2025-03-06",
+              "sourceUrl": "https://www.cnbc.com/2025/03/06/trump-signs-executive-order-for-us-strategic-bitcoin-reserve.html"
+            }
+          ]
+        },
+        {
+          "topic": "minimum wage",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "트럼프는 2015년 11월 10일에는 임금이 너무 높다며 연방 최저임금 인상에 반대했지만, 2016년 5월 8일에는 최저임금을 검토 중이며 사람들이 더 받아야 한다고 말해 입장을 뒤집었다.",
+            "en": "Trump opposed raising the federal minimum wage on 2015-11-10 citing wages as too high, then reversed on 2016-05-08 saying he was looking at the minimum wage and that people need to earn more."
+          },
+          "statements": [
+            {
+              "text": "Wages are too high, and I would not raise the federal minimum wage.",
+              "textEn": "Wages are too high, and I would not raise the federal minimum wage.",
+              "textKo": "임금이 너무 높고, 저는 연방 최저임금을 인상하지 않을 것입니다.",
+              "src": "en",
+              "date": "2015-11-10",
+              "sourceUrl": "https://www.politifact.com/factchecks/2016/jul/28/donald-trump/donald-trump-gets-full-flop-stance-minimum-wage/"
+            },
+            {
+              "text": "I am looking at the minimum wage, and I think people have to get more.",
+              "textEn": "I am looking at the minimum wage, and I think people have to get more.",
+              "textKo": "최저임금에 대해 살펴보고 있으며, 사람들이 더 많은 것을 받아야 한다고 생각합니다.",
+              "src": "en",
+              "date": "2016-05-08",
+              "sourceUrl": "https://www.washingtonpost.com/news/fact-checker/wp/2016/08/03/a-guide-to-all-of-donald-trumps-flip-flops-on-the-minimum-wage/"
+            }
+          ]
+        },
+        {
+          "topic": "evs",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2023년 12월 트럼프는 전기차를 조현병적이고 비실용적이라 비판했으나, 2024년 8월 일론 머스크의 지지를 받은 후 전기차를 지지한다고 말하며 입장을 뒤집었다.",
+            "en": "Trump criticized electric cars as impractical and schizophrenia-inducing in December 2023, but reversed course in August 2024, saying he now supports electric cars after receiving Elon Musk's endorsement."
+          },
+          "statements": [
+            {
+              "text": "Electric-car owners become schizophrenic; the cars don't go far and you have to recharge every two minutes.",
+              "textEn": "Electric-car owners become schizophrenic; the cars don't go far and you have to recharge every two minutes.",
+              "textKo": "전기차 주인들은 분열되어 있다; 차가 멀리 가지 못하고 두 분마다 충전해야 한다.",
+              "src": "en",
+              "date": "2023-12-01",
+              "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166"
+            },
+            {
+              "text": "I'm for electric cars. I have to be, because Elon Musk endorsed me very strongly. So I have no choice.",
+              "textEn": "I'm for electric cars. I have to be, because Elon Musk endorsed me very strongly. So I have no choice.",
+              "textKo": "나는 전기차를 지지한다. 나는 그렇게 해야만 하는데, 엘론 머스크가 매우 강력하게 나를 지지했기 때문이다. 그래서 선택의 여지가 없다.",
+              "src": "en",
+              "date": "2024-08-01",
+              "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166"
+            }
+          ]
+        },
+        {
+          "topic": "economy",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump will direct all members of his cabinet to bring down record inflation and rapidly reduce costs and prices.",
+              "textEn": "Trump will direct all members of his cabinet to bring down record inflation and rapidly reduce costs and prices.",
+              "textKo": "트럼프는 그의 내각 모든 회원들에게 기록적인 인플레이션을 낮추고 비용과 가격을 빠르게 줄이도록 지시할 것이다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        },
+        {
+          "topic": "energy",
+          "count": 3,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 1월 20일 발표된 세 발언 모두 국내 화석연료 생산 확대와 에너지 수출을 일관되게 지지하며 입장 반전이 없음.",
+            "en": "All three statements from January 20, 2025 consistently support expanded domestic fossil fuel production and energy exports, showing no reversal in position."
+          },
+          "statements": [
+            {
+              "text": "Trump will declare a national energy emergency.",
+              "textEn": "Trump will declare a national energy emergency.",
+              "textKo": "트럼프는 국가 에너지 비상사태를 선포할 것이다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will pursue a policy of drilling for oil and gas domestically under the slogan 'drill baby drill'.",
+              "textEn": "The administration will pursue a policy of drilling for oil and gas domestically under the slogan 'drill baby drill'.",
+              "textKo": "행정부는 국내에서 원유와 천연가스 채굴을 추진하며 '채굴하자 바비야 채굴하자'라는 구호 아래 정책을 시행할 것이다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            },
+            {
+              "text": "The administration will refill the country's strategic reserves to the top and export American energy around the world.",
+              "textEn": "The administration will refill the country's strategic reserves to the top and export American energy around the world.",
+              "textKo": "행정부는 국가 전략적 비축량을 최대로 채우고 미국의 에너지를 세계 각국에 수출할 것이다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.youtube.com/watch?v=z62AB7RWXjY"
+            }
+          ]
+        },
+        {
+          "topic": "regulation",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump directed that for every one new federal regulation, ten old regulations must be eliminated.",
+              "textEn": "Trump directed that for every one new federal regulation, ten old regulations must be eliminated.",
+              "textKo": "트럼프는 새로운 연방 규제가 하나 생기면 기존의 10개 규제를 없애야 한다고 지시했다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "taxes",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I propose a one-time 14.25% tax on the net worth of individuals and trusts worth over $10 million to pay off the national debt.",
+              "textEn": "I propose a one-time 14.25% tax on the net worth of individuals and trusts worth over $10 million to pay off the national debt.",
+              "textKo": "개인과 신뢰관계의 순자산이 1억 달러를 초과하는 경우 일회성으로 순자산의 14.25%에 대한 세금을 부과하여 국가 채무를 상환할 것을 제안합니다.",
+              "src": "en",
+              "date": "1999-11-09",
+              "sourceUrl": "https://www.cnn.com/ALLPOLITICS/stories/1999/11/09/trump.rich/index.html"
+            }
+          ]
+        },
+        {
+          "topic": "debt",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "We've got to get rid of the $19 trillion in debt; I could eliminate the national debt over a period of eight years.",
+              "textEn": "We've got to get rid of the $19 trillion in debt; I could eliminate the national debt over a period of eight years.",
+              "textKo": "우리는 19조 달러의 빚을 해결해야 합니다; 저는 8년 동안 국가 부채를 청산할 수 있습니다.",
+              "src": "en",
+              "date": "2016-03-31",
+              "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1418/eliminate-federal-debt-8-years/"
+            }
+          ]
+        },
+        {
+          "topic": "ethanol",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "In the campaign I promised to support E15 ethanol all year round, and I will sign it without delay.",
+              "textEn": "In the campaign I promised to support E15 ethanol all year round, and I will sign it without delay.",
+              "textKo": "선거 운동에서 올해全年無休支持E15乙醇，我將毫不拖延地簽署它。",
+              "src": "en",
+              "date": "2026-01-01",
+              "sourceUrl": "https://thehill.com/policy/energy-environment/5709497-trump-iowa-high-ethanol-gas/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "politics",
+      "statementCount": 9,
+      "reversalCount": 1,
+      "topics": [
+        {
+          "topic": "jan6",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2021년 1월 7일에는 1월 6일 의회 습격을 혐오스러운 공격이라며 강력히 비난했지만, 2025년 1월 20일 취임 첫날 거의 1,600명의 1월 6일 관련자들을 사면·감형하고 그날을 사랑의 날이라 부르며 입장을 완전히 뒤집었다.",
+            "en": "On January 7, 2021 Trump condemned the Capitol riot as a heinous attack, but by January 20, 2025 he reversed course, pardoning or commuting nearly 1,600 Jan 6 defendants and calling the day a day of love."
+          },
+          "statements": [
+            {
+              "text": "On January 7th I condemned the Capitol attack as a heinous attack, telling rioters they do not represent our country and that lawbreakers will pay.",
+              "textEn": "On January 7th I condemned the Capitol attack as a heinous attack, telling rioters they do not represent our country and that lawbreakers will pay.",
+              "textKo": "1월 7일 나는 캐피톨 공격을 잔인한 공격으로 규탄하고, 봉기자들에게 그들이 우리 국가를 대표하지 않는다고 말하며 법을 어긴 사람들은 책임을 져야 한다고 했다.",
+              "src": "en",
+              "date": "2021-01-07",
+              "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-called-jan-6-henious-attack-now-calls-day-love-rcna175942"
+            },
+            {
+              "text": "On my first day back in office I pardoned or commuted the sentences of nearly 1,600 January 6 defendants, and I call January 6 a day of love.",
+              "textEn": "On my first day back in office I pardoned or commuted the sentences of nearly 1,600 January 6 defendants, and I call January 6 a day of love.",
+              "textKo": "내가 다시 집무에 복귀한 첫날 나는 1월 6일 피의자들 중 거의 1,600명에게 사면 또는 형량 감경을 명령했으며, 나는 1월 6일을 사랑의 날이라고 부른다.",
+              "src": "en",
+              "date": "2025-01-20",
+              "sourceUrl": "https://www.forbes.com/sites/saradorn/2025/01/20/trump-inauguration-live-updates-trump-pardons-1500-jan-6-defendants/"
+            }
+          ]
+        },
+        {
+          "topic": "rhetoric",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump claimed his administration accomplished more in 43 days than most administrations accomplished in four or eight years.",
+              "textEn": "Trump claimed his administration accomplished more in 43 days than most administrations accomplished in four or eight years.",
+              "textKo": "Trump claimed his administration accomplished more in 43 days than most administrations accomplished in four or eight years.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "election",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Trump claimed he won all seven swing states, giving him an electoral college victory of 312 votes.",
+              "textEn": "Trump claimed he won all seven swing states, giving him an electoral college victory of 312 votes.",
+              "textKo": "트럼프는 그가 모든 7개의 휴짓 상태를 이겼다고 주장했으며, 이는 Electoral College에서 312표의 승리를 의미한다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "governance",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2025년 3월 5일 발언들은 취임 초기 대규모 행정명령과 연방 인력·규제·해외원조 동결이라는 동일한 행정권 강화 노선을 일관되게 보여줄 뿐, 입장 반전은 발견되지 않음.",
+            "en": "Both statements from March 5, 2025 consistently describe an aggressive expansion of executive action (nearly 100 executive orders and freezes on federal hiring, regulations, and foreign aid), showing no contradiction or reversal."
+          },
+          "statements": [
+            {
+              "text": "Trump signed nearly 100 executive orders and took more than 400 executive actions in his first six weeks in office.",
+              "textEn": "Trump signed nearly 100 executive orders and took more than 400 executive actions in his first six weeks in office.",
+              "textKo": "트럼프는 취임 후 처음 여섯 주 동안 거의 100개의 행정 명령을 서명하고 400여 건 이상의 행정 조치를 취했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump imposed an immediate freeze on all federal hiring, all new federal regulations, and all foreign aid upon taking office.",
+              "textEn": "Trump imposed an immediate freeze on all federal hiring, all new federal regulations, and all foreign aid upon taking office.",
+              "textKo": "트럼프는 취임과 동시에 모든 연방 고용, 새로운 연방 규제, 그리고 외국 원조에 대한 즉각적인 동결을 시행했습니다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "environment",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "두 발언 모두 2025년 3월 5일에 나온 것으로, 트럼프는 그린 뉴딜 및 전기차 의무화 등 환경 규제를 폐지한다는 일관된 반환경 규제 입장을 유지했으며 입장 변화는 없음.",
+            "en": "Both statements from March 5, 2025 show Trump consistently opposing environmental regulations, terminating the Green New Deal and EV mandates, with no reversal in position."
+          },
+          "statements": [
+            {
+              "text": "Trump terminated the Green New Deal-related programs, calling them a 'green news scam'.",
+              "textEn": "Trump terminated the Green New Deal-related programs, calling them a 'green news scam'.",
+              "textKo": "트럼프는 그린 뉴 딜 관련 프로그램을 중단하고 이를 '녹색 뉴스 사기'라고 불렀다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            },
+            {
+              "text": "Trump ended what he called Biden's environmental restrictions and the electric vehicle mandate.",
+              "textEn": "Trump ended what he called Biden's environmental restrictions and the electric vehicle mandate.",
+              "textKo": "트럼프는 바이든의 환경 규제와 전기차 의무를 종결시켰다.",
+              "src": "en",
+              "date": "2025-03-05",
+              "sourceUrl": "https://www.youtube.com/watch?v=QpH2KQ8mHjg"
+            }
+          ]
+        },
+        {
+          "topic": "swamp",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I promised to drain the swamp and end Washington insider influence.",
+              "textEn": "I promised to drain the swamp and end Washington insider influence.",
+              "textKo": "나는 워싱턴 내부인들의 영향력을 끝내고 늪지를 말리겠다고 약속했습니다.",
+              "src": "en",
+              "date": "2016-10-18",
+              "sourceUrl": "https://en.wikipedia.org/wiki/Drain_the_swamp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -20,8 +20,12 @@ export interface SpokenLine {
 /** Axis 1 — self-consistency verdict for a single spoken line (API shape). */
 export interface ConsistencyVerdict {
   line: string;
+  /** The spoken line rendered in the UI language (for a foreign audience). */
+  lineTranslation?: string;
   isContradiction: boolean;
   pastStatement?: string;
+  /** The cited past statement rendered in the UI language. */
+  pastStatementTranslation?: string;
   /** Enriched in the route by matching the quote back to the DB record. */
   pastDate?: string;
   pastSourceUrl?: string;
@@ -102,6 +106,8 @@ export interface StatementSource {
 
 export interface PastStatement {
   text: string;
+  /** Same quote in the UI language (empty/absent if already in it). */
+  textTranslation?: string;
   date: string;
   sourceTitle: string;
   sourceUrl: string;
@@ -122,7 +128,7 @@ export interface UIFactuality {
   reason: string;
   referencePeriod?: string;
   currentNote?: string;
-  sourceType?: "KOSIS" | "INSEE" | "WEB";
+  sourceType?: "KOSIS" | "WEB";
   confidence: number;
   sources: StatementSource[];
 }
@@ -133,6 +139,8 @@ export interface StatementResult {
   timestamp: string;
   speaker: string;
   line: string;
+  /** The line in the UI language (shown as primary; original kept beneath). */
+  lineTranslation?: string;
   consistency: UIConsistency;
   factuality: UIFactuality;
 }

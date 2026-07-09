@@ -12,3 +12,6 @@ next-env.d.ts.timestamp
 # editor backups
 *~
 *.bak
+
+# runtime video-verified statement store (accumulates locally)
+/data/added/

@@ -34,6 +34,30 @@ import sys
 from pathlib import Path
 
 
+def _load_env_local() -> None:
+    """Make the Whisper path work with the web app's .env.local.
+
+    The OpenAI SDK reads OPENAI_API_KEY from the environment; the Python scraper
+    doesn't otherwise see the Next.js app's .env.local. If the var isn't already
+    set, pull it (and any other keys) from ../web/.env.local so `--whisper` works
+    without a separate export.
+    """
+    if os.environ.get("OPENAI_API_KEY"):
+        return
+    env_path = Path(__file__).resolve().parent.parent / "web" / ".env.local"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        os.environ.setdefault(k.strip(), v.strip())
+
+
+_load_env_local()
+
+
 # ─────────────────────────────────────────────────────────────
 # Utilities
 # ─────────────────────────────────────────────────────────────

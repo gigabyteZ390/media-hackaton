@@ -4,11 +4,41 @@ import { STAT_REGISTRY } from "./statRegistry";
 type Lang = "ko" | "en";
 const langName = (l: Lang) => (l === "ko" ? "Korean" : "English");
 
+/**
+ * Selection pass — from a long/raw transcript (greetings, filler, and often
+ * multiple speakers), pick only the substantive statements MADE BY the target
+ * politician, so the analyzer works on meaningful claims instead of the intro.
+ */
+export function buildSelectionPrompt(
+  politician: string,
+  transcript: string,
+  lang: Lang,
+  max: number
+): string {
+  return [
+    `From the transcript below, select up to ${max} of the most SUBSTANTIVE, self-contained statements MADE BY ${politician}.`,
+    "Keep: policy positions, promises, commitments, stances, and concrete factual/numeric claims — the things worth checking for truth or contradiction.",
+    "Rules:",
+    `1) ONLY ${politician}'s own words. The transcript may include other speakers, a host, or a questioner — ignore everything not said by ${politician}.`,
+    "2) SKIP greetings, thanks, self-introductions, procedural remarks, and vague filler.",
+    "3) Merge fragmented caption lines into whole sentences; fix obvious caption typos.",
+    `4) Each statement = one clean sentence in ${langName(lang)} as spoken (do not translate).`,
+    "5) Order them as they appear. Prefer distinct claims over near-duplicates.",
+    "",
+    "Respond with ONLY a JSON object of this exact shape (no prose, no code fences):",
+    '{ "statements": [ string ] }',
+    "",
+    "[Transcript]",
+    transcript,
+  ].join("\n");
+}
+
 /** Axis 1 — self-consistency (compares a politician only against their own past words). */
 export function buildConsistencyPrompt(
   politician: string,
   past: Statement[],
-  lines: SpokenLine[]
+  lines: SpokenLine[],
+  lang: Lang = "en"
 ): string {
   return [
     `You are a neutral analyzer that checks ONLY the self-consistency of political statements by ${politician}.`,
@@ -18,9 +48,18 @@ export function buildConsistencyPrompt(
     "3) For a contradiction, give a reason and quote the specific past statement it conflicts with.",
     "4) Assign a confidence (0..1) to each verdict. Lower it when uncertain.",
     "5) consistencyScore = (number of non-contradicting lines / total lines) * 100, rounded.",
+    `6) Write the "reason" field in ${langName(lang)}.`,
+    `7) "lineTranslation": the spoken line rendered in ${langName(
+      lang
+    )}. If it is already in ${langName(lang)}, copy it unchanged.`,
+    `8) Keep "pastStatement" as the ORIGINAL verbatim quote (it is matched to the database). Add "pastStatementTranslation": that same quote in ${langName(
+      lang
+    )} (copy unchanged if already in ${langName(
+      lang
+    )}; use "" when there is no contradiction).`,
     "",
     "Respond with ONLY a JSON object of this exact shape (no prose, no code fences):",
-    '{ "verdicts": [ { "line": string, "isContradiction": boolean, "pastStatement": string, "reason": string, "confidence": number } ], "consistencyScore": number }',
+    '{ "verdicts": [ { "line": string, "lineTranslation": string, "isContradiction": boolean, "pastStatement": string, "pastStatementTranslation": string, "reason": string, "confidence": number } ], "consistencyScore": number }',
     "",
     "[Past statements]",
     JSON.stringify(past, null, 2),
@@ -40,8 +79,10 @@ export const CONSISTENCY_SCHEMA = {
         type: "object",
         properties: {
           line: { type: "string" },
+          lineTranslation: { type: "string" },
           isContradiction: { type: "boolean" },
           pastStatement: { type: "string" },
+          pastStatementTranslation: { type: "string" },
           reason: { type: "string" },
           confidence: { type: "number" },
         },
