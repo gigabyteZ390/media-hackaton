@@ -1375,15 +1375,19 @@ export default function Home() {
       {step === "start" && (
         <Hero
           t={t}
-          onStart={() => {
-            setStep("home");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+          onStart={() =>
+            document
+              .getElementById("choice")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
         />
       )}
 
-      {step === "home" && (
-        <section className="border-b border-line bg-surface p-8 md:p-12 lg:p-20">
+      {(step === "start" || step === "home") && (
+        <section
+          id="choice"
+          className="scroll-mt-20 border-b border-line bg-surface p-8 md:p-12 lg:p-20"
+        >
           <div className="mx-auto max-w-6xl">
             <div className="mb-4 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest">
               {t.homeKicker}
