@@ -53,6 +53,23 @@ const STR = {
     heroPost:
       " using the speaker's past statements and authoritative sources.",
     heroStart: "Start Verification",
+    homeKicker: "[ SELECT_MODE // TRACK_RECORD_OR_LIVE_VERIFY ]",
+    homeTitle: "Where do you want to start?",
+    homeSubtitle: "Trace a politician's record, or verify fresh footage.",
+    pathTrackTitle: "Track a Politician",
+    pathTrackDesc:
+      "Search a name and see their statements mapped by sector, with a running count of position reversals over time.",
+    pathTrackCta: "Open Track Record",
+    presetLabel: "Quick pick",
+    pathVerifyTitle: "Verify New Footage",
+    pathVerifyDesc:
+      "Paste a video URL or drop a transcript not yet in the database. We extract the claims and check them on both axes.",
+    pathVerifyCta: "Start Verification",
+    profileLoad1: "Loading statement archive for the target...",
+    profileLoad2: "Grouping statements by policy sector...",
+    profileLoad3: "Counting position reversals along each timeline...",
+    profileLoad4: "Rendering the track-record dashboard...",
+    tracing: "Tracing",
     sampleClaim: "A spoken line from a broadcast transcript.",
     consistencyAxis: "Consistency Axis",
     consistencyAxisDesc: "Cross-checks against historical statement data",
@@ -149,6 +166,23 @@ const STR = {
     heroTerm2: "사실 정확성",
     heroPost: "을 분리해 판정합니다.",
     heroStart: "검증 시작",
+    homeKicker: "[ 모드 선택 // 행적추적 또는 실시간검증 ]",
+    homeTitle: "어디서 시작할까요?",
+    homeSubtitle: "정치인의 행적을 추적하거나, 새 영상을 검증하세요.",
+    pathTrackTitle: "인물 행적 추적",
+    pathTrackDesc:
+      "이름을 검색하면 그 사람의 발언을 섹터별로 정리하고, 시간에 따른 입장 번복 횟수를 집계해 보여줍니다.",
+    pathTrackCta: "행적 열기",
+    presetLabel: "바로가기",
+    pathVerifyTitle: "새 영상·대본 검증",
+    pathVerifyDesc:
+      "DB에 없는 영상 URL을 붙여넣거나 대본을 올리세요. 발언을 추출해 자기 일관성과 사실 정확성 두 축으로 검증합니다.",
+    pathVerifyCta: "검증 시작",
+    profileLoad1: "대상 인물의 발언 아카이브 로딩 중...",
+    profileLoad2: "발언을 정책 섹터별로 분류 중...",
+    profileLoad3: "각 타임라인의 입장 번복 횟수 집계 중...",
+    profileLoad4: "행적 대시보드 렌더링 중...",
+    tracing: "추적 중",
     sampleClaim: "방송 대본에서 추출한 한 문장의 발언.",
     consistencyAxis: "일관성 축",
     consistencyAxisDesc: "과거 발언 데이터와 교차 대조",
@@ -1017,12 +1051,249 @@ const AnalysisStepper = ({
   );
 };
 
+// Entry choice screen: trace a politician's record, or verify new footage.
+const ChoiceLanding = ({
+  t,
+  lang,
+  onTrack,
+  onVerify,
+}: {
+  t: Dict;
+  lang: Lang;
+  onTrack: (name: string) => void;
+  onVerify: () => void;
+}) => {
+  const [name, setName] = useState("");
+  // [display label, query sent to /api/profile]
+  const presets: [string, string][] =
+    lang === "ko"
+      ? [
+          ["트럼프", "트럼프"],
+          ["이재명", "이재명"],
+          ["마크롱", "마크롱"],
+        ]
+      : [
+          ["Trump", "Donald Trump"],
+          ["Lee Jae-myung", "이재명"],
+          ["Macron", "Macron"],
+        ];
+  const submit = () => name.trim() && onTrack(name.trim());
+
+  return (
+    <section className="border-b border-line bg-surface p-8 md:p-12 lg:p-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-4 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest">
+          {t.homeKicker}
+        </div>
+        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
+          {t.homeTitle}
+        </h2>
+        <p className="mt-3 max-w-2xl text-lg text-gray font-medium">
+          {t.homeSubtitle}
+        </p>
+
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Path A: track a politician */}
+          <div className="flex flex-col border-2 border-line bg-surface p-8 shadow-sharp-sm">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-blue text-white">
+                <i className="ti ti-history text-3xl" />
+              </div>
+              <div>
+                <h3 className="text-xl font-black uppercase tracking-tight text-ink">
+                  {t.pathTrackTitle}
+                </h3>
+                <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-blue">
+                  AXIS_01 // TRACK_RECORD
+                </p>
+              </div>
+            </div>
+            <p className="mb-6 text-sm leading-relaxed text-gray">
+              {t.pathTrackDesc}
+            </p>
+            <div className="mt-auto">
+              <div className="flex items-center gap-3 border-2 border-line bg-slate/30 px-4 py-3">
+                <i className="ti ti-search text-lg text-blue" />
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && submit()}
+                  placeholder={t.searchPlaceholder}
+                  className="w-full bg-transparent text-sm font-black uppercase tracking-wide text-ink outline-none placeholder:text-gray/40"
+                  autoComplete="off"
+                />
+                <button
+                  onClick={submit}
+                  className="shrink-0 bg-accent px-5 py-2 text-[10px] font-black uppercase tracking-widest text-accentfg hover:bg-blue hover:text-white transition-colors"
+                >
+                  {t.pathTrackCta}
+                </button>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
+                  {t.presetLabel}:
+                </span>
+                {presets.map(([label, query]) => (
+                  <button
+                    key={label}
+                    onClick={() => onTrack(query)}
+                    className="border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-ink hover:bg-slate transition-colors"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Path B: verify new footage */}
+          <div className="flex flex-col border-2 border-line bg-surface p-8 shadow-sharp-sm">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-green text-white">
+                <i className="ti ti-file-search text-3xl" />
+              </div>
+              <div>
+                <h3 className="text-xl font-black uppercase tracking-tight text-ink">
+                  {t.pathVerifyTitle}
+                </h3>
+                <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-green">
+                  AXIS_02 // LIVE_VERIFY
+                </p>
+              </div>
+            </div>
+            <p className="mb-6 text-sm leading-relaxed text-gray">
+              {t.pathVerifyDesc}
+            </p>
+            <button
+              onClick={onVerify}
+              className="mt-auto flex items-center justify-center gap-2 border-2 border-line bg-slate/30 py-4 font-black uppercase tracking-widest text-ink shadow-sharp-sm hover:bg-slate transition-colors"
+            >
+              <i className="ti ti-brand-youtube text-lg text-red" />
+              {t.pathVerifyCta}
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Staged "analysis" animation played while the (instant) profile loads, purely for
+// the demo's dramatic effect. Auto-advances then calls onDone.
+const ProfileLoader = ({
+  t,
+  name,
+  onDone,
+}: {
+  t: Dict;
+  name: string;
+  onDone: () => void;
+}) => {
+  const [progress, setProgress] = useState(0);
+  const [stage, setStage] = useState(0);
+  const lines = [t.profileLoad1, t.profileLoad2, t.profileLoad3, t.profileLoad4];
+
+  useEffect(() => {
+    const p = setInterval(
+      () => setProgress((v) => (v < 100 ? v + 4 : v)),
+      90
+    );
+    const s = setInterval(
+      () => setStage((v) => Math.min(v + 1, lines.length - 1)),
+      560
+    );
+    const done = setTimeout(onDone, 2500);
+    return () => {
+      clearInterval(p);
+      clearInterval(s);
+      clearTimeout(done);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <section className="bg-slate border-b border-line p-12 lg:p-24 min-h-[700px] flex items-center">
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="relative overflow-hidden border-2 border-line bg-surface shadow-sharp">
+          <div className="flex items-center justify-between bg-accent p-4 text-accentfg">
+            <div className="flex items-center gap-3">
+              <i className="ti ti-terminal text-xl" />
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                {t.tracing}: {name}
+              </span>
+            </div>
+            <div className="flex gap-2">
+              <div className="h-3 w-3 border border-accentfg" />
+              <div className="h-3 w-3 bg-accentfg" />
+            </div>
+          </div>
+
+          <div className="h-[320px] space-y-4 overflow-y-auto p-8 font-mono text-sm bg-ink/[0.02]">
+            {lines.slice(0, stage + 1).map((msg, i) => (
+              <div
+                key={i}
+                className={`flex items-start gap-4 transition-all duration-300 ${
+                  i === stage
+                    ? "border-l-4 border-orange bg-orange/5 pl-4 py-2"
+                    : "text-gray/80"
+                }`}
+              >
+                <span
+                  className={`flex-grow ${
+                    i === stage ? "text-ink font-bold" : "text-ink/60"
+                  }`}
+                >
+                  {msg}
+                </span>
+                <span
+                  className={`font-bold text-[10px] ${
+                    i < stage
+                      ? "text-green"
+                      : "text-orange animate-pulse"
+                  }`}
+                >
+                  {i < stage ? "DONE" : "PROCESSING"}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t-2 border-line bg-slate p-8">
+            <div className="mb-6 flex items-end justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-widest text-ink">
+                  {t.pipeline}
+                </p>
+                <p className="mt-1 font-mono text-[9px] font-bold text-gray uppercase tracking-widest">
+                  AXIS_01_TRACK_RECORD
+                </p>
+              </div>
+              <p className="font-mono text-2xl font-black text-ink">{progress}%</p>
+            </div>
+            <div className="flex h-12 w-full gap-1 border-2 border-line bg-surface p-1">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-full flex-grow ${
+                    i < progress / 5 ? "bg-accent" : "bg-accent/10"
+                  } transition-all duration-300`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // --- Main Component ---
 
 export default function Home() {
   const [step, setStep] = useState<
-    "profile" | "landing" | "analysis" | "results"
-  >("profile");
+    "home" | "profileLoading" | "profile" | "landing" | "analysis" | "results"
+  >("home");
+  const [profileName, setProfileName] = useState("Donald Trump");
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState("");
   const [inputMode, setInputMode] = useState<"manual" | "url">("manual");
@@ -1207,15 +1478,39 @@ export default function Home() {
         onToggleLang={() => setLang((l) => (l === "ko" ? "en" : "ko"))}
         onToggleTheme={() => setTheme((th) => (th === "dark" ? "light" : "dark"))}
         onHome={() => {
-          setStep("profile");
+          setStep("home");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       />
 
+      {step === "home" && (
+        <ChoiceLanding
+          t={t}
+          lang={lang}
+          onTrack={(nm) => {
+            setProfileName(nm);
+            setStep("profileLoading");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onVerify={() => {
+            setStep("landing");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      )}
+
+      {step === "profileLoading" && (
+        <ProfileLoader
+          t={t}
+          name={profileName}
+          onDone={() => setStep("profile")}
+        />
+      )}
+
       {step === "profile" && (
         <ProfileDashboard
           lang={lang}
-          initialName={lang === "ko" ? "트럼프" : "Donald Trump"}
+          initialName={profileName}
           onAnalyze={() => {
             setStep("landing");
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1469,7 +1764,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => {
-                    setStep("landing");
+                    setStep("home");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   className="btn-secondary px-6 py-2 text-[10px] shadow-sharp-sm"

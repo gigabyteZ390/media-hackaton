@@ -60,7 +60,16 @@ function normTopic(raw) {
 }
 
 const politician = process.argv[2] || "Donald Trump";
-const slug = politician.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+// Explicit slugs (Korean names don't survive an ascii-only slugifier).
+const SLUGS = {
+  "Donald Trump": "donald-trump",
+  "이재명": "lee-jae-myung",
+  "Emmanuel Macron": "emmanuel-macron",
+};
+const slug =
+  SLUGS[politician] ||
+  politician.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") ||
+  "profile";
 
 const all = JSON.parse(fs.readFileSync(path.join(WEB, "data/statements.json"), "utf8"))
   .filter((s) => s.politician === politician);

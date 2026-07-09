@@ -37,6 +37,14 @@ const ALIASES: Record<string, string> = {
   트럼프: "donald-trump",
   도널드트럼프: "donald-trump",
   "도널드 트럼프": "donald-trump",
+  이재명: "lee-jae-myung",
+  lee: "lee-jae-myung",
+  "lee jae-myung": "lee-jae-myung",
+  "lee jae myung": "lee-jae-myung",
+  macron: "emmanuel-macron",
+  마크롱: "emmanuel-macron",
+  "emmanuel macron": "emmanuel-macron",
+  "에마뉘엘 마크롱": "emmanuel-macron",
 };
 
 function resolveSlug(input: string): string {

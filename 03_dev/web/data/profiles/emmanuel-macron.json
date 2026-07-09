@@ -1,0 +1,241 @@
+{
+  "politician": "Emmanuel Macron",
+  "generatedFrom": 19,
+  "totalStatements": 19,
+  "totalReversals": 4,
+  "sectors": [
+    {
+      "key": "politics",
+      "statementCount": 10,
+      "reversalCount": 3,
+      "topics": [
+        {
+          "topic": "nuclear",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2017년 대선 후보 시절 마크롱은 원전 비중을 75%에서 50%로 축소하고 페센하임 원전을 폐쇄하는 계획을 지지했으나, 2022년 2월에는 신규 EPR2 원전 6기 건설과 추가 8기 검토를 발표하며 '원자력 부흥'으로 입장을 뒤집었다.",
+            "en": "In 2017 Macron endorsed cutting nuclear power's share from 75% to 50% and closing the Fessenheim plant, but in February 2022 he reversed course, announcing six new EPR2 reactors and a nuclear renaissance."
+          },
+          "statements": [
+            {
+              "text": "As a 2017 candidate, Macron endorsed the plan to cut nuclear power's share of French electricity to 50% (from ~75%) by around 2025 and to close the Fessenheim plant.",
+              "date": "2017",
+              "sourceUrl": "https://www.bloomberg.com/news/articles/2017-04-26/macron-weighs-nuclear-option-as-edf-pushes-52-billion-renewal"
+            },
+            {
+              "text": "In February 2022 Macron announced France would build six new EPR2 nuclear reactors, with eight more under consideration — a nuclear 'renaissance'.",
+              "date": "2022-02",
+              "sourceUrl": "https://www.world-nuclear-news.org/Articles/Macron-says-France-will-construct-new-reactors"
+            }
+          ]
+        },
+        {
+          "topic": "pension",
+          "count": 4,
+          "reversalCount": 1,
+          "note": {
+            "ko": "마크롱은 2023년 3월~4월 49.3조를 동원해 정년을 62세에서 64세로 올리는 연금개혁을 강행 처리했으나, 2025년 10월 르코르뉴 총리를 통해 이 개혁의 시행을 2027년 대선 이후로 유예하기로 하며 입장을 뒤집었다.",
+            "en": "Macron forced through the pension reform raising the retirement age from 62 to 64 via Article 49.3 in March-April 2023, then reversed course in October-November 2025 by backing PM Lecornu's suspension of that reform until after the 2027 election."
+          },
+          "statements": [
+            {
+              "text": "Macron's government invoked Article 49.3 to force the pension reform raising the retirement age from 62 to 64 through parliament without a final vote.",
+              "date": "2023-03-16",
+              "sourceUrl": "https://www.france24.com/en/france/20230317-bitter-pension-battle-turns-to-democratic-crisis-as-macron-bypasses-french-parliament"
+            },
+            {
+              "text": "Macron's plan to raise France's retirement age from 62 to 64 was enacted into law in April 2023, a central plank of his second-term agenda.",
+              "date": "2023-04-14",
+              "sourceUrl": "https://www.npr.org/2023/04/14/1170238212/macrons-pension-age-france"
+            },
+            {
+              "text": "PM Lecornu, with Macron's backing, announced suspension of the 2023 pension reform — effectively freezing the retirement age at 62 years and nine months rather than 64.",
+              "date": "2025-10-14",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/10/14/french-prime-minister-backs-suspending-unpopular-pension-reform-law"
+            },
+            {
+              "text": "France's National Assembly voted to suspend the flagship pension reform law until after the 2027 presidential election.",
+              "date": "2025-11",
+              "sourceUrl": "https://www.jurist.org/news/2025/11/france-votes-to-suspend-pension-reform-law/"
+            }
+          ]
+        },
+        {
+          "topic": "domestic politics",
+          "count": 2,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2024년 6월 마크롱은 조기 총선을 단행하며 이를 안정을 위한 결정으로 정당화했으나, 2024년 12월 31일에는 그 결정이 오히려 '더 큰 불안정'을 초래했다고 인정하며 입장을 뒤집었다.",
+            "en": "Macron justified calling snap elections in June 2024 as a stabilizing move, but by December 31, 2024 he reversed course, admitting the decision had actually caused 'more instability'."
+          },
+          "statements": [
+            {
+              "text": "After the National Rally topped the June 2024 European elections, Macron dissolved the National Assembly and called snap legislative elections for 30 June and 7 July 2024.",
+              "date": "2024-06-09",
+              "sourceUrl": "https://www.pbs.org/newshour/world/macron-dissolves-frances-national-assembly-calls-snap-election-after-defeat-in-eu-vote"
+            },
+            {
+              "text": "Macron acknowledged that his decision to call the snap legislative elections had caused 'more instability' than it resolved.",
+              "date": "2024-12-31",
+              "sourceUrl": "https://www.france24.com/en/france/20241231-macron-acknowledges-his-decision-to-call-snap-french-elections-caused-more-instability"
+            }
+          ]
+        },
+        {
+          "topic": "labor",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I do not believe for a single second in reforms by decree; deep reforms cannot be imposed on the country by ordinance.",
+              "date": "2016-11-25",
+              "sourceUrl": "https://jacobin.com/2020/03/emmanuel-macron-article-49-3-pension-reforms-strikes-france"
+            }
+          ]
+        },
+        {
+          "topic": "identity",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Macron ran in 2017 as 'neither right nor left' (ni de droite ni de gauche), positioning himself as a centrist beyond the traditional divide.",
+              "date": "2017",
+              "sourceUrl": "https://dcubrexitinstitute.eu/2024/02/the-new-french-immigration-law-part-1/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "geopolitics",
+      "statementCount": 6,
+      "reversalCount": 1,
+      "topics": [
+        {
+          "topic": "russia/ukraine",
+          "count": 3,
+          "reversalCount": 1,
+          "note": {
+            "ko": "2022년 6월에는 러시아를 모욕하지 말고 외교적 출구를 마련해야 한다는 유화적 입장을 보였으나, 2024년 2월부터는 지상군 파견 가능성을 배제하지 않고 러시아가 승리할 수 없도록 하겠다는 더 강경한 입장으로 전환했다.",
+            "en": "In June 2022 Macron took a conciliatory stance saying Russia should not be humiliated and a diplomatic exit should be preserved, but by February 2024 he shifted to a tougher position, refusing to rule out sending troops and vowing Russia must not win."
+          },
+          "statements": [
+            {
+              "text": "We must not humiliate Russia so that the day the fighting stops, we can build a way out through diplomatic channels.",
+              "date": "2022-06-04",
+              "sourceUrl": "https://www.euronews.com/2022/06/06/ukraine-war-what-has-macron-said-about-the-need-not-to-humiliate-russia"
+            },
+            {
+              "text": "There's no consensus today to send troops in an official manner, but in terms of dynamics, nothing can be ruled out; we will do everything needed so Russia cannot win the war.",
+              "date": "2024-02-26",
+              "sourceUrl": "https://www.cnn.com/2024/02/27/europe/france-macron-troops-ukraine-intl"
+            },
+            {
+              "text": "Macron reaffirmed that sending Western troops to Ukraine could not be ruled out and that he maintained deliberate 'strategic ambiguity' toward Russia.",
+              "date": "2024-05-02",
+              "sourceUrl": "https://www.aljazeera.com/news/2024/5/2/frances-macron-doesnt-rule-out-troops-for-ukraine"
+            }
+          ]
+        },
+        {
+          "topic": "defense",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2019년 11월 나토를 뇌사 상태라고 표현했고, 2023년 5월에도 같은 표현을 인용하며 푸틴이 그 뇌사 상태의 나토를 충격요법으로 되살렸다고 언급해 입장이 일관되게 유지됨.",
+            "en": "Macron called NATO brain-dead in November 2019, and in May 2023 he referenced that same phrase, saying Putin revived the brain-dead NATO with shock therapy, showing a consistent position rather than a reversal."
+          },
+          "statements": [
+            {
+              "text": "We are experiencing the brain death of NATO.",
+              "date": "2019-11",
+              "sourceUrl": "https://www.aljazeera.com/news/2019/12/3/macron-stands-by-nato-brain-death-comment-in-clash-with-trump"
+            },
+            {
+              "text": "Vladimir Putin has revived the 'brain-dead' NATO with the worst of electroshocks.",
+              "date": "2023-05-31",
+              "sourceUrl": "https://www.bloomberg.com/news/articles/2023-05-31/macron-says-putin-brought-brain-dead-nato-back-with-electroshock"
+            }
+          ]
+        },
+        {
+          "topic": "foreign policy",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "I have decided that France will recognize the State of Palestine, with a solemn announcement before the UN General Assembly in September.",
+              "date": "2025-07-24",
+              "sourceUrl": "https://www.aljazeera.com/news/2025/7/24/macron-says-france-will-recognise-palestinian-state-in-september"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "economy",
+      "statementCount": 2,
+      "reversalCount": 0,
+      "topics": [
+        {
+          "topic": "tax",
+          "count": 2,
+          "reversalCount": 0,
+          "note": {
+            "ko": "2018년 두 발언 모두 부의 재분배보다 생산과 투자 촉진을 우선시하는 입장으로 일관되며(부유세 폐지 및 부동산세로 대체 포함), 명확한 입장 반전은 없음.",
+            "en": "Both 2018 statements consistently prioritize wealth creation and investment over redistribution, including the replacement of the wealth tax (ISF) with a narrower real-estate tax (IFI), showing no clear reversal."
+          },
+          "statements": [
+            {
+              "text": "It's all well and good to want to spread wealth, but you first need to produce, to create wealth before redistributing.",
+              "date": "2018",
+              "sourceUrl": "https://uk.investing.com/news/world-news/macron-fights-president-of-the-rich-tag-after-ending-wealth-tax-516192"
+            },
+            {
+              "text": "Macron delivered on his pledge to abolish France's Solidarity Tax on Wealth (ISF), replacing it with a narrower real-estate wealth tax (IFI) to encourage investment.",
+              "date": "2018",
+              "sourceUrl": "https://fortune.com/2026/01/27/california-france-wealth-tax-inequality/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "social",
+      "statementCount": 1,
+      "reversalCount": 0,
+      "topics": [
+        {
+          "topic": "immigration",
+          "count": 1,
+          "reversalCount": 0,
+          "note": {
+            "ko": "",
+            "en": ""
+          },
+          "statements": [
+            {
+              "text": "Defending the December 2023 immigration law, Macron said the bill is 'what the French wanted' and denied it echoed the far right.",
+              "date": "2024-01",
+              "sourceUrl": "https://www.aljazeera.com/news/2024/1/25/whats-so-controversial-about-frances-new-immigration-bill"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

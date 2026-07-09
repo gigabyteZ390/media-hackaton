@@ -45,7 +45,7 @@ const STR = {
     subtitle: "SECTOR_MAP // POSITION_REVERSAL_COUNT",
     searchPlaceholder: "Search a politician (e.g. Trump)...",
     searchBtn: "Trace",
-    hint: "Demo dataset: Donald Trump — statements sourced & date-ordered.",
+    hint: "Every statement is sourced and ordered by date.",
     loading: "Assembling track record...",
     notFound: (n: string) => `No profile available for "${n}". Try: Donald Trump.`,
     totalStatements: "Statements on record",
@@ -69,7 +69,7 @@ const STR = {
     subtitle: "섹터 지도 // 입장 번복 횟수",
     searchPlaceholder: "정치인을 검색하세요 (예: 트럼프)...",
     searchBtn: "추적",
-    hint: "데모 데이터: 도널드 트럼프 — 출처·날짜순으로 정리된 실제 발언.",
+    hint: "모든 발언은 출처가 있으며 날짜순으로 정리했습니다.",
     loading: "행적을 정리하는 중...",
     notFound: (n: string) => `"${n}"의 프로필이 없습니다. 예시: 트럼프`,
     totalStatements: "수집된 발언",
@@ -124,6 +124,14 @@ function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.e
 
       {open && (
         <div className="border-t border-line bg-slate/30 p-4">
+          {/* full flip-flop summary (not clamped) */}
+          {topic.note && (
+            <div
+              className={`mb-5 border-l-4 border-${color} bg-${color}/5 p-4 text-sm leading-relaxed text-ink`}
+            >
+              {topic.note}
+            </div>
+          )}
           <p className="mb-4 font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
             {t.timeline}
           </p>
