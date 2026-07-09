@@ -16,6 +16,12 @@ export const dynamic = "force-dynamic";
 
 type StatementRow = {
   text: string;
+  // bilingual fields on pre-computed statements (added by scripts/translate-profiles)
+  textEn?: string;
+  textKo?: string;
+  src?: "en" | "ko";
+  textOrig?: string; // verbatim original, shown under a translation
+  translated?: boolean;
   date: string;
   sourceUrl: string;
   // present only on video-verified (accumulated) statements
@@ -23,6 +29,19 @@ type StatementRow = {
   factVerdict?: "TRUE" | "FALSE" | "UNVERIFIABLE" | "NOT_FACTUAL";
   factSources?: { title: string; url: string }[];
 };
+
+// Serve the statement text in the requested language, keeping the verbatim original.
+function localizeStatement(s: StatementRow, L: "ko" | "en"): StatementRow {
+  const disp = (L === "ko" ? s.textKo : s.textEn) || s.text;
+  const orig = (s.src === "ko" ? s.textKo : s.textEn) || s.text;
+  return {
+    text: disp,
+    textOrig: orig,
+    translated: !!s.src && s.src !== L,
+    date: s.date,
+    sourceUrl: s.sourceUrl,
+  };
+}
 type Topic = {
   topic: string;
   count: number;
@@ -133,7 +152,7 @@ export async function POST(req: Request) {
         count: t.count,
         reversalCount: t.reversalCount,
         note: t.note?.[L] ?? t.note?.en ?? "",
-        statements: t.statements,
+        statements: t.statements.map((s) => localizeStatement(s, L)),
       })),
     }));
 

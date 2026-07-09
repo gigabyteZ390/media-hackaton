@@ -8,6 +8,8 @@ type SectorKey = "geopolitics" | "economy" | "social" | "politics";
 
 interface StatementRow {
   text: string;
+  textOrig?: string;
+  translated?: boolean;
   date: string;
   sourceUrl: string;
   isContradiction?: boolean;
@@ -248,6 +250,11 @@ function TopicItem({
                   )}
                 </div>
                 <p className="mt-1 text-sm leading-relaxed text-ink">{s.text}</p>
+                {s.translated && s.textOrig && s.textOrig !== s.text && (
+                  <p className="mt-1 font-mono text-[11px] leading-relaxed text-gray">
+                    {s.textOrig}
+                  </p>
+                )}
               </li>
             ))}
           </ol>

@@ -20,11 +20,17 @@
           "statements": [
             {
               "text": "As a 2017 candidate, Macron endorsed the plan to cut nuclear power's share of French electricity to 50% (from ~75%) by around 2025 and to close the Fessenheim plant.",
+              "textEn": "As a 2017 candidate, Macron endorsed the plan to cut nuclear power's share of French electricity to 50% (from ~75%) by around 2025 and to close the Fessenheim plant.",
+              "textKo": "마크롱은 2017년 후보 시절 프랑스 전기 생산량의 핵 발전 비율을 2025년까지 약 75%에서 50%로 줄이는 계획에 찬성했으며, 페센하임 원자력 발전소 폐쇄를 발표했습니다.",
+              "src": "en",
               "date": "2017",
               "sourceUrl": "https://www.bloomberg.com/news/articles/2017-04-26/macron-weighs-nuclear-option-as-edf-pushes-52-billion-renewal"
             },
             {
               "text": "In February 2022 Macron announced France would build six new EPR2 nuclear reactors, with eight more under consideration — a nuclear 'renaissance'.",
+              "textEn": "In February 2022 Macron announced France would build six new EPR2 nuclear reactors, with eight more under consideration — a nuclear 'renaissance'.",
+              "textKo": "마크롱은 2022년 2월 프랑스가 6기의 새로운 EPR2 핵 반응기를 건설하고 추가로 8기가 검토 중이라고 발표하여 핵 '부흥'을 선언했습니다.",
+              "src": "en",
               "date": "2022-02",
               "sourceUrl": "https://www.world-nuclear-news.org/Articles/Macron-says-France-will-construct-new-reactors"
             }
@@ -41,21 +47,33 @@
           "statements": [
             {
               "text": "Macron's government invoked Article 49.3 to force the pension reform raising the retirement age from 62 to 64 through parliament without a final vote.",
+              "textEn": "Macron's government invoked Article 49.3 to force the pension reform raising the retirement age from 62 to 64 through parliament without a final vote.",
+              "textKo": "마크롱 정부는 은퇴 연령을 62세에서 64세로 상향 조정하는 연금 개혁안을 통과시키기 위해 의회에서 최종 표결 없이도 가능하게 하는 제49조 제3항을 발동했습니다.",
+              "src": "en",
               "date": "2023-03-16",
               "sourceUrl": "https://www.france24.com/en/france/20230317-bitter-pension-battle-turns-to-democratic-crisis-as-macron-bypasses-french-parliament"
             },
             {
               "text": "Macron's plan to raise France's retirement age from 62 to 64 was enacted into law in April 2023, a central plank of his second-term agenda.",
+              "textEn": "Macron's plan to raise France's retirement age from 62 to 64 was enacted into law in April 2023, a central plank of his second-term agenda.",
+              "textKo": "마크롱의 프랑스 은퇴 연령을 62세에서 64세로 상향시키려는 계획은 2023년 4월에 법률로 통과되었습니다. 이는 그의 두 번째 임기 아젠다의 핵심 내용입니다.",
+              "src": "en",
               "date": "2023-04-14",
               "sourceUrl": "https://www.npr.org/2023/04/14/1170238212/macrons-pension-age-france"
             },
             {
               "text": "PM Lecornu, with Macron's backing, announced suspension of the 2023 pension reform — effectively freezing the retirement age at 62 years and nine months rather than 64.",
+              "textEn": "PM Lecornu, with Macron's backing, announced suspension of the 2023 pension reform — effectively freezing the retirement age at 62 years and nine months rather than 64.",
+              "textKo": "마크롱의 지지 아래 레코르누 총리는 2023년 연금 개혁을 중단한다고 발표했습니다. 실제로 은퇴 연령이 64세가 아닌 62세와 9개월로 동결되었습니다.",
+              "src": "en",
               "date": "2025-10-14",
               "sourceUrl": "https://www.aljazeera.com/news/2025/10/14/french-prime-minister-backs-suspending-unpopular-pension-reform-law"
             },
             {
               "text": "France's National Assembly voted to suspend the flagship pension reform law until after the 2027 presidential election.",
+              "textEn": "France's National Assembly voted to suspend the flagship pension reform law until after the 2027 presidential election.",
+              "textKo": "프랑스 국민총회는 2027년 대통령 선거 이후까지 주요 연금 개혁법을 유보하기로 표결했습니다.",
+              "src": "en",
               "date": "2025-11",
               "sourceUrl": "https://www.jurist.org/news/2025/11/france-votes-to-suspend-pension-reform-law/"
             }
@@ -72,11 +90,17 @@
           "statements": [
             {
               "text": "After the National Rally topped the June 2024 European elections, Macron dissolved the National Assembly and called snap legislative elections for 30 June and 7 July 2024.",
+              "textEn": "After the National Rally topped the June 2024 European elections, Macron dissolved the National Assembly and called snap legislative elections for 30 June and 7 July 2024.",
+              "textKo": "2024년 6월 유럽议会选举后，国民 Rally 获得第一名后，马克龙解散了国民议会，并宣布于2024年6月30日和7月7日举行提前立法选举。",
+              "src": "en",
               "date": "2024-06-09",
               "sourceUrl": "https://www.pbs.org/newshour/world/macron-dissolves-frances-national-assembly-calls-snap-election-after-defeat-in-eu-vote"
             },
             {
               "text": "Macron acknowledged that his decision to call the snap legislative elections had caused 'more instability' than it resolved.",
+              "textEn": "Macron acknowledged that his decision to call the snap legislative elections had caused 'more instability' than it resolved.",
+              "textKo": "马克龙承认，他决定举行提前立法选举的决定导致了‘更多的不稳定’而不是解决了问题。",
+              "src": "en",
               "date": "2024-12-31",
               "sourceUrl": "https://www.france24.com/en/france/20241231-macron-acknowledges-his-decision-to-call-snap-french-elections-caused-more-instability"
             }
@@ -93,6 +117,9 @@
           "statements": [
             {
               "text": "I do not believe for a single second in reforms by decree; deep reforms cannot be imposed on the country by ordinance.",
+              "textEn": "I do not believe for a single second in reforms by decree; deep reforms cannot be imposed on the country by ordinance.",
+              "textKo": "결정권으로 개혁을 믿는다는 것은 단 한 순간도 없습니다; 깊이 있는 개혁은 국가에 의해 조치로 강제될 수 없습니다.",
+              "src": "en",
               "date": "2016-11-25",
               "sourceUrl": "https://jacobin.com/2020/03/emmanuel-macron-article-49-3-pension-reforms-strikes-france"
             }
@@ -109,6 +136,9 @@
           "statements": [
             {
               "text": "Macron ran in 2017 as 'neither right nor left' (ni de droite ni de gauche), positioning himself as a centrist beyond the traditional divide.",
+              "textEn": "Macron ran in 2017 as 'neither right nor left' (ni de droite ni de gauche), positioning himself as a centrist beyond the traditional divide.",
+              "textKo": "마크롱은 2017년 대선에서 '우파도 좌파도 아닌 (니 드 루아트 니 드 고슈)'이라는 구호 아래 출마해 전통적인 이념적 분열을 초월한 중도주의자로 자신을 포지셔닝 했다.",
+              "src": "en",
               "date": "2017",
               "sourceUrl": "https://dcubrexitinstitute.eu/2024/02/the-new-french-immigration-law-part-1/"
             }
@@ -132,16 +162,25 @@
           "statements": [
             {
               "text": "We must not humiliate Russia so that the day the fighting stops, we can build a way out through diplomatic channels.",
+              "textEn": "We must not humiliate Russia so that the day the fighting stops, we can build a way out through diplomatic channels.",
+              "textKo": "러시아를 모욕하지 않아야 하며, 싸움이 멈추는 그날에는 외교 채널을 통해 해결책을 찾을 수 있어야 합니다.",
+              "src": "en",
               "date": "2022-06-04",
               "sourceUrl": "https://www.euronews.com/2022/06/06/ukraine-war-what-has-macron-said-about-the-need-not-to-humiliate-russia"
             },
             {
               "text": "There's no consensus today to send troops in an official manner, but in terms of dynamics, nothing can be ruled out; we will do everything needed so Russia cannot win the war.",
+              "textEn": "There's no consensus today to send troops in an official manner, but in terms of dynamics, nothing can be ruled out; we will do everything needed so Russia cannot win the war.",
+              "textKo": "오늘날 공식적으로 병력을 파견하는 데에 합의가 이루어지지 않았지만, 상황의 변화를 고려할 때 모든 가능성을 배제할 수 없습니다. 우리는 러시아가 전쟁에서 승리하지 못하도록 필요한 모든 조치를 취하겠습니다.",
+              "src": "en",
               "date": "2024-02-26",
               "sourceUrl": "https://www.cnn.com/2024/02/27/europe/france-macron-troops-ukraine-intl"
             },
             {
               "text": "Macron reaffirmed that sending Western troops to Ukraine could not be ruled out and that he maintained deliberate 'strategic ambiguity' toward Russia.",
+              "textEn": "Macron reaffirmed that sending Western troops to Ukraine could not be ruled out and that he maintained deliberate 'strategic ambiguity' toward Russia.",
+              "textKo": "마크롱은 서방 병력이 우크라이나에 파견될 가능성도 배제하지 않으며, 러시아에 대한 의도적인 '전략적 모호성'을 유지할 것이라고 재확인했습니다.",
+              "src": "en",
               "date": "2024-05-02",
               "sourceUrl": "https://www.aljazeera.com/news/2024/5/2/frances-macron-doesnt-rule-out-troops-for-ukraine"
             }
@@ -158,11 +197,17 @@
           "statements": [
             {
               "text": "We are experiencing the brain death of NATO.",
+              "textEn": "We are experiencing the brain death of NATO.",
+              "textKo": "我们现在经历的是北约的脑死亡。",
+              "src": "en",
               "date": "2019-11",
               "sourceUrl": "https://www.aljazeera.com/news/2019/12/3/macron-stands-by-nato-brain-death-comment-in-clash-with-trump"
             },
             {
               "text": "Vladimir Putin has revived the 'brain-dead' NATO with the worst of electroshocks.",
+              "textEn": "Vladimir Putin has revived the 'brain-dead' NATO with the worst of electroshocks.",
+              "textKo": "弗拉基米尔·普京用最糟糕的电击复活了‘脑死亡’的北约。",
+              "src": "en",
               "date": "2023-05-31",
               "sourceUrl": "https://www.bloomberg.com/news/articles/2023-05-31/macron-says-putin-brought-brain-dead-nato-back-with-electroshock"
             }
@@ -179,6 +224,9 @@
           "statements": [
             {
               "text": "I have decided that France will recognize the State of Palestine, with a solemn announcement before the UN General Assembly in September.",
+              "textEn": "I have decided that France will recognize the State of Palestine, with a solemn announcement before the UN General Assembly in September.",
+              "textKo": "나는 프랑스가 팔естин 국가를 인정하기로 결정하였으며, 9월 유엔총회에서 공식 선포할 예정임을 밝힙니다.",
+              "src": "en",
               "date": "2025-07-24",
               "sourceUrl": "https://www.aljazeera.com/news/2025/7/24/macron-says-france-will-recognise-palestinian-state-in-september"
             }
@@ -202,11 +250,17 @@
           "statements": [
             {
               "text": "It's all well and good to want to spread wealth, but you first need to produce, to create wealth before redistributing.",
+              "textEn": "It's all well and good to want to spread wealth, but you first need to produce, to create wealth before redistributing.",
+              "textKo": "부유세를 없애는 맥론의 약속을 지키기 위해, 그는 프랑스의 연대 부과 세금(ISF)을 더 좁은 부동산 재산세(IFI)로 대체하여 투자를 장려했습니다.",
+              "src": "en",
               "date": "2018",
               "sourceUrl": "https://uk.investing.com/news/world-news/macron-fights-president-of-the-rich-tag-after-ending-wealth-tax-516192"
             },
             {
               "text": "Macron delivered on his pledge to abolish France's Solidarity Tax on Wealth (ISF), replacing it with a narrower real-estate wealth tax (IFI) to encourage investment.",
+              "textEn": "Macron delivered on his pledge to abolish France's Solidarity Tax on Wealth (ISF), replacing it with a narrower real-estate wealth tax (IFI) to encourage investment.",
+              "textKo": "재분배하기 전에 먼저 부를 창출하고 생산해야 한다는 점에서 부유한 자들이 부를 분배하길 바란다는 것은 좋지만, 그렇게 하는 것이 중요합니다.",
+              "src": "en",
               "date": "2018",
               "sourceUrl": "https://fortune.com/2026/01/27/california-france-wealth-tax-inequality/"
             }
@@ -230,6 +284,9 @@
           "statements": [
             {
               "text": "Defending the December 2023 immigration law, Macron said the bill is 'what the French wanted' and denied it echoed the far right.",
+              "textEn": "Defending the December 2023 immigration law, Macron said the bill is 'what the French wanted' and denied it echoed the far right.",
+              "textKo": "마크롱은 2023년 12월 이민법을 방어하면서 법안이 '프랑스 국민들이 원한 것'이라고 말하고, 극우와의 연관성을 부인했다.",
+              "src": "en",
               "date": "2024-01",
               "sourceUrl": "https://www.aljazeera.com/news/2024/1/25/whats-so-controversial-about-frances-new-immigration-bill"
             }
