@@ -41,6 +41,34 @@ function bestMatch(quote: string, past: Statement[]): Statement | undefined {
   return bestScore >= 0.4 ? best : undefined;
 }
 
+// Inject only the past statements most RELEVANT to the lines being checked, instead
+// of the person's entire history. Contradictions live on the same topic, so keyword
+// overlap surfaces them — and this cuts prompt tokens (and latency) dramatically as
+// the DB grows (e.g. Trump 173 -> ~35), which matters for both cost and local models.
+function selectRelevant(
+  lines: SpokenLine[],
+  past: Statement[],
+  maxTotal = 35
+): Statement[] {
+  if (past.length <= maxTotal) return past;
+  const lineSets = lines.map(
+    (l) => new Set(norm(l.text).split(" ").filter((w) => w.length > 2))
+  );
+  const scored = past.map((p) => {
+    const tWords = new Set(norm(p.text).split(" ").filter((w) => w.length > 2));
+    let best = 0;
+    for (const lw of lineSets) {
+      let overlap = 0;
+      for (const w of lw) if (tWords.has(w)) overlap++;
+      const score = lw.size ? overlap / lw.size : 0;
+      if (score > best) best = score;
+    }
+    return { p, score: best };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, maxTotal).map((s) => s.p);
+}
+
 // Axis 1 — self-consistency: does each line contradict the person's OWN past words?
 export async function POST(req: Request) {
   try {
@@ -56,9 +84,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const past = (statementsData as Statement[]).filter(
+    const allPast = (statementsData as Statement[]).filter(
       (s) => s.politician === politician
     );
+    // Only the statements relevant to these lines go into the prompt.
+    const past = selectRelevant(lines, allPast, 35);
 
     const client = getAnthropic();
     const res = await client.messages.create({

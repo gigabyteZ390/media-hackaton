@@ -17,7 +17,8 @@
 // Note (Claude Opus 4.8): sampling params (temperature/top_p) are rejected — do not
 // send them. We use adaptive thinking + the web_search server tool.
 
-import { getAnthropic, joinText, extractJson } from "./anthropic";
+import { getAnthropic, joinText, extractJson, isLocalLLM } from "./anthropic";
+import { webSearch } from "./websearch";
 import { buildExtractionPrompt, buildFactPrompt } from "./prompts";
 import { STAT_REGISTRY, findEntry, type RegistryEntry } from "./statRegistry";
 import { inseeGetSeries } from "./insee";
@@ -137,12 +138,69 @@ function extractCitations(res: any): { title: string; url: string }[] {
   return out;
 }
 
+/** Local-mode web fallback: WE search the web (DuckDuckGo, in code) and feed the
+ *  snippets to the local model, which judges from that evidence only. The local
+ *  model has no live-search tool, so the internet access lives in code. */
+async function webSearchFallbackLocal(
+  lines: SpokenLine[],
+  lang: Lang,
+  asOf?: string
+): Promise<FactVerdict[]> {
+  const evidences = await Promise.all(
+    lines.map(async (l) => ({ line: l.text, hits: await webSearch(l.text, 4) }))
+  );
+  const evidenceBlock = evidences
+    .map((e) =>
+      e.hits.length
+        ? `• LINE: ${e.line}\n${e.hits
+            .map((h) => `   - ${h.title} — ${h.url}\n     ${h.snippet}`)
+            .join("\n")}`
+        : `• LINE: ${e.line}\n   (no search results)`
+    )
+    .join("\n\n");
+
+  const prompt =
+    buildFactPrompt(lines, lang, undefined, asOf) +
+    "\n\n[WEB SEARCH EVIDENCE — you have NO live web access; judge ONLY from these " +
+    "snippets. If they do not clearly confirm or refute a claim, use verdict " +
+    "UNVERIFIABLE. Put the real URLs you relied on into sources.]\n" +
+    evidenceBlock;
+
+  const client = getAnthropic();
+  const res = await client.messages.create({
+    model: MODEL,
+    max_tokens: 4000,
+    messages: [{ role: "user", content: prompt }],
+  } as any);
+
+  let parsed: { facts?: FactVerdict[] } = {};
+  try {
+    parsed = extractJson<{ facts?: FactVerdict[] }>(joinText(res));
+  } catch {
+    parsed = {};
+  }
+  const allHits = evidences.flatMap((e) => e.hits);
+  return (parsed.facts ?? []).map((f) => {
+    const modelSources = (f.sources ?? []).filter((s) =>
+      /^https?:\/\//.test(s?.url ?? "")
+    );
+    return {
+      ...f,
+      sources: modelSources.length
+        ? modelSources
+        : allHits.slice(0, 3).map((h) => ({ title: h.title, url: h.url })),
+      method: "web-search" as const,
+    };
+  });
+}
+
 /** Fallback — non-statistical or unresolved claims go to the LLM + web search. */
 async function webSearchFallback(
   lines: SpokenLine[],
   lang: Lang,
   asOf?: string
 ): Promise<FactVerdict[]> {
+  if (isLocalLLM()) return webSearchFallbackLocal(lines, lang, asOf);
   const client = getAnthropic();
   const res = await client.messages.create({
     model: MODEL,

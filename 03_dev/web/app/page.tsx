@@ -1295,6 +1295,31 @@ export default function Home() {
     URL.revokeObjectURL(url);
   };
 
+  // Distill a raw transcript down to the target politician's key statements at
+  // COLLECTION time (drops greetings, filler, and other speakers) so the box shows
+  // only the substantive lines. Falls back to the raw text if the transcript is
+  // already short or extraction fails (e.g. the LLM is offline).
+  const distillTranscript = async (raw: string): Promise<string> => {
+    const count = raw.split("\n").map((l) => l.trim()).filter(Boolean).length;
+    if (count <= MAX_ANALYZE_LINES) return raw;
+    try {
+      const ex = await fetch("/api/extract", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          transcript: raw,
+          politician: targetPolitician,
+          lang,
+          max: MAX_ANALYZE_LINES,
+        }),
+      }).then((r) => r.json());
+      const picked: string[] = (ex.statements ?? []).slice(0, MAX_ANALYZE_LINES);
+      return picked.length ? picked.join("\n") : raw;
+    } catch {
+      return raw;
+    }
+  };
+
   // File upload: text/subtitle files load straight into the transcript box.
   // Video/audio would need STT (not wired) — so we guide the user instead.
   const onFilePick = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1312,7 +1337,7 @@ export default function Home() {
       return;
     }
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       const cleaned = String(reader.result || "")
         .replace(/^WEBVTT.*$/gm, "")
         .replace(/^\d+\s*$/gm, "") // SRT cue numbers
@@ -1321,8 +1346,13 @@ export default function Home() {
         .map((l) => l.trim())
         .filter(Boolean)
         .join("\n");
-      setTranscript(cleaned);
       setError(null);
+      setFetching(true);
+      try {
+        setTranscript(await distillTranscript(cleaned));
+      } finally {
+        setFetching(false);
+      }
     };
     reader.readAsText(file);
     e.target.value = "";
@@ -1341,7 +1371,8 @@ export default function Home() {
       });
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || "Scrape failed");
-      setTranscript(data.transcript || "");
+      // Distill to the target politician's key statements before showing the box.
+      setTranscript(await distillTranscript(data.transcript || ""));
     } catch (err: any) {
       setError(err?.message ?? "Scrape failed");
     } finally {
