@@ -1236,5 +1236,515 @@
     "topic": "규제/regulation",
     "era": "youtube-scraped",
     "confidence": 0.6
+  },
+  {
+    "id": "trump-ff-00",
+    "politician": "Donald Trump",
+    "text": "NATO is obsolete and expensive, and doesn't have the right countries in it for fighting terrorism.",
+    "date": "2016-03-27",
+    "sourceUrl": "https://www.cbsnews.com/news/trump-nato-past-comments/",
+    "topic": "NATO",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-01",
+    "politician": "Donald Trump",
+    "text": "I said it was obsolete; it's no longer obsolete.",
+    "date": "2017-04-12",
+    "sourceUrl": "https://www.politifact.com/factchecks/2017/apr/12/donald-trump/donald-trump-nato-i-said-it-was-obsolete-its-no-lo/",
+    "topic": "NATO",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-02",
+    "politician": "Donald Trump",
+    "text": "I will have that war settled in one day, 24 hours — I'll get it done before I even take office.",
+    "date": "2023-03-04",
+    "sourceUrl": "https://www.cnn.com/2025/04/25/politics/fact-check-trump-ukraine-war",
+    "topic": "Ukraine",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-05",
+    "politician": "Donald Trump",
+    "text": "Something has happened to Putin — he has gone absolutely crazy; I'm considering new sanctions on Russia.",
+    "date": "2025-05-25",
+    "sourceUrl": "https://www.cnn.com/2025/05/27/politics/russia-sanctions-trump-ukraine-war",
+    "topic": "Russia",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-06",
+    "politician": "Donald Trump",
+    "text": "We get a lot of bullshit thrown at us by Putin; he's very nice all the time, but it turns out to be meaningless.",
+    "date": "2025-07-08",
+    "sourceUrl": "https://www.aljazeera.com/news/2025/7/8/trump-says-he-is-not-happy-with-russias-putin-considering-sanctions",
+    "topic": "Russia",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-07",
+    "politician": "Donald Trump",
+    "text": "North Korea best not make any more threats — they will be met with fire and fury like the world has never seen.",
+    "date": "2017-08-08",
+    "sourceUrl": "https://www.npr.org/2017/08/08/542299360/trump-says-u-s-will-meet-north-korean-threats-with-fire-and-fury",
+    "topic": "North Korea",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-08",
+    "politician": "Donald Trump",
+    "text": "We fell in love — he wrote me beautiful letters, and they're great letters.",
+    "date": "2018-09-29",
+    "sourceUrl": "https://www.cnbc.com/2018/09/30/trump-on-kim-tough-talk--and-then-we-fell-in-love.html",
+    "topic": "North Korea",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-09",
+    "politician": "Donald Trump",
+    "text": "We can't continue to allow China to rape our country — it's the greatest theft in the history of the world.",
+    "date": "2016-05-01",
+    "sourceUrl": "https://edition.cnn.com/2016/05/01/politics/donald-trump-china-rape",
+    "topic": "trade",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-11",
+    "politician": "Donald Trump",
+    "text": "We had a very good meeting with China, better than expected; relations are back on track.",
+    "date": "2019-06-29",
+    "sourceUrl": "https://www.cnbc.com/2019/06/29/us-china-trade-war-trump-and-xi-meet-at-g-20-summit-in-osaka.html",
+    "topic": "trade",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-12",
+    "politician": "Donald Trump",
+    "text": "We have defeated ISIS in Syria, my only reason for being there — I am bringing all U.S. troops home.",
+    "date": "2018-12-19",
+    "sourceUrl": "https://www.pbs.org/newshour/world/trump-pulling-all-u-s-troops-from-syria-declaring-isis-defeated",
+    "topic": "Syria",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-13",
+    "politician": "Donald Trump",
+    "text": "We're keeping the oil — we left troops behind in Syria only for the oil.",
+    "date": "2019-10-25",
+    "sourceUrl": "https://abcnews.go.com/Politics/keeping-oil-syria-trump-considered-war-crime/story?id=66589757",
+    "topic": "Syria",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-14",
+    "politician": "Donald Trump",
+    "text": "This was a horrible, one-sided deal that should never have been made — the worst deal ever; the U.S. will withdraw from the Iran nuclear deal.",
+    "date": "2018-05-08",
+    "sourceUrl": "https://www.cnn.com/2018/05/08/politics/donald-trump-iran-deal-announcement-decision/",
+    "topic": "Iran",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-15",
+    "politician": "Donald Trump",
+    "text": "I will have Mexico pay for that wall — 100%, they will pay for it, believe me.",
+    "date": "2016-06-01",
+    "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1397/build-wall-and-make-mexico-pay-it/",
+    "topic": "immigration",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-16",
+    "politician": "Donald Trump",
+    "text": "When I said Mexico is going to pay for it, obviously I never meant they're going to write out a check.",
+    "date": "2019-01-10",
+    "sourceUrl": "https://www.politifact.com/factchecks/2019/jan/10/donald-trump/trump-claims-he-never-meant-mexico-would-write-che/",
+    "topic": "immigration",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-17",
+    "politician": "Donald Trump",
+    "text": "Ending DACA was the right decision, and I call on Congress to legislate a fix.",
+    "date": "2017-09-05",
+    "sourceUrl": "https://www.npr.org/2017/09/05/546423550/trump-signals-end-to-daca-calls-on-congress-to-act",
+    "topic": "immigration",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-18",
+    "politician": "Donald Trump",
+    "text": "I have a great heart for the folks — I have great love for Dreamers, and I hope Congress will help them.",
+    "date": "2017-09-05",
+    "sourceUrl": "https://www.nbcnews.com/politics/white-house/trump-says-he-has-love-dreamers-urges-congress-daca-action-n798881",
+    "topic": "immigration",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-20",
+    "politician": "Donald Trump",
+    "text": "There has to be some form of punishment for a woman who gets an abortion if it were banned.",
+    "date": "2016-03-30",
+    "sourceUrl": "https://www.npr.org/2016/03/30/472444293/trump-calls-for-punishing-women-who-have-abortions-then-backtracks",
+    "topic": "abortion",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-21",
+    "politician": "Donald Trump",
+    "text": "After 50 years of failure, with nobody coming even close, I was able to kill Roe v. Wade.",
+    "date": "2023-05-01",
+    "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-was-able-kill-roe-v-wade-rcna84897",
+    "topic": "abortion",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-22",
+    "politician": "Donald Trump",
+    "text": "The states will determine abortion by vote or legislation, and whatever they decide must be the law of the land.",
+    "date": "2024-04-08",
+    "sourceUrl": "https://missouriindependent.com/2024/04/08/trump-says-abortion-policy-should-be-left-to-the-states-backing-away-from-national-ban/",
+    "topic": "abortion",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-23",
+    "politician": "Donald Trump",
+    "text": "I generally oppose gun control, but I support the ban on assault weapons and a slightly longer waiting period to purchase a gun.",
+    "date": "2000-01-01",
+    "sourceUrl": "https://theintercept.com/2016/01/27/donald-trump-in-2000-i-support-the-ban-on-assault-weapons/",
+    "topic": "guns",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-24",
+    "politician": "Donald Trump",
+    "text": "The eight-year assault on the Second Amendment will come to a crashing end; I will never let you down.",
+    "date": "2016-05-20",
+    "sourceUrl": "https://www.npr.org/2016/05/20/478864228/i-will-never-let-you-down-trump-tells-national-rifle-association",
+    "topic": "guns",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-25",
+    "politician": "Donald Trump",
+    "text": "Take the guns first, go through due process second.",
+    "date": "2018-02-28",
+    "sourceUrl": "https://thehill.com/homenews/administration/376097-trump-take-the-guns-first-go-through-due-process-second/",
+    "topic": "guns",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-26",
+    "politician": "Donald Trump",
+    "text": "We will immediately repeal and replace ObamaCare — and nobody can do that like me.",
+    "date": "2016-02-01",
+    "sourceUrl": "https://abcnews.go.com/Politics/fact-checking-trumps-repeal-replace-obamacare-timeline/story?id=46360908",
+    "topic": "healthcare",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-27",
+    "politician": "Donald Trump",
+    "text": "I have concepts of a plan to replace Obamacare, and I'll be releasing it soon.",
+    "date": "2024-09-10",
+    "sourceUrl": "https://www.nbcnews.com/health/health-news/debate-trump-health-care-plan-replace-obamacare-rcna170665",
+    "topic": "healthcare",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-28",
+    "politician": "Donald Trump",
+    "text": "Social Security is a huge Ponzi scheme, and privatization would be good for all of us; the retirement age should rise to 70.",
+    "date": "2000-01-01",
+    "sourceUrl": "https://www.buzzfeednews.com/article/andrewkaczynski/trump-on-social-security-in-his-2000-book-a-ponzi-scheme-we",
+    "topic": "entitlements",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-29",
+    "politician": "Donald Trump",
+    "text": "I'm not going to cut Social Security like every other Republican, and I'm not going to cut Medicare or Medicaid.",
+    "date": "2015-05-07",
+    "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/donald-trump-map-social-security-medicare-rcna143475",
+    "topic": "entitlements",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-30",
+    "politician": "Donald Trump",
+    "text": "There is a lot you can do in terms of entitlements, in terms of cutting.",
+    "date": "2024-03-11",
+    "sourceUrl": "https://www.cnn.com/2024/03/11/politics/donald-trump-cnbc-interview-medicare-social-security-tiktok/index.html",
+    "topic": "entitlements",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-31",
+    "politician": "Donald Trump",
+    "text": "Wages are too high, and I would not raise the federal minimum wage.",
+    "date": "2015-11-10",
+    "sourceUrl": "https://www.politifact.com/factchecks/2016/jul/28/donald-trump/donald-trump-gets-full-flop-stance-minimum-wage/",
+    "topic": "minimum wage",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-32",
+    "politician": "Donald Trump",
+    "text": "I am looking at the minimum wage, and I think people have to get more.",
+    "date": "2016-05-08",
+    "sourceUrl": "https://www.washingtonpost.com/news/fact-checker/wp/2016/08/03/a-guide-to-all-of-donald-trumps-flip-flops-on-the-minimum-wage/",
+    "topic": "minimum wage",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-33",
+    "politician": "Donald Trump",
+    "text": "I propose a one-time 14.25% tax on the net worth of individuals and trusts worth over $10 million to pay off the national debt.",
+    "date": "1999-11-09",
+    "sourceUrl": "https://www.cnn.com/ALLPOLITICS/stories/1999/11/09/trump.rich/index.html",
+    "topic": "taxes",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-34",
+    "politician": "Donald Trump",
+    "text": "I told LGBT voters I will fight for you, and said Caitlyn Jenner could use whichever bathroom she wanted at Trump Tower.",
+    "date": "2016-04-21",
+    "sourceUrl": "https://abcnews.go.com/Politics/donald-trumps-past-statements-lgbt-rights/story?id=48858527",
+    "topic": "LGBTQ",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-35",
+    "politician": "Donald Trump",
+    "text": "The United States Government will not accept or allow transgender individuals to serve in any capacity in the U.S. Military.",
+    "date": "2017-07-26",
+    "sourceUrl": "https://www.npr.org/sections/thetwo-way/2017/07/26/539470211/trump-says-transgender-people-cant-serve-in-military",
+    "topic": "LGBTQ",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-37",
+    "politician": "Donald Trump",
+    "text": "Bitcoin just seems like a scam. I don't like it because it is another currency competing against the dollar.",
+    "date": "2021-07-01",
+    "sourceUrl": "https://cointelegraph.com/news/trump-calls-bitcoin-a-scam-advocates-for-dollar-hegemony",
+    "topic": "crypto",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-38",
+    "politician": "Donald Trump",
+    "text": "The United States will be the crypto capital of the planet, and we will keep 100% of the government's bitcoin — never sell your bitcoin.",
+    "date": "2024-07-27",
+    "sourceUrl": "https://www.cnbc.com/2024/07/27/trump-bitcoin-conference-harris.html",
+    "topic": "crypto",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-39",
+    "politician": "Donald Trump",
+    "text": "I signed an executive order establishing a U.S. Strategic Bitcoin Reserve and Digital Asset Stockpile.",
+    "date": "2025-03-06",
+    "sourceUrl": "https://www.cnbc.com/2025/03/06/trump-signs-executive-order-for-us-strategic-bitcoin-reserve.html",
+    "topic": "crypto",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-40",
+    "politician": "Donald Trump",
+    "text": "Jerome Powell is strong, committed, and smart, with the wisdom and leadership to guide our economy.",
+    "date": "2017-11-02",
+    "sourceUrl": "https://www.cnbc.com/2017/11/02/trump-picks-jerome-powell-to-succeed-yellen-as-fed-chair.html",
+    "topic": "Fed",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-41",
+    "politician": "Donald Trump",
+    "text": "Powell is always TOO LATE AND WRONG, and his termination cannot come fast enough!",
+    "date": "2025-04-17",
+    "sourceUrl": "https://www.cnbc.com/2025/04/17/trump-again-calls-for-fed-to-cut-rates-says-powells-termination-cannot-come-fast-enough.html",
+    "topic": "Fed",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-42",
+    "politician": "Donald Trump",
+    "text": "I have no intention of firing Fed Chair Jerome Powell.",
+    "date": "2025-04-22",
+    "sourceUrl": "https://www.cnn.com/2025/04/22/business/trump-says-he-has-no-intention-of-firing-jerome-powell/index.html",
+    "topic": "Fed",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-43",
+    "politician": "Donald Trump",
+    "text": "Powell should resign immediately.",
+    "date": "2025-07-03",
+    "sourceUrl": "https://www.aljazeera.com/economy/2025/7/3/trump-says-powell-should-resign-immediately-in-latest-attack-on-fed-chair",
+    "topic": "Fed",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-44",
+    "politician": "Donald Trump",
+    "text": "I signed an executive order effectively banning TikTok, citing ByteDance data-collection as a national-security threat.",
+    "date": "2020-08-06",
+    "sourceUrl": "https://www.npr.org/2020/08/06/900019185/trump-signs-executive-order-that-will-effectively-ban-use-of-tiktok-in-the-u-s",
+    "topic": "TikTok",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-45",
+    "politician": "Donald Trump",
+    "text": "I'm now a big star on TikTok, and I will save TikTok — for all those who want to save TikTok in America, vote Trump.",
+    "date": "2024-09-06",
+    "sourceUrl": "https://www.politifact.com/factchecks/2025/jan/16/donald-trump/flip-flop-trump-now-opposes-a-tiktok-ban-in-2020-h/",
+    "topic": "TikTok",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-46",
+    "politician": "Donald Trump",
+    "text": "On my first day back in office I signed an executive order pausing enforcement of the TikTok ban.",
+    "date": "2025-01-20",
+    "sourceUrl": "https://www.npr.org/2025/01/20/nx-s1-5268701/trump-executive-order-tiktok-ban",
+    "topic": "TikTok",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-47",
+    "politician": "Donald Trump",
+    "text": "Electric-car owners become schizophrenic; the cars don't go far and you have to recharge every two minutes.",
+    "date": "2023-12-01",
+    "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166",
+    "topic": "EVs",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-48",
+    "politician": "Donald Trump",
+    "text": "I'm for electric cars. I have to be, because Elon Musk endorsed me very strongly. So I have no choice.",
+    "date": "2024-08-01",
+    "sourceUrl": "https://www.msnbc.com/rachel-maddow-show/maddowblog/politics-electric-vehicles-trump-says-quiet-part-loud-elon-musk-2024-rcna165166",
+    "topic": "EVs",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-49",
+    "politician": "Donald Trump",
+    "text": "On COVID-19: it's going to disappear. One day, it's like a miracle, it will disappear.",
+    "date": "2020-02-27",
+    "sourceUrl": "https://www.cnn.com/interactive/2020/10/politics/covid-disappearing-trump-comment-tracker/",
+    "topic": "COVID",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-50",
+    "politician": "Donald Trump",
+    "text": "We got a vaccine done, three vaccines done, and we saved tens of millions of lives worldwide.",
+    "date": "2021-12-01",
+    "sourceUrl": "https://www.newsweek.com/donald-trump-stopped-talking-operation-warp-speed-coronavirus-vaccine-1886093",
+    "topic": "vaccines",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-51",
+    "politician": "Donald Trump",
+    "text": "We've got to get rid of the $19 trillion in debt; I could eliminate the national debt over a period of eight years.",
+    "date": "2016-03-31",
+    "sourceUrl": "https://www.politifact.com/truth-o-meter/promises/trumpometer/promise/1418/eliminate-federal-debt-8-years/",
+    "topic": "debt",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-52",
+    "politician": "Donald Trump",
+    "text": "On January 7th I condemned the Capitol attack as a heinous attack, telling rioters they do not represent our country and that lawbreakers will pay.",
+    "date": "2021-01-07",
+    "sourceUrl": "https://www.nbcnews.com/politics/donald-trump/trump-called-jan-6-henious-attack-now-calls-day-love-rcna175942",
+    "topic": "Jan6",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-53",
+    "politician": "Donald Trump",
+    "text": "On my first day back in office I pardoned or commuted the sentences of nearly 1,600 January 6 defendants, and I call January 6 a day of love.",
+    "date": "2025-01-20",
+    "sourceUrl": "https://www.forbes.com/sites/saradorn/2025/01/20/trump-inauguration-live-updates-trump-pardons-1500-jan-6-defendants/",
+    "topic": "Jan6",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-54",
+    "politician": "Donald Trump",
+    "text": "I promised to drain the swamp and end Washington insider influence.",
+    "date": "2016-10-18",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Drain_the_swamp",
+    "topic": "swamp",
+    "era": "flip-flop-research",
+    "confidence": 0.85
+  },
+  {
+    "id": "trump-ff-55",
+    "politician": "Donald Trump",
+    "text": "In the campaign I promised to support E15 ethanol all year round, and I will sign it without delay.",
+    "date": "2026-01-01",
+    "sourceUrl": "https://thehill.com/policy/energy-environment/5709497-trump-iowa-high-ethanol-gas/",
+    "topic": "ethanol",
+    "era": "flip-flop-research",
+    "confidence": 0.85
   }
 ]
