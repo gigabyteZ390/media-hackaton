@@ -15,7 +15,7 @@ export const SECTOR_LABEL: Record<
 
 const MAP: [SectorKey, string[]][] = [
   ["geopolitics", ["nato", "russia", "ukraine", "syria", "iran", "north korea", "china", "외교", "안보", "foreign", "국방", "defense", "trade"]],
-  ["economy", ["crypto", "fed", "tax", "조세", "debt", "minimum wage", "economy", "경제", "energy", "에너지", "ethanol", "ev", "부동산", "노동", "규제", "regulation"]],
+  ["economy", ["crypto", "fed", "tax", "조세", "debt", "minimum wage", "economy", "경제", "energy", "에너지", "oil", "gas", "price", "inflation", "market", "job", "trade deficit", "ethanol", "ev", "부동산", "노동", "규제", "regulation"]],
   ["social", ["abortion", "gun", "healthcare", "entitlement", "lgbtq", "immigration", "covid", "vaccine", "daca", "복지", "교육", "인구", "border"]],
   ["politics", ["election", "jan6", "swamp", "정치", "통합", "국정"]],
 ];

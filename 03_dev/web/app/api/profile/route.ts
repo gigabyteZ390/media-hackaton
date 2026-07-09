@@ -1,16 +1,41 @@
 import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
+import { resolveSlug } from "@/lib/profileSlug";
+import { SECTOR_LABEL, type SectorKey } from "@/lib/sectors";
+import { readAdded, type AddedStatement } from "@/lib/addedStore";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 // Politician profile dashboard data. The heavy per-topic reversal analysis is
-// PRE-COMPUTED offline (scripts/build-profile.mjs) into data/profiles/<slug>.json,
-// so this endpoint is a deterministic, instant file read — no live LLM call, no
-// latency, no truncation risk during the demo. To refresh the numbers, re-run the
-// generator and commit the JSON.
+// PRE-COMPUTED offline (scripts/build-profile.mjs) into data/profiles/<slug>.json.
+// Statements verified from videos (data/added/<slug>.json, via /api/add-statements)
+// are MERGED IN here so a person's track record accumulates over time — instant,
+// no live LLM call.
 
+type StatementRow = {
+  text: string;
+  date: string;
+  sourceUrl: string;
+  // present only on video-verified (accumulated) statements
+  isContradiction?: boolean;
+  factVerdict?: "TRUE" | "FALSE" | "UNVERIFIABLE" | "NOT_FACTUAL";
+  factSources?: { title: string; url: string }[];
+};
+type Topic = {
+  topic: string;
+  count: number;
+  reversalCount: number;
+  note: string;
+  statements: StatementRow[];
+};
+type Sector = {
+  key: string;
+  statementCount: number;
+  reversalCount: number;
+  topics: Topic[];
+};
 type ProfileFile = {
   politician: string;
   totalStatements: number;
@@ -29,30 +54,51 @@ type ProfileFile = {
   }[];
 };
 
-// Search aliases → canonical profile slug.
-const ALIASES: Record<string, string> = {
-  trump: "donald-trump",
-  "donald trump": "donald-trump",
-  "donald j. trump": "donald-trump",
-  트럼프: "donald-trump",
-  도널드트럼프: "donald-trump",
-  "도널드 트럼프": "donald-trump",
-  이재명: "lee-jae-myung",
-  lee: "lee-jae-myung",
-  "lee jae-myung": "lee-jae-myung",
-  "lee jae myung": "lee-jae-myung",
-  macron: "emmanuel-macron",
-  마크롱: "emmanuel-macron",
-  "emmanuel macron": "emmanuel-macron",
-  "에마뉘엘 마크롱": "emmanuel-macron",
-};
+const VIDEO_TOPIC = { ko: "영상에서 추가된 발언", en: "Added from video" };
 
-function resolveSlug(input: string): string {
-  const raw = (input || "").trim().toLowerCase();
-  if (ALIASES[raw]) return ALIASES[raw];
-  const compact = raw.replace(/\s+/g, "");
-  if (ALIASES[compact]) return ALIASES[compact];
-  return raw.replace(/[^a-z0-9가-힣]+/g, "-").replace(/^-|-$/g, "");
+// Fold the accumulated video-verified statements into the base profile sectors.
+function mergeAdded(sectors: Sector[], added: AddedStatement[], L: "ko" | "en") {
+  if (!added.length) return;
+  const bySector = new Map<string, AddedStatement[]>();
+  for (const a of added) {
+    const key = a.sector || "politics";
+    if (!bySector.has(key)) bySector.set(key, []);
+    bySector.get(key)!.push(a);
+  }
+  for (const [key, list] of bySector.entries()) {
+    let sec = sectors.find((s) => s.key === key);
+    if (!sec) {
+      sec = { key, statementCount: 0, reversalCount: 0, topics: [] };
+      sectors.push(sec);
+    }
+    const reversals = list.filter((a) => a.isContradiction).length;
+    sec.statementCount += list.length;
+    sec.reversalCount += reversals;
+    const noteN =
+      L === "ko"
+        ? `영상 검증으로 추가된 발언 ${list.length}개 (과거와 모순 ${reversals}개)`
+        : `${list.length} statement(s) added from video verification (${reversals} contradicting the record)`;
+    // Show newest first, and put this topic at the top of its sector.
+    sec.topics.unshift({
+      topic: VIDEO_TOPIC[L],
+      count: list.length,
+      reversalCount: reversals,
+      note: noteN,
+      statements: list
+        .slice()
+        .reverse()
+        .map((a) => ({
+          text: a.text,
+          date: a.date,
+          sourceUrl: a.sourceUrl,
+          isContradiction: a.isContradiction,
+          factVerdict: a.factVerdict,
+          factSources: a.factSources,
+        })),
+    });
+  }
+  // Keep sectors ordered by reversal count (added reversals can reorder them).
+  sectors.sort((a, b) => b.reversalCount - a.reversalCount);
 }
 
 export async function POST(req: Request) {
@@ -69,7 +115,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           error: `No profile available for "${politician}".`,
-          available: ["Donald Trump"],
+          available: ["Donald Trump", "이재명", "Emmanuel Macron"],
         },
         { status: 404 }
       );
@@ -77,23 +123,41 @@ export async function POST(req: Request) {
 
     const data = JSON.parse(fs.readFileSync(file, "utf8")) as ProfileFile;
 
-    // Localize each note to the requested language, keeping the response shape flat.
-    const out = {
-      politician: data.politician,
-      totalStatements: data.totalStatements,
-      totalReversals: data.totalReversals,
-      sectors: data.sectors.map((s) => ({
-        ...s,
-        topics: s.topics.map((t) => ({
-          topic: t.topic,
-          count: t.count,
-          reversalCount: t.reversalCount,
-          note: t.note?.[L] ?? t.note?.en ?? "",
-          statements: t.statements,
-        })),
+    // Base sectors, notes localized.
+    const sectors: Sector[] = data.sectors.map((s) => ({
+      key: s.key,
+      statementCount: s.statementCount,
+      reversalCount: s.reversalCount,
+      topics: s.topics.map((t) => ({
+        topic: t.topic,
+        count: t.count,
+        reversalCount: t.reversalCount,
+        note: t.note?.[L] ?? t.note?.en ?? "",
+        statements: t.statements,
       })),
-    };
-    return NextResponse.json(out);
+    }));
+
+    // Merge accumulated video-verified statements.
+    const added = readAdded(slug);
+    mergeAdded(sectors, added, L);
+
+    const addedReversals = added.filter((a) => a.isContradiction).length;
+
+    // Attach sector display labels so the client needn't map keys.
+    const sectorsOut = sectors.map((s) => ({
+      ...s,
+      label: SECTOR_LABEL[s.key as SectorKey]
+        ? SECTOR_LABEL[s.key as SectorKey][L]
+        : s.key,
+    }));
+
+    return NextResponse.json({
+      politician: data.politician,
+      totalStatements: data.totalStatements + added.length,
+      totalReversals: data.totalReversals + addedReversals,
+      addedCount: added.length,
+      sectors: sectorsOut,
+    });
   } catch (err: any) {
     console.error("[/api/profile]", err);
     return NextResponse.json(

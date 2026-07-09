@@ -3,16 +3,23 @@
 import { useState, useEffect, useCallback } from "react";
 
 type Lang = "ko" | "en";
-
-// --- profile API shapes (served by /api/profile from data/profiles/<slug>.json) ---
+type FactVerdict = "TRUE" | "FALSE" | "UNVERIFIABLE" | "NOT_FACTUAL";
 type SectorKey = "geopolitics" | "economy" | "social" | "politics";
 
+interface StatementRow {
+  text: string;
+  date: string;
+  sourceUrl: string;
+  isContradiction?: boolean;
+  factVerdict?: FactVerdict;
+  factSources?: { title: string; url: string }[];
+}
 interface TopicRow {
   topic: string;
   count: number;
   reversalCount: number;
   note: string;
-  statements: { text: string; date: string; sourceUrl: string }[];
+  statements: StatementRow[];
 }
 interface SectorRow {
   key: SectorKey;
@@ -24,18 +31,23 @@ interface Profile {
   politician: string;
   totalStatements: number;
   totalReversals: number;
+  addedCount?: number;
   sectors: SectorRow[];
 }
+interface LastAnalysis {
+  consistencyScore: number;
+  factualityScore: number;
+  breakdown?: { total: number; contradictions: number; verified: number };
+}
 
-// --- sector presentation (label + icon + accent color token) ---
 const SECTOR_META: Record<
   SectorKey,
   { ko: string; en: string; icon: string; color: string }
 > = {
-  geopolitics: { ko: "지정학·안보", en: "Geopolitics & Security", icon: "ti-world", color: "blue" },
-  economy: { ko: "경제·통상", en: "Economy & Trade", icon: "ti-coin", color: "green" },
-  social: { ko: "사회·정책", en: "Social & Domestic", icon: "ti-users-group", color: "orange" },
-  politics: { ko: "정치·거버넌스", en: "Politics & Governance", icon: "ti-gavel", color: "red" },
+  geopolitics: { ko: "지정학·안보", en: "Geopolitics", icon: "ti-world", color: "blue" },
+  economy: { ko: "경제·통상", en: "Economy", icon: "ti-coin", color: "green" },
+  social: { ko: "사회·정책", en: "Social", icon: "ti-users-group", color: "orange" },
+  politics: { ko: "정치·거버넌스", en: "Politics", icon: "ti-gavel", color: "red" },
 };
 
 const STR = {
@@ -51,17 +63,25 @@ const STR = {
     totalStatements: "Statements on record",
     totalReversals: "Position reversals",
     reversals: "reversals",
-    reversal: "reversal",
     statements: "statements",
     noReversal: "No reversal detected — consistent stance.",
     timeline: "Statement timeline",
-    viewTimeline: "Timeline",
-    hide: "Hide",
     source: "SOURCE",
-    back: "Back",
-    analyze: "Verify a transcript instead",
-    sortNote: "Sorted by number of position reversals",
     subject: "SUBJECT",
+    verifyResult: "This verification",
+    verifyDesc: "Scores for the statements you just added from the video/transcript.",
+    consistency: "Consistency",
+    factuality: "Factuality",
+    consistencyHint: "Share of lines that do NOT contradict the speaker's own past.",
+    factualityHint: "Share of checkable claims verified TRUE against sources.",
+    pickSector: "Select a category to see its statements",
+    cBadge: (c: boolean): string => (c ? "Contradiction" : "Consistent"),
+    fBadge: {
+      TRUE: "Verified",
+      FALSE: "False",
+      UNVERIFIABLE: "Unverifiable",
+      NOT_FACTUAL: "Opinion",
+    } as Record<FactVerdict, string>,
   },
   ko: {
     kicker: "[ 정치인_행적 // 말바꾸기_원장 ]",
@@ -75,22 +95,74 @@ const STR = {
     totalStatements: "수집된 발언",
     totalReversals: "입장 번복",
     reversals: "회 번복",
-    reversal: "회 번복",
     statements: "개 발언",
     noReversal: "번복 없음 — 일관된 입장.",
     timeline: "발언 타임라인",
-    viewTimeline: "타임라인",
-    hide: "접기",
     source: "출처",
-    back: "돌아가기",
-    analyze: "대본으로 직접 검증하기",
-    sortNote: "입장 번복 횟수 기준 정렬",
     subject: "대상",
+    verifyResult: "이번 검증 결과",
+    verifyDesc: "방금 영상/대본에서 추가한 발언들의 점수입니다.",
+    consistency: "일관성",
+    factuality: "사실성",
+    consistencyHint: "발화자 자신의 과거와 모순되지 않는 발언의 비율.",
+    factualityHint: "검증 가능한 주장 중 출처로 사실 확인된 비율.",
+    pickSector: "카테고리를 선택하면 해당 발언이 표시됩니다",
+    cBadge: (c: boolean): string => (c ? "모순" : "일관"),
+    fBadge: {
+      TRUE: "사실",
+      FALSE: "거짓",
+      UNVERIFIABLE: "검증불가",
+      NOT_FACTUAL: "의견",
+    } as Record<FactVerdict, string>,
   },
 };
 
-function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.en; lang: Lang; color: string }) {
-  const [open, setOpen] = useState(false);
+// 10-segment percentage bar (matches the brutalist result gauges).
+function SegBar({ pct, color }: { pct: number; color: string }) {
+  return (
+    <div className="flex h-7 gap-1">
+      {Array.from({ length: 10 }).map((_, i) => (
+        <div
+          key={i}
+          className={`h-full flex-1 transition-colors duration-500 ${
+            i < Math.round(pct / 10) ? `bg-${color}` : "bg-slate/50"
+          }`}
+          style={{ transitionDelay: `${i * 40}ms` }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function FactBadge({ v, t }: { v?: FactVerdict; t: typeof STR.en }) {
+  if (!v) return null;
+  const color =
+    v === "TRUE" ? "green" : v === "FALSE" ? "red" : v === "UNVERIFIABLE" ? "orange" : "gray";
+  const cls =
+    v === "NOT_FACTUAL"
+      ? "border border-line text-gray"
+      : `bg-${color} text-white`;
+  return (
+    <span
+      className={`${cls} px-2 py-[2px] font-mono text-[9px] font-bold uppercase tracking-widest`}
+    >
+      {t.fBadge[v]}
+    </span>
+  );
+}
+
+function TopicItem({
+  topic,
+  t,
+  color,
+  defaultOpen,
+}: {
+  topic: TopicRow;
+  t: typeof STR.en;
+  color: string;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(!!defaultOpen);
   const hasReversal = topic.reversalCount > 0;
   return (
     <div className={`border border-line ${hasReversal ? "bg-surface" : "bg-surface/40"}`}>
@@ -98,7 +170,6 @@ function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.e
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center gap-4 p-4 text-left transition-colors hover:bg-slate/40"
       >
-        {/* reversal count chip */}
         <div
           className={`flex h-12 w-12 shrink-0 flex-col items-center justify-center border border-line font-mono ${
             hasReversal ? `bg-${color} text-white` : "bg-slate/50 text-gray"
@@ -124,7 +195,6 @@ function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.e
 
       {open && (
         <div className="border-t border-line bg-slate/30 p-4">
-          {/* full flip-flop summary (not clamped) */}
           {topic.note && (
             <div
               className={`mb-5 border-l-4 border-${color} bg-${color}/5 p-4 text-sm leading-relaxed text-ink`}
@@ -139,11 +209,34 @@ function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.e
             {topic.statements.map((s, i) => (
               <li key={i} className="relative">
                 <span
-                  className={`absolute -left-[27px] top-1 h-3 w-3 border-2 border-surface bg-${color}`}
+                  className={`absolute -left-[27px] top-1 h-3 w-3 border-2 border-surface ${
+                    s.isContradiction ? "bg-red" : `bg-${color}`
+                  }`}
                 />
-                <div className="flex flex-wrap items-baseline gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-[10px] font-bold text-blue">{s.date}</span>
-                  {s.sourceUrl && s.sourceUrl !== "#" && (
+                  {s.isContradiction !== undefined && (
+                    <span
+                      className={`px-2 py-[2px] font-mono text-[9px] font-bold uppercase tracking-widest ${
+                        s.isContradiction ? "bg-red text-white" : "bg-blue text-white"
+                      }`}
+                    >
+                      {t.cBadge(s.isContradiction)}
+                    </span>
+                  )}
+                  <FactBadge v={s.factVerdict} t={t} />
+                  {(s.factSources ?? []).slice(0, 1).map((src, j) => (
+                    <a
+                      key={j}
+                      href={src.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-[9px] font-bold uppercase text-gray underline decoration-gray/30 hover:text-green"
+                    >
+                      {t.source}
+                    </a>
+                  ))}
+                  {s.sourceUrl && s.sourceUrl !== "#" && !(s.factSources ?? []).length && (
                     <a
                       href={s.sourceUrl}
                       target="_blank"
@@ -167,10 +260,12 @@ function TopicItem({ topic, t, lang, color }: { topic: TopicRow; t: typeof STR.e
 export default function ProfileDashboard({
   lang,
   initialName,
+  lastAnalysis,
   onAnalyze,
 }: {
   lang: Lang;
   initialName: string;
+  lastAnalysis?: LastAnalysis;
   onAnalyze: () => void;
 }) {
   const t = STR[lang];
@@ -179,6 +274,9 @@ export default function ProfileDashboard({
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [activeSector, setActiveSector] = useState<SectorKey | null>(null);
+  // charts reflect the last verification; hide once the user searches someone else
+  const [showCharts, setShowCharts] = useState(!!lastAnalysis);
 
   const load = useCallback(
     async (name: string) => {
@@ -198,6 +296,7 @@ export default function ProfileDashboard({
           setError(t.notFound(clean));
         } else {
           setProfile(data);
+          setActiveSector(data.sectors?.[0]?.key ?? null);
         }
       } catch {
         setProfile(null);
@@ -209,22 +308,21 @@ export default function ProfileDashboard({
     [lang, t]
   );
 
-  // (re)load when the active name or language changes
   useEffect(() => {
     load(active);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, lang]);
 
-  const submit = () => setActive(query);
+  const submit = () => {
+    setShowCharts(false); // a fresh search isn't "this verification"
+    setActive(query);
+  };
 
-  const maxSectorReversals = profile
-    ? Math.max(1, ...profile.sectors.map((s) => s.reversalCount))
-    : 1;
+  const sel = profile?.sectors.find((s) => s.key === activeSector) ?? null;
 
   return (
     <section className="min-h-[80vh] border-b border-line bg-surface p-8 md:p-12 lg:p-20">
       <div className="mx-auto max-w-6xl">
-        {/* header + search */}
         <div className="mb-4 inline-block border border-line px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest">
           {t.kicker}
         </div>
@@ -256,7 +354,6 @@ export default function ProfileDashboard({
         </div>
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-gray">{t.hint}</p>
 
-        {/* states */}
         {loading && (
           <div className="mt-16 flex items-center justify-center gap-3 py-24 font-mono text-sm text-gray">
             <i className="ti ti-loader-2 animate-spin text-xl" />
@@ -300,81 +397,132 @@ export default function ProfileDashboard({
               </div>
             </div>
 
-            <p className="mt-10 font-mono text-[10px] font-bold uppercase tracking-widest text-gray">
-              {t.sortNote}
-            </p>
+            {/* this-verification charts */}
+            {showCharts && lastAnalysis && (
+              <div className="mt-8 border-2 border-line bg-slate/20 p-6 shadow-sharp-sm">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink">
+                  {t.verifyResult}
+                </p>
+                <p className="mt-1 mb-6 font-mono text-[10px] leading-relaxed text-gray">
+                  {t.verifyDesc}
+                </p>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div className="border-2 border-line bg-surface p-5">
+                    <div className="mb-3 flex items-end justify-between">
+                      <h4 className="text-xs font-black uppercase tracking-widest text-blue">
+                        {t.consistency}
+                      </h4>
+                      <span className="font-mono text-4xl font-black leading-none text-ink">
+                        {lastAnalysis.consistencyScore}%
+                      </span>
+                    </div>
+                    <SegBar pct={lastAnalysis.consistencyScore} color="blue" />
+                    <p className="mt-3 font-mono text-[9px] uppercase leading-relaxed tracking-wider text-gray/70">
+                      {t.consistencyHint}
+                    </p>
+                  </div>
+                  <div className="border-2 border-line bg-surface p-5">
+                    <div className="mb-3 flex items-end justify-between">
+                      <h4 className="text-xs font-black uppercase tracking-widest text-green">
+                        {t.factuality}
+                      </h4>
+                      <span className="font-mono text-4xl font-black leading-none text-ink">
+                        {lastAnalysis.factualityScore}%
+                      </span>
+                    </div>
+                    <SegBar pct={lastAnalysis.factualityScore} color="green" />
+                    <p className="mt-3 font-mono text-[9px] uppercase leading-relaxed tracking-wider text-gray/70">
+                      {t.factualityHint}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
-            {/* sector cards */}
-            <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {/* category tab bar */}
+            <div className="mt-10 flex flex-wrap gap-2">
               {profile.sectors.map((sec) => {
                 const meta = SECTOR_META[sec.key];
+                const on = sec.key === activeSector;
                 return (
-                  <div
+                  <button
                     key={sec.key}
-                    className="flex flex-col border-2 border-line bg-surface shadow-sharp-sm"
+                    onClick={() => setActiveSector(sec.key)}
+                    className={`flex items-center gap-2 border-2 px-4 py-3 transition-all ${
+                      on
+                        ? `bg-${meta.color} border-${meta.color} text-white shadow-sharp-sm`
+                        : "border-line bg-surface text-ink hover:bg-slate/40"
+                    }`}
                   >
-                    {/* sector header */}
-                    <div className="flex items-center gap-4 border-b border-line p-5">
-                      <div
-                        className={`flex h-12 w-12 shrink-0 items-center justify-center bg-${meta.color} text-white`}
-                      >
-                        <i className={`ti ${meta.icon} text-2xl`} />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-lg font-black uppercase tracking-tight text-ink">
-                          {lang === "ko" ? meta.ko : meta.en}
-                        </h3>
-                        <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
-                          {sec.statementCount} {t.statements}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <span className="font-mono text-4xl font-black leading-none text-ink">
-                          {sec.reversalCount}
-                        </span>
-                        <p className="font-mono text-[9px] font-bold uppercase text-gray">
-                          {t.reversals}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* sector reversal bar */}
-                    <div className="px-5 pt-4">
-                      <div className="flex h-2 w-full bg-slate/50">
-                        <div
-                          className={`h-full bg-${meta.color} transition-all duration-700`}
-                          style={{
-                            width: `${(sec.reversalCount / maxSectorReversals) * 100}%`,
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* topics */}
-                    <div className="space-y-2 p-5">
-                      {sec.topics.map((topic) => (
-                        <TopicItem
-                          key={topic.topic}
-                          topic={topic}
-                          t={t}
-                          lang={lang}
-                          color={meta.color}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                    <i className={`ti ${meta.icon} text-lg`} />
+                    <span className="text-xs font-black uppercase tracking-tight">
+                      {lang === "ko" ? meta.ko : meta.en}
+                    </span>
+                    <span
+                      className={`ml-1 font-mono text-xs font-black ${
+                        on ? "text-white" : "text-gray"
+                      }`}
+                    >
+                      {sec.reversalCount}
+                    </span>
+                  </button>
                 );
               })}
             </div>
 
-            {/* secondary action: the transcript analyzer (kept, demoted) */}
+            {/* selected sector panel */}
+            {sel ? (
+              <div className="mt-4 border-2 border-line bg-surface shadow-sharp-sm">
+                <div className="flex items-center gap-4 border-b border-line p-5">
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center bg-${
+                      SECTOR_META[sel.key].color
+                    } text-white`}
+                  >
+                    <i className={`ti ${SECTOR_META[sel.key].icon} text-2xl`} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg font-black uppercase tracking-tight text-ink">
+                      {lang === "ko" ? SECTOR_META[sel.key].ko : SECTOR_META[sel.key].en}
+                    </h3>
+                    <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-gray">
+                      {sel.statementCount} {t.statements}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="font-mono text-4xl font-black leading-none text-ink">
+                      {sel.reversalCount}
+                    </span>
+                    <p className="font-mono text-[9px] font-bold uppercase text-gray">
+                      {t.reversals}
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-2 p-5">
+                  {sel.topics.map((topic, i) => (
+                    <TopicItem
+                      key={topic.topic + i}
+                      topic={topic}
+                      t={t}
+                      color={SECTOR_META[sel.key].color}
+                      defaultOpen={i === 0}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="mt-4 border-2 border-dashed border-line p-12 text-center font-mono text-xs text-gray">
+                {t.pickSector}
+              </div>
+            )}
+
             <div className="mt-16 flex justify-center">
               <button
                 onClick={onAnalyze}
                 className="btn-secondary px-8 py-3 text-[10px] shadow-sharp-sm"
               >
                 <i className="ti ti-file-text mr-2" />
-                {t.analyze}
+                {lang === "ko" ? "대본으로 직접 검증하기" : "Verify a transcript instead"}
               </button>
             </div>
           </>

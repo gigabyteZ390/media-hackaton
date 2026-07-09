@@ -1211,11 +1211,13 @@ export default function Home() {
     transcript: string;
     lang: Lang;
     asOf: string;
+    sourceUrl: string;
   }>({
     politician: "",
     transcript: "",
     lang: "ko",
     asOf: "",
+    sourceUrl: "",
   });
 
   const filteredPoliticians = POLITICIAN_OPTIONS.filter((name) =>
@@ -1236,6 +1238,7 @@ export default function Home() {
       lang,
       // Manual entry: judged as of today. A scraper would supply the video date.
       asOf: new Date().toISOString().slice(0, 10),
+      sourceUrl: sourceUrl.trim(),
     };
     setError(null);
     setAnalysis(null);
@@ -1257,16 +1260,42 @@ export default function Home() {
       runRef.current.lang,
       runRef.current.asOf
     )
-      .then((data) => {
+      .then(async (data) => {
         if (cancelled) return;
         clearInterval(interval);
         setAnalysis(data);
         setProgress(100);
+        // Persist the verified statements onto the person's record so they ACCUMULATE
+        // on the track record (and stay there next time it's opened).
+        try {
+          const statements = data.results.map((r) => ({
+            text: r.line,
+            isContradiction: r.consistency.status === "CONTRADICTION",
+            factVerdict: r.factuality.verdict,
+            factSources: r.factuality.sources,
+            date: runRef.current.asOf,
+          }));
+          if (statements.length) {
+            await fetch("/api/add-statements", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                politician: runRef.current.politician,
+                sourceUrl: runRef.current.sourceUrl,
+                statements,
+              }),
+            });
+          }
+        } catch {
+          /* non-fatal: still show the track record */
+        }
+        if (cancelled) return;
+        setProfileName(runRef.current.politician);
         setTimeout(() => {
           if (cancelled) return;
-          setStep("results");
+          setStep("profile");
           window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 600);
+        }, 500);
       })
       .catch((err) => {
         if (cancelled) return;
@@ -1674,6 +1703,15 @@ export default function Home() {
         <ProfileDashboard
           lang={lang}
           initialName={profileName}
+          lastAnalysis={
+            analysis
+              ? {
+                  consistencyScore: analysis.consistencyScore,
+                  factualityScore: analysis.factualityScore,
+                  breakdown: analysis.breakdown,
+                }
+              : undefined
+          }
           onAnalyze={() => {
             setStep("home");
             window.scrollTo({ top: 0, behavior: "smooth" });
